@@ -29,6 +29,12 @@ class News extends MX_Controller {
         $data['type'] = $type;
         $this->load->view('news/list_news', $data);
     }
+    
+    //show news
+    function news_management($type){
+        $data['news'] = $this->model_news->get_all_news($type)->result();
+        $this->load->view('news/list_articles',$data);
+    }
 
     function form_add_news($type) {
         $data['type'] = $type;

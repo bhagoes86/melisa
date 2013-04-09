@@ -25,20 +25,30 @@
                     <div class="grid">
                         <div class="row" style="margin-top: 10px;">
                             <!--Course Info-->
-                            <div class="span5">
-                                <img src="<?php echo base_url() . 'attachment/' . $news->header ?>" style="width: 100%;"/>
-                                
+                            <div class="span3">
+                                <div class="page-sidebar bg-color-red" style="margin-top: 0px;margin-left: 0px;padding-bottom: 0px;">
+                                    <ul>
+                                        <li><a id="btn-news"><i class="icon-screen"></i> Berita Terkini</a></li>
+                                        <li><a id="btn-beasiswa"><i class="icon-book"></i> Info Beasiswa</a></li>
+                                        <li><a id="btn-fitur"><i class="icon-gift"></i> Fitur Terbaru</a></li>
+                                        <li><a id="btn-kami"><i class="icon-home"></i> Sakola</a></li>
+                                        <li><a id="btn-karir"><i class="icon-user-3"></i> Karir</a></li>
+                                        <li><a id="btn-blog"><i class="icon-file"></i> Blog</a></li>
+                                        <li><a id="btn-pengembangan"><i class="icon-accessibility"></i> Pengembangan</a></li>
+                                        <li><a id="btn-kerjasama"><i class="icon-lab"></i> Kerjasama</a></li>
+                                        <li><a id="btn-sponsor"><i class="icon-broadcast"></i> Sponsor & Pendanaan</a></li>
+                                    </ul>
+                                </div>                           
                             </div>
-
-                            <div class="span7 fright" id="content-right">
+                            <div class="span9 fright" id="content-right">
                                 <div class="bg-color-blueDark" style="margin-bottom: 10px;">
                                     <a class="fg-color-white">&nbsp;Title</a>
                                 </div>
-                                <p><?php echo $news->title?></p>
-                                <div class="bg-color-red" style="margin-bottom: 10px;">
+                                <p><?php echo $news->title ?></p>
+                                <div class="bg-color-greenDark" style="margin-bottom: 10px;">
                                     <a class="fg-color-white">&nbsp;Isi</a>
                                 </div>
-                                <p><?php echo $news->news?></p>
+                                <p><?php echo $news->news ?></p>
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -72,92 +82,67 @@
     </body>
 </html>
 <script type="text/javascript">
-
-    setInterval(function(){
-        $('#list-quiz').load('<?php echo site_url('course/list_quiz') . "/$course->id_course"; ?>')
-    }, 1000);
-    
-    //Hide Error Messaga
-    $('#close-error-message').click(function(){
-        $('#error-template').fadeOut("slow");
-        return false;
-    });
-    //Hide Info Messaga
-    $('#close-info-message').click(function(){
-        $('#info-template').fadeOut("slow");
-        return false;
-    });
-    // Write on keyup event of keyword input element
-    $("#kwd_search").keyup(function(){
-        // When value of the input is not blank
-        if( $(this).val() != "")
-        {
-            // Show only matching TR, hide rest of them
-            $("#my-table tbody>tr").hide();
-            $("#my-table td:contains-ci('" + $(this).val() + "')").parent("tr").show();
-        }
-        else
-        {
-            // When there is no input or clean again, show everything back
-            $("#my-table tbody>tr").show();
-        }
-    });
-    $("#kwd_search_document").keyup(function(){
-        // When value of the input is not blank
-        if( $(this).val() != "")
-        {
-            // Show only matching TR, hide rest of them
-            $(".table-document tbody>tr").hide();
-            $(".table-document td:contains-ci('" + $(this).val() + "')").parent("tr").show();
-        }
-        else
-        {
-            // When there is no input or clean again, show everything back
-            $(".table tbody>tr").show();
-        }
-    });
-    // jQuery expression for case-insensitive filter
-    $.extend($.expr[":"], 
-    {
-        "contains-ci": function(elem, i, match, array) 
-        {
-            return (elem.textContent || elem.innerText || $(elem).text() || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
-        }
-    });
-    $('table#my-table').each(function() {
-        var currentPage = 0;
-        var numPerPage = 5;
-        var $table = $(this);
-        $table.bind('repaginate', function() {
-            $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+    $('a#btn-news').click(function(){        
+        $('#message').html("Loading Data");
+        $('#loading-template').show();
+        $('#content-right').load("<?php echo site_url('news/news_management') ?>/"+1,function(){
+            $('#loading-template').fadeOut("slow");
         });
-        $table.trigger('repaginate');
-        var numRows = $table.find('tbody tr').length;
-        var numPages = Math.ceil(numRows / numPerPage);
-        var $pager = $('<div class="toolbar"></div>');
-        
-        for (var page = 0; page < numPages; page++) {
-            $('<a class="button page-number" style="cursor:pointer;margin-right:4px;"></a>').text(page + 1).bind('click', {
-                newPage: page
-            }, function(event) {
-                currentPage = event.data['newPage'];
-                $table.trigger('repaginate');
-                $(this).addClass('active').siblings().removeClass('active');
-            }).appendTo($pager).addClass('clickable');
-
-            
-            
-        }
-        $pager.insertBefore($table).find('span.page-number:first').addClass('active');
     });
-    //Google Analytic
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-31205461-2']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+    $('a#btn-beasiswa').click(function(){        
+        $('#message').html("Loading Data");
+        $('#loading-template').show();
+        $('#content-right').load("<?php echo site_url('news/news_management') ?>/"+2,function(){
+            $('#loading-template').fadeOut("slow");
+        });
+    });
+    $('a#btn-fitur').click(function(){        
+        $('#message').html("Loading Data");
+        $('#loading-template').show();
+        $('#content-right').load("<?php echo site_url('news/news_management') ?>/"+3,function(){
+            $('#loading-template').fadeOut("slow");
+        });
+    });
+    $('a#btn-kami').click(function(){        
+        $('#message').html("Loading Data");
+        $('#loading-template').show();
+        $('#content-right').load("<?php echo site_url('news/news_management') ?>/"+4,function(){
+            $('#loading-template').fadeOut("slow");
+        });
+    });
+    $('a#btn-karir').click(function(){        
+        $('#message').html("Loading Data");
+        $('#loading-template').show();
+        $('#content-right').load("<?php echo site_url('news/news_management') ?>/"+5,function(){
+            $('#loading-template').fadeOut("slow");
+        });
+    });
+    $('a#btn-blog').click(function(){        
+        $('#message').html("Loading Data");
+        $('#loading-template').show();
+        $('#content-right').load("<?php echo site_url('news/news_management') ?>/"+6,function(){
+            $('#loading-template').fadeOut("slow");
+        });
+    });
+    $('a#btn-pengembangan').click(function(){        
+        $('#message').html("Loading Data");
+        $('#loading-template').show();
+        $('#content-right').load("<?php echo site_url('news/news_management') ?>/"+7,function(){
+            $('#loading-template').fadeOut("slow");
+        });
+    });
+    $('a#btn-kerjasama').click(function(){        
+        $('#message').html("Loading Data");
+        $('#loading-template').show();
+        $('#content-right').load("<?php echo site_url('news/news_management') ?>/"+8,function(){
+            $('#loading-template').fadeOut("slow");
+        });
+    });
+    $('a#btn-sponsor').click(function(){        
+        $('#message').html("Loading Data");
+        $('#loading-template').show();
+        $('#content-right').load("<?php echo site_url('news/news_management') ?>/"+9,function(){
+            $('#loading-template').fadeOut("slow");
+        });
+    });
 </script>
