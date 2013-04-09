@@ -1630,7 +1630,8 @@ class Quiz extends MX_Controller {
                 $this->model_quiz->update_quiz($id_quiz, $data2);
 
                 error_reporting(E_ALL ^ E_NOTICE);
-                include_once ("./application/libraries/excel_reader2.php");
+                $path = base_url();
+                include_once ("application/libraries/excel_reader2.php");
                 $filename = "resource/" . $hasil['file_name'];
                 $data = new Spreadsheet_Excel_Reader($filename);
 
