@@ -14,13 +14,13 @@
         <?php
         for ($j = 1; $j <= 4; $j++) {
             ?>
-                <td width="170">
+                <td  style="padding:5px 5px;word-wrap: break-word;table-layout: fixed;width:160px">
             <?php
-           echo "course :".$list_ticket[$temp]->course_id."<br>";
+           echo "course :".$list_ticket[$temp]->course_id."Kuis testing vabel Kuis testing vabel Kuis testing vabel Kuis testing vabel Kuis testing vabel<br>";
            echo "quiz :".$list_ticket[$temp]->quiz_id."<br>";
            echo "group :".$list_ticket[$temp]->group_id."<br>";
            echo "<br>";
-           echo "password : <br />".$list_ticket[$temp]->password;
+           echo "<h3>".$list_ticket[$temp]->password."</h3>";
 
            ?>
                 </td>
