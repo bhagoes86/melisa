@@ -1631,7 +1631,7 @@ class Quiz extends MX_Controller {
 
                 error_reporting(E_ALL ^ E_NOTICE);
                 $path = base_url();
-                include_once ("application/libraries/excel_reader2.php");
+                include_once ("./application/libraries/excel_reader2.php");
                 $filename = "resource/" . $hasil['file_name'];
                 $data = new Spreadsheet_Excel_Reader($filename);
 
