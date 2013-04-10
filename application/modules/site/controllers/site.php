@@ -157,9 +157,9 @@ class Site extends MX_Controller {
      * Front End
      */
 
-    function header_text() {
-        $header_text = $this->model_site->select_header_text()->row();
-        echo $header_text->header;
+    function header() {
+        $data['header'] = $this->model_site->select_header_text()->row();
+        $this->load->view('site/header', $data);
     }
 
     function caption_text() {
