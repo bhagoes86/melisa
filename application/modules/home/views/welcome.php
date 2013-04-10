@@ -1,7 +1,7 @@
 <div class="grid" style="margin-bottom: 20px;">
     <div class="row">
         <div style="padding: 1px 1px 1px 10px;background-color: rgb(255,191,0);">
-            <h3 class="fg-color-darken"><i class="icon-comments-4"></i>&nbsp;Selamat datang di sakola.net. Belajar rame-rame. Rame-rame belajar.</h3>
+            <h3 class="fg-color-darken"><i class="icon-comments-4"></i>&nbsp;Ayo Belajar rame-rame, Rame-rame belajar.</h3>
         </div>
     </div>
 </div>

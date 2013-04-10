@@ -25,26 +25,27 @@
     </div>
 </div>
 <script type="text/javascript">
-    //home
-    $('#btn-home').click(function(){       
-        $('#row-main-other').show();
-        $('#row-button-other').show();
-        $('#message').html("Loading Data");
-        $('#loading-template').show();
-        $('#row-main-content').load("<?php echo site_url('home/welcome') ?>",function(){
-            $('#loading-template').fadeOut('slow'); 
-        });        
-    });
+    $(document).ready(function(){
+        //home
+        $('#btn-home').click(function(){       
+            $('#row-main-other').show();
+            $('#row-button-other').show();
+            $('#message').html("Loading Data");
+            $('#loading-template').show();
+            $('#row-main-content').load("<?php echo site_url('home/welcome') ?>",function(){
+                $('#loading-template').fadeOut('slow'); 
+            });        
+        });
     
-    //new video
-    $('#btn-new-vid').click(function(){       
-        $('#row-main-other').hide();
-        $('#row-button-other').hide();
-        $('#message').html("Loading Data");
-        $('#loading-template').show();
-        $('#row-main-content').load("<?php echo site_url('content/video_list') ?>",function(){
-            $('#loading-template').fadeOut('slow'); 
-        });        
+        //new video
+        $('#btn-new-vid').click(function(){       
+            $('#row-main-other').hide();
+            $('#row-button-other').hide();
+            $('#message').html("Loading Data");
+            $('#loading-template').show();
+            $('#row-main-content').load("<?php echo site_url('content/video_list') ?>",function(){
+                $('#loading-template').fadeOut('slow'); 
+            });        
+        });
     });
-    
 </script>
