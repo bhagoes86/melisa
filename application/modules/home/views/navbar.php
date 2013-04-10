@@ -6,7 +6,7 @@
             <a href="<?php echo site_url() ?>" id="btn-home">
                 <span class="element brand">
                     <img class="place-left" src="<?php echo base_url(); ?>asset/metro/images/logo32.png" style="height: 20px"/>
-                    <?php echo modules::run('site/header_text') ?> <small>Generasi Pembebas</small>
+                    <a style="text-decoration: none" id="header_text"></a> <small>Generasi Pembebas</small>
                 </span>
             </a>
 
@@ -54,4 +54,6 @@
             $('#loading-template').fadeOut('slow'); 
         });        
     });
+    
+    $('header_text').load("<?php echo site_url('site/header_text') ?>");
 </script>
