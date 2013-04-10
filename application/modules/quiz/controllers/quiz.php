@@ -52,6 +52,7 @@ class Quiz extends MX_Controller {
             
             $user = $this->ion_auth->user()->row();
 
+            
             // check dulu datanya ada apa enggak
             $check_pass_tryout = count($this->model_quiz->select_pass_tryout_by_group($group_id)->result());
 
@@ -156,15 +157,9 @@ class Quiz extends MX_Controller {
             $data['list_avail_ticket'] = count($data['list_ticket']);
             $data['username'] = $user->username;
 
-            // load ke view
-            //$this->load->view('quiz/list_ticket',  $data);
-                    
-            
             // convert in PDF
             $content = $this->load->view('quiz/list_ticket',  $data, true);
-           // echo $content;
-            //echo $content;
-
+           
             try
             {
                 $html2pdf = new HTML2PDF('P', 'A4', 'en');
@@ -176,6 +171,7 @@ class Quiz extends MX_Controller {
                 echo $e;
                 exit;
             }
+            
 
         }
     }
@@ -1751,7 +1747,7 @@ class Quiz extends MX_Controller {
                 $this->model_quiz->update_quiz($id_quiz, $data2);
 
                 error_reporting(E_ALL ^ E_NOTICE);
-                include_once ( APPPATH."libraries/excel_reader2.php");
+                include_once ( base_url()."application/libraries/excel_reader2.php");
                 $filename = "resource/".$hasil['file_name'];
                 $data = new Spreadsheet_Excel_Reader($filename);
 
