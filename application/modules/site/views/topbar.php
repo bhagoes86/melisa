@@ -1,12 +1,11 @@
-
 <div class="nav-bar">
-    <div class="nav-bar-inner padding10" style="background: rgb(0,64,128);">
+    <div class="nav-bar-inner padding10" style="background: <?php echo '#' . $topbar->bgheader; ?>">
         <span class="pull-menu"></span>
 
         <a href="<?php echo site_url() ?>" id="btn-home">
             <span class="element brand">
                 <img class="place-left" src="<?php echo base_url(); ?>asset/metro/images/logo32.png" style="height: 20px"/>
-                VABEL <small>Generasi Pembebas</small>
+                <?php echo $topbar->header; ?> <small><?php echo $topbar->caption; ?></small>
             </span>
         </a>
 
@@ -14,20 +13,14 @@
 
         <ul class="menu">
             <li data-role="dropdown">
-                <a href="javascript:void(0)">Kuliah</a>
+                <a href="javascript:void(0)"><?php echo $topbar->menu1; ?></a>
                 <ul class="dropdown-menu" id="menu_kuliah"></ul>
             </li>                    
             <li data-role="dropdown">
-                <a href="javascript:void(0)">Kampus</a>
+                <a href="javascript:void(0)"><?php echo $topbar->menu2; ?></a>
                 <ul class="dropdown-menu" id="menu_fakultas"></ul>
-            </li>                
-            <!--
-            <li data-role="dropdown">
-                <a href="javascript:void(0)">Bimbel</a>
-                <ul class="dropdown-menu" id="menu_bimbel"></ul>
             </li>
-            -->
-            <li><a href="javascript:void(0)" id="btn-new-vid">Repositori</a></li>                
+            <li><a href="javascript:void(0)" id="btn-new-vid"><?php echo $topbar->menu2; ?></a></li>                
         </ul>
     </div>
 </div>

@@ -4,9 +4,7 @@
     <?php $this->load->view('home/js'); ?>
     <body class="modern-ui" onload="prettyPrint()">
         <!--Top-->
-        <div class="page">
-            <?php $this->load->view('home/navbar'); ?>
-        </div>
+        <div class="page" id="topbar"></div>
         <!--Center-->
         <div class="page" id="page-index">
             <!--Content-->
@@ -128,6 +126,7 @@
     }); 
     
     $(document).ready(function(){
+        $('#topbar').load("<?php echo site_url('site/topbar') ?>");
         //Home Screen
         $('#row-top-content').load("<?php echo site_url('home/top') ?>");
         $('#row-main-content').load("<?php echo site_url('home/welcome') ?>");

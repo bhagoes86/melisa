@@ -105,4 +105,10 @@ class Model_site extends CI_Model {
         return $this->db->get();
     }
 
+    function select_topbar() {
+        $this->db->select('*');
+        $this->db->from('table_site');
+        return $this->db->get();
+    }
+
 }

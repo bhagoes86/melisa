@@ -162,6 +162,11 @@ class Site extends MX_Controller {
         $this->load->view('site/header', $data);
     }
 
+    function topbar() {
+        $data['topbar'] = $this->model_site->select_topbar()->row();
+        $this->load->view('site/topbar', $data);
+    }
+
     function caption_text() {
         
     }
