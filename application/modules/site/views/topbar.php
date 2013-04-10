@@ -26,6 +26,12 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
+        
+        //Load faculty list
+        $('#menu_fakultas').load("<?php echo site_url('course/menu_faculty') ?>");
+        
+        //Load course category
+        $('#menu_kuliah').load("<?php echo site_url('course/menu_topic') ?>");
         //home
         $('#btn-home').click(function(){       
             $('#row-main-other').show();

@@ -135,14 +135,10 @@
         $('#beasiswa').load("<?php echo site_url('news/home_beasiswa') ?>");
         $('#fitur').load("<?php echo site_url('news/home_fitur') ?>");
         
-        //Load course category
-        $('#menu_kuliah').load("<?php echo site_url('course/menu_topic') ?>");
+        
         $('#video').load("<?php echo site_url('content/random_video_limit/3') ?>");
         
         $('#course-home').load("<?php echo site_url('course/home_course') ?>");
-        
-        //Load faculty list
-        $('#menu_fakultas').load("<?php echo site_url('course/menu_faculty') ?>");
         
         //Load faculty list
         //$('#menu_bimbel').load("<?php echo site_url('course/menu_bimbel') ?>");
