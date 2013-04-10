@@ -20,6 +20,7 @@ class News extends MX_Controller {
     function index($id_news,$type){
         $data['news'] = $this->model_news->new_id_type($id_news,$type)->row();
         //print_r($data);
+        
         $this->load->view('news/table_news',$data);
     }
 
@@ -44,6 +45,9 @@ class News extends MX_Controller {
     function selected_type($type){
         $data['news'] = $this->model_news->get_latest_id($type)->row();
         //print_r($data);
+        if($data['news']==NULL){
+            $data['news']=NULL;
+        }
         $this->load->view('news/table_news',$data);
     }
 
