@@ -41,7 +41,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    function store_tryout_password($course_id, $quiz_id, $group_id) {
+    function store_tryout_password($quiz_id, $group_id) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
         } else {
@@ -1810,9 +1810,7 @@ class Quiz extends MX_Controller {
             redirect();
         } else {
             $temp = $this->model_quiz->select_group_by_id($id_group)->row();
-            $temp2 = $this->model_quiz->select_course_by_group_id($id_group)->row();
-
-            $data['course_id'] = $temp2->course_id;
+            
             $data['quiz_id'] = $temp->quiz_id;
             $data['group_id'] = $temp->id_group;
 
