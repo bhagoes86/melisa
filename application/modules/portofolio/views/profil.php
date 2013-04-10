@@ -34,11 +34,11 @@
         <?php
         if($profic->profic!=NULL){
         ?>
-        <a id ="btn-upload-picture"><img src="<?php echo base_url().'resource/'.$profic->profic;  ?>" style="width:150px ; heigth:150px"></a>
+        <a id ="btn-upload-picture" style="cursor: pointer;"><img src="<?php echo base_url().'resource/'.$profic->profic;  ?>" style="width:150px ; heigth:150px"></a>
         <?php
         }else {
             ?>
-        <a id="btn-upload-picture"><i class="icon-user" style="font-size: 100px;"></i></a>
+        <a id="btn-upload-picture" style="cursor: pointer;"><i class="icon-user" style="font-size: 100px;"></i></a>
             <?php
         }
         ?>

@@ -35,6 +35,17 @@ class News extends MX_Controller {
         $data['news'] = $this->model_news->get_all_news($type)->result();
         $this->load->view('news/list_articles',$data);
     }
+    
+    function select_news($id_news){
+        $data['news'] = $this->model_news->edit_news_db($id_news)->row();
+        $this->load->view('news/selected_articles',$data);
+    }
+    
+    function selected_type($type){
+        $data['news'] = $this->model_news->get_latest_id($type)->row();
+        //print_r($data);
+        $this->load->view('news/table_news',$data);
+    }
 
     function form_add_news($type) {
         $data['type'] = $type;

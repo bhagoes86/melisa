@@ -22,7 +22,7 @@
 </div>
 <div class="span2" style="text-align: center;">
     <div class="clearfix" style="margin-bottom: 40px;">
-        <a id="btn-upload-picture"><i class="icon-user" style="font-size: 100px;"></i></a>
+        <a id="btn-upload-picture" style="cursor: pointer;"><i class="icon-user" style="font-size: 100px;"></i></a>
     </div>
 </div>
 <script type="text/javascript">

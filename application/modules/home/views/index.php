@@ -62,13 +62,14 @@
                             <div class="grid">
                                 <div class="span12 bg-color-gray"></div>                                    
                                 <div class="row" style="color: #6d6e71;text-decoration: none;font-family: 'sofiapro',Arial,sans-serif;font-size: 14px;margin-right: 15px;">                                    
-                                    <a style="cursor: pointer; text-decoration: none;" href="javascript:void(0)">Sakola</a>&nbsp;&nbsp;&nbsp;
-                                    <a style="cursor: pointer; text-decoration: none;" href="javascript:void(0)">Karir</a>&nbsp;&nbsp;&nbsp;
-                                    <a style="cursor: pointer; text-decoration: none;" href="javascript:void(0)">Blog</a>&nbsp;&nbsp;&nbsp;
-                                    <a style="cursor: pointer; text-decoration: none;" href="javascript:void(0)">Pengembang</a>&nbsp;&nbsp;&nbsp;
-                                    <a style="cursor: pointer; text-decoration: none;" href="javascript:void(0)">Kerjasama</a>&nbsp;&nbsp;&nbsp;
-                                    <a style="cursor: pointer; text-decoration: none;" href="javascript:void(0)">Sponsor & Pendanaan</a>&nbsp;&nbsp;&nbsp;
+                                    <a id="sakola_news"  style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/4') ?>">Sakola</a>&nbsp;&nbsp;&nbsp;
+                                    <a id="karir_news" style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/5') ?>">Karir</a>&nbsp;&nbsp;&nbsp;
+                                    <a id="blog_news" style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/6') ?>">Blog</a>&nbsp;&nbsp;&nbsp;
+                                    <a id="pengembangan_news" style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/7') ?>">Pengembang</a>&nbsp;&nbsp;&nbsp;
+                                    <a id="kerjasama_news" style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/8') ?>">Kerjasama</a>&nbsp;&nbsp;&nbsp;
+                                    <a id="sponsor_news" style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/9') ?>">Sponsor & Pendanaan</a>&nbsp;&nbsp;&nbsp;
                                 </div>
+
                             </div>
                         </div>
 
@@ -104,7 +105,10 @@
     </body>
 </html>
 <div id="fb-root"></div>
-<script>
+
+<script type="text/javascript">
+   
+                            
     (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
@@ -188,5 +192,4 @@
         ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-
 </script>
