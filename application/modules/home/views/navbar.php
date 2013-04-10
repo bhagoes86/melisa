@@ -6,7 +6,7 @@
             <a href="<?php echo site_url() ?>" id="btn-home">
                 <span class="element brand">
                     <img class="place-left" src="<?php echo base_url(); ?>asset/metro/images/logo32.png" style="height: 20px"/>
-                    SAKOLA <small>Generasi Pembebas</small>
+                    <?php echo modules::run('site/header_text') ?> <small>Generasi Pembebas</small>
                 </span>
             </a>
 
