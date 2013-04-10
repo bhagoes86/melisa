@@ -16,10 +16,10 @@
             ?>
                 <td  style="padding:5px 5px;word-wrap: break-word;table-layout: fixed;width:160px">
             <?php
-           echo "course :".$list_ticket[$temp]->course_id."Kuis testing vabel Kuis testing vabel Kuis testing vabel Kuis testing vabel Kuis testing vabel<br>";
-           echo "quiz :".$list_ticket[$temp]->quiz_id."<br>";
-           echo "group :".$list_ticket[$temp]->group_id."<br>";
-           echo "<br>";
+           echo "<h4>Sakola.net - Tiket Try Out</h4><hr >";
+           echo "course :".$list_ticket[$temp]->course_id."Kuliah Open Source<br><br>";
+           echo "quiz :".$list_ticket[$temp]->quiz_id."Kuis Linux Dasar<br><br>";
+           echo "group :".$list_ticket[$temp]->group_id."Kelas A<br><br>";
            echo "<h3>".$list_ticket[$temp]->password."</h3>";
 
            ?>
