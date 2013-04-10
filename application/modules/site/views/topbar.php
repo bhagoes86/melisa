@@ -15,7 +15,7 @@
             <li data-role="dropdown">
                 <a href="javascript:void(0)"><?php echo $topbar->menu1; ?></a>
                 <ul class="dropdown-menu" id="menu_kuliah">
-                    <?php echo site_url('course/menu_topic')?>
+                    <?php echo modules::run('course/menu_topic') ?>
                 </ul>
             </li>                    
             <li data-role="dropdown">
