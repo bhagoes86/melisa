@@ -100,8 +100,8 @@
         <div class="input-control text span2">
             <input name="generate-password" id="generate-password" type="button"  value="Generate"/>
             <a target="_blank" href="<?php echo site_url('quiz/print_ticket_tryout').'/'.$group_id.'/'.$quiz_id ?>" class="button bg-color-green fg-color-white" style="color:white"  id="print-password" ><i class="icon-printer" ></i>Cetak Ticket Tryout (PDF)</a>
-
         </div>
+       
         </fieldset>
     </div>
 
@@ -137,9 +137,12 @@
      $('#generate-password').click(function(){
             $('#message').html('Loading ... ');
             $('#loading-template').show();
-            $('#content-right').load("<?php echo site_url('quiz/store_tryout_password') ?>/"+<?php echo $course_id; ?>+"/"+<?php echo $quiz_id?>+"/"+<?php echo $group_id?>,function(){
+
+            $('#content-right').load("<?php echo site_url('quiz/store_tryout_password') ?>/"+<?php echo $quiz_id?>+"/"+<?php echo $group_id?>,function(){
                 $('#loading-template').fadeOut("slow");
             });
+
+           
      });
 
 
