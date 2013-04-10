@@ -46,7 +46,7 @@
         <tr>
             <td><?php echo $res->username ?></td>
             <td><?php echo $res->start_time ?></td>
-            <td><?php echo $res->end_time ?></td>
+            <td><?php echo $res->finish_time ?></td>
             <td><?php echo $res->right_answer ?></td>
             <td><?php echo $res->wrong_answer ?></td>
             <td><?php

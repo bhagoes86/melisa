@@ -50,7 +50,7 @@
                 <td>
                     
                         mulai ujian   : <br/> <?php echo $result->start_time ?> <br/><br />
-                        selesai ujian : <br/> <?php echo $result->end_time ?> 
+                        selesai ujian : <br/> <?php echo $result->finish_time ?>
                 </td>
              
 

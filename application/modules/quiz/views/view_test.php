@@ -202,6 +202,10 @@
                         alert('[PERINGATAN] Anda tidak boleh menggunakan kode tryout milik peserta yang lain !!!');
                         $('#loading-template').fadeOut("slow");
                     }
+                    else if (data.msg == 3){
+                        alert('[PERINGATAN] Anda tidak bisa mengikuti kuis lebih dari satu kali !!!');
+                        $('#loading-template').fadeOut("slow");
+                    }
                     
 
                 },

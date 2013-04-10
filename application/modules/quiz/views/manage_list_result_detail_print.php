@@ -20,7 +20,7 @@ Keterangan  <b style="color:green"> 1</b> : jawaban benar, <b style="color:red">
     <tr><td>No</td> <td> : </td> <td><?php echo $no_data ?></td></tr>
     <tr><td>Nama</td> <td> : </td> <td><?php echo $res->username ?></td></tr>
     <tr><td>Mulai</td> <td> : </td> <td><?php echo $res->start_time ?></td></tr>
-    <tr><td>Selesai</td> <td> : </td> <td><?php echo $res->end_time ?></td></tr>
+    <tr><td>Selesai</td> <td> : </td> <td><?php echo $res->finish_time ?></td></tr>
 </table>
 
 <br />

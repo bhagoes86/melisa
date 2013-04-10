@@ -42,7 +42,7 @@
                 <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
                     <h4>
                         mulai ujian   : <br/> <?php echo $result->start_time ?> <br /><br />
-                        selesai ujian : <br/> <?php echo $result->end_time ?> <br />
+                        selesai ujian : <br/> <?php echo $result->finish_time ?> <br />
                     </h4>
                 </td>
                 <td style="width: 30px;border: 1px solid white;vertical-align: middle;background-color:rgba(0, 0, 0, 0.0666667);">
