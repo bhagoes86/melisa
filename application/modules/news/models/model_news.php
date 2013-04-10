@@ -17,6 +17,7 @@ class Model_news extends CI_Model {
         $this->db->select('*');
         $this->db->from('news');
         $this->db->where('type', $id);
+        $this->db->order_by('id_news', 'DESC');
         return $this->db->get();
     }
 
@@ -26,7 +27,17 @@ class Model_news extends CI_Model {
         $this->db->where('id_news', $id);
         return $this->db->get();
     }
-    function new_id_type($id,$type) {
+
+    function get_latest_id($type) {
+        $this->db->select('*');
+        $this->db->from('news');
+        $this->db->where('type', $type);
+        $this->db->order_by('id_news', 'DESC');
+        $this->db->limit(1);
+        return $this->db->get();
+    }
+
+    function new_id_type($id, $type) {
         $this->db->select('*');
         $this->db->from('news');
         $this->db->where('id_news', $id);

@@ -23,6 +23,9 @@ class Quiz extends MX_Controller {
         } else {
             $user = $this->ion_auth->user()->row();
 
+            $today = getdate();
+            
+
             // mengambil data kuis
             $data['list_quiz'] = $this->model_quiz->select_all_quiz($user->id)->result();
             $data['list_avail_quiz'] = $this->model_quiz->count_avail_quiz($user->id)->result();
@@ -247,7 +250,7 @@ class Quiz extends MX_Controller {
 
                     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $pos_data, $quiz_res->username);
                     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $pos_data, $quiz_res->start_time);
-                    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $pos_data, $quiz_res->end_time);
+                    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $pos_data, $quiz_res->finish_time);
                     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4, $pos_data, $quiz_res->right_answer);
                     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5, $pos_data, $quiz_res->wrong_answer);
 
@@ -655,15 +658,25 @@ class Quiz extends MX_Controller {
 
             // kalau grupnya bertipe 0 (ujian biasa)
             if ($temp->type == 0) {
-                if ($password == $temp->password) {
+                $temp3 = $this->model_quiz->select_quiz_result_by_cqg_user($id_course, $id_quiz, $id_group, $user->id)->row();
+                if ($temp3 != null){
                     echo "{";
-                    echo "\"msg\": \"1\"";
-                    echo "}";
-                } else {
-                    echo "{";
-                    echo "\"msg\": \"0\"";
+                    echo "\"msg\": \"3\"";
                     echo "}";
                 }
+                else {
+
+                    if ($password == $temp->password) {
+                        echo "{";
+                        echo "\"msg\": \"1\"";
+                        echo "}";
+                    } else {
+                        echo "{";
+                        echo "\"msg\": \"0\"";
+                        echo "}";
+                    }
+                }
+                
             }
             // kalau grupnya bertipe 1 (try out)
             else if ($temp->type == 1) {
@@ -1265,7 +1278,7 @@ class Quiz extends MX_Controller {
             $data['user_id'] = $user->id;
             $data['course_id'] = $id_course;
             $today = getdate();
-            $temp_start_time = date_create($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes'] . ':00');
+            $temp_start_time = date_create($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes'] . ':'. $today['seconds']);
 
             $data['start_time'] = date_format($temp_start_time, 'Y-m-d H:i:s');
 
@@ -1794,11 +1807,16 @@ class Quiz extends MX_Controller {
                 }
             }
 
+            $today = getdate();
+            $temp_finish_time = date_create($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes'] . ':'. $today['seconds']);
+            $data['finish_time'] = date_format($temp_finish_time, 'Y-m-d H:i:s');
+
             $score = ($benar / $banyak_soal ) * 100;
             $data['score'] = $score;
             $data['status'] = 1;
             $data['right_answer'] = $benar;
             $data['wrong_answer'] = $salah;
+
             $this->model_quiz->update_quiz_result($tiket_quiz, $data);
         }
     }

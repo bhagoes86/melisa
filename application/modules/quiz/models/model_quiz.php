@@ -111,6 +111,19 @@ class Model_quiz extends CI_Model {
         return $this->db->get();
     }
 
+    function select_quiz_result_by_cqg_user($course_id, $quiz_id, $group_id, $user_id){
+        $this->db->select('*');
+        $this->db->from('quiz_result');
+        $this->db->where('course_id', $course_id);
+        $this->db->where('quiz_id', $quiz_id);
+        $this->db->where('group_id', $group_id);
+
+        $this->db->where('user_id', $user_id);
+        $this->db->where('status', 1);
+
+        $this->db->order_by('finish_time', 'desc');
+        return $this->db->get();
+    }
     
     function select_all_course($user_id){
         $this->db->select('*');
@@ -196,6 +209,7 @@ class Model_quiz extends CI_Model {
         $this->db->select('*');
         $this->db->from('quiz_group');
         $this->db->where('quiz_id', $id_quiz);
+        $this->db->order_by('date_modified', 'desc');
         return $this->db->get();
     }
 
@@ -316,7 +330,7 @@ class Model_quiz extends CI_Model {
         return $this->db->get();
     }
     function select_quiz_result_by_course_quiz_group($user_id, $course_id, $quiz_id, $group_id, $status){
-        $this->db->select('qr.id_result, qr.user_id, qr.course_id, qr.quiz_id, qr.group_id, qr.score, qr.right_answer, qr.wrong_answer, qr.start_time, qr.end_time, usr.username, usr.email, usr.first_name, usr.last_name, usr.phone');
+        $this->db->select('qr.id_result, qr.user_id, qr.course_id, qr.quiz_id, qr.group_id, qr.score, qr.right_answer, qr.wrong_answer, qr.start_time, qr.end_time, qr.finish_time, usr.username, usr.email, usr.first_name, usr.last_name, usr.phone');
         $this->db->from('quiz_result as qr');
         $this->db->join('users as usr', 'qr.user_id = usr.id');
         $this->db->where('qr.user_id !=', $user_id);
@@ -329,7 +343,7 @@ class Model_quiz extends CI_Model {
     }
 
     function select_quiz_result_by_user($user_id, $status){
-        $this->db->select('qr.id_result, qr.user_id, qr.course_id, qr.quiz_id, qr.group_id, qr.score, qr.right_answer, qr.wrong_answer, qr.start_time, qr.end_time, qf.title as quiz_title, qg.title as group_title, crs.course as course_title, usr.username as owner_quiz');
+        $this->db->select('qr.id_result, qr.user_id, qr.course_id, qr.quiz_id, qr.group_id, qr.score, qr.right_answer, qr.wrong_answer, qr.start_time, qr.end_time, qr.finish_time, qf.title as quiz_title, qg.title as group_title, crs.course as course_title, usr.username as owner_quiz');
         $this->db->from('quiz_result as qr');
         
         $this->db->join('quiz_file as qf', 'qf.id_quiz = qr.quiz_id');

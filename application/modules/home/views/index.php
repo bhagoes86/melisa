@@ -4,9 +4,7 @@
     <?php $this->load->view('home/js'); ?>
     <body class="modern-ui" onload="prettyPrint()">
         <!--Top-->
-        <div class="page">
-            <?php $this->load->view('home/navbar'); ?>
-        </div>
+        <div class="page" id="topbar"></div>
         <!--Center-->
         <div class="page" id="page-index">
             <!--Content-->
@@ -62,13 +60,14 @@
                             <div class="grid">
                                 <div class="span12 bg-color-gray"></div>                                    
                                 <div class="row" style="color: #6d6e71;text-decoration: none;font-family: 'sofiapro',Arial,sans-serif;font-size: 14px;margin-right: 15px;">                                    
-                                    <a style="cursor: pointer; text-decoration: none;" href="javascript:void(0)">Sakola</a>&nbsp;&nbsp;&nbsp;
-                                    <a style="cursor: pointer; text-decoration: none;" href="javascript:void(0)">Karir</a>&nbsp;&nbsp;&nbsp;
-                                    <a style="cursor: pointer; text-decoration: none;" href="javascript:void(0)">Blog</a>&nbsp;&nbsp;&nbsp;
-                                    <a style="cursor: pointer; text-decoration: none;" href="javascript:void(0)">Pengembang</a>&nbsp;&nbsp;&nbsp;
-                                    <a style="cursor: pointer; text-decoration: none;" href="javascript:void(0)">Kerjasama</a>&nbsp;&nbsp;&nbsp;
-                                    <a style="cursor: pointer; text-decoration: none;" href="javascript:void(0)">Sponsor & Pendanaan</a>&nbsp;&nbsp;&nbsp;
+                                    <a id="sakola_news"  style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/4') ?>">Sakola</a>&nbsp;&nbsp;&nbsp;
+                                    <a id="karir_news" style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/5') ?>">Karir</a>&nbsp;&nbsp;&nbsp;
+                                    <a id="blog_news" style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/6') ?>">Blog</a>&nbsp;&nbsp;&nbsp;
+                                    <a id="pengembangan_news" style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/7') ?>">Pengembang</a>&nbsp;&nbsp;&nbsp;
+                                    <a id="kerjasama_news" style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/8') ?>">Kerjasama</a>&nbsp;&nbsp;&nbsp;
+                                    <a id="sponsor_news" style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/9') ?>">Sponsor & Pendanaan</a>&nbsp;&nbsp;&nbsp;
                                 </div>
+
                             </div>
                         </div>
 
@@ -104,7 +103,10 @@
     </body>
 </html>
 <div id="fb-root"></div>
-<script>
+
+<script type="text/javascript">
+   
+                            
     (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
@@ -124,6 +126,7 @@
     }); 
     
     $(document).ready(function(){
+        $('#topbar').load("<?php echo site_url('site/topbar') ?>");
         //Home Screen
         $('#row-top-content').load("<?php echo site_url('home/top') ?>");
         $('#row-main-content').load("<?php echo site_url('home/welcome') ?>");
@@ -132,14 +135,10 @@
         $('#beasiswa').load("<?php echo site_url('news/home_beasiswa') ?>");
         $('#fitur').load("<?php echo site_url('news/home_fitur') ?>");
         
-        //Load course category
-        $('#menu_kuliah').load("<?php echo site_url('course/menu_topic') ?>");
+        
         $('#video').load("<?php echo site_url('content/random_video_limit/3') ?>");
         
         $('#course-home').load("<?php echo site_url('course/home_course') ?>");
-        
-        //Load faculty list
-        $('#menu_fakultas').load("<?php echo site_url('course/menu_faculty') ?>");
         
         //Load faculty list
         //$('#menu_bimbel').load("<?php echo site_url('course/menu_bimbel') ?>");
@@ -188,5 +187,4 @@
         ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-
 </script>

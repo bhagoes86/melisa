@@ -87,7 +87,7 @@ class Portofolio extends MX_Controller {
         $data['pengajaran'] = $this->input->post('pengajaran', true);
         $data['riset'] = $this->input->post('riset', true);
         $data['publikasi'] = $this->input->post('publikasi', true);
-        $data['pengajaran'] = $this->input->post('pengajaran', true);
+        $data['pengalaman'] = $this->input->post('pengalaman', true);
         $data['pendidikan'] = $this->input->post('pendidikan', true);
 
         //print_r($data['profil']);
@@ -96,7 +96,7 @@ class Portofolio extends MX_Controller {
         $this->model_portofolio->update_data_portofolio($user->id, 2, $data['pengajaran']);
         $this->model_portofolio->update_data_portofolio($user->id, 3, $data['riset']);
         $this->model_portofolio->update_data_portofolio($user->id, 4, $data['publikasi']);
-        $this->model_portofolio->update_data_portofolio($user->id, 5, $data['pengajaran']);
+        $this->model_portofolio->update_data_portofolio($user->id, 5, $data['pengalaman']);
         $this->model_portofolio->update_data_portofolio($user->id, 6, $data['pendidikan']);
         //redirect('portofolio/user');
     }

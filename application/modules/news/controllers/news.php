@@ -20,6 +20,7 @@ class News extends MX_Controller {
     function index($id_news,$type){
         $data['news'] = $this->model_news->new_id_type($id_news,$type)->row();
         //print_r($data);
+        
         $this->load->view('news/table_news',$data);
     }
 
@@ -34,6 +35,20 @@ class News extends MX_Controller {
     function news_management($type){
         $data['news'] = $this->model_news->get_all_news($type)->result();
         $this->load->view('news/list_articles',$data);
+    }
+    
+    function select_news($id_news){
+        $data['news'] = $this->model_news->edit_news_db($id_news)->row();
+        $this->load->view('news/selected_articles',$data);
+    }
+    
+    function selected_type($type){
+        $data['news'] = $this->model_news->get_latest_id($type)->row();
+        //print_r($data);
+        if($data['news']==NULL){
+            $data['news']=NULL;
+        }
+        $this->load->view('news/table_news',$data);
     }
 
     function form_add_news($type) {

@@ -31,7 +31,7 @@
                 <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
                     <h4>
                         Waktu mulai ujian   : <?php echo $result->start_time ?> <br />
-                        Waktu selesai ujian : <?php echo $result->end_time ?> <br />
+                        Waktu selesai ujian : <?php echo $result->finish_time ?> <br />
                     </h4>
                 </td>
                 <td style="width: 30px;border: 1px solid white;vertical-align: middle;background-color:rgba(0, 0, 0, 0.0666667);">
