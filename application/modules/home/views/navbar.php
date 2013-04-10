@@ -55,5 +55,5 @@
         });        
     });
     
-    $('header_text').load("<?php echo site_url('site/header_text') ?>");
+    $('#header_text').load("<?php echo site_url('site/header_text') ?>");
 </script>
