@@ -159,7 +159,7 @@ class Site extends MX_Controller {
 
     function header_text() {
         $header_text = $this->model_site->select_header_text()->row();
-        echo $header_text;
+        echo $header_text->header;
     }
 
     function caption_text() {
