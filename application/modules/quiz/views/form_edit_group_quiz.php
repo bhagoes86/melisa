@@ -138,7 +138,7 @@
             $('#message').html('Loading ... ');
             $('#loading-template').show();
 
-            $('#content-right').load("<?php echo site_url('quiz/store_tryout_password') ?>/"+<?php echo $course_id; ?>+"/"+<?php echo $quiz_id?>+"/"+<?php echo $group_id?>,function(){
+            $('#content-right').load("<?php echo site_url('quiz/store_tryout_password') ?>/"+<?php echo $quiz_id?>+"/"+<?php echo $group_id?>,function(){
                 $('#loading-template').fadeOut("slow");
             });
 
