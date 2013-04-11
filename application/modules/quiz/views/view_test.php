@@ -29,9 +29,7 @@
     
     <body class="modern-ui" onload="prettyPrint();">
         <!--Top Navbar-->
-        <div class="page">
-            <?php $this->load->view('content/viewer_navbar'); ?>
-        </div>
+        <div class="page" id="topbar"></div>
         <!--Center Content-->
         <div class="page">
 
@@ -146,19 +144,14 @@
         </div>
 
         <!--Footer Content-->
-        <div class="page">
-            <div class="nav-bar">
-                <div class="nav-bar-inner padding10">
-                    <span class="element">
-                        <?php echo date('Y'); ?>, VABEL UPT Elearning UNPAD &copy; by <a class="fg-color-white" href="mailto:taufiksu@gmail.com">Taufik Sulaeman P</a>
-                    </span>
-                </div>
-            </div>
-        </div>
+        <div class="page" id="footbar"></div>
 
     </body>
 </html>
 <script type="text/javascript">
+        $('#topbar').load("<?php echo site_url('site/topbar_nomenu') ?>");
+    $('#footbar').load("<?php echo site_url('site/footbar') ?>");
+    
 
          $('#close-error-message').click(function(){
              $('#error-template').fadeOut('slow');
