@@ -12,7 +12,6 @@ class Quiz extends MX_Controller {
         $this->load->helper('directory');
         $this->load->helper('text');
         $this->load->helper('file');
-        //$this->load->library('excel_reader2');
         $this->load->model('model_quiz', '', true);
     }
 

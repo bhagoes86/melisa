@@ -6,7 +6,7 @@
 
         <?php foreach($list_quiz_course as $row):?>
         <li>
-            <a href="#"> <?php echo $row->course?> </a>
+            <a href="#"> <?php echo character_limiter($row->course, 30);?> </a>
             <div>
                 <?php echo modules::run('quiz/show_quiz_course_group', $row->quiz_id, $row->course_id); ?>
                           
