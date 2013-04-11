@@ -15,10 +15,12 @@ class Home extends MX_Controller {
         parent::__construct();
         //preload
         $this->load->library('ion_auth');
+        $this->load->model('model_home', '', true);
     }
 
     function index() {
-        $this->load->view('home/index');
+        $data['themes'] = $this->model_home->select_themes()->row();
+        $this->load->view('home/index', $data);
     }
 
     function welcome() {

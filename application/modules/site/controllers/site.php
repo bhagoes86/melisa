@@ -154,25 +154,22 @@ class Site extends MX_Controller {
     }
 
     /*
-     * Front End
+     * Frontend
      */
 
-    function header() {
-        $data['header'] = $this->model_site->select_header_text()->row();
-        $this->load->view('site/header', $data);
-    }
-
     function topbar() {
-        $data['topbar'] = $this->model_site->select_topbar()->row();
+        $data['topbar'] = $this->model_site->select_themes()->row();
         $this->load->view('site/topbar', $data);
     }
 
-    function caption_text() {
-        
+    function footbar() {
+        $data['footbar'] = $this->model_site->select_themes()->row();
+        $this->load->view('site/footbar', $data);
     }
 
-    function footer_text($param) {
-        
+    function topbar_nomenu() {
+        $data['topbar'] = $this->model_site->select_themes()->row();
+        $this->load->view('site/topbar_nomenu', $data);
     }
 
 }

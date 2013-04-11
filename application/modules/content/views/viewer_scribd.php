@@ -16,7 +16,7 @@
     <?php $this->load->view('home/js'); ?>
     <body class="modern-ui" onload="prettyPrint()">
         <!--Top Navbar-->
-        <div class="page"><?php $this->load->view('content/viewer_navbar'); ?></div>
+        <div class="page" id="topbar"></div>
         <!--Center Content-->
         <div class="page">
             <!--Main Content-->
@@ -155,18 +155,12 @@
             </div>
         </div>
         <!--Footer Content-->
-        <div class="page">
-            <div class="nav-bar">
-                <div class="nav-bar-inner padding10" style="background: rgb(0,64,128);">
-                    <span class="element">
-                        <a class="fg-color-white" href="<?php echo site_url(); ?>">&copy; <?php echo date('Y'); ?> Sakola.net</a>, Styled with <a class="fg-color-white" href="http://metroui.org.ua">Metro UI CSS</a>
-                    </span>
-                </div>
-            </div>
-        </div>
+        <div class="page" id="footbar"></div>
     </body>
 </html>
-<script type="text/javascript">    
+<script type="text/javascript">       
+    $('#topbar').load("<?php echo site_url('site/topbar_nomenu') ?>");
+    $('#footbar').load("<?php echo site_url('site/footbar') ?>"); 
     //Hide Error Messaga
     $('#close-error-message').click(function(){
         $('#error-template').fadeOut("slow");

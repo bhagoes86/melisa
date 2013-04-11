@@ -99,13 +99,7 @@ class Model_site extends CI_Model {
         }
     }
 
-    function select_header_text() {
-        $this->db->select('*');
-        $this->db->from('table_site');
-        return $this->db->get();
-    }
-
-    function select_topbar() {
+    function select_themes() {
         $this->db->select('*');
         $this->db->from('table_site');
         return $this->db->get();

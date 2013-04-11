@@ -160,6 +160,9 @@
 </html>
 <script type="text/javascript">
 
+         $('#close-error-message').click(function(){
+             $('#error-template').fadeOut('slow');
+         });
          $('#btn-cancel').click(function(){
             $('#message').html('Loading ... ');
             $('#loading-template').show();
@@ -169,7 +172,8 @@
         $('#check-active-quiz').submit(function(){
             $('#message').html('Sedang membuka quiz ...');
             $('#loading-template').show();
-
+            
+            
             var id_course = $('#id_course').val();
             var id_quiz = $('#id_quiz_check').val();
             var id_group = $('#id_group').val();
@@ -195,16 +199,22 @@
                         });
                     }
                     else if (data.msg == 0){
-                        alert('[PERINGATAN] Password Kuis yang Anda masukkan tidak cocok !!!');
+                        $('#message-error').html('<b>Password Kuis yang Anda masukkan tidak cocok !!!</b>');
                         $('#loading-template').fadeOut("slow");
+                        $('#error-template').show();
+                        
                     }
                     else if (data.msg == 2){
-                        alert('[PERINGATAN] Anda tidak boleh menggunakan kode tryout milik peserta yang lain !!!');
+                        //alert('[PERINGATAN] Anda tidak boleh menggunakan kode tryout milik peserta yang lain !!!');
+                        $('#message-error').html('<b>Anda tidak boleh menggunakan kode tryout milik peserta yang lain !!!</b>');
                         $('#loading-template').fadeOut("slow");
+                        $('#error-template').show()
                     }
                     else if (data.msg == 3){
-                        alert('[PERINGATAN] Anda tidak bisa mengikuti kuis lebih dari satu kali !!!');
+                        //alert('[PERINGATAN] Anda tidak bisa mengikuti kuis lebih dari satu kali !!!');
+                        $('#message-error').html('<b>Anda tidak bisa mengikuti kuis lebih dari satu kali !!!</b>');
                         $('#loading-template').fadeOut("slow");
+                        $('#error-template').show()
                     }
                     
 

@@ -16,9 +16,7 @@
     <?php $this->load->view('home/js'); ?>
     <body class="modern-ui" onload="prettyPrint()">
         <!--Top Navbar-->
-        <div class="page">
-            <?php $this->load->view('course/navbar_course'); ?>
-        </div>
+        <div class="page" id="topbar"></div>
         <div class="page">
             <div class="page-region">
                 <div class="page-region-content">
@@ -238,20 +236,13 @@
                     </div>
                 </div>
             </div>
-            <div class="page">
-                <div class="nav-bar">
-                    <div class="nav-bar-inner padding10" style="background: rgb(0,64,128);">
-                        <span class="element">
-                            <a class="fg-color-white" href="<?php echo site_url(); ?>">&copy; <?php echo date('Y'); ?> Sakola.net</a>, Styled with <a class="fg-color-white" href="http://metroui.org.ua">Metro UI CSS</a>
-                        </span>
-                    </div>
-                </div>
-            </div>
+            <div class="page" id="footbar"></div>
         </div>
     </body>
 </html>
-<script type="text/javascript">
-
+<script type="text/javascript">    
+    $('#topbar').load("<?php echo site_url('site/topbar_nomenu') ?>");
+    $('#footbar').load("<?php echo site_url('site/footbar') ?>");
     setInterval(function(){
         $('#list-quiz').load('<?php echo site_url('course/list_quiz') . "/$course->id_course"; ?>')
     }, 1000);

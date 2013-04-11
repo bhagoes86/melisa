@@ -712,4 +712,14 @@ class Content extends MX_Controller {
         $this->model_content->delete_content_silabus($id_content_silabus);
     }
 
+    function home_video() {
+        $data['content'] = $this->model_content->select_content(0, 3)->result();
+        $this->load->view('content/home_video', $data);
+    }
+
+    function home_presentation() {
+        $data['content'] = $this->model_content->select_content(5, 3)->result();
+        $this->load->view('content/home_presentation', $data);
+    }
+
 }
