@@ -6,7 +6,10 @@
 
 <table class="striped" id="my-table">
     <tbody>
-        <?php foreach ($list_quiz as $quiz) { ?>
+        <?php foreach ($list_quiz as $quiz) { 
+            
+            if ($quiz->group_status == 1){
+        ?>
             <tr>
                 <td><?php echo $quiz->quiz_title; ?> - <?php echo $quiz->group_title ?></td>
                 <?php
@@ -20,7 +23,7 @@
                     } else {
                         ?>
                         <td class="center">
-                            <a title="Mulai Evaluasi" href="#" id="btn-preview" data-id="<?php echo $quiz->id_group; ?>"><i class="icon-locked fg-color-red"></i></a>
+                            <a title="Maaf Sudah Ditutup" href="javascript:void(0)" id="btn-preview" data-id="<?php echo $quiz->id_group; ?>"><i class="icon-locked fg-color-red"></i></a>
                         </td>
                         <?php
                     }
@@ -31,7 +34,7 @@
                         if ($quiz->is_attempt == 2){
                             ?>
                             <td class="center">
-                                <a title="Mulai Evaluasi" href="#" id="btn-preview" data-id="<?php echo $quiz->id_group; ?>"><i class="icon-locked fg-color-red"></i></a>
+                                <a title="Maaf Sudah Ditutup" href="javascript:void(0)" id="btn-preview" data-id="<?php echo $quiz->id_group; ?>"><i class="icon-locked fg-color-red"></i></a>
                             </td>
 
                             <?php
@@ -48,7 +51,9 @@
 
                 <?php } ?>
             </tr>
-        <?php } ?>
+        <?php } 
+        }
+        ?>
     </tbody>
 </table>
 

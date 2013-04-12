@@ -45,13 +45,16 @@
                                 <?php
 
                                 if ($check_course_quiz_group_avail != 0){
-
+                                    if ($group_status == 1){
+                                    
                                     if ($has_participated > 0){
-                                        echo "<h1>Anda sudah pernah mengikuti test ini...</h1>";
+                                        ?>
                                         
+                                        <a style="text-align: justify;color: #095b97;font-size: 18px;">Anda sudah pernah mengikuti test ini</a><br/>    
+                                        <?php
                                     }
                                     else {
-                                    echo "Anda memilih quiz - $id_quiz / $id_group <br><br>";
+                                    //echo "Anda memilih quiz - $id_quiz / $id_group <br><br>";
 
                                     $today = getdate();
                                     $waktu1 = date_parse($start_time);
@@ -83,8 +86,10 @@
                                          <?php
                                             }
                                             else if ($password != ''){
-                                                echo "<br>Anda memerlukan password untuk mengikuti kuis ini...";
-
+                                                ?>
+                                                <br>
+                                                <a style="text-align: justify;color: #095b97;font-size: 18px;">Anda memerlukan password untuk mengikuti kuis ini</a><br/>    
+                                                <?php
                                         ?>
 
                                         <form  id="check-active-quiz">
@@ -108,12 +113,26 @@
                                             }
                                         }
                                         else {
-                                            echo "<h1>Kuis tidak berlaku</h1>";
+                                            ?>
+                                            <a style="text-align: justify;color: #095b97;font-size: 18px;">Kuis tidak berlaku</a><br/>    
+                                            <?php
                                         }
+                                        
+                                        
+                                    }
+                                    
+                                    }
+                                    else {
+                                        ?>
+                                        <a style="text-align: justify;color: #095b97;font-size: 18px;">Kuis untuk kelas ini ditutup</a><br/>     
+                                        <?php
                                     }
                                 }
                                 else {
-                                    echo "<h1>Kuis tidak tersedia....</h1>";
+                                    ?>
+                                        
+                                    <a style="text-align: justify;color: #095b97;font-size: 18px;">Saat ini tidak ada kuis yang tersedia</a><br/>    
+                                    <?php
                                 }
                                 ?>
                                 </div>
