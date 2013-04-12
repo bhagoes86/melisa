@@ -28,7 +28,7 @@ class Model_course extends CI_Model {
 
     // [HARUS DIUBAH]
     function select_avail_quiz_group($id_course) {
-        $this->db->select('qf.id_quiz as id_quiz,  qf.title as quiz_title, qg.id_group as id_group, qg.title as group_title');
+        $this->db->select('qf.id_quiz as id_quiz,  qf.title as quiz_title, qg.id_group as id_group, qg.title as group_title, qg.status as group_status');
 
         $this->db->from('quiz_file as qf');
         $this->db->join('quiz_course as qc', 'qc.quiz_id=qf.id_quiz');

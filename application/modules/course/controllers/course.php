@@ -69,7 +69,7 @@ class Course extends MX_Controller {
 
             $this->load->view('course/list_quiz', $data);
         } else {
-            echo "<h3>Silahkan membuat akun untuk melihat <b>daftar kuis</b> ...</h3>";
+            echo "<h3>Silahkan membuat login untuk melihat <b>daftar kuis</b> ...</h3>";
         }
     }
 
