@@ -164,7 +164,7 @@ class Course extends MX_Controller {
         $data['publikasi'] = $this->model_course->select_metadata($data['course']->user_id, 4)->row();
         $data['pengalaman'] = $this->model_course->select_metadata($data['course']->user_id, 5)->row();
         $data['pendidikan'] = $this->model_course->select_metadata($data['course']->user_id, 6)->row();
-        $data['silabus_parent'] = $this->model_course->course_silabus_parent($id_course)->result();
+        $data['silabus'] = $this->model_course->course_silabus_parent($id_course)->result();
         $this->load->view('course', $data);
     }
 
