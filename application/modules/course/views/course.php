@@ -22,22 +22,16 @@
                 <div class="page-region-content">
                     <div class="grid">
                         <div class="row" style="margin-top: 10px;">
-                            <!--Course Info-->
                             <div class="span5">
+                                <!--Course Info-->
                                 <img src="<?php echo base_url() . 'resource/' . $course->picture ?>" style="width: 100%;"/>
                                 <a style="text-align: justify;color: #095b97;font-size: 18px;"><?php echo $course->course ?></a><br/>
                                 <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($course->description) ?></p>
-
                                 <!--Quiz List-->
-                                <div class="bg-color-green" style="margin-top: 10px;margin-bottom: 10px;text-align: center;">
-                                    <a class="fg-color-white">&nbsp;EVALUASI</a>
-                                </div>
+                                <h3 style="margin-top: 0px;font-weight: bold;">Evaluasi</h3>
                                 <div id="list-quiz"></div>
-
-                                <div class="bg-color-pink" style="margin-bottom: 10px;text-align: center;">
-                                    <a class="fg-color-white">&nbsp;PENGAJAR</a>
-                                </div>
-
+                                <!--Pemateri-->
+                                <h3 style="margin-top: 0px;font-weight: bold;">Pengajar</h3>
                                 <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;">
                                     <?php echo nl2br($pendidikan->information); ?><br/>
                                     <?php echo nl2br($profil->information); ?>
@@ -50,16 +44,16 @@
                                         <li><a href="#pengalaman">Pengalaman</a></li>
                                     </ul>
                                     <div class="frames">
-                                        <div class="frame " id="pengajaran">
+                                        <div class="frame active" id="pengajaran">
                                             <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($pengajaran->information); ?></p>
                                         </div>
-                                        <div class="frame " id="riset">
+                                        <div class="frame" id="riset">
                                             <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($riset->information); ?></p>
                                         </div>
-                                        <div class="frame " id="publikasi">
+                                        <div class="frame" id="publikasi">
                                             <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($publikasi->information); ?></p>
                                         </div>
-                                        <div class="frame " id="pengalaman">
+                                        <div class="frame" id="pengalaman">
                                             <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($pengalaman->information); ?></p>
                                         </div>
                                     </div>
@@ -67,15 +61,11 @@
                             </div>
 
                             <div class="span7">
-                                <table class="striped">
-                                    <thead>
-                                        <tr>
-                                            <th><b>Topik</b></th>
-                                        </tr>
-                                    </thead>
-
+                                <!--Silabus-->
+                                <h3 style="margin-top: 0px;font-weight: bold;">Silabus</h3>
+                                <table class="striped bordered">                                    
                                     <tbody>      
-                                        <?php foreach ($silabus_parent as $row): ?>
+                                        <?php foreach ($silabus as $row): ?>
                                             <tr>
                                                 <td>
                                                     <a style="cursor: pointer;"><?php echo $row->deskripsi; ?></a>
@@ -85,138 +75,140 @@
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
-                                <form class="span7" style="float: right;margin-right: 0px;padding-right: 0px;margin-bottom: 0px;">
-                                    <div class="input-control text">
-                                        <input type="text" id="kwd_search" placeholder="Cari Materi Video">
+                                <!--Materi-->
+                                <h3 style="margin-top: 0px;font-weight: bold;">Bahan Ajar</h3>                                
+                                <div class="page-control" data-role="page-control">
+                                    <ul>
+                                        <li class="active"><a href="#video">Video</a></li>
+                                        <li><a href="#dokumen">Dokumen</a></li>
+                                    </ul>
+                                    <div class="frames">
+                                        <div class="frame active" id="video">
+                                            <table class="striped" id="my-table">
+                                                <tbody>
+                                                    <?php foreach ($video as $row): ?>
+                                                        <tr>
+                                                            <td style="border: 1px solid white;background: #000;width: 180px;padding: 0px 0px 0px 0px;">
+                                                                <?php if ($row->type == 0) { ?><!--Video-->
+                                                                    <?php if ($row->cover == 0) { ?>
+                                                                        Gambar Kosong
+                                                                    <?php } else { ?>
+                                                                        <a href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>"  target="_blank" >
+                                                                            <img src="<?php echo base_url() . 'resource/' . $row->id_content . '.jpg' ?>" style="width: 180px;height: 123px;vertical-align: top;"/>
+                                                                        </a>
+                                                                    <?php } ?>
+                                                                <?php } elseif ($row->type == 2) { ?><!--Youtube-->
+                                                                    <?php
+                                                                    $media = analyze_media($row->file);
+                                                                    $extract_id = explode('^^^', $media);
+                                                                    ?>
+                                                                    <a href="<?php echo site_url('content/youtube' . '/' . $row->id_content) ?>"  target="_blank" >
+                                                                        <img src="http://img.youtube.com/vi/<?php echo $extract_id[1]; ?>/1.jpg" style="width: 180px;height: 123px;vertical-align: top;">
+                                                                    </a>
+                                                                <?php } elseif ($row->type == 3) { ?><!--Vimeo-->
+                                                                    <?php $media = vimeo_cover($row->file); ?>
+                                                                    <a href="<?php echo site_url('content/vimeo' . '/' . $row->id_content) ?>"  target="_blank" >
+                                                                        <img src="<?php echo ($media['thumbnail_medium']) ?>" style="width: 180px;height: 123px;">
+                                                                    </a>
+                                                                <?php } ?>
+                                                            </td>
+                                                            <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
+                                                                <a style="color: #095b97;font-size: 18px;"><?php echo $row->title ?></a><br/>
+                                                                <p style="color: rgb(94,94,94);font-size: 13px;">
+                                                                    <?php echo nicetime(dtm2timestamp($row->date)) ?>
+                                                                    <br/>
+                                                                    Deskripsi : <?php echo cut_text($row->description, 15) . '...' ?>
+                                                                </p>                    
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="frame " id="dokumen">
+                                            <table class="striped table-document" id="my-table">
+                                                <tbody>
+                                                    <?php foreach ($document as $row): ?>
+                                                        <tr>
+                                                            <td style="border: 1px solid white;background: #000;width: 180px;padding: 0px 0px 0px 0px;">
+                                                                <?php if ($row->type == 0) { ?><!--Video-->
+                                                                    <?php if ($row->cover == 0) { ?>
+                                                                        <a href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>">
+                                                                            <i class="icon-file" style="font-size: 45px;"></i>
+                                                                        </a>
+                                                                    <?php } else { ?>
+                                                                        <a href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>">
+                                                                            <img src="<?php echo base_url() . 'resource/' . $row->id_content . '.jpg' ?>" style="width: 180px;height: 123px;vertical-align: middle;"/>
+                                                                        </a>
+                                                                    <?php } ?>
+                                                                <?php } elseif ($row->type == 1) { ?><!--Document-->
+                                                                    <?php if ($row->cover == 0) { ?>
+                                                                        <a href="<?php echo site_url('content/document' . '/' . $row->id_content) ?>">
+                                                                            <i class="icon-file" style="font-size: 45px;"></i>
+                                                                        </a>
+                                                                    <?php } else { ?>
+                                                                        <a href="<?php echo site_url('content/document' . '/' . $row->id_content) ?>">
+                                                                            <img src="<?php echo base_url() . 'resource/' . $row->id_content . '.jpg' ?>" style="width: 180px;height: 123px;vertical-align: middle;"/>
+                                                                        </a>
+                                                                    <?php } ?>
+                                                                <?php } elseif ($row->type == 2) { ?><!--Youtube-->
+                                                                    <?php
+                                                                    $media = analyze_media($row->file);
+                                                                    $extract_id = explode('^^^', $media);
+                                                                    ?>
+                                                                    <a href="<?php echo site_url('content/youtube' . '/' . $row->id_content) ?>">
+                                                                        <img src="http://img.youtube.com/vi/<?php echo $extract_id[1]; ?>/1.jpg" style="width: 180px;height: 123px;vertical-align: middle;">
+                                                                    </a>
+                                                                <?php } elseif ($row->type == 3) { ?><!--Vimeo-->
+                                                                    <?php $media = vimeo_cover($row->file); ?>
+                                                                    <a href="<?php echo site_url('content/vimeo' . '/' . $row->id_content) ?>">
+                                                                        <img src="<?php echo ($media['thumbnail_medium']) ?>" style="width: 180px;height: 123px;">
+                                                                    </a>
+                                                                <?php } elseif ($row->type == 4) { ?><!--Scribd-->
+                                                                    <a href="<?php echo site_url('content/scribd' . '/' . $row->id_content) ?>">
+                                                                        <i class="icon-file" style="font-size: 45px;"></i>
+                                                                    </a>
+                                                                <?php } elseif ($row->type == 5) { ?><!--Slideshare-->
+                                                                    <?php
+                                                                    $media = analyze_media($row->file);
+                                                                    $extract_id = explode('^^^', $media);
+                                                                    $url = $extract_id[1];
+                                                                    $thumb = explode("/", slideshare_cover($url)->thumbnail);
+                                                                    $thumbnail = slideshare_cover($url)->thumbnail;
+                                                                    ?>
+                                                                    <a href="<?php echo site_url('content/slideshare' . '/' . $row->id_content) ?>">
+                                                                        <img src="<?php echo "http:" . $thumbnail ?>" style="width: 180px;height: 123px;vertical-align: middle;">
+                                                                    </a>
+                                                                <?php } elseif ($row->type == 6) { ?><!--SoundCloud-->
+                                                                    <a href="<?php echo site_url('content/soundcloud' . '/' . $row->id_content) ?>">
+                                                                        &nbsp;<i class="icon-soundcloud" style="font-size: 47px;"></i>
+                                                                    </a>
+                                                                <?php } elseif ($row->type == 7) { ?><!--Docstoc-->
+                                                                    <?php
+                                                                    $media = analyze_media($row->file);
+                                                                    $extract_id = explode('^^^', $media);
+                                                                    ?>
+                                                                    <a href="<?php echo site_url('content/docstoc' . '/' . $row->id_content) ?>">
+                                                                        <img src="http://img.docstoccdn.com/thumb/100/<?php echo $extract_id[1] ?>.png" style="width: 120px;height: 135px;vertical-align: middle;">
+                                                                    </a>
+                                                                <?php } ?>
+                                                            </td>
+                                                            <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
+                                                                <a style="color: #095b97;font-size: 18px;"><?php echo $row->title ?></a><br/>
+                                                                <p style="color: rgb(94,94,94);font-size: 13px;">
+                                                                    <?php echo nicetime(dtm2timestamp($row->date)) ?>
+                                                                    <br/>
+                                                                    Deskripsi : <?php echo cut_text($row->description, 15) . '...' ?>
+                                                                </p>                    
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-                                </form>
+                                </div>
 
-                                <div class="clearfix"></div>
-                                <table class="striped" id="my-table">
-                                    <tbody>
-                                        <?php foreach ($video as $row): ?>
-                                            <tr>
-                                                <td style="border: 1px solid white;background: #000;width: 180px;padding: 0px 0px 0px 0px;">
-                                                    <?php if ($row->type == 0) { ?><!--Video-->
-                                                        <?php if ($row->cover == 0) { ?>
-                                                            Gambar Kosong
-                                                        <?php } else { ?>
-                                                            <a href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>"  target="_blank" >
-                                                                <img src="<?php echo base_url() . 'resource/' . $row->id_content . '.jpg' ?>" style="width: 180px;height: 123px;vertical-align: top;"/>
-                                                            </a>
-                                                        <?php } ?>
-                                                    <?php } elseif ($row->type == 2) { ?><!--Youtube-->
-                                                        <?php
-                                                        $media = analyze_media($row->file);
-                                                        $extract_id = explode('^^^', $media);
-                                                        ?>
-                                                        <a href="<?php echo site_url('content/youtube' . '/' . $row->id_content) ?>"  target="_blank" >
-                                                            <img src="http://img.youtube.com/vi/<?php echo $extract_id[1]; ?>/1.jpg" style="width: 180px;height: 123px;vertical-align: top;">
-                                                        </a>
-                                                    <?php } elseif ($row->type == 3) { ?><!--Vimeo-->
-                                                        <?php $media = vimeo_cover($row->file); ?>
-                                                        <a href="<?php echo site_url('content/vimeo' . '/' . $row->id_content) ?>"  target="_blank" >
-                                                            <img src="<?php echo ($media['thumbnail_medium']) ?>" style="width: 180px;height: 123px;">
-                                                        </a>
-                                                    <?php } ?>
-                                                </td>
-                                                <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
-                                                    <a style="color: #095b97;font-size: 18px;"><?php echo $row->title ?></a><br/>
-                                                    <p style="color: rgb(94,94,94);font-size: 13px;">
-                                                        <?php echo nicetime(dtm2timestamp($row->date)) ?>
-                                                        <br/>
-                                                        Deskripsi : <?php echo cut_text($row->description, 15) . '...' ?>
-                                                    </p>                    
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-
-                                <form class="span7" style="float: right;margin-right: 0px;padding-right: 0px;margin-bottom: 0px;">
-                                    <div class="input-control text">
-                                        <input type="text" id="kwd_search_document" placeholder="Cari Materi Dokumen">
-                                    </div>
-                                </form>
-                                <table class="striped table-document" id="my-table">
-                                    <tbody>
-                                        <?php foreach ($document as $row): ?>
-                                            <tr>
-                                                <td style="border: 1px solid white;background: #000;width: 180px;padding: 0px 0px 0px 0px;">
-                                                    <?php if ($row->type == 0) { ?><!--Video-->
-                                                        <?php if ($row->cover == 0) { ?>
-                                                            <a href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>">
-                                                                <i class="icon-file" style="font-size: 45px;"></i>
-                                                            </a>
-                                                        <?php } else { ?>
-                                                            <a href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>">
-                                                                <img src="<?php echo base_url() . 'resource/' . $row->id_content . '.jpg' ?>" style="width: 180px;height: 123px;vertical-align: middle;"/>
-                                                            </a>
-                                                        <?php } ?>
-                                                    <?php } elseif ($row->type == 1) { ?><!--Document-->
-                                                        <?php if ($row->cover == 0) { ?>
-                                                            <a href="<?php echo site_url('content/document' . '/' . $row->id_content) ?>">
-                                                                <i class="icon-file" style="font-size: 45px;"></i>
-                                                            </a>
-                                                        <?php } else { ?>
-                                                            <a href="<?php echo site_url('content/document' . '/' . $row->id_content) ?>">
-                                                                <img src="<?php echo base_url() . 'resource/' . $row->id_content . '.jpg' ?>" style="width: 180px;height: 123px;vertical-align: middle;"/>
-                                                            </a>
-                                                        <?php } ?>
-                                                    <?php } elseif ($row->type == 2) { ?><!--Youtube-->
-                                                        <?php
-                                                        $media = analyze_media($row->file);
-                                                        $extract_id = explode('^^^', $media);
-                                                        ?>
-                                                        <a href="<?php echo site_url('content/youtube' . '/' . $row->id_content) ?>">
-                                                            <img src="http://img.youtube.com/vi/<?php echo $extract_id[1]; ?>/1.jpg" style="width: 180px;height: 123px;vertical-align: middle;">
-                                                        </a>
-                                                    <?php } elseif ($row->type == 3) { ?><!--Vimeo-->
-                                                        <?php $media = vimeo_cover($row->file); ?>
-                                                        <a href="<?php echo site_url('content/vimeo' . '/' . $row->id_content) ?>">
-                                                            <img src="<?php echo ($media['thumbnail_medium']) ?>" style="width: 180px;height: 123px;">
-                                                        </a>
-                                                    <?php } elseif ($row->type == 4) { ?><!--Scribd-->
-                                                        <a href="<?php echo site_url('content/scribd' . '/' . $row->id_content) ?>">
-                                                            <i class="icon-file" style="font-size: 45px;"></i>
-                                                        </a>
-                                                    <?php } elseif ($row->type == 5) { ?><!--Slideshare-->
-                                                        <?php
-                                                        $media = analyze_media($row->file);
-                                                        $extract_id = explode('^^^', $media);
-                                                        $url = $extract_id[1];
-                                                        $thumb = explode("/", slideshare_cover($url)->thumbnail);
-                                                        $thumbnail = slideshare_cover($url)->thumbnail;
-                                                        ?>
-                                                        <a href="<?php echo site_url('content/slideshare' . '/' . $row->id_content) ?>">
-                                                            <img src="<?php echo "http:" . $thumbnail ?>" style="width: 180px;height: 123px;vertical-align: middle;">
-                                                        </a>
-                                                    <?php } elseif ($row->type == 6) { ?><!--SoundCloud-->
-                                                        <a href="<?php echo site_url('content/soundcloud' . '/' . $row->id_content) ?>">
-                                                            &nbsp;<i class="icon-soundcloud" style="font-size: 47px;"></i>
-                                                        </a>
-                                                    <?php } elseif ($row->type == 7) { ?><!--Docstoc-->
-                                                        <?php
-                                                        $media = analyze_media($row->file);
-                                                        $extract_id = explode('^^^', $media);
-                                                        ?>
-                                                        <a href="<?php echo site_url('content/docstoc' . '/' . $row->id_content) ?>">
-                                                            <img src="http://img.docstoccdn.com/thumb/100/<?php echo $extract_id[1] ?>.png" style="width: 120px;height: 135px;vertical-align: middle;">
-                                                        </a>
-                                                    <?php } ?>
-                                                </td>
-                                                <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
-                                                    <a style="color: #095b97;font-size: 18px;"><?php echo $row->title ?></a><br/>
-                                                    <p style="color: rgb(94,94,94);font-size: 13px;">
-                                                        <?php echo nicetime(dtm2timestamp($row->date)) ?>
-                                                        <br/>
-                                                        Deskripsi : <?php echo cut_text($row->description, 15) . '...' ?>
-                                                    </p>                    
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -258,7 +250,7 @@
         return false;
     });
     // Write on keyup event of keyword input element
-    $("#kwd_search").keyup(function(){
+    $("#kwd_search_video").keyup(function(){
         // When value of the input is not blank
         if( $(this).val() != "")
         {

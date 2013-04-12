@@ -28,7 +28,7 @@
         <?php foreach ($list_quiz as $quiz): ?>
             <tr style="margin-bottom:20px">
                 <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
-                    <a style="color: #095b97;font-size: 18px;"><?php echo $quiz->title ?></a><br/>
+                    <a style="color: #095b97;font-size: 18px;"><?php echo  character_limiter($quiz->title, 30); ?></a><br/>
                     <p style="color: rgb(94,94,94);font-size: 13px;"><?php echo cut_text($quiz->description, 45) ?> ...</p>
                 </td>
                 
