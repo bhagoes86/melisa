@@ -59,11 +59,7 @@
                                     $today = getdate();
                                     $waktu1 = date_parse($start_time);
                                     $waktu2 = date_parse($end_time);
-                                    ?>
-
-
-
-                                        <?php
+                                    
 
                                         $temp_interval1 = strtotime($today['year'].'-'.$today['mon'].'-'.$today['mday'].' '.$today['hours'].':'.$today['minutes'].':00') - strtotime($waktu1['year'].'-'.$waktu1['month'].'-'.$waktu1['day'].' '.$waktu1['hour'].':'.$waktu1['minute'].':00');
                                         $temp_interval2 = strtotime($today['year'].'-'.$today['mon'].'-'.$today['mday'].' '.$today['hours'].':'.$today['minutes'].':00') - strtotime($waktu2['year'].'-'.$waktu2['month'].'-'.$waktu2['day'].' '.$waktu2['hour'].':'.$waktu2['minute'].':00');
