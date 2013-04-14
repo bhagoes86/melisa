@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
     <?php $this->load->view('home/head'); ?>
-    <?php $this->load->view('home/js'); ?>
     <body class="modern-ui" onload="prettyPrint()">
         <!--Top-->
         <div class="page" id="topbar"></div>
