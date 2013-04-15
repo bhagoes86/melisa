@@ -1,4 +1,4 @@
-<img src="http://localhost/melisa/application/modules/feed/img/avatar.png" class="avatar">
+<img src="http://localhost/melisa/application/modules/feed/img/avatar.jpg" class="avatar">
 <div class="page-sidebar bg-color-red" style="margin:0px; width:140px;">
     <ul>
         <!--<li><a id="btn-statistik"><i class="icon-stats-up"></i> Statistik</a></li>-->
