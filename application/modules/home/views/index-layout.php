@@ -13,48 +13,7 @@
                     <div class="grid">
                         <div class="row" id="row-top-content" style="margin-top: 20px;margin-bottom: 20px;"></div>
                         <div class="row" id="row-main-content"></div>
-                        <div class="row" id="row-main-other">
-
-                            <div class="grid">
-                                <div class="row" style="text-align: center;margin-bottom: 22px;">
-                                    <h2>~ Kuliah ~</h2>
-                                </div>
-                            </div>
-
-                            <div class="grid" style="margin-bottom: 20px;"><div class="row" id="course-home"></div></div>
-                            <div class="grid" style="margin-bottom: 20px;"><div class="row" id="video-home"></div></div>
-                            <div class="grid" style="margin-bottom: 20px;"><div class="row" id="presentation-home"></div></div>
-
-                            <div class="grid" style="margin-bottom: 30px;">
-                                <div class="row" style="text-align: center;">
-                                    <a class="button bg-color-grayDark fg-color-white" id="semua-kuliah">Daftar Seluruh Kuliah <i class="icon-list"></i></a>
-                                    <script type="text/javascript">
-                                        $('#semua-kuliah').click(function(){               
-                                            $('#row-main-other').hide();
-                                            $('#row-button-other').hide();
-                                            $('#message').html("Loading Data");
-                                            $('#loading-template').show();
-                                            $('#row-main-content').load("<?php echo site_url('course/all_course') ?>",function(){
-                                                $('#loading-template').fadeOut("slow");
-                                            });
-                                        });
-                                    </script>
-                                </div>
-                            </div>
-
-                            <div class="grid">
-                                <div class="row">
-                                    <div id="berita" class="span3"></div>
-                                    <div id="beasiswa" class="span3"></div>
-                                    <div id="fitur" class="span3"></div>
-                                    <div id="facebook" class="span3">
-                                        <div class="bg-color-blue fg-color-white" style="padding: 1px 1px 1px 10px;margin-bottom: 10px;"><h3><a class="fg-color-white"><i class="icon-thumbs-up"></i> Like Us</a></h3></div>
-                                        <div class="row" id="container" style="width:100%;margin-bottom: 10px;margin-top: 10px;">
-                                            <div class="span6 fb-like-box" data-width="100%" data-href="http://www.facebook.com/npaperbox" data-height="300" data-show-faces="true" data-stream="false" data-header="false"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="row" id="row-main-other"></div>
 
                             <div class="grid">
                                 <div class="span12 bg-color-gray"></div>                                    
@@ -92,7 +51,6 @@
         <!--Footer-->
         <div class="page" id="footbar"></div>
     </body>
-</html>
 <div id="fb-root"></div>
 
 <script type="text/javascript">
@@ -101,36 +59,15 @@
         $('#footbar').load("<?php echo site_url('site/footbar') ?>");
         
         $('#row-top-content').load("<?php echo site_url('home/top') ?>");
-        $('#row-main-content').load("<?php echo site_url('home/welcome') ?>");
         
-        $('#berita').load("<?php echo site_url('news/home_berita') ?>");
-        $('#beasiswa').load("<?php echo site_url('news/home_beasiswa') ?>");
-        $('#fitur').load("<?php echo site_url('news/home_fitur') ?>");
-                
-        $('#course-home').load("<?php echo site_url('course/home_course') ?>");
-        $('#video-home').load("<?php echo site_url('content/home_video') ?>");
-        $('#presentation-home').load("<?php echo site_url('content/home_presentation') ?>");
+        // ini diambil dari template set 'main_content' di controller
+        $('#row-main-content').load("<?php echo site_url($main_content); ?>");
 
-        //Load page welcome
-        $('a#btn-welcome').click(function(){
-            $('#message').html("Loading Data");
-            $('#loading-template').show();
-            $('#row-center-content').load("<?php echo site_url('home/welcome'); ?>",function(){
-                $('#loading-template').fadeOut("slow");
-            });
-            return false;
-        });
+        <?php if(isset($main_other) && $main_other): ?>
+        // set 'main_other' di controller kalo mau menyisipkan konten di elemen #row-main-other
+        //$('#row-main-other').load("<?php echo site_url($main_other); ?>");
+        <?php endif; ?>
 
-        //Show Login Form
-        $('#btn-login').click(function(){
-            $('#message').html("Loading Data");
-            $('#loading-template').show();            
-            $('#row-center-content').load("<?php echo site_url('authz/login'); ?>",function(){
-                $('#loading-template').fadeOut("slow");
-            });
-            return false;
-        });
-        
         //Hide Error Message
         $('#close-error-message').click(function(){
             $('#error-template').fadeOut("slow");
@@ -173,3 +110,4 @@
         FB.XFBML.parse( );    
     }); 
 </script>
+</html>

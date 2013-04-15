@@ -10,4 +10,9 @@
     <link href="<?php echo base_url(); ?>asset/metro/js/google-code-prettify/prettify.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="<?php echo base_url() ?>asset/css/images/logo-vabel.png"/>
     <title><?php echo $themes->header ?> <?php echo $themes->caption ?></title>
+
+    <?php $this->load->view('home/js'); ?>
+
+    <!-- ini buat menyisipkan metadata js dan css secara dinamis dari controller manapun -->
+    <?php echo isset($template['metadata']) ? $template['metadata']: ''; ?>
 </head>

@@ -1,0 +1,60 @@
+/*additional style for feed by yllumi*/
+
+.listview li {
+	padding: 3px;
+}
+
+.listview.list-long li {
+    width: 540px;
+}
+.listview.image li .feedicon {
+  	background: url('resource/avatar/default.png') no-repeat top left;
+  	width: 70px;
+	height: 70px;
+	border: 1px #ccc solid;
+	display: block;
+	font-size: 32px;
+	padding: 21px 0 0 14px;
+	float: left;
+}
+.listview.image li .data {
+	margin-left: 80px;
+}
+
+small, small a {
+	font-size: 12px;
+	font-style: italic;
+}
+img.avatar {
+	width: 140px;
+}
+.small-avatar, .side-description {
+	display: inline-block;
+}
+.small-avatar {
+	width: 40px;
+}
+.side-description {
+	width: 145px;
+	color: #aaa;
+	font-size: 12px;
+}
+.side-description a {
+	font-size: 13px;
+}
+
+/*vertical align*/
+.top {
+	vertical-align: top;
+}
+.middle {
+	vertical-align: middle;
+}
+
+.small-avatar img {
+	width: 40px;
+	float: left;
+}
+fieldset .list {
+	margin-bottom: 5px;
+}

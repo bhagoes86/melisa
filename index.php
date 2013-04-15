@@ -191,6 +191,8 @@ if (defined('ENVIRONMENT'))
 		define('APPPATH', BASEPATH.$application_folder.'/');
 	}
 
+	// define lokasi modules by yllumi
+	define('MODULE_PATH', APPPATH.'modules/');
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
