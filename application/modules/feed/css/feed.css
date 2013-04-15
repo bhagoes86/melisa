@@ -3,6 +3,12 @@
 .listview li {
 	padding: 3px;
 }
+.listview li h4, .listview li h4 a {
+	margin-top: 0;
+	margin-bottom: 2px;
+	font-size: 14px;
+}
+
 .listview li:hover {
 	outline: 0;
 }
@@ -111,4 +117,41 @@ fieldset .list {
 	font-size: 7pt;
 	color: black;
 	border: 1px solid #ccc;
+}
+.text {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-bottom: 0;
+	margin: 0;
+}
+.listview.image li .data p, .listview.image li .data a {
+	font-size: 14px;
+}
+.hide {
+	display: none;
+}
+.link-image {
+	padding-right: 10px;
+	border: 1px solid #bbb;
+}
+.link-image img {
+	width: 150px;
+	float: left;
+	margin-right: 10px;
+}
+.link-image .description,
+.document-image .description {
+	color: #888;
+	line-height: 16px;
+	padding: 10px;
+}
+.document-image {
+	border: 1px solid #bbb;
+}
+.document-image .icon {
+	margin-right: 10px;
+	font-size: 60px;
+	text-align: center;
+	padding-top: 26px;
+	border: 0 !important;
 }
