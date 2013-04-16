@@ -9,7 +9,7 @@
     <link href="<?php echo base_url(); ?>asset/metro/css/site.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url(); ?>asset/metro/js/google-code-prettify/prettify.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="<?php echo base_url() ?>asset/css/images/logo-vabel.png"/>
-    <title><?php echo $themes->header ?> <?php echo $themes->caption ?></title>
+    <title><?php echo $template['title'] ?></title>
 
     <?php $this->load->view('home/js'); ?>
 

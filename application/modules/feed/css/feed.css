@@ -3,27 +3,51 @@
 .listview li {
 	padding: 3px;
 }
+.listview li h4, .listview li h4 a {
+	margin-top: 0;
+	margin-bottom: 2px;
+	font-size: 14px;
+}
+
+.listview li:hover {
+	outline: 0;
+}
+
+.listview li .data {
+
+}
 
 .listview.list-long li {
     width: 540px;
 }
-.listview.image li .feedicon {
-  	background: url('resource/avatar/default.png') no-repeat top left;
-  	width: 70px;
-	height: 70px;
-	border: 1px #ccc solid;
+.listview.image li .feed-avatar {
+	background: url('../img/default.png') no-repeat top left;
+  	width: 60px;
+	height: 60px;
 	display: block;
 	font-size: 32px;
-	padding: 21px 0 0 14px;
 	float: left;
 }
-.listview.image li .data {
-	margin-left: 80px;
+.listview.image li .feed-avatar img {
+	height: 60px;
+}
+.user-description {
+	height: 60px;
+	display: block;
+	border: 1px solid #bbb;
+	border-left: 0;
+	border-bottom: 0;
+	padding: 5px 10px;
 }
 
-small, small a {
+.listview.image li .data {
+	margin-left: 60px;
+}
+
+.date-meta, .date-meta a {
 	font-size: 12px;
 	font-style: italic;
+	color: #bbb;
 }
 img.avatar {
 	width: 140px;
@@ -57,4 +81,77 @@ img.avatar {
 }
 fieldset .list {
 	margin-bottom: 5px;
+}
+.video-image {
+	position: relative;
+}
+.video-image img {
+	width: 100%;
+}
+.video-image .description {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 10px;
+	background: rgba(0, 0, 0, 0.7);
+	color: #fff;
+}
+.layered {
+	position: absolute;
+}
+.utils {
+	padding: 10px 10px 0;
+	border: 1px solid #bbb;
+	border-top: 0;
+}
+.toolbar button > .badge {
+	position: absolute;
+	right: -3px;
+	top: -7px;
+	background-color: white;
+	padding: 0 2px;
+	margin: 0 !important;
+	text-align: center;
+	display: block;
+	font-size: 7pt;
+	color: black;
+	border: 1px solid #ccc;
+}
+.text {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-bottom: 0;
+	margin: 0;
+}
+.listview.image li .data p, .listview.image li .data a {
+	font-size: 14px;
+}
+.hide {
+	display: none;
+}
+.link-image {
+	padding-right: 10px;
+	border: 1px solid #bbb;
+}
+.link-image img {
+	width: 150px;
+	float: left;
+	margin-right: 10px;
+}
+.link-image .description,
+.document-image .description {
+	color: #888;
+	line-height: 16px;
+	padding: 10px;
+}
+.document-image {
+	border: 1px solid #bbb;
+}
+.document-image .icon {
+	margin-right: 10px;
+	font-size: 60px;
+	text-align: center;
+	padding-top: 26px;
+	border: 0 !important;
 }
