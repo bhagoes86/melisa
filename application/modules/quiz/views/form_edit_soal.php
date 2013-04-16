@@ -3,7 +3,7 @@
     <div class="input-control textarea">
         <textarea name="soal" id="soal" placeholder="Soal"><?php echo $soal;?></textarea>
     </div>
-     <br />
+    <br />
 
     
      <div id="resource-detail" style="word-wrap: break-word;">
@@ -25,7 +25,10 @@
     <h4 style="margin-top: 0px;padding-top: 0px;">Jawaban <?php //echo $option; ?></h4>
     <div class="input-control select span2">
         <select name="answer" id="answer">
-            <?php foreach ($list_choice as $choice){
+            <?php 
+            if (count($list_choice) != 0){
+            
+            foreach ($list_choice as $choice){
 
                 if ($answer == $choice->option_idx){
                     ?>
@@ -38,10 +41,13 @@
                     <?php
                 }
             }
+            }
+            else {
+                ?>
+                <option value="x">Tak Ada Jawaban</option>    
+                <?php
+            }
             ?>
-                
-            
-                
         </select>
     </div>
 
@@ -117,6 +123,24 @@
         $('#message').html('Proses Update ...');
         $('#loading-template').show();
         var quiz_id = $('#quiz_id').val();
+        
+        
+        var soal = $('#soal').val();
+        
+        if (soal == ''){
+            var message = '[PERINGATAN]<br><br>';
+            if (soal == ''){
+                message += '- Anda belum mengisikan soal <br>';
+            }
+            
+            $('#message-error').html(message);
+            $('#loading-template').fadeOut("slow");
+            $('#error-template').show()
+
+            return false;
+        }
+        
+        
         $.ajax({
             type:'POST',
             url:"<?php echo site_url('quiz/update_quiz_soal') ?>",

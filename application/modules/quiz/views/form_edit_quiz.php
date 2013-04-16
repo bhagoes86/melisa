@@ -13,6 +13,10 @@
         <textarea name="description" id="description" placeholder="Deskripsi"><?php echo $description; ?></textarea>
     </div>
     <hr>
+    <br />
+    <p><b>Catatan </b>: Untuk menonaktifkan kuis Anda. Samakan tanggal pada waktu mulai dan waktu selesai</p>
+    <div id="info-quiz-active"></div>
+    <br />
     <h4 style="margin-top: 0px;padding-top: 0px;">Waktu Mulai : </h4>
      <div class="input-control text span3" style="margin-top: 0px;padding-left: 10px;padding-top:5px">
         (hari / bulan / tahun ) :
@@ -160,8 +164,7 @@
 
       </div>
 
-    <br><br><br> <br><br>
-    <hr>
+    <br><br><br><br><br>
     
     <h4 style="margin-top: 0px;padding-top: 0px;">Waktu Selesai : </h4>
      <div class="input-control text span3" style="margin-top: 0px;padding-left: 10px;padding-top:5px">
@@ -387,27 +390,73 @@
 </form>
 
 <script type="text/javascript">
-
+   
     $('#btn-cancel').click(function(){
-            $('#message').html('Loading ... ');
-            $('#loading-template').show();
-            $('#content-right').load("<?php echo site_url('quiz/index') ?>",function(){
-                $('#loading-template').fadeOut("slow");
-            });
+        $('#message').html('Loading ... ');
+        $('#loading-template').show();
+        $('#content-right').load("<?php echo site_url('quiz/index') ?>",function(){
+            $('#loading-template').fadeOut("slow");
         });
+    });
 
 
     $('#update-quiz').submit(function(){
         $('#message').html('Proses Update ...');
         $('#loading-template').show();
+        
+        var title = $('#title').val();
+        var description = $('#description').val();
+        var num_per_page = $('#num_per_page').val();
+        var length_time = $('#length_time').val();
+        
+        if (title == '' || description == '' || num_per_page == '' || length_time == ''){
+            var message = '[PERINGATAN]<br><br>';
+            if (title == ''){
+                message += '- Anda belum menyertakan judul <br>';
+            }
+            
+            if (description == ''){
+                message += '- Anda belum memberikan deskripsi <br>';
+            }
+            
+            if (num_per_page <= 0){
+                message += '- Jumlah soal per halaman tidak boleh 0 <br>';
+            }
+            
+            if(length_time <= 0){
+                message += '- Lamanya waktu ujian tidak boleh 0 !!!';
+            }
+            
+            $('#message-error').html(message);
+            $('#loading-template').fadeOut("slow");
+            $('#error-template').show();
+
+            return false;
+        }
+        
         $.ajax({
             type:'POST',
             url:"<?php echo site_url('quiz/update_quiz') ?>",
+            dataType:'json',
             data:$(this).serialize(),
-            success:function (data) {
-                $('#content-right').load("<?php echo site_url('quiz/index') ?>/",function(){
+            success:function (data, status) {
+                if (data.msg == '1')
+                {
+                    $('#message').html("Proses Berhasil");
+                    $('#content-right').load("<?php echo site_url('quiz/index') ?>",function(){
+                        $('#loading-template').fadeOut("slow");
+                    });
+
+                }
+                else if (data.msg == '2')
+                {
+                    var message = '[PERINGATAN]<br><br>';
+                    message += '- Waktu yang selesai salah';
+                    $('#message-error').html(message);
                     $('#loading-template').fadeOut("slow");
-                });
+                    $('#error-template').show();
+                }
+                
             },
             error:function (data){
                 $('#loading-template').fadeOut("slow");

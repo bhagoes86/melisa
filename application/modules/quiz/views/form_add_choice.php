@@ -17,18 +17,35 @@
 
 <input type="hidden" name="soal_id" id="soal_id" value="<?php //echo $soal_id ?>"/>
 <script type="text/javascript">
+  
     $('#btn-cancel').click(function(){
-            $('#message').html('Loading ... ');
-            $('#confirm-template').show();
-            var soal_id = $('#soal_id').val();
-            $('#content-right').load("<?php echo site_url('quiz/list_all_choice') ?>/"+soal_id,function(){
-                $('#loading-template').fadeOut("slow");
-            });
+        $('#message').html('Loading ... ');
+        $('#confirm-template').show();
+        var soal_id = $('#soal_id').val();
+        $('#content-right').load("<?php echo site_url('quiz/list_all_choice') ?>/"+soal_id,function(){
+            $('#loading-template').fadeOut("slow");
         });
+    });
 
     $('#add-quiz-choice').submit(function(){
         $('#message').html('Mohon Tunggu ...');
         $('#loading-template').show();
+        
+        var answer = $('#answer').val();
+        
+        if (answer == ''){
+            var message = '[PERINGATAN]<br><br>';
+            if (answer == ''){
+                message += '- Anda belum mengisikan opsi jawaban <br>';
+            }
+            
+            $('#message-error').html(message);
+            $('#loading-template').fadeOut("slow");
+            $('#error-template').show()
+
+            return false;
+        }
+       
         var soal_id = $('#soal_id').val();
         $.ajax({
             type:'POST',

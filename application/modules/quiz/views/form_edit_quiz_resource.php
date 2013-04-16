@@ -44,6 +44,25 @@
         $('#message').html('Proses Update ...');
         $('#loading-template').show();
         var id_quiz_resource = $('#id_quiz_resource').val();
+        var title = $('#title').val();
+        var description = $('#description').val();
+        
+        if (title == ''){
+            $('#message-error').html('Anda belum mengisikan judul !!!');
+            $('#loading-template').fadeOut("slow");
+            $('#error-template').show()
+
+            return false;
+        }
+        
+        if (description == ''){
+            $('#message-error').html('Anda belum memberikan deskripsi !!!');
+            $('#loading-template').fadeOut("slow");
+            $('#error-template').show()
+
+            return false;
+        }
+        
         $.ajax({
             type:'POST',
             url:"<?php echo site_url('quiz/update_quiz_resource') ?>",
