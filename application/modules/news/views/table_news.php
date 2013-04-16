@@ -49,20 +49,21 @@
                                     <?php }?>
                                 </div>
                                 <div class="span6">
+                                    <?php if($news==NULL){?>
+                                        
+                                    <?php }else{?>
                                     <div class="bg-color-blueDark" style="margin-bottom: 10px;">
                                         <a class="fg-color-white">&nbsp;Title</a>
                                     </div>
+                                    <p><?php echo $news->title ?></p>
+                                    <?php }?>
+                                    
                                     <?php if($news==NULL){?>
                                         
                                     <?php }else{?>
-                                    <p><?php echo $news->title ?></p>
-                                    <?php }?>
                                     <div class="bg-color-greenDark" style="margin-bottom: 10px;">
                                         <a class="fg-color-white">&nbsp;Isi</a>
                                     </div>
-                                    <?php if($news==NULL){?>
-                                        
-                                    <?php }else{?>
                                     <p><?php echo $news->news ?></p>
                                     <?php }?>
                                 </div>
