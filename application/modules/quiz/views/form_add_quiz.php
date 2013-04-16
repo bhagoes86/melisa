@@ -1,7 +1,7 @@
 <h3 style="margin-top: 0px; padding-top: 0px;">Upload Kuis Baru</h3>
 <form id="do-upload-quiz" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
     <div class="input-control file">
-        <label>Pilih file quiz Anda (format harus .xls atau .xlsx yang telah ditetapkan)</label><br/>
+        <label>Pilih file quiz Anda (file harus .xls dengan format yang telah ditetapkan)</label><br/>
         <input type="file" name="userfile" id="quiz"/>
     </div>
     <div class="input-control text">
@@ -27,6 +27,9 @@
             });
         });
 
+        $('#close-error-message').click(function(){
+             $('#error-template').fadeOut('slow');
+         });
 
         //* upload dokumen
         $('#do-upload-quiz').submit(function(){
@@ -39,25 +42,29 @@
 
             //validasi
             if(quiz == ''){
-                $('#loading-template').hide();
-                alert('Anda belum menyertakan file !!!');
+                $('#message-error').html('Anda belum menyertakan file !!!');
+                $('#loading-template').fadeOut("slow");
+                $('#error-template').show()
+            
                 return false;
             }
 
             if(title == ''){
-                $('#loading-template').hide();
-                alert('Anda belum memberikan judul kuis !!!');
+                $('#message-error').html('Anda belum mengisikan judul !!!');
+                $('#loading-template').fadeOut("slow");
+                $('#error-template').show()
+                
                 return false;
             }
 
             if(description == ''){
-                $('#loading-template').hide();
-                alert('Anda belum memberikan deskripsi kuis !!!');
+                $('#message-error').html('Anda belum memberikan deskripsi !!!');
+                $('#loading-template').fadeOut("slow");
+                $('#error-template').show()
+                
                 return false;
             }
 
-
-            
             $.ajaxFileUpload({
                 url:"<?php echo site_url('quiz/upload_quiz'); ?>",
                 secureuri:false,
