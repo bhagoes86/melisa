@@ -4,6 +4,7 @@
 </div>
 <!--Konten-->
 <div class="span7" id="content-right">
+    <?php echo $template['partials']['form']; ?>
     <?php echo $template['partials']['main']; ?>
 </div>
 <!-- Rightbar -->

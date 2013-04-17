@@ -1,4 +1,4 @@
-<fieldset>
+<fieldset class="feed">
     <legend>Mungkin Anda Kenal</legend>
     <div class="list">
         <div class="small-avatar top">
@@ -26,7 +26,7 @@
     </div>
 </fieldset>
 
-<fieldset>
+<fieldset class="feed">
     <legend>Komunitas yang Disarankan</legend>
     <div class="list">
         <div class="small-avatar top">
