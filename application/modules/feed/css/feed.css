@@ -52,19 +52,27 @@
 img.avatar {
 	width: 140px;
 }
-.small-avatar, .side-description {
+.small-avatar, .side-description, .side-utils {
 	display: inline-block;
 }
 .small-avatar {
 	width: 40px;
 }
 .side-description {
-	width: 145px;
+	width: 130px;
 	color: #aaa;
 	font-size: 12px;
 }
+.side-utils {
+	width: 25px;
+}
+
 .side-description a {
 	font-size: 13px;
+}
+
+.pseudo-btn {
+	padding: 2px 2px 0;
 }
 
 /*vertical align*/
@@ -73,6 +81,9 @@ img.avatar {
 }
 .middle {
 	vertical-align: middle;
+}
+.bottom {
+	vertical-align: bottom;
 }
 
 .small-avatar img {
