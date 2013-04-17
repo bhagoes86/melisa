@@ -64,7 +64,7 @@
                 <div class="image link-image">
                     <img src="http://localhost/melisa/application/modules/feed/img/avatar.jpg">
                     <div class="description">
-                        <h4><a href="#">Toni Haryanto Code Playground</a></h4>
+                        <h4><a href="#"><i class="icon-link"></i> Toni Haryanto Code Playground</a></h4>
                         Ut egestas magna, sed rutrum felis fermentum quis. Aliquam congue ultricies elit, sit amet tempor tortor tempor nec.
                     </div>
                     <div class="clearfix"></div>
