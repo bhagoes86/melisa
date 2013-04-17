@@ -2015,8 +2015,7 @@ class Quiz extends MX_Controller {
             $menit1 = $this->input->post('menit1', true);
             $date1 = date_create($tahun1 . '-' . $bulan1 . '-' . $hari1 . " " . $jam1 . ":" . $menit1 . ":00");
             $tanggal1 = date_format($date1, 'Y-m-d H:i:s');
-            //echo $tanggal1."<br><br>";
-
+            
             $hari2 = $this->input->post('hari2', true);
             $bulan2 = $this->input->post('bulan2', true);
             $tahun2 = $this->input->post('tahun2', true);
@@ -2024,20 +2023,48 @@ class Quiz extends MX_Controller {
             $menit2 = $this->input->post('menit2', true);
             $date2 = date_create($tahun2 . '-' . $bulan2 . '-' . $hari2 . " " . $jam2 . ":" . $menit2 . ":00");
             $tanggal2 = date_format($date2, 'Y-m-d H:i:s');
-            //echo $tanggal2;
+            
+            if ($date1 > $date2) {
+                echo "{";
+                echo "\"msg\": \"2\"";
+                echo "}";
+            }
+            else if ($date1 < $date2){
+                
+                $data['title'] = $this->input->post('title', true);
+                $data['description'] = $this->input->post('description', true);
+                $data['length_time'] = $this->input->post('length_time', true);
+                $data['start_time'] = $tanggal1;
+                $data['end_time'] = $tanggal2;
+                $data['random_soal'] = $this->input->post('random-soal', true);
+                $data['random_jawaban'] = $this->input->post('random-jawaban', true);
+                $data['num_per_page'] = $this->input->post('num_per_page', true);
+                $data['max_answer_show'] = $this->input->post('max_answer_show', true);
 
-            $data['title'] = $this->input->post('title', true);
-            $data['description'] = $this->input->post('description', true);
-            $data['length_time'] = $this->input->post('length_time', true);
-            $data['start_time'] = $tanggal1;
-            $data['end_time'] = $tanggal2;
-            $data['random_soal'] = $this->input->post('random-soal', true);
-            $data['random_jawaban'] = $this->input->post('random-jawaban', true);
-            $data['num_per_page'] = $this->input->post('num_per_page', true);
-            $data['max_answer_show'] = $this->input->post('max_answer_show', true);
-            //echo $this->input->post('max_answer_show', true);
+                $this->model_quiz->update_quiz($id_quiz, $data);
 
-            $this->model_quiz->update_quiz($id_quiz, $data);
+                echo "{";
+                echo "\"msg\": \"1\"";
+                echo "}";
+            }
+            else if ($date1 == $date2){
+                $data['title'] = $this->input->post('title', true);
+                $data['description'] = $this->input->post('description', true);
+                $data['length_time'] = $this->input->post('length_time', true);
+                $data['start_time'] = $tanggal1;
+                $data['end_time'] = $tanggal2;
+                $data['random_soal'] = $this->input->post('random-soal', true);
+                $data['random_jawaban'] = $this->input->post('random-jawaban', true);
+                $data['num_per_page'] = $this->input->post('num_per_page', true);
+                $data['max_answer_show'] = $this->input->post('max_answer_show', true);
+
+                $this->model_quiz->update_quiz($id_quiz, $data);
+
+                echo "{";
+                echo "\"msg\": \"1\"";
+                echo "}";
+            }
+            
         }
     }
 

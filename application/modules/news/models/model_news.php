@@ -70,10 +70,11 @@ class Model_news extends CI_Model {
         $this->db->update('news');
     }
 
-    function update_attachment($id, $data, $att_type) {
+    function update_attachment($id, $data, $att_type,$ext) {
         $this->db->where('id_news', $id);
         $this->db->set('attachment', $data);
         $this->db->set('attachment_type', $att_type);
+        $this->db->set('ext', $ext);
         $this->db->update('news');
     }
 

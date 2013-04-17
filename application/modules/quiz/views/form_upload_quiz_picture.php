@@ -2,6 +2,7 @@
     <h2>Form Upload Picture</h2>
     <form id="do-upload-video" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
         <div class="input-control">
+            <label>Pilih file gambar Anda (file gambar harus bertipe .jpg)</label><br/>
             <input name="userfile" type="file" id="userfile"/>
         </div>
         <div class="input-control text">
@@ -30,20 +31,31 @@
         $('#do-upload-video').submit(function(){
             $('#message').html('Upload Konten');
             $('#loading-template').show();
-            //variabel
+            
+            var userfile = $('#userfile').val();
             var title = $('#title').val();
             var description = $('#description').val();
-            //validasi
-            if(title == ''){
-                $('#loading-template').hide();
-                alert('Berikan Judul Gambar!');
+
+            if (userfile == '' || title == '' || description == ''){
+                var message = '[PERINGATAN]<br><br>';
+
+                if (userfile == ''){
+                    message += '- Anda belum menyertakan file <br>';
+                }
+                if (title == ''){
+                    message += '- Anda belum mengisikan judul <br>';
+                }
+                if (description == ''){
+                    message += '- Anda belum memberikan deskripsi <br>';
+                }
+
+                $('#message-error').html(message);
+                $('#loading-template').fadeOut("slow");
+                $('#error-template').show()
+
                 return false;
             }
-            if(description == ''){
-                $('#loading-template').hide();
-                alert('Berikan Informasi/Deskripsi Gambar!');
-                return false;
-            }
+            
             $.ajaxFileUpload({
                 url:"<?php echo site_url('quiz/upload_picture'); ?>",
                 secureuri:false,

@@ -4,9 +4,7 @@
     <tbody>
         <?php foreach ($list_quiz_resource as $row): ?>
             <tr>
-                <td style="border: 1px solid white;background:white;width: 180px;padding: 0px;margin: 0px;text-align: center;">
-                    
-                </td>
+                
                 <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
                     <a style="color: #095b97;font-size: 18px;"><?php echo $row->title ?></a><br/>
                     <p style="color: rgb(94,94,94);font-size: 13px;"><?php echo cut_text($row->description, 45) ?> ...</p>

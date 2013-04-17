@@ -27,6 +27,27 @@
         $('#message').html('Mohon Tunggu ...');
         $('#loading-template').show();
         var quiz_id = $('#id_choice').val();
+        var title = $('#title').val();
+        var description = $('#description').val();
+        
+        if (title == '' || description == ''){
+            var message = '[PERINGATAN]<br><br>';
+            if (title == ''){
+                message += '- Anda belum mengisikan judul <br>';
+            }
+            if (description == ''){
+                message += '- Anda belum memberikan deskripsi <br>';
+            }
+            
+            $('#message-error').html(message);
+            $('#loading-template').fadeOut("slow");
+            $('#error-template').show()
+
+            return false;
+        }
+        
+       
+        
         $.ajax({
             type:'POST',
             url:"<?php echo site_url('quiz/add_group') ?>",

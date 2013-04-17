@@ -28,6 +28,21 @@
         $('#message').html('Mohon tunggu ...');
         $('#loading-template').show();
         var quiz_id = $('#quiz_id').val();
+        var soal = $('#soal').val();
+        
+        if (soal == ''){
+            var message = '[PERINGATAN]<br><br>';
+            if (soal == ''){
+                message += '- Anda belum mengisikan soal <br>';
+            }
+            
+            $('#message-error').html(message);
+            $('#loading-template').fadeOut("slow");
+            $('#error-template').show()
+
+            return false;
+        }
+        
         $.ajax({
             type:'POST',
             url:"<?php echo site_url('quiz/add_soal') ?>",
