@@ -196,15 +196,18 @@ class Model_quiz extends CI_Model {
     }
 
 
-    function select_soal_by_quiz($id_quiz){
+    function select_soal_by_quiz($id_quiz, $type_request){
         $this->db->select('*');
         $this->db->from('quiz_soal');
         $this->db->where('quiz_id', $id_quiz);
-        $this->db->where('deleted', 1);
+        if ($type_request == 1){
+            $this->db->where('deleted', 1);
+        }
         $this->db->order_by('id_soal');
         return $this->db->get();
     }
 
+    
     function select_group_by_quiz($id_quiz){
         $this->db->select('*');
         $this->db->from('quiz_group');
@@ -213,12 +216,13 @@ class Model_quiz extends CI_Model {
         return $this->db->get();
     }
 
-    function select_choice_by_soal($id_soal){
+    function select_choice_by_soal($id_soal, $type_request){
         $this->db->select('*');
         $this->db->from('quiz_choice');
         $this->db->where('soal_id', $id_soal);
-        $this->db->where('deleted', 1);
-        
+        if ($type_request == 1){
+            $this->db->where('deleted', 1);
+        }
         return $this->db->get();
     }
 
@@ -239,13 +243,14 @@ class Model_quiz extends CI_Model {
 
 
     
-    function select_key_choice_by_soal($id_soal, $answer_key){
+    function select_key_choice_by_soal($id_soal, $answer_key, $type_request){
         $this->db->select('*');
         $this->db->from('quiz_choice');
         $this->db->where('soal_id', $id_soal);
         $this->db->where('option_idx', $answer_key);
-        $this->db->where('deleted', 1);
-
+        if ($type_request == 1){
+            $this->db->where('deleted', 1);
+        }
         return $this->db->get();
     }
 
@@ -457,6 +462,13 @@ class Model_quiz extends CI_Model {
         $this->db->where('id_quiz_resource', $id_quiz_resource);
         $this->db->delete('quiz_resource');
     }
+    
+    function delete_quiz_resource_from_soal($id_quiz_resource, $data) {
+        $this->db->where('resource_id', $id_quiz_resource);
+        $this->db->update('quiz_soal', $data);
+    }
+
+
 
     function delete_quiz_pass_tryout_by_group($group_id){
         $this->db->where('group_id', $group_id);
@@ -514,7 +526,7 @@ class Model_quiz extends CI_Model {
         $this->db->where('id_quiz_course_group', $id_course);
         $this->db->update('quiz_course_group', $data);
     }
-   
+    
     function update_soal($id_soal, $data) {
         $this->db->where('id_soal', $id_soal);
         $this->db->update('quiz_soal', $data);

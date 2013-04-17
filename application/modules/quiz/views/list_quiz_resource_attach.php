@@ -1,4 +1,4 @@
-<?php if (count($list_avail_quiz_resource) > 0) {?>
+<?php if (count($list_quiz_resource) > 0) {?>
 
 <table>
     <tbody>
@@ -32,7 +32,7 @@
 </table>
         <?php } else { ?>
             <tr>
-                <td><h2>Tidak ada  quiz yang bisa dipakai....</h2></td>
+                <td><h2>Tidak ada konten yang bisa dipakai....</h2></td>
             </tr>
         <?php }?>
 <script type="text/javascript">

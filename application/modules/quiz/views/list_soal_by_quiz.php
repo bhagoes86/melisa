@@ -29,7 +29,20 @@
                 <td><?php echo 'soal_'.$soal->id_soal; ?></td>
                 <td><?php echo $soal->soal; ?></td>
                 <td><?php echo $soal->answer; ?></td>
-                <td><?php echo $soal->status; ?></td>
+                <td><?php 
+                
+                    if ($soal->status == 0) {
+                        ?>
+                            <a title="aktif" href="javascript:void(0)"  data-id=""><i class="icon-checkbox-unchecked" fg-color-black"></i></a>
+                        <?php
+                    }
+                    else {
+                        ?>
+                            <a title="aktif" href="javascript:void(0)"  data-id=""><i class="icon-checkbox" fg-color-black"></i></a>
+                        <?php
+                    }
+                
+                ?></td>
 
                 <td style="width: 30px;border: 1px solid white;vertical-align: middle;background-color:rgba(0, 0, 0, 0.0666667);">
                     <a title="edit" href="javascript:void(0)" id="btn-edit" data-id="<?php echo $soal->id_soal; ?>"><i class="icon-pencil fg-color-pink"></i></a>
