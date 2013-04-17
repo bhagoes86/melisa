@@ -37,6 +37,32 @@ class News extends MX_Controller {
         $this->load->view('news/list_articles',$data);
     }
     
+    //news viewer attachment
+    function youtube_view($attachment){
+        $data['attachment'] = $attachment;
+        //print_r($data);
+        $this->load->view('news/viewer_youtube',$data);
+    }
+    
+    //news viewer attachment document
+    function document_view($attachment){
+        $data['attachment'] = $attachment;
+        //print_r($data);
+        $this->load->view('news/viewer_document',$data);
+    }
+
+    function video_view($attachment,$ext){
+        $data['attachment'] = $attachment;
+        $data['ext'] = $ext;
+        //print_r($data);
+        $this->load->view('news/viewer_video',$data);
+    }
+    //sound cloud
+    
+    function soundcloud_view($attachment){
+        $data['attachment'] = $attachment;
+        $this->load->view('news/viewer_soundcloud',$data);
+    }
     function select_news($id_news){
         $data['news'] = $this->model_news->edit_news_db($id_news)->row();
         $this->load->view('news/selected_articles',$data);
@@ -152,7 +178,7 @@ class News extends MX_Controller {
             $data2['size'] = $hasil['file_size'];
             $data2['ext'] = $hasil['file_ext'];
 
-            $this->model_news->update_attachment($data['id'], $data2['file'], $data3['att_type']);
+            $this->model_news->update_attachment($data['id'], $data2['file'], $data3['att_type'],$data2['ext']);
 
             echo "{";
             echo "msg: 1";

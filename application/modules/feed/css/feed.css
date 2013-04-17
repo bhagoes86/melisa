@@ -52,19 +52,27 @@
 img.avatar {
 	width: 140px;
 }
-.small-avatar, .side-description {
+.small-avatar, .side-description, .side-utils {
 	display: inline-block;
 }
 .small-avatar {
 	width: 40px;
 }
 .side-description {
-	width: 145px;
+	width: 130px;
 	color: #aaa;
 	font-size: 12px;
 }
+.side-utils {
+	width: 25px;
+}
+
 .side-description a {
 	font-size: 13px;
+}
+
+.pseudo-btn {
+	padding: 2px 2px 0;
 }
 
 /*vertical align*/
@@ -73,6 +81,9 @@ img.avatar {
 }
 .middle {
 	vertical-align: middle;
+}
+.bottom {
+	vertical-align: bottom;
 }
 
 .small-avatar img {
@@ -118,7 +129,7 @@ fieldset .list {
 	color: black;
 	border: 1px solid #ccc;
 }
-.text {
+.listview li .text {
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-bottom: 0;
@@ -154,4 +165,32 @@ fieldset .list {
 	text-align: center;
 	padding-top: 26px;
 	border: 0 !important;
+}
+fieldset.feed {
+  position: relative;
+  margin-top: 30px;
+  border: 0;
+  border-top: 1px #eaeaea solid;
+  padding: 20px 10px 10px 0;
+}
+fieldset.feed legend {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: 'Segoe UI Semilight', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 10pt;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  color: #aaa;
+  position: absolute;
+  top: -12px;
+  left: -10px;
+  background: white;
+}
+.input-control .toolbar {
+	margin-top: 10px;
+}
+.input-control #postimage,
+.input-control #posturl {
+	margin-bottom: 10px;	
 }

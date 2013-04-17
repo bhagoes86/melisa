@@ -41,6 +41,22 @@
     $('#update-quiz-choice').submit(function(){
         $('#message').html('Proses Update ...');
         $('#loading-template').show();
+        
+        var answer = $('#answer').val();
+        
+        if (answer == ''){
+            var message = '[PERINGATAN]<br><br>';
+            if (answer == ''){
+                message += '- Anda belum mengisikan opsi jawaban <br>';
+            }
+            
+            $('#message-error').html(message);
+            $('#loading-template').fadeOut("slow");
+            $('#error-template').show()
+
+            return false;
+        }
+        
         var soal_id = $('#soal_id').val();
         $.ajax({
             type:'POST',

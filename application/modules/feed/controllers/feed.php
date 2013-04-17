@@ -32,6 +32,7 @@ class Feed extends MX_Controller {
 
         $this->template
             ->title('Feed')
+
         	->set('main_content', $content) // url konten yang akan disisipkan di #row-main-content
         	->set('main_other', null) // set ini kalo #row-main-other mau disisipi konten juga
         	->build('home/index-layout'); // ini layout-halaman yang akan digunakan untuk halaman feed
@@ -44,6 +45,7 @@ class Feed extends MX_Controller {
             
             $this->template
                 ->title('Latest Feeds')
+                ->set_partial('form', 'form')
                 ->set_partial('main', 'latest') // ini partial 'main' buat disisipin di layout-modul
                 ->set_partial('leftbar', 'leftbar') // ini partial 'sidebar' buat disisipin di layout-modul
                 ->set_partial('rightbar', 'rightbar'); // ini partial 'sidebar' buat disisipin di layout-modul

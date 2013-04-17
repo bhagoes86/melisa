@@ -59,6 +59,32 @@
     $('#submit-link').submit(function(){
         $('#message').html('Proses Input');
         $('#loading-template').show();
+        
+        var url = $('#url').val();
+        var title = $('#title').val();
+        var description = $('#description').val();
+
+        if (url == '' || title == '' || description == ''){
+            var message = '[PERINGATAN]<br><br>';
+
+            if (url == ''){
+                message += '- Anda belum menyertakan URL media / document online <br>';
+            }
+            if (title == ''){
+                message += '- Anda belum mengisikan judul <br>';
+            }
+            if (description == ''){
+                message += '- Anda belum memberikan deskripsi <br>';
+            }
+
+            $('#message-error').html(message);
+            $('#loading-template').fadeOut("slow");
+            $('#error-template').show()
+
+            return false;
+        }
+        
+        
         $.ajax({
             type:'POST',
             url:"<?php echo site_url('quiz/add_quiz_embed_link') ?>",

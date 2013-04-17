@@ -27,10 +27,6 @@
             });
         });
 
-        $('#close-error-message').click(function(){
-             $('#error-template').fadeOut('slow');
-         });
-
         //* upload dokumen
         $('#do-upload-quiz').submit(function(){
             $('#message').html('Upload Kuis....');
@@ -40,30 +36,26 @@
             var title = $('#title').val();
             var description = $('#description').val();
 
-            //validasi
-            if(quiz == ''){
-                $('#message-error').html('Anda belum menyertakan file !!!');
+            if (quiz == '' || title == '' || description == ''){
+                var message = '[PERINGATAN]<br><br>';
+                
+                if (quiz == ''){
+                    message += '- Anda belum menyertakan file kuis <br>';
+                }
+                if (title == ''){
+                    message += '- Anda belum mengisikan judul <br>';
+                }
+                if (description == ''){
+                    message += '- Anda belum memberikan deskripsi <br>';
+                }
+
+                $('#message-error').html(message);
                 $('#loading-template').fadeOut("slow");
                 $('#error-template').show()
+
+                return false;
+            }
             
-                return false;
-            }
-
-            if(title == ''){
-                $('#message-error').html('Anda belum mengisikan judul !!!');
-                $('#loading-template').fadeOut("slow");
-                $('#error-template').show()
-                
-                return false;
-            }
-
-            if(description == ''){
-                $('#message-error').html('Anda belum memberikan deskripsi !!!');
-                $('#loading-template').fadeOut("slow");
-                $('#error-template').show()
-                
-                return false;
-            }
 
             $.ajaxFileUpload({
                 url:"<?php echo site_url('quiz/upload_quiz'); ?>",
