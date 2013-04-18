@@ -1,3 +1,5 @@
+<div id="fixed">
+    
 <fieldset class="feed">
     <legend>Mungkin Anda Kenal</legend>
     <div class="list">
@@ -105,3 +107,5 @@
         <li><i class="icon-arrow-down-2 fg-color-red"></i> #DemoParkir</li>
     </ul>
 </fieldset>
+
+</div>

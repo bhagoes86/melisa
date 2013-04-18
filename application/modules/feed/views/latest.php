@@ -39,6 +39,32 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
+                <div class="comments">
+                    <ul>
+                        <li><a href="#" title=""><i class="icon-comments-4"></i> 2 komentar terdahulu..</a></li>
+                        <li><a href="#"><img src="http://localhost/melisa/application/modules/feed/img/avatar.jpg" alt=""></a>
+                            <div class="comment-data">
+                                <a href="#">Toni Haryanto</a>
+                                <small>&middot; 31 Juni, 09:15</small>
+                                <a href="#" class="delete-comment place-right hide"><i class="icon-cancel"></i></a>
+                                <p>Eeeee.. macarena! Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                            </div>
+                         </li>
+                         <li><a href="#"><img src="http://localhost/melisa/application/modules/feed/img/avatar.jpg" alt=""></a>
+                            <div class="comment-data">
+                                <a href="#">Toni Haryanto</a>
+                                <small>&middot; 31 Juni, 09:15</small>
+                                <a href="#" class="delete-comment place-right hide"><i class="icon-cancel"></i></a>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga animi iusto illum illo corporis non dolorum asperiores quisquam obcaecati excepturi error architecto laboriosam quos ipsum enim accusamus natus nostrum praesentium.</p>
+                            </div>
+                         </li >
+                    </ul>
+                    <div class="input-control textarea comment-form">
+                        <textarea name="comment" id="" placeholder ="Your comment here.."></textarea>
+                    </div>
+                </div>
             </div>
         </li>
 
@@ -76,6 +102,13 @@
                         <button title="share"><i class="icon-share"></i> <span class="badge">8</span></button>
                     </div>
                 </div>
+                <div class="comments">
+                    <ul>
+                    </ul>
+                    <div class="input-control textarea comment-form">
+                        <textarea name="comment" id="" placeholder ="Your comment here.."></textarea>
+                    </div>
+                </div>
             </div>
         </li>
 
@@ -110,6 +143,13 @@
                         <button title="share"><i class="icon-share"></i> <span class="badge">8</span></button>
                     </div>
                 </div>
+                <div class="comments">
+                    <ul>
+                    </ul>
+                    <div class="input-control textarea comment-form">
+                        <textarea name="comment" id="" placeholder ="Your comment here.."></textarea>
+                    </div>
+                </div>
             </div>
         </li>
 
@@ -135,6 +175,13 @@
                         <button title="like"><i class="icon-thumbs-up"></i> <span class="badge">100</span></button>
                         <button title="comment"><i class="icon-comments"></i> <span class="badge">70</span></button>
                         <button title="share"><i class="icon-share"></i> <span class="badge">8</span></button>
+                    </div>
+                </div>
+                <div class="comments">
+                    <ul>
+                    </ul>
+                    <div class="input-control textarea comment-form">
+                        <textarea name="comment" id="" placeholder ="Your comment here.."></textarea>
                     </div>
                 </div>
             </div>
