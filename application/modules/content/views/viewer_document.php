@@ -25,7 +25,8 @@
             <div class="page-region">
                 <div class="page-region-content">
                     <div class="grid">
-                        <div class="row" style="margin-top: 12px;">
+                        <div class="row" id="row-top-content" style="margin-top: 20px;margin-bottom: 20px;"></div>
+                        <div class="row" id="row-main-content">
                             <div class="span12">
                                 <?php if ($content->show == 0) { ?>
                                     <?php if (!$this->ion_auth->logged_in()) { ?>
