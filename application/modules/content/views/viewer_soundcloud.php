@@ -76,7 +76,7 @@
                                         <?php } else { ?>
                                             <?php echo modules::run('content/btn_content_bookmark', $content->id_content, 2) ?>
                                         <?php } ?>
-                                        <a href="<?php echo $content->file ?>" class="button bg-color-darken fg-color-white"><i class="icon-download"></i> Download</a>
+                                        <a href="<?php echo $content->file ?>" class="button bg-color-darken fg-color-white"><i class="icon-download"></i> Buka Tautan</a>
                                     </div>
 
                                     <h3 style="font-weight: bold;"><?php echo $content->title; ?></h3>

@@ -102,7 +102,7 @@
 
                                 <div id="other-right" class="span6" style="padding-top: 10px;">
                                     <h3 style="padding-top: 0px;margin-top: 0px;font-weight: bold;">Konten Lainnya</h3>
-                                    <table id="table-scribd" class="striped bordered">
+                                    <table id="table-document" class="striped bordered">
                                         <?php foreach ($other_content as $row): ?>
                                             <tr>
                                                 <td>
@@ -159,9 +159,9 @@
         $('#info-content').slideToggle("medium");
         return false;
     });
-    $('table#table-soundcloud-other').each(function() {
+    $('table#table-document').each(function() {
         var currentPage = 0;
-        var numPerPage = 5;
+        var numPerPage = 10;
         var $table = $(this);
         $table.bind('repaginate', function() {
             $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
