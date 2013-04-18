@@ -180,6 +180,7 @@
     $('#row-top-content').load("<?php echo site_url('home/top') ?>");
     $('#footbar').load("<?php echo site_url('site/footbar') ?>");
     $('#list-video').load("<?php echo site_url('content/rightbar_video_viewer') ?>");   
+    
     //Hide Error Messaga
     $('#close-error-message').click(function(){
         $('#error-template').fadeOut("slow");
@@ -191,6 +192,7 @@
         $('#info-template').fadeOut("slow");
         return false;
     });
+    
     //Google Analytic
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-31205461-3']);
