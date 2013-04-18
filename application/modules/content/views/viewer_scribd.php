@@ -133,10 +133,11 @@
                                         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                                     </div>
                                     <div class="span3"></div>
-
                                 </div>
+                                            
                                 <div id="other-right" class="span6" style="padding-top: 10px;">
-                                    <table id="table-soundcloud-other">
+                                    <h3 style="padding-top: 0px;margin-top: 0px;font-weight: bold;">Konten Lainnya</h3>
+                                    <table id="table-scribd" class="striped bordered">
                                         <?php foreach ($other_content as $row): ?>
                                             <tr>
                                                 <td>
@@ -157,15 +158,15 @@
                 </div>
 
                 <!--Loading Template-->
-                <div class="message-dialog bg-color-green fg-color-white"  style="display: none;" id="loading-template">
+                <div class="message-dialog bg-color-green fg-color-white"  style="display: none;position: fixed;top: 50%;" id="loading-template">
                     <img style="float: left;margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/preloader-w8-cycle-black.gif">
                     <p style="float: left;margin-left: 20px;margin-top: 30px;" id="message">Content for message dialog</p>
                 </div>
-                <div class="message-dialog bg-color-red fg-color-white" style="display: none;" id="error-template">
+                <div class="message-dialog bg-color-red fg-color-white" style="display: none;position: fixed;top: 50%;" id="error-template">
                     <p id="message-error">Content for message dialog</p>
                     <button class="place-right" id="close-error-message">Tutup Pesan</button>
                 </div>
-                <div class="message-dialog bg-color-blue fg-color-white" style="display: none;" id="info-template">
+                <div class="message-dialog bg-color-blue fg-color-white" style="display: none;position: fixed;top: 50%;" id="info-template">
                     <p id="message-info">Content for message dialog</p>
                     <button class="place-right" id="close-info-message">Tutup Pesan</button>
                 </div>
@@ -197,9 +198,9 @@
         return false;
     });
     
-    $('table#table-soundcloud-other').each(function() {
+    $('table#table-scribd').each(function() {
         var currentPage = 0;
-        var numPerPage = 5;
+        var numPerPage = 10;
         var $table = $(this);
         $table.bind('repaginate', function() {
             $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
