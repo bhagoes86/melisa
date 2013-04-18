@@ -141,7 +141,8 @@
     </body>
 </html>
 <script type="text/javascript">        
-    $('#topbar').load("<?php echo site_url('site/topbar_nomenu') ?>");
+    $('#topbar').load("<?php echo site_url('site/topbar') ?>");    
+    $('#row-top-content').load("<?php echo site_url('home/top') ?>");
     $('#footbar').load("<?php echo site_url('site/footbar') ?>");
     //Hide Error Messaga
     $('#close-error-message').click(function(){
