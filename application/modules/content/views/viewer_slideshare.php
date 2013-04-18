@@ -177,7 +177,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div id="list-video"></div>
+                                <div id="list-other-slideshare"></div>
                             </div>       
                         </div>
                     </div>
