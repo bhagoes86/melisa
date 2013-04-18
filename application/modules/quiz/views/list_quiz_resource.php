@@ -1,4 +1,4 @@
-<?php if (count($list_avail_quiz_resource) > 0) {?>
+<?php if (count($list_quiz_resource) > 0) {?>
 
 <table id="my-table">
     <tbody>

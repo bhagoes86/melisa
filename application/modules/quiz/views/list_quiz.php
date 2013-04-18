@@ -20,6 +20,7 @@
         <tr >
             <th style="text-align:center"><b>Kuis</b></th>
             <th style="text-align:center"><b>Hasil Kuis</b></th>
+            <th style="text-align:center"><b>Aktif</b></th>
             <th style="text-align:center"><b>Aksi</b></th>
         </tr>
     </thead>
@@ -37,7 +38,23 @@
                           
                     </div>
                 </td>
-
+                <td style="border: 1px solid white;vertical-align: middle;background-color:rgba(0, 0, 0, 0.0666667);">
+                    <?php 
+                    $date1 = date_create($quiz->start_time);
+                    $date2 = date_create($quiz->end_time);
+                    
+                    if ($date1 == $date2) {
+                        ?>
+                            <a title="aktif" href="javascript:void(0)"  data-id=""><i class="icon-checkbox-unchecked" fg-color-black"></i></a>
+                        <?php
+                    }
+                    else {
+                        ?>
+                            <a title="aktif" href="javascript:void(0)"  data-id=""><i class="icon-checkbox" fg-color-black"></i></a>
+                        <?php
+                    }
+                    ?>
+                </td>
                 <td style="width: 30px;border: 1px solid white;vertical-align: middle;background-color:rgba(0, 0, 0, 0.0666667);">
                     <a title="preview" href="javascript:void(0)" id="btn-preview" data-id="<?php echo $quiz->id_quiz; ?>"><i class="icon-book fg-color-black"></i></a>
                     <a title="edit" href="javascript:void(0)" id="btn-edit" data-id="<?php echo $quiz->id_quiz; ?>"><i class="icon-pencil fg-color-pink"></i></a>

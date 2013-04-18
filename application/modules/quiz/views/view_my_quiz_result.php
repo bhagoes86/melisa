@@ -105,7 +105,7 @@ foreach ($list_soal as $soal){
                     <?php
 
             
-            echo "Dijawab pada : ".$soal['jawaban_user']->date_modified;
+            //echo "Dijawab pada : ".$soal['jawaban_user']->date_modified;
             ?>
              </div>
                 </div>
@@ -124,7 +124,7 @@ foreach ($list_soal as $soal){
                 <?php
                
             }
-            echo "Dijawab pada : ".$soal['jawaban_user']->date_modified;
+            //echo "Dijawab pada : ".$soal['jawaban_user']->date_modified;
             ?>
              </div>
                 </div>

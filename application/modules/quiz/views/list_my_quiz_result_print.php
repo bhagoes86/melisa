@@ -24,11 +24,11 @@
         <?php $i = 1; foreach ($list_my_quiz_result as $result): ?>
             <tr>
                 <td><?php echo $i;?></td>
-                <td >
+                <td style="word-wrap: break-word;table-layout: fixed;width:160px">
                     <?php echo $result->quiz_title?>
                     <?php echo $result->group_title?> <br/> <?php echo $result->course_title?>
                 </td>
-                <td> <b><?php echo $result->owner_quiz?></b>
+                <td style="word-wrap: break-word;table-layout: fixed;width:160px"> <b><?php echo $result->owner_quiz?></b>
                 </td>
                
                 <td align="center" valign="middle">

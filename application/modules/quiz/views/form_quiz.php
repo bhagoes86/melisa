@@ -24,7 +24,7 @@ foreach ($list_soal as $soal){
                    
                     if ($soal['resource']->type == 8){
                         ?>
-                        <img src="<?php echo base_url()."resource/".$soal['resource']->file?>" />
+                        <img width="60%" height="40%" src="<?php echo base_url()."resource/".$soal['resource']->file?>" />
                         <?php
                     }
                     else if ($soal['resource']->type == 5){
