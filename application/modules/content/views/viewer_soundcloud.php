@@ -98,8 +98,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div id="other-right" class="span6" style="padding-top: 10px;">
+                                    <h3 style="padding-top: 0px;margin-top: 0px;font-weight: bold;">Konten Lainnya</h3>
                                     <table id="table-scribd" class="striped bordered">
                                         <?php foreach ($other_content as $row): ?>
                                             <tr>
