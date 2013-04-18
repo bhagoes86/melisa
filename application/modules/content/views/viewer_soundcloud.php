@@ -56,49 +56,50 @@
                                             SC.oEmbed("<?php echo $content->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere"));
                                         </script>
                                     <?php } ?>
-                                    <div id="other-left" class="span6">
-                                        <!-- AddThis Button BEGIN -->
-                                        <div style="margin-top: 15px;padding:10px 10px 0px 10px;" class="hero-unit">
-                                            <div class="addthis_toolbox addthis_default_style">
-                                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-                                                <a class="addthis_button_tweet"></a>
-                                                <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-                                                <a class="addthis_button_linkedin_counter"></a>
-                                            </div>
-                                            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
+                                </div>
+                                
+                                <div id="other-left" class="span6">
+                                    <!-- AddThis Button BEGIN -->
+                                    <div style="margin-top: 15px;padding:10px 10px 0px 10px;" class="hero-unit">
+                                        <div class="addthis_toolbox addthis_default_style">
+                                            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                            <a class="addthis_button_tweet"></a>
+                                            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                                            <a class="addthis_button_linkedin_counter"></a>
                                         </div>
-                                        <!-- AddThis Button END -->
+                                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
+                                    </div>
+                                    <!-- AddThis Button END -->
 
-                                        <div id="action">
-                                            <?php if (!$this->ion_auth->logged_in()) { ?>
-                                            <?php } else { ?>
-                                                <?php echo modules::run('content/btn_content_bookmark', $content->id_content, 2) ?>
-                                            <?php } ?>
-                                            <a href="<?php echo $content->file ?>" class="button bg-color-darken fg-color-white"><i class="icon-download"></i> Download</a>
-                                        </div>
+                                    <div id="action">
+                                        <?php if (!$this->ion_auth->logged_in()) { ?>
+                                        <?php } else { ?>
+                                            <?php echo modules::run('content/btn_content_bookmark', $content->id_content, 2) ?>
+                                        <?php } ?>
+                                        <a href="<?php echo $content->file ?>" class="button bg-color-darken fg-color-white"><i class="icon-download"></i> Download</a>
+                                    </div>
 
-                                        <h3 style="font-weight: bold;"><?php echo $content->title; ?></h3>
-                                        <p id="info-content"><?php echo nl2br($content->description); ?></p>
+                                    <h3 style="font-weight: bold;"><?php echo $content->title; ?></h3>
+                                    <p id="info-content"><?php echo nl2br($content->description); ?></p>
 
-                                        <div class="span6">
-                                            <div id="disqus_thread"></div>
-                                            <script type="text/javascript">
-                                                /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                                                var disqus_shortname = 'sakoladotnet'; // required: replace example with your forum shortname
+                                    <div class="span6">
+                                        <div id="disqus_thread"></div>
+                                        <script type="text/javascript">
+                                            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                                            var disqus_shortname = 'sakoladotnet'; // required: replace example with your forum shortname
 
-                                                /* * * DON'T EDIT BELOW THIS LINE * * */
-                                                (function() {
-                                                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                                                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                                                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                                                })();
-                                            </script>
-                                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                                            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-                                        </div>
+                                            /* * * DON'T EDIT BELOW THIS LINE * * */
+                                            (function() {
+                                                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                                                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                            })();
+                                        </script>
+                                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                                        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                                     </div>
                                 </div>
-
+                                
                                 <div id="other-right" class="span6" style="padding-top: 10px;">
                                     <h3 style="padding-top: 0px;margin-top: 0px;font-weight: bold;">Konten Lainnya</h3>
                                     <table id="table-scribd" class="striped bordered">
