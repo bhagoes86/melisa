@@ -1,21 +1,22 @@
 <a class="button bg-color-green fg-color-white" id="back-btn"  ><i class="icon-arrow-left-2" ></i>Kembali</a>
 <div class="span8">
-    <h2>Formulir Upload Document</h2>
-    <form id="do-upload-doc" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+    <h2>Formulir Upload Dokumen</h2>
+    <form id="do-upload-document" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
         <div class="input-control">
+            <label>Format PDF</label>
             <input name="userfile" type="file" id="userfile"/>
         </div>
         <input type="submit" value="Upload"/>
     </form>
-
+    <div/>
     <!-- Script -->
     <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/input-control.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/ajaxfileupload.js"></script>
     <script type="text/javascript">
         //* upload dokumen
         var id_news = <?php echo $id; ?>;
-        var type = <?php echo $type?>;
-        var att_type = <?php echo $att_type?>;
+        var type = <?php echo $type ?>;
+        var att_type = <?php echo $att_type ?>;
         $('#do-upload-doc').submit(function(){
             $('#message').html('Upload attachment');
             $('#loading-template').show();
