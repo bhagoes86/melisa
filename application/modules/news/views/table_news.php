@@ -15,10 +15,8 @@
     </head>
     <?php $this->load->view('home/js'); ?>
     <body class="modern-ui" onload="prettyPrint()">
-        <!--Top Navbar-->
-        <div class="page">
-            <?php $this->load->view('course/navbar_course'); ?>
-        </div>
+        <!--Top-->
+        <div class="page" id="topbar"></div>
         <div class="page">
             <div class="page-region">
                 <div class="page-region-content">
@@ -31,7 +29,7 @@
                                         <li><a id="btn-news"><i class="icon-screen"></i> Berita Terkini</a></li>
                                         <li><a id="btn-beasiswa"><i class="icon-book"></i> Info Beasiswa</a></li>
                                         <li><a id="btn-fitur"><i class="icon-gift"></i> Fitur Terbaru</a></li>
-                                        <li><a id="btn-kami"><i class="icon-home"></i> Sakola</a></li>
+                                        <li><a id="btn-kami"><i class="icon-home"></i> Vabel</a></li>
                                         <li><a id="btn-karir"><i class="icon-user-3"></i> Karir</a></li>
                                         <li><a id="btn-blog"><i class="icon-file"></i> Blog</a></li>
                                         <li><a id="btn-pengembangan"><i class="icon-accessibility"></i> Pengembangan</a></li>
@@ -101,20 +99,16 @@
                     </div>
                 </div>
             </div>
-            <div class="page">
-                <div class="nav-bar">
-                    <div class="nav-bar-inner padding10">
-                        <span class="element">
-                            <?php echo date('Y'); ?> <a class="fg-color-white" href="http://github.com/taufiksu/vabel">&copy; MELISA for Universitas Padjadjaran</a>
-                        </span>
-
-                    </div>
-                </div>
-            </div>
+            <!--Footer-->
+            <div class="page" id="footbar"></div>
         </div>
     </body>
 </html>
 <script type="text/javascript">
+    $(document).ready(function(){
+        $('#topbar').load("<?php echo site_url('site/topbar') ?>");
+        $('#footbar').load("<?php echo site_url('site/footbar') ?>");
+    });
     $('a#btn-news').click(function(){        
         $('#message').html("Loading Data");
         $('#loading-template').show();

@@ -13,8 +13,8 @@
 </div>
 <table class="striped" id="my-table">
     <thead>
-            <th><h3>Daftar Berita</h3></th>
-    </thead>
+    <th><h3>Daftar Berita</h3></th>
+</thead>
 <tbody>
     <?php foreach ($news as $row): ?>
         <tr style="background: rgb(247,247,247);padding-bottom: 0px;margin-bottom: 0px;">
@@ -26,14 +26,17 @@
             </td>
             <td style="border: 1px solid white;vertical-align: top;">
                 <?php echo nicetime(dtm2timestamp($row->date)) ?>
-                <a id="selected_news" class="button bg-color-yellow" style="cursor: pointer;" href="<?php echo site_url('news' . '/'.$row->id_news) ?>"><i class="icon-enter"></i> Lihat </a>
+                <a id="selected_news" class="button bg-color-yellow" style="cursor: pointer;" href="<?php echo site_url('news' . '/' . $row->id_news) ?>"><i class="icon-enter"></i> Lihat </a>
             </td>
         </tr>
     <?php endforeach; ?>
 </tbody>
 </table>
 <script type="text/javascript">
-     
+    
+    $('#topbar').load("<?php echo site_url('site/topbar') ?>");
+    $('#footbar').load("<?php echo site_url('site/footbar') ?>");
+   
     $('table#my-table').each(function() {
         var currentPage = 0;
         var numPerPage = 5;
