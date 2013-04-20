@@ -1,5 +1,5 @@
 <!--Sidebar Manager-->
-<div class="span2">
+<div class="span2 leftbar">
     <?php echo $template['partials']['leftbar']; ?>
 </div>
 <!--Konten-->
@@ -8,7 +8,7 @@
     <?php echo $template['partials']['main']; ?>
 </div>
 <!-- Rightbar -->
-<div class="span3">
+<div class="span3 rightbar">
     <?php echo $template['partials']['rightbar']; ?>
 </div>
 <!--Script-->

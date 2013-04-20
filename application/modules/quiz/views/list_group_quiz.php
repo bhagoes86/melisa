@@ -29,7 +29,21 @@
                 <td><?php echo 'grup_'.$group->id_group; ?></td>
                 <td><?php echo $group->title; ?></td>
                 <td><?php echo $group->description; ?></td>
-                <td><?php echo $group->status; ?></td>
+                <td><?php 
+                    
+                    if ($group->status == 0) {
+                        ?>
+                            <a title="aktif" href="javascript:void(0)"  data-id=""><i class="icon-checkbox-unchecked" fg-color-black"></i></a>
+                        <?php
+                    }
+                    else {
+                        ?>
+                            <a title="aktif" href="javascript:void(0)"  data-id=""><i class="icon-checkbox" fg-color-black"></i></a>
+                        <?php
+                    }
+                
+                
+                ?></td>
 
                 <td style="width: 30px;border: 1px solid white;vertical-align: middle;background-color:rgba(0, 0, 0, 0.0666667);">
                     <a title="edit grup" href="javascript:void(0)" id="btn-edit" data-id="<?php echo $group->id_group; ?>"><i class="icon-pencil fg-color-pink"></i></a>

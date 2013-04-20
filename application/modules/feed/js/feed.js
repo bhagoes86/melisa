@@ -29,3 +29,9 @@ $('.btn-shortcut').live('click', function(){
 	}
 	return false;
 });
+$('.comments li').live('mouseover', function(){
+	$(this).children().children('.delete-comment').removeClass('hide');
+});
+$('.comments li').live('mouseout', function(){
+	$(this).children().children('.delete-comment').addClass('hide');
+});

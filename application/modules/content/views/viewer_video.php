@@ -29,14 +29,12 @@
         <div class="page" id="topbar"></div>
         <!--Center Content-->
         <div class="page">
-
-            <!--Main Content-->
             <div class="page-region">
                 <div class="page-region-content">
                     <div class="grid">
-                        <div class="row" style="margin-top: 12px;">
+                        <div class="row" id="row-top-content" style="margin-top: 20px;margin-bottom: 20px;"></div>
+                        <div class="row" id="row-main-content">
                             <div class="span9">
-
                                 <?php if ($content->show == 0) { ?>
                                     <?php if (!$this->ion_auth->logged_in()) { ?>
                                         <div class="bg-color-red" style="height: 38px;text-align: center;"><h2 class="fg-color-white">Konten Menunggu Proses Verifikasi</h2></div>
@@ -83,33 +81,48 @@
                                     </div>
                                 <?php } ?>
 
-                                <div class="hero-unit">
-                                    <?php echo modules::run('content/btn_share', site_url('content/document' . '/' . $content->id_content)) ?>
+                                <!-- AddThis Button BEGIN -->
+                                <div style="margin-top: 15px;padding:10px 10px 0px 10px;" class="hero-unit">
+                                    <div class="addthis_toolbox addthis_default_style">
+                                        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                        <a class="addthis_button_tweet"></a>
+                                        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                                        <a class="addthis_button_linkedin_counter"></a>
+                                    </div>
+                                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
                                 </div>
+                                <!-- AddThis Button END -->
+
                                 <div id="action">
                                     <?php if (!$this->ion_auth->logged_in()) { ?>
                                     <?php } else { ?>
                                         <?php echo modules::run('content/btn_content_bookmark', $content->id_content, 2) ?>
                                     <?php } ?>
-                                    <a href="<?php echo $content->file ?>" class="button bg-color-darken fg-color-white"><i class="icon-link"></i> Buka Tautan</a>
+                                    <a href="<?php echo $content->file ?>" class="button bg-color-darken fg-color-white"><i class="icon-download"></i> Download</a>
                                 </div>
-                                <h2><?php echo $content->title; ?></h2>
-                                <p id="info-content"><?php echo nl2br($content->description); ?></p>
-                                <div id="disqus_thread"></div>
-                                <script type="text/javascript">
-                                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                                    var disqus_shortname = 'sakoladotnet'; // required: replace example with your forum shortname
 
-                                    /* * * DON'T EDIT BELOW THIS LINE * * */
-                                    (function() {
-                                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                                    })();
-                                </script>
-                                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                <h3 style="font-weight: bold;"><?php echo $content->title; ?></h3>
+                                <p id="info-content"><?php echo nl2br($content->description); ?></p>
+
+                                <div class="span6">
+                                    <div id="disqus_thread"></div>
+                                    <script type="text/javascript">
+                                        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                                        var disqus_shortname = 'sakoladotnet'; // required: replace example with your forum shortname
+
+                                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                                        (function() {
+                                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                        })();
+                                    </script>
+                                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                                    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                                <div class="span3"></div>
                             </div>
+
                             <div class="span3">
                                 <div class="image-container bg-color-darken place-right" style="margin-right: 0px;">
                                     <?php if ($content->type == 0) { ?><!--Video-->
@@ -125,7 +138,10 @@
                                             <img src="http://img.youtube.com/vi/<?php echo $extract_id[1]; ?>/1.jpg" style="height: 118px">
                                         </a>
                                     <?php } elseif ($content->type == 3) { ?><!--Vimeo-->
-                                        ;)
+                                        <?php $media = vimeo_cover($content->file); ?>
+                                        <a href="<?php echo site_url('content/vimeo' . '/' . $content->id_content) ?>"  target="_blank" >
+                                            <img src="<?php echo ($media['thumbnail_medium']) ?>" style="height: 118px;">
+                                        </a>
                                     <?php } ?>
                                     <div class="overlay" target="_blank" style="font-size: 16px;line-height: 23px;">
                                         Sedang diputar
@@ -141,15 +157,15 @@
                 </div>
 
                 <!--Loading Template-->
-                <div class="message-dialog bg-color-green fg-color-white"  style="display: none;" id="loading-template">
+                <div class="message-dialog bg-color-green fg-color-white"  style="display: none;position: fixed;top: 50%;" id="loading-template">
                     <img style="float: left;margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/preloader-w8-cycle-black.gif">
                     <p style="float: left;margin-left: 20px;margin-top: 30px;" id="message">Content for message dialog</p>
                 </div>
-                <div class="message-dialog bg-color-red fg-color-white" style="display: none;" id="error-template">
+                <div class="message-dialog bg-color-red fg-color-white" style="display: none;position: fixed;top: 50%;" id="error-template">
                     <p id="message-error">Content for message dialog</p>
                     <button class="place-right" id="close-error-message">Tutup Pesan</button>
                 </div>
-                <div class="message-dialog bg-color-blue fg-color-white" style="display: none;" id="info-template">
+                <div class="message-dialog bg-color-blue fg-color-white" style="display: none;position: fixed;top: 50%;" id="info-template">
                     <p id="message-info">Content for message dialog</p>
                     <button class="place-right" id="close-info-message">Tutup Pesan</button>
                 </div>
@@ -160,9 +176,11 @@
     </body>
 </html>
 <script type="text/javascript">    
-    $('#topbar').load("<?php echo site_url('site/topbar_nomenu') ?>");
+    $('#topbar').load("<?php echo site_url('site/topbar') ?>");    
+    $('#row-top-content').load("<?php echo site_url('home/top') ?>");
     $('#footbar').load("<?php echo site_url('site/footbar') ?>");
     $('#list-video').load("<?php echo site_url('content/rightbar_video_viewer') ?>");   
+    
     //Hide Error Messaga
     $('#close-error-message').click(function(){
         $('#error-template').fadeOut("slow");
@@ -174,6 +192,7 @@
         $('#info-template').fadeOut("slow");
         return false;
     });
+    
     //Google Analytic
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-31205461-3']);

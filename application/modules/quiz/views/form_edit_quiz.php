@@ -14,7 +14,7 @@
     </div>
     <hr>
     <br />
-    <p><b>Catatan </b>: Untuk menonaktifkan kuis Anda. Samakan tanggal pada waktu mulai dan waktu selesai</p>
+    <p><b>Catatan </b>: Untuk menonaktifkan kuis Anda. Samakan tanggal dan jam pada waktu mulai dan waktu selesai</p>
     <div id="info-quiz-active"></div>
     <br />
     <h4 style="margin-top: 0px;padding-top: 0px;">Waktu Mulai : </h4>

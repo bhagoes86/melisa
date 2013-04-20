@@ -170,7 +170,7 @@ class Quiz extends MX_Controller {
             $user = $this->ion_auth->user()->row();
             $temp_result = $this->model_quiz->select_quiz_result_by_user($user->id, 1)->result();
             foreach ($temp_result as $result) {
-                $result->num_soal = count($this->model_quiz->select_soal_by_quiz($result->quiz_id)->result());
+                $result->num_soal = count($this->model_quiz->select_soal_by_quiz($result->quiz_id, 0)->result());
             }
             $data['list_my_quiz_result'] = $temp_result;
             $data['list_avail_my_quiz_result'] = count($data['list_my_quiz_result']);
@@ -209,7 +209,7 @@ class Quiz extends MX_Controller {
             $quiz_title = $temp_quiz->title;
             $course_title = $temp_course->course;
 
-            $quiz_soal = $this->model_quiz->select_soal_by_quiz($id_quiz)->result();
+            $quiz_soal = $this->model_quiz->select_soal_by_quiz($id_quiz, 1)->result();
             $count_quiz_soal = count($quiz_soal);
 
             $objPHPExcel = new PHPExcel();
@@ -260,7 +260,7 @@ class Quiz extends MX_Controller {
 
 
 
-                    $temp_quiz_soal = $this->model_quiz->select_soal_by_quiz($quiz_res->quiz_id)->result();
+                    $temp_quiz_soal = $this->model_quiz->select_soal_by_quiz($quiz_res->quiz_id, 1)->result();
 
                     //$j = 0;
                     $pos_answer = 7;
@@ -354,7 +354,7 @@ class Quiz extends MX_Controller {
             $data['course_title'] = $temp_course->course;
 
             // ambil ada berapa soal pada kuis ini
-            $data['quiz_soal'] = $this->model_quiz->select_soal_by_quiz($id_quiz)->result();
+            $data['quiz_soal'] = $this->model_quiz->select_soal_by_quiz($id_quiz, 1)->result();
 
             $temp_quiz_result = $this->model_quiz->select_quiz_result_by_course_quiz_group($user->id, $id_course, $id_quiz, $id_group, 1)->result();
             $list_quiz_result = array();
@@ -364,7 +364,7 @@ class Quiz extends MX_Controller {
             foreach ($temp_quiz_result as $quiz_res) {
                 $list_quiz_result[$i] = $quiz_res;
 
-                $temp_quiz_soal = $this->model_quiz->select_soal_by_quiz($quiz_res->quiz_id)->result();
+                $temp_quiz_soal = $this->model_quiz->select_soal_by_quiz($quiz_res->quiz_id, 1)->result();
 
                 $j = 0;
                 foreach ($temp_quiz_soal as $quiz_soal) {
@@ -473,7 +473,7 @@ class Quiz extends MX_Controller {
             $user = $this->ion_auth->user()->row();
             $temp_result = $this->model_quiz->select_quiz_result_by_user($user->id, 1)->result();
             foreach ($temp_result as $result) {
-                $result->num_soal = count($this->model_quiz->select_soal_by_quiz($result->quiz_id)->result());
+                $result->num_soal = count($this->model_quiz->select_soal_by_quiz($result->quiz_id, 0)->result());
             }
             $data['list_my_quiz_result'] = $temp_result;
             $data['list_avail_my_quiz_result'] = count($data['list_my_quiz_result']);
@@ -806,7 +806,7 @@ class Quiz extends MX_Controller {
             $user = $this->ion_auth->user()->row();
 
             $data['list_quiz_resource'] = $this->model_quiz->select_all_quiz_resource($user->id)->result();
-            $data['list_avail_quiz_resource'] = 2;
+            
             $this->load->view('quiz/list_quiz_resource', $data);
         }
     }
@@ -833,7 +833,7 @@ class Quiz extends MX_Controller {
         if (!$this->ion_auth->logged_in()) {
             redirect();
         } else {
-            $data['list_soal'] = $this->model_quiz->select_soal_by_quiz($id_quiz)->result();
+            $data['list_soal'] = $this->model_quiz->select_soal_by_quiz($id_quiz, 1)->result();
             $data['quiz_id'] = $id_quiz;
             $data['list_avail_soal'] = $this->model_quiz->count_avail_soal()->result();
             $this->load->view('quiz/list_soal_by_quiz', $data);
@@ -845,7 +845,7 @@ class Quiz extends MX_Controller {
         if (!$this->ion_auth->logged_in()) {
             redirect();
         } else {
-            $data['list_choice'] = $this->model_quiz->select_choice_by_soal($id_soal)->result();
+            $data['list_choice'] = $this->model_quiz->select_choice_by_soal($id_soal, 1)->result();
             $temp = $this->model_quiz->select_soal_by_id($id_soal)->row();
             $data['quiz_id'] = $temp->quiz_id;
             $data['soal_id'] = $id_soal;
@@ -881,11 +881,11 @@ class Quiz extends MX_Controller {
             $i = 0;
 
             // mengambil soal
-            $temp_soal = $this->load->model_quiz->select_soal_by_quiz($id_quiz)->result();
+            $temp_soal = $this->load->model_quiz->select_soal_by_quiz($id_quiz, 1)->result();
             foreach ($temp_soal as $soal) {
 
                 // mengambil jawaban
-                $jawaban_benar = $this->load->model_quiz->select_key_choice_by_soal($soal->id_soal, $soal->answer)->row();
+                $jawaban_benar = $this->load->model_quiz->select_key_choice_by_soal($soal->id_soal, $soal->answer, 1)->row();
                 // echo $jawaban_benar->option_text." | ";
                 $list_jawaban[] = get_object_vars($jawaban_benar);
 
@@ -956,7 +956,7 @@ class Quiz extends MX_Controller {
             $data['quiz_title'] = $temp_quiz->title;
             $data['course_title'] = $temp_course->course;
             // ambil ada berapa soal pada kuis ini
-            $data['quiz_soal'] = $this->model_quiz->select_soal_by_quiz($id_quiz)->result();
+            $data['quiz_soal'] = $this->model_quiz->select_soal_by_quiz($id_quiz, 1)->result();
             // ambil jawaban user
             // ambil kunci jawaban
 
@@ -968,7 +968,7 @@ class Quiz extends MX_Controller {
             foreach ($temp_quiz_result as $quiz_res) {
                 $list_quiz_result[$i] = $quiz_res;
 
-                $temp_quiz_soal = $this->model_quiz->select_soal_by_quiz($quiz_res->quiz_id)->result();
+                $temp_quiz_soal = $this->model_quiz->select_soal_by_quiz($quiz_res->quiz_id, 1)->result();
 
                 $j = 0;
                 foreach ($temp_quiz_soal as $quiz_soal) {
@@ -1021,12 +1021,12 @@ class Quiz extends MX_Controller {
             $i = 0;
 
             // mengambil soal
-            $temp_soal = $this->load->model_quiz->select_soal_by_quiz($temp_result->quiz_id)->result();
+            $temp_soal = $this->load->model_quiz->select_soal_by_quiz($temp_result->quiz_id, 1)->result();
             foreach ($temp_soal as $soal) {
 
 
                 // mengambil jawaban
-                $temp_jawaban = $this->load->model_quiz->select_choice_by_soal($soal->id_soal)->result();
+                $temp_jawaban = $this->load->model_quiz->select_choice_by_soal($soal->id_soal, 1)->result();
                 foreach ($temp_jawaban as $jawaban) {
                     $list_jawaban[] = get_object_vars($jawaban);
                 }
@@ -1035,7 +1035,7 @@ class Quiz extends MX_Controller {
                 $user_answer = $this->load->model_quiz->select_user_answer_by_soal($id_result, $soal->id_soal)->row();
 
                 // mengambil kunci jawaban
-                $kunci_jawaban = $this->load->model_quiz->select_key_choice_by_soal($soal->id_soal, $soal->answer)->row();
+                $kunci_jawaban = $this->load->model_quiz->select_key_choice_by_soal($soal->id_soal, $soal->answer, 1)->row();
 
 
                 // menyimpan ke dalam array
@@ -1096,12 +1096,12 @@ class Quiz extends MX_Controller {
             $i = 0;
 
             // mengambil soal
-            $temp_soal = $this->load->model_quiz->select_soal_by_quiz($temp_result->quiz_id)->result();
+            $temp_soal = $this->load->model_quiz->select_soal_by_quiz($temp_result->quiz_id, 0)->result();
             foreach ($temp_soal as $soal) {
 
 
                 // mengambil jawaban
-                $temp_jawaban = $this->load->model_quiz->select_choice_by_soal($soal->id_soal)->result();
+                $temp_jawaban = $this->load->model_quiz->select_choice_by_soal($soal->id_soal, 0)->result();
                 foreach ($temp_jawaban as $jawaban) {
                     $list_jawaban[] = get_object_vars($jawaban);
                 }
@@ -1110,7 +1110,7 @@ class Quiz extends MX_Controller {
                 $user_answer = $this->load->model_quiz->select_user_answer_by_soal($id_result, $soal->id_soal)->row();
 
                 // mengambil kunci jawaban
-                $kunci_jawaban = $this->load->model_quiz->select_key_choice_by_soal($soal->id_soal, $soal->answer)->row();
+                $kunci_jawaban = $this->load->model_quiz->select_key_choice_by_soal($soal->id_soal, $soal->answer, 0)->row();
 
 
                 // menyimpan ke dalam array
@@ -1162,11 +1162,11 @@ class Quiz extends MX_Controller {
             $i = 0;
 
             // mengambil soal
-            $temp_soal = $this->load->model_quiz->select_soal_by_quiz($id_quiz)->result();
+            $temp_soal = $this->load->model_quiz->select_soal_by_quiz($id_quiz, 1)->result();
             foreach ($temp_soal as $soal) {
 
                 // mengambil jawaban
-                $temp_jawaban = $this->load->model_quiz->select_choice_by_soal($soal->id_soal)->result();
+                $temp_jawaban = $this->load->model_quiz->select_choice_by_soal($soal->id_soal, 1)->result();
                 foreach ($temp_jawaban as $jawaban) {
                     $list_jawaban[] = get_object_vars($jawaban);
                 }
@@ -1214,7 +1214,7 @@ class Quiz extends MX_Controller {
         if (!$this->ion_auth->logged_in()) {
             redirect();
         } else {
-            $data['count_quiz_soal'] = count($this->load->model_quiz->select_soal_by_quiz($quiz_id)->result());
+            $data['count_quiz_soal'] = count($this->load->model_quiz->select_soal_by_quiz($quiz_id, 1)->result());
             $data['result'] = $this->load->model_quiz->select_quiz_result_by_quiz_user_group_id($quiz_id, $user_id, $group_id, $tiket_quiz)->row();
             $this->load->view('quiz/view_quiz_result', $data);
         }
@@ -1784,7 +1784,7 @@ class Quiz extends MX_Controller {
             $data_tryout['expired'] = 1;
             $this->load->model_quiz->update_pass_tryout($temp2->id_quiz_pass_tryout, $data_tryout);
 
-            $key_answer = $this->load->model_quiz->select_soal_by_quiz($id_quiz)->result();
+            $key_answer = $this->load->model_quiz->select_soal_by_quiz($id_quiz, 1)->result();
             $data2['result_id'] = $tiket_quiz;
             $banyak_soal = count($key_answer);
             $i = 0;
@@ -1898,7 +1898,7 @@ class Quiz extends MX_Controller {
             $data['resource_id'] = $temp->resource_id;
             $data['resource'] = $this->model_quiz->select_quiz_resource_by_id($temp->resource_id)->row();
 
-            $data['list_choice'] = $this->model_quiz->select_choice_by_soal($id_soal)->result();
+            $data['list_choice'] = $this->model_quiz->select_choice_by_soal($id_soal, 1)->result();
             $this->load->view('quiz/form_edit_soal', $data);
         }
     }
@@ -2092,6 +2092,8 @@ class Quiz extends MX_Controller {
             } else {
                 $this->load->model_quiz->delete_quiz_resource($id_quiz_resource);
             }
+            $data['resource_id'] = 0;
+            $this->load->model_quiz->delete_quiz_resource_from_soal($id_quiz_resource, $data);
         }
     }
 
@@ -2130,11 +2132,11 @@ class Quiz extends MX_Controller {
             redirect();
         } else {
             // ambil dulu soal
-            $list_soal = $this->model_quiz->select_soal_by_quiz($id_quiz)->result();
+            $list_soal = $this->model_quiz->select_soal_by_quiz($id_quiz, 1)->result();
 
             foreach ($list_soal as $soal) {
                 // ambil jawaban tiap soal
-                $list_choice = $this->model_quiz->select_choice_by_soal($soal->id_soal)->result();
+                $list_choice = $this->model_quiz->select_choice_by_soal($soal->id_soal, 1)->result();
 
                 // hapus jawaban tiap soal
                 foreach ($list_choice as $choice) {
@@ -2160,7 +2162,7 @@ class Quiz extends MX_Controller {
         if (!$this->ion_auth->logged_in()) {
             redirect();
         } else {
-            $list_choice = $this->model_quiz->select_choice_by_soal($id_soal)->result();
+            $list_choice = $this->model_quiz->select_choice_by_soal($id_soal, 1)->result();
 
             foreach ($list_choice as $choice) {
                 $data['deleted'] = 0;
@@ -2194,11 +2196,11 @@ class Quiz extends MX_Controller {
             redirect();
         } else {
             // ambil dulu soal
-            $list_soal = $this->model_quiz->select_soal_by_quiz($id_quiz)->result();
+            $list_soal = $this->model_quiz->select_soal_by_quiz($id_quiz, 1)->result();
 
             foreach ($list_soal as $soal) {
                 // ambil jawaban tiap soal
-                $list_choice = $this->model_quiz->select_choice_by_soal($soal->id_soal)->result();
+                $list_choice = $this->model_quiz->select_choice_by_soal($soal->id_soal, 1)->result();
 
                 // hapus jawaban tiap soal
                 foreach ($list_choice as $choice) {
@@ -2222,7 +2224,7 @@ class Quiz extends MX_Controller {
         if (!$this->ion_auth->logged_in()) {
             redirect();
         } else {
-            $list_choice = $this->model_quiz->select_choice_by_soal($id_soal)->result();
+            $list_choice = $this->model_quiz->select_choice_by_soal($id_soal, 1)->result();
 
             foreach ($list_choice as $choice) {
                 $this->load->model_quiz->delete_choice($choice->id_choice);

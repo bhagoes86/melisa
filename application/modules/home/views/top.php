@@ -12,7 +12,7 @@
         <button id="btn-login" style="margin-right: 0px;float: right;" class="image-button bg-color-blue fg-color-white">LOGIN<img class="bg-color-blue" src="<?php echo base_url() ?>asset/metro/images/lock-open.png"></button>
     <?php } else { ?>
         <button class="bg-color-red fg-color-white" id="btn-shortcut-content">SUBMIT KONTEN <i class="icon-upload"></i></button>
-        <button href="<?php echo site_url('feed'); ?>" class="bg-color-red fg-color-white" id="btn-shortcut-feed">FEED <i class="icon-upload"></i></button>
+        <!--<button href="<?php echo site_url('feed'); ?>" class="bg-color-red fg-color-white" id="btn-shortcut-feed">FEED <i class="icon-upload"></i></button>-->
         <button id="btn-manager" style="margin-right: 0px;float: right;" class="bg-color-blue fg-color-white">
             <?php
             $user = $this->ion_auth->user()->row();
