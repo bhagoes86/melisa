@@ -41,3 +41,4 @@
     })();
 
 </script>
+<div onload="prettyPrint();loadPlayer();" id="player" style="background: #e5e5e5;">You need Flash player 8+ and JavaScript enabled to view this video.</div>

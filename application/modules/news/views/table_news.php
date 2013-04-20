@@ -49,19 +49,20 @@
                                     <?php if ($news == NULL) { ?>
 
                                     <?php } else { ?>
-                                        <div class="bg-color-blueDark" style="margin-bottom: 10px;">
-                                            <a class="fg-color-white">&nbsp;Title</a>
+                                        <div  style="margin-bottom: 10px;">
+                                            <h3><?php echo $news->title ?></h3>
                                         </div>
-                                        <p><?php echo $news->title ?></p>
+
                                     <?php } ?>
 
                                     <?php if ($news == NULL) { ?>
 
                                     <?php } else { ?>
-                                        <div class="bg-color-greenDark" style="margin-bottom: 10px;">
-                                            <a class="fg-color-white">&nbsp;Isi</a>
+                                        <div  style="margin-bottom: 10px;">
+                                            <p><?php echo $news->news ?></p>
                                         </div>
-                                        <p><?php echo $news->news ?></p>
+
+
                                     <?php } ?>
                                     <?php
                                     if (($news->attachment_type == 2) || ($news->attachment_type == 3) || ($news->attachment_type == 4) || ($news->attachment_type == 7)) {
