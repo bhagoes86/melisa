@@ -48,8 +48,8 @@ class Site extends MX_Controller {
 
     function update_header() {
 
-        $data['header'] = $this->input->post('header', true);
-        $this->model_site->header_update($data['header']);
+        $data['topbar'] = $this->input->post('topbar', true);
+        $this->model_site->header_update($data['topbar']);
         //print_r($data);
     }
 
@@ -61,7 +61,7 @@ class Site extends MX_Controller {
     }
 
     function update_footer() {
-        $data['footer'] = $this->input->post('footer', true);
+        $data['footer'] = $this->input->post('footbar', true);
         $this->model_site->footer_update($data['footer']);
     }
 
