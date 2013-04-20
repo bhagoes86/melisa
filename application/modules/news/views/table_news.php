@@ -105,10 +105,10 @@
     </body>
 </html>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('#topbar').load("<?php echo site_url('site/topbar') ?>");
-        $('#footbar').load("<?php echo site_url('site/footbar') ?>");
-    });
+    
+    $('#topbar').load("<?php echo site_url('site/topbar') ?>");
+    $('#footbar').load("<?php echo site_url('site/footbar') ?>");
+
     $('a#btn-news').click(function(){        
         $('#message').html("Loading Data");
         $('#loading-template').show();
