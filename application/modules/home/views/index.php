@@ -59,7 +59,7 @@
                             <div class="grid">
                                 <div class="span12 bg-color-gray"></div>                                    
                                 <div class="row" style="color: #6d6e71;text-decoration: none;font-family: 'sofiapro',Arial,sans-serif;font-size: 14px;margin-right: 15px;">                                    
-                                    <a id="sakola_news"  style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/4') ?>">Sakola</a>&nbsp;&nbsp;&nbsp;
+                                    <a id="sakola_news"  style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/4') ?>">Tentang</a>&nbsp;&nbsp;&nbsp;
                                     <a id="karir_news" style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/5') ?>">Karir</a>&nbsp;&nbsp;&nbsp;
                                     <a id="blog_news" style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/6') ?>">Blog</a>&nbsp;&nbsp;&nbsp;
                                     <a id="pengembangan_news" style="cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/7') ?>">Pengembang</a>&nbsp;&nbsp;&nbsp;
