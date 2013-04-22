@@ -140,10 +140,10 @@
                         </div>
                     <?php } elseif ($row->type == 5) { ?>
                     <?php } elseif ($row->type == 6) { ?>
-                        <div id="putTheWidgetHere"></div>
+<!--                        <div id="putTheWidgetHere"></div>
                         <script type="text/JavaScript">
                             SC.oEmbed("<?php echo $row->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere"));
-                        </script>
+                        </script>-->
                     <?php } elseif ($row->type == 7) { ?>
                         <div style="background-color: #e5e5e5; height: 600px;">
                             <?php
