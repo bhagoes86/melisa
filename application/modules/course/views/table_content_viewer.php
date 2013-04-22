@@ -78,6 +78,8 @@
                             }
                             ?>
                         </div>
+                        <br/>
+                        <a class="button"><i class="icon-screen"></i> Buka</a>
                     <?php } elseif ($row->type == 3) { ?>
                         <!--Vimeo-->
                         <div style="background-color: #000;height: 394px;">
@@ -107,7 +109,6 @@
                             }
                             ?>
                         </div>
-                        <br/>
                         <a class="button"><i class="icon-screen"></i> Buka</a>
                     <?php } elseif ($row->type == 4) { ?>
                         <!--Scribd-->
@@ -137,8 +138,7 @@
                                     die;
                             }
                             ?>
-                        </div>                        
-                        <br/>
+                        </div>
                         <a class="button"><i class="icon-screen"></i> Buka</a>
                     <?php } elseif ($row->type == 5) { ?>
                         <script type="text/javascript" src="<?php echo base_url() ?>asset/slideshare/swfobject.js"></script>
@@ -166,8 +166,7 @@
                         <div id="putTheWidgetHere"></div>
                         <script type="text/JavaScript">
                             SC.oEmbed("<?php echo $row->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere"));
-                        </script>                        
-                        <br/>
+                        </script>
                         <a class="button"><i class="icon-screen"></i> Buka</a>
                     <?php } elseif ($row->type == 7) { ?>
                         <!--Docstoc-->
