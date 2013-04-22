@@ -14,6 +14,8 @@
         <ul>
             <li><a id="btn-my-course"><i class="icon-address-book"></i> Materi Ajar</a></li>
             <li><a id="btn-quiz"><i class="icon-drawer-2"></i> Kelola Kuis</a></li>
+            <li><a id="btn-assignment"><i class="icon-box-remove"></i> Kelola Tugas</a></li>
+            
         </ul>
         <ul>
             <li><a id="btn-watch-later"><i class="icon-bookmark-2"></i> Lihat Nanti</a></li>
@@ -121,6 +123,16 @@
             $('#loading-template').fadeOut("slow");
         });
     });
+    $('a#btn-assignment').click(function(){
+        $('#message').html("Loading Data");
+        $('#loading-template').show();
+        $('#content-right').load("<?php echo site_url('assignment/index') ?>",function(){
+            $('#loading-template').fadeOut("slow");
+        });
+    });
+    
+    
+    
     
     //Logout
     $('#btn-logout').click(function(){        

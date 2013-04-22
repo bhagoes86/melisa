@@ -22,8 +22,6 @@ class Quiz extends MX_Controller {
         } else {
             $user = $this->ion_auth->user()->row();
 
-            $today = getdate();
-            
 
             // mengambil data kuis
             $data['list_quiz'] = $this->model_quiz->select_all_quiz($user->id)->result();
@@ -1622,7 +1620,7 @@ class Quiz extends MX_Controller {
             $data['num_per_page'] = 5;
             $data['status'] = 1;
             $data['deleted'] = 1;
-
+            
             $id_quiz = $this->model_quiz->insert_quiz($data);
 
             $config['upload_path'] = './resource/';
@@ -1640,6 +1638,13 @@ class Quiz extends MX_Controller {
             } else {
                 $hasil = $this->upload->data();
                 $data2['file_quiz'] = $hasil['file_name'];
+                $data2['size'] = $hasil['file_size'];
+                $data2['ext'] = $hasil['file_ext'];
+                $today = getdate();
+                $temp_time = date_create($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes'] . ':'. $today['seconds']);
+
+                $data2['start_time'] = date_format($temp_time, 'Y-m-d H:i:s');
+                $data2['end_time'] = date_format($temp_time, 'Y-m-d H:i:s');
 
                 $this->model_quiz->update_quiz($id_quiz, $data2);
 

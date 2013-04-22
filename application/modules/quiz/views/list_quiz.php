@@ -5,13 +5,6 @@
 <a class="button bg-color-purple fg-color-white" id="quiz-file-sample" href="<?php echo base_url().'asset/help/contoh-file-kuis.xls'?>"><i class="icon-download"></i>Contoh File Kuis</a>
 
 <hr />
-<div class="row" id="row-message">
-    <div class="message-dialog bg-color-yellow fg-color-black" style="display: none;" id="confirm-template" >
-        <p id="message-confirm">Content for message dialog</p>
-        <button class="place-right" id="cancel-confirm-message">Batal</button>
-        <button class="place-right" id="accept-confirm-message" data-id="">Ya</button>
-    </div>
-</div>
 
     <?php if (count($list_avail_quiz) > 0) {?>
 
@@ -75,6 +68,16 @@
                 <td><h2>Tidak ada  quiz yang bisa dipakai....</h2></td>
             </tr>
         <?php }?>
+            
+            
+<div class="row" id="row-message">
+    <div class="message-dialog bg-color-yellow fg-color-black" style="display: none;" id="confirm-template" >
+        <p id="message-confirm">Content for message dialog</p>
+        <button class="place-right" id="cancel-confirm-message">Batal</button>
+        <button class="place-right" id="accept-confirm-message" data-id="">Ya</button>
+    </div>
+</div>
+
 <script type="text/javascript">
 
     $('#quiz-my-quiz-result').click(function(){
