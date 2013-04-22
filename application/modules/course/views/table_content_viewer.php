@@ -188,10 +188,40 @@
                         </div>
                     <?php } ?>
                     <div>
-                        <h4><?php echo $row->title; ?></h4>                        
-                        <a class="button" target="_blank" href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>">
-                            <i class="icon-screen"></i> Buka
-                        </a>
+                        <h4><?php echo $row->title; ?></h4>   
+                        <?php if ($row->type == 0) { ?>
+                            <a class="button" target="_blank" href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>">
+                                <i class="icon-screen"></i> Buka
+                            </a>
+                        <?php } elseif ($row->type == 1) { ?>
+                            <a class="button" target="_blank" href="<?php echo site_url('content/document' . '/' . $row->id_content) ?>">
+                                <i class="icon-screen"></i> Buka
+                            </a>
+                        <?php } elseif ($row->type == 2) { ?>
+                            <a class="button" target="_blank" href="<?php echo site_url('content/youtube' . '/' . $row->id_content) ?>">
+                                <i class="icon-screen"></i> Buka
+                            </a>
+                        <?php } elseif ($row->type == 3) { ?>
+                            <a class="button" target="_blank" href="<?php echo site_url('content/vimeo' . '/' . $row->id_content) ?>">
+                                <i class="icon-screen"></i> Buka
+                            </a>
+                        <?php } elseif ($row->type == 4) { ?>
+                            <a class="button" target="_blank" href="<?php echo site_url('content/scribd' . '/' . $row->id_content) ?>">
+                                <i class="icon-screen"></i> Buka
+                            </a>
+                        <?php } elseif ($row->type == 5) { ?>
+                            <a class="button" target="_blank" href="<?php echo site_url('content/slideshare' . '/' . $row->id_content) ?>">
+                                <i class="icon-screen"></i> Buka
+                            </a>
+                        <?php } elseif ($row->type == 6) { ?>
+                            <a class="button" target="_blank" href="<?php echo site_url('content/soundcloud' . '/' . $row->id_content) ?>">
+                                <i class="icon-screen"></i> Buka
+                            </a>
+                        <?php } elseif ($row->type == 7) { ?>
+                            <a class="button" target="_blank" href="<?php echo site_url('content/docstoc' . '/' . $row->id_content) ?>">
+                                <i class="icon-screen"></i> Buka
+                            </a>
+                        <?php } ?>
                     </div>
                 </td>
             </tr>
