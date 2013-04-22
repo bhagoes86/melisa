@@ -11,6 +11,7 @@
     .flowplayer .fp-buffer { background-color: rgba(249, 249, 249, 1)}
 </style>
 <h3 style="padding-top: 0px;margin-top: 0px;font-weight: bold;">Materi</h3>
+<hr/>
 <div class='pager toolbar' style="vertical-align: middle;">
     <a style="cursor: pointer;text-decoration: none;" alt='First' class='firstPage button'><i class="icon-first"></i></a>
     <a style="cursor: pointer;text-decoration: none;" alt='Previous' class='prevPage button'><i class="icon-arrow-left-2"></i></a>
