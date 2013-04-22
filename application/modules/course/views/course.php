@@ -85,10 +85,12 @@
                             <div class="span12">
                                 <div class="span8" id="learning-content" style="padding-top: 0px;">
                                     <h3 style="padding-top: 0px;margin-top: 0px;font-weight: bold;">Materi</h3>
+                                    <hr/>
                                     <iframe style="width: 100%;height: 400px;" src="http://www.youtube.com/embed/ZgqhsgNobiw" frameborder="0" allowfullscreen></iframe>
                                 </div>
                                 <div class="span4" style="padding-top: 0px;">
                                     <h3 style="padding-top: 0px;margin-top: 0px;font-weight: bold;">Silabus</h3>
+                                    <hr/>
                                     <table class="bordered">                                    
                                         <tbody>      
                                             <?php foreach ($silabus as $row): ?>
@@ -107,10 +109,12 @@
                             <div class="span12">
                                 <div class="span6">
                                     <h3 style="margin-top: 0px;font-weight: bold;">Evaluasi</h3>
+                                    <hr/>
                                     <div id="list-quiz"></div>
                                 </div>
                                 <div class="span6">
-                                    <h3 style="margin-top: 0px;font-weight: bold;">Diskusi</h3>                                    
+                                    <h3 style="margin-top: 0px;font-weight: bold;">Diskusi</h3>  
+                                    <hr/>
                                     <div id="disqus_thread"></div>
                                     <script type="text/javascript">
                                         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
