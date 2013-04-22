@@ -1,8 +1,7 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/assets/jquery-1.8.2.min.js"></script>
 <script src="<?php echo base_url() ?>asset/flowplayer/flowplayer.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/flowplayer/skin/minimalist.css" />
-<script type="text/javascript" src="<?php echo base_url(); ?>asset/js/jquery.paginatetable.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>asset/slideshare/swfobject.js"></script>    
+<script type="text/javascript" src="<?php echo base_url(); ?>asset/js/jquery.paginatetable.js"></script>   
 <style type="text/css">
     /* custom player skin */
     .flowplayer { background-color: #222; background-size: cover; }
@@ -134,6 +133,7 @@
                             ?>
                         </div>
                     <?php } elseif ($row->type == 5) { ?>
+                        <script type="text/javascript" src="<?php echo base_url() ?>asset/slideshare/swfobject.js"></script>
                         <!--Slideshare-->
                         <?php
                         $url = $row->file;
@@ -150,37 +150,7 @@
                         $slideshare = json_decode($output);
                         $presentation = explode("/", "$slideshare->slide_image_baseurl");
                         ?>
-                        <script type="text/javascript">    
-                            var flashMovie;
-                            //Load the flash player. Properties for the player can be changed here.
-                            function loadPlayer() {
-                                //allowScriptAccess from other domains
-                                var params = { allowScriptAccess: "always" };
-                                var atts = { id: "player<?php echo $row->id_content ?>" };
-                                                        
-                                //doc: The path of the file to be used
-                                //startSlide: The number of the slide to start from
-                                //rel: Whether to show a screen with related slideshows at the end or not. 0 means false and 1 is true..
-                                var flashvars = { doc : "<?php print_r($presentation['3']) ?>", startSlide : 1, rel : 0 };
-
-                                //Generate the embed SWF file
-                                swfobject.embedSWF("http://static.slidesharecdn.com/swf/ssplayer2.swf", "player", "100%", "560", "8", null, flashvars, params, atts);
-
-                                //Get a reference to the player
-                                flashMovie = document.getElementById("player<?php echo $row->id_content ?>");
-                            }
-
-                            //Jump to the appropriate slide
-                            function jumpTo(){
-                                flashMovie.jumpTo(parseInt(document.getElementById("slidenumber").value));
-                            }
-
-                            //Update the slide number in the field for the same
-                            function updateSlideNumber(){
-                                document.getElementById("slidenumber").value = flashMovie.getCurrentSlide();
-                            }
-                        </script>
-                        <div id="player<?php echo $row->id_content ?>" style="background: #e5e5e5;">You need Flash player 8+ and JavaScript enabled to view this video.</div>
+                        <iframe src="http://www.slideshare.net/slideshow/embed_code/<?php echo $slideshare->slideshow_id ?>?rel=0" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="width: 100%;height: 450px;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:0px;padding-bottom: 0px;" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe> 
                     <?php } elseif ($row->type == 6) { ?>
                         <!--Soundcloud-->
                         <div id="putTheWidgetHere"></div>
