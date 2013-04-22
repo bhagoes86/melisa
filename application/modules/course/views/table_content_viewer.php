@@ -151,7 +151,10 @@
                         $presentation = explode("/", "$slideshare->slide_image_baseurl");
                         print_r($slideshare);
                         ?>
-                        <iframe src="http://www.slideshare.net/slideshow/embed_code/19004055?rel=0" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe> 
+                        <!--                        stdClass Object ( [type] => rich [total_slides] => 11 [thumbnail_width] => 170 [height] => 355 [provider_name] => SlideShare [title] => 04 perencanaan [thumbnail_height] => 128 [html] => 
+                                                04 perencanaan from gigin k basar
+                                                [provider_url] => http://www.slideshare.net [version] => 1.0 [slide_image_baseurl_suffix] => -425.jpg [width] => 425 [author_name] => gigin k basar [version_no] => 1364783886 [author_url] => http://www.slideshare.net/giginkb [slideshow_id] => 17971517 [thumbnail] => //cdn.slidesharecdn.com/ss_thumbnails/04perencanaan-130331213730-phpapp02-thumbnail.jpg?1364783886 [slide_image_baseurl] => //image.slidesharecdn.com/04perencanaan-130331213730-phpapp02/85/slide- [conversion_version] => 2 ) -->
+                        <iframe src="http://www.slideshare.net/slideshow/embed_code/<?php echo $slideshare->slideshow_id ?>?rel=0" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe> 
                     <?php } elseif ($row->type == 6) { ?>
                         <!--Soundcloud-->
                         <div id="putTheWidgetHere"></div>
