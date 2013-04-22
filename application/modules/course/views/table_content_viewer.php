@@ -134,7 +134,44 @@
                         </div>
                     <?php } elseif ($row->type == 5) { ?>
                     <?php } elseif ($row->type == 6) { ?>
+                        <script src="//connect.soundcloud.com/sdk.js"></script>
+                        <script>
+                            SC.initialize({
+                                client_id: "938418853596f90572983f377348dc57"
+                            });
+                        </script>
+                        <div id="putTheWidgetHere"></div>
+                        <script type="text/JavaScript">
+                            SC.oEmbed("<?php echo $content->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere"));
+                        </script>
                     <?php } elseif ($row->type == 7) { ?>
+                        <div style="background-color: #e5e5e5; height: 600px;">
+                            <?php
+                            $media = analyze_media($content->file);
+                            $trace = explode('^^^', $media);
+                            switch ($trace[0]) {
+                                case 'image' :
+                                    echo "<a href='" . $trace[3] . "' target='_blank'><img src='" . $trace[3] . "' width='100%' /></a>";
+                                    break;
+                                case 'youtube' :
+                                    echo youtube($trace[1]);
+                                    break;
+                                case 'vimeo' :
+                                    echo vimeoLarge($trace[1]);
+                                    break;
+                                case 'scribd' :
+                                    echo scribd($trace[1]);
+                                    break;
+                                case 'docstoc' :
+                                    echo docstocLarge($trace[1]);
+                                    break;
+                                case 'link' :
+                                    break;
+                                default :
+                                    die;
+                            }
+                            ?>
+                        </div>
                     <?php } ?>
                 </td>
             </tr>
