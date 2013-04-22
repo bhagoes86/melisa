@@ -23,8 +23,8 @@
         <tbody>
             <tr style="padding: 0px;margin: 0px;">
                 <td style="width: 100%;padding: 4px 4px 4px 4px;">
-                    <!--Video-->
                     <?php if ($row->type == 0) { ?>
+                        <!--Video-->
                         <div data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="background-color: #000;width: 100%;" data-ratio="0.5625">
                             <video>
                                 <?php if ($row->ext == '.mp4') { ?> 
@@ -43,6 +43,16 @@
                             </video>
                         </div>
                     <?php } elseif ($row->type == 1) { ?>
+                        <!--Document-->
+                        <div style="background-color: whiteSmoke;
+                             z-index: 1;
+                             position: absolute;
+                             height: 30px;
+                             width: 30px;
+                             float: right;
+                             margin-top: 2px;
+                             right: 0px;"></div>
+                        <iframe style="width: 100%;height: 600px;border: 0px;" src="http://docs.google.com/viewer?url=<?php echo base_url() . 'resource/' . $row->file . '&embedded=true' ?>"></iframe>
                     <?php } elseif ($row->type == 2) { ?>
                         <!--Youtube-->
                         <div style="background-color: #000;height: 394px;">
