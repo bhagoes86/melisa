@@ -70,6 +70,7 @@
                             </div>
                         </div>
 
+                         
                         <div class="row" id="row-message">
                             <div class="message-dialog bg-color-green fg-color-white" style="display: none;" id="loading-template">
                                 <img style="float: left;margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/preloader-w8-cycle-black.gif">
