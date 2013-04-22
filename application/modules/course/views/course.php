@@ -163,69 +163,6 @@
         $('#info-template').fadeOut("slow");
         return false;
     });
-    // Write on keyup event of keyword input element
-    $("#kwd_search_video").keyup(function(){
-        // When value of the input is not blank
-        if( $(this).val() != "")
-        {
-            // Show only matching TR, hide rest of them
-            $("#my-table tbody>tr").hide();
-            $("#my-table td:contains-ci('" + $(this).val() + "')").parent("tr").show();
-        }
-        else
-        {
-            // When there is no input or clean again, show everything back
-            $("#my-table tbody>tr").show();
-        }
-    });
-    $("#kwd_search_document").keyup(function(){
-        // When value of the input is not blank
-        if( $(this).val() != "")
-        {
-            // Show only matching TR, hide rest of them
-            $(".table-document tbody>tr").hide();
-            $(".table-document td:contains-ci('" + $(this).val() + "')").parent("tr").show();
-        }
-        else
-        {
-            // When there is no input or clean again, show everything back
-            $(".table tbody>tr").show();
-        }
-    });
-    // jQuery expression for case-insensitive filter
-    $.extend($.expr[":"], 
-    {
-        "contains-ci": function(elem, i, match, array) 
-        {
-            return (elem.textContent || elem.innerText || $(elem).text() || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
-        }
-    });
-    $('table#my-table').each(function() {
-        var currentPage = 0;
-        var numPerPage = 5;
-        var $table = $(this);
-        $table.bind('repaginate', function() {
-            $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
-        });
-        $table.trigger('repaginate');
-        var numRows = $table.find('tbody tr').length;
-        var numPages = Math.ceil(numRows / numPerPage);
-        var $pager = $('<div class="toolbar"></div>');
-        
-        for (var page = 0; page < numPages; page++) {
-            $('<a class="button page-number" style="cursor:pointer;margin-right:4px;"></a>').text(page + 1).bind('click', {
-                newPage: page
-            }, function(event) {
-                currentPage = event.data['newPage'];
-                $table.trigger('repaginate');
-                $(this).addClass('active').siblings().removeClass('active');
-            }).appendTo($pager).addClass('clickable');
-
-            
-            
-        }
-        $pager.insertBefore($table).find('span.page-number:first').addClass('active');
-    });
     //Google Analytic
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-31205461-3']);
