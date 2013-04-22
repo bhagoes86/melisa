@@ -24,7 +24,7 @@
                 <li><a id="btn-news"><i class="icon-screen"></i> Berita Terkini</a></li>
                 <li><a id="btn-beasiswa"><i class="icon-book"></i> Info Beasiswa</a></li>
                 <li><a id="btn-fitur"><i class="icon-gift"></i> Fitur Terbaru</a></li>
-                <li><a id="btn-kami"><i class="icon-home"></i> Sakola</a></li>
+                <li><a id="btn-kami"><i class="icon-home"></i> Vabel</a></li>
                 <li><a id="btn-karir"><i class="icon-user-3"></i> Karir</a></li>
                 <li><a id="btn-blog"><i class="icon-file"></i> Blog</a></li>
                 <li><a id="btn-pengembangan"><i class="icon-accessibility"></i> Pengembangan</a></li>
