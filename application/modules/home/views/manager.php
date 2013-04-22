@@ -43,7 +43,7 @@
             ?>
         </h2>
         <p>
-            Selamat datang di layanan sakola.net <br/>Halaman ini dapat digunakan untuk mengelola konten yang ditautkan. 
+            Selamat datang <br/>Halaman ini dapat digunakan untuk mengelola konten yang ditautkan. 
             Masing-masing fitur dapat diakses melalui menu di sebelah kiri. <br/><br/>Selamat menggunakan ^-^
         </p>
     </div>
