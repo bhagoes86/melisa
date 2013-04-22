@@ -84,7 +84,7 @@
                                     echo youtube($trace[1]);
                                     break;
                                 case 'vimeo' :
-                                    echo vimeo($trace[1]);
+                                    echo vimeoLarge($trace[1]);
                                     break;
                                 case 'scribd' :
                                     echo scribd($trace[1]);
