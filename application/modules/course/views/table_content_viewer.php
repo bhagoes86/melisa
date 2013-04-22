@@ -103,7 +103,7 @@
                         </div>
                     <?php } elseif ($row->type == 4) { ?>
                         <!--Scribd-->
-                        <div style="background-color: #e5e5e5;">
+                        <div style="background-color: #e5e5e5;height: 600px;">
                             <?php
                             $media = analyze_media($row->file);
                             $trace = explode('^^^', $media);
