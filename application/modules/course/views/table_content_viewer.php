@@ -23,6 +23,7 @@
         <tbody>
             <tr style="padding: 0px;margin: 0px;">
                 <td style="width: 100%;padding: 4px 4px 4px 4px;">
+                    <!--Video-->
                     <?php if ($row->type == 0) { ?>
                         <div data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="background-color: #000;width: 100%;" data-ratio="0.5625">
                             <video>
@@ -42,8 +43,8 @@
                             </video>
                         </div>
                     <?php } elseif ($row->type == 1) { ?>
-
                     <?php } elseif ($row->type == 2) { ?>
+                        <!--Youtube-->
                         <div style="background-color: #000;height: 394px;">
                             <?php
                             $media = analyze_media($row->file);
@@ -72,6 +73,7 @@
                             ?>
                         </div>
                     <?php } elseif ($row->type == 3) { ?>
+                        <!--Vimeo-->
                         <div style="background-color: #000;height: 394px;">
                             <?php
                             $media = analyze_media($row->file);
@@ -100,6 +102,34 @@
                             ?>
                         </div>
                     <?php } elseif ($row->type == 4) { ?>
+                        <!--Scribd-->
+                        <div style="background-color: #e5e5e5;">
+                            <?php
+                            $media = analyze_media($row->file);
+                            $trace = explode('^^^', $media);
+                            switch ($trace[0]) {
+                                case 'image' :
+                                    echo "<a href='" . $trace[3] . "' target='_blank'><img src='" . $trace[3] . "' width='100%' /></a>";
+                                    break;
+                                case 'youtube' :
+                                    echo youtube($trace[1]);
+                                    break;
+                                case 'vimeo' :
+                                    echo vimeoLarge($trace[1]);
+                                    break;
+                                case 'scribd' :
+                                    echo scribdLarge($trace[1]);
+                                    break;
+                                case 'docstoc' :
+                                    echo docstocLarge($trace[1]);
+                                    break;
+                                case 'link' :
+                                    break;
+                                default :
+                                    die;
+                            }
+                            ?>
+                        </div>
                     <?php } elseif ($row->type == 5) { ?>
                     <?php } elseif ($row->type == 6) { ?>
                     <?php } elseif ($row->type == 7) { ?>
