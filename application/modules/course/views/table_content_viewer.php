@@ -1,10 +1,4 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/assets/jquery-1.8.2.min.js"></script>
-<script src="http://connect.soundcloud.com/sdk.js"></script>
-<script>
-    SC.initialize({
-        client_id: "938418853596f90572983f377348dc57"
-    });
-</script>
 <script src="<?php echo base_url() ?>asset/flowplayer/flowplayer.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/flowplayer/skin/minimalist.css" />
 <script type="text/javascript" src="<?php echo base_url(); ?>asset/js/jquery.paginatetable.js"></script>
@@ -140,10 +134,6 @@
                         </div>
                     <?php } elseif ($row->type == 5) { ?>
                     <?php } elseif ($row->type == 6) { ?>
-                        <!--                        <div id="putTheWidgetHere"></div>
-                                                <script type="text/JavaScript">
-                                                    SC.oEmbed("<?php echo $row->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere"));
-                                                </script>-->
                     <?php } elseif ($row->type == 7) { ?>
                         <div style="background-color: #e5e5e5; height: 600px;">
                             <?php
