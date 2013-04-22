@@ -150,6 +150,7 @@
                         $slideshare = json_decode($output);
                         $presentation = explode("/", "$slideshare->slide_image_baseurl");
                         print_r($presentation);
+                        print_r($slideshare);
                         ?>
                         <iframe src="http://www.slideshare.net/slideshow/embed_code/19004055?rel=0" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="http://www.slideshare.net/KyleLacy/social-media-and-email-stats-from-six-countries" title="Social Media and Email Stats from Six Countries" target="_blank">Social Media and Email Stats from Six Countries</a> </strong> from <strong><a href="http://www.slideshare.net/KyleLacy" target="_blank">Kyle Lacy</a></strong> </div>
 <!--                        <script type="text/javascript">    
