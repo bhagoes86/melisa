@@ -14,6 +14,13 @@
         <title><?php echo $course->course ?></title>
     </head>
     <?php $this->load->view('home/js'); ?>
+    <script src="//connect.soundcloud.com/sdk.js"></script>
+    <script>
+        SC.initialize({
+            client_id: "938418853596f90572983f377348dc57"
+        });
+    </script>
+    <div id="putTheWidgetHere"></div>
     <body class="modern-ui" onload="prettyPrint()">
         <!--Top Navbar-->
         <div class="page" id="topbar"></div>
