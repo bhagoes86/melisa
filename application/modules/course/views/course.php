@@ -54,24 +54,28 @@
                             <div class="span12">
                                 <div class="span3">
                                     <h3 style="font-weight: bold;">Intisari Kuliah</h3>
+                                    <hr/>
                                     <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                                     </p>                                    
                                 </div>
                                 <div class="span3">
                                     <h3 style="font-weight: bold;">Pemahaman Dasar</h3>
+                                    <hr/>
                                     <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                                     </p>                                    
                                 </div>
                                 <div class="span3">
                                     <h3 style="font-weight: bold;">Akan Dipelajari</h3>
+                                    <hr/>
                                     <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                                     </p>                                    
                                 </div>
                                 <div class="span3">
                                     <h3 style="font-weight: bold;">Pemateri Kuliah</h3>
+                                    <hr/>
                                     <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                                     </p>                                    
