@@ -83,7 +83,9 @@
                             </div>
 
                             <div class="span12">
-                                <div class="span8" id="learning-content" style="padding-top: 0px;"></div>
+                                <div class="span8" id="learning-content" style="padding-top: 0px;">
+                                    <iframe style="width: 100%;" src="http://www.youtube.com/embed/ZgqhsgNobiw" frameborder="0" allowfullscreen></iframe>
+                                </div>
                                 <div class="span4" style="padding-top: 0px;">
                                     <h3 style="padding-top: 0px;margin-top: 0px;font-weight: bold;">Silabus</h3>
                                     <table class="bordered">                                    
