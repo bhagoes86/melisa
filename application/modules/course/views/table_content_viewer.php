@@ -142,12 +142,12 @@
                         </script>
                         <div id="putTheWidgetHere"></div>
                         <script type="text/JavaScript">
-                            SC.oEmbed("<?php echo $content->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere"));
+                            SC.oEmbed("<?php echo $row->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere"));
                         </script>
                     <?php } elseif ($row->type == 7) { ?>
                         <div style="background-color: #e5e5e5; height: 600px;">
                             <?php
-                            $media = analyze_media($content->file);
+                            $media = analyze_media($row->file);
                             $trace = explode('^^^', $media);
                             switch ($trace[0]) {
                                 case 'image' :
