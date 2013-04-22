@@ -22,7 +22,7 @@
     <?php foreach ($content as $row): ?>
         <tbody>
             <tr style="padding: 0px;margin: 0px;">
-                <td style="width: 100%;padding: 4px 4px 3px 4px;">
+                <td style="width: 100%;padding: 4px 4px 4px 4px;">
                     <?php if ($row->type == 0) { ?>
                         <div data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="background-color: #000;width: 100%;" data-ratio="0.5625">
                             <video>
