@@ -41,10 +41,14 @@
                                     <source type="video/flv" src="<?php echo base_url() . 'resource/' . $row->id_content . '.flv'; ?>"/>
                                 <?php } ?>
                             </video>
+                            <br/>
+                            <a class="button"><i class="icon-screen"></i> Buka</a>
                         </div>
                     <?php } elseif ($row->type == 1) { ?>
                         <!--Document-->
                         <iframe style="width: 100%;height: 600px;border: 0px;" src="http://docs.google.com/viewer?url=<?php echo base_url() . 'resource/' . $row->file . '&embedded=true' ?>"></iframe>
+                        <br/>
+                        <a class="button"><i class="icon-screen"></i> Buka</a>
                     <?php } elseif ($row->type == 2) { ?>
                         <!--Youtube-->
                         <div style="background-color: #000;height: 394px;">
@@ -103,6 +107,8 @@
                             }
                             ?>
                         </div>
+                        <br/>
+                        <a class="button"><i class="icon-screen"></i> Buka</a>
                     <?php } elseif ($row->type == 4) { ?>
                         <!--Scribd-->
                         <div style="background-color: #e5e5e5;height: 600px;">
@@ -131,7 +137,9 @@
                                     die;
                             }
                             ?>
-                        </div>
+                        </div>                        
+                        <br/>
+                        <a class="button"><i class="icon-screen"></i> Buka</a>
                     <?php } elseif ($row->type == 5) { ?>
                         <script type="text/javascript" src="<?php echo base_url() ?>asset/slideshare/swfobject.js"></script>
                         <!--Slideshare-->
@@ -151,12 +159,16 @@
                         $presentation = explode("/", "$slideshare->slide_image_baseurl");
                         ?>
                         <iframe src="http://www.slideshare.net/slideshow/embed_code/<?php echo $slideshare->slideshow_id ?>?rel=0" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="width: 100%;height: 450px;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:0px;padding-bottom: 0px;" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe> 
+                        <br/>
+                        <a class="button"><i class="icon-screen"></i> Buka</a>
                     <?php } elseif ($row->type == 6) { ?>
                         <!--Soundcloud-->
                         <div id="putTheWidgetHere"></div>
                         <script type="text/JavaScript">
                             SC.oEmbed("<?php echo $row->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere"));
-                        </script>
+                        </script>                        
+                        <br/>
+                        <a class="button"><i class="icon-screen"></i> Buka</a>
                     <?php } elseif ($row->type == 7) { ?>
                         <!--Docstoc-->
                         <div style="background-color: #e5e5e5; height: 600px;">
@@ -186,6 +198,8 @@
                             }
                             ?>
                         </div>
+                        <br/>
+                        <a class="button"><i class="icon-screen"></i> Buka</a>
                     <?php } ?>
                 </td>
             </tr>
