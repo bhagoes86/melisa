@@ -1,8 +1,7 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/assets/jquery-1.8.2.min.js"></script>
 <script src="<?php echo base_url() ?>asset/flowplayer/flowplayer.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/flowplayer/skin/minimalist.css" />
-<script type="text/javascript" src="<?php echo base_url(); ?>asset/js/jquery.paginatetable.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>asset/slideshare/swfobject.js"></script>    
+<script type="text/javascript" src="<?php echo base_url(); ?>asset/js/jquery.paginatetable.js"></script>   
 <style type="text/css">
     /* custom player skin */
     .flowplayer { background-color: #222; background-size: cover; }
@@ -134,6 +133,7 @@
                             ?>
                         </div>
                     <?php } elseif ($row->type == 5) { ?>
+                        <script type="text/javascript" src="<?php echo base_url() ?>asset/slideshare/swfobject.js"></script>
                         <!--Slideshare-->
                         <?php
                         $url = $row->file;
@@ -149,6 +149,7 @@
                         curl_close($ch);
                         $slideshare = json_decode($output);
                         $presentation = explode("/", "$slideshare->slide_image_baseurl");
+                        echo $presentation['3'];
                         ?>
                         <script type="text/javascript">    
                             var flashMovie;
@@ -157,7 +158,7 @@
                                 //allowScriptAccess from other domains
                                 var params = { allowScriptAccess: "always" };
                                 var atts = { id: "player<?php echo $row->id_content ?>" };
-                                                        
+                                                                        
                                 //doc: The path of the file to be used
                                 //startSlide: The number of the slide to start from
                                 //rel: Whether to show a screen with related slideshows at the end or not. 0 means false and 1 is true..
