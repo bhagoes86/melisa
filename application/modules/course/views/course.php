@@ -47,20 +47,20 @@
 
                             <div class="span12">
                                 <div class="span3">
-                                    <h3 style="font-weight: bold;">Catatan Penting</h3>
-                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">Bersama ..., <?php echo nl2br($pendidikan->information); ?></p>                                    
+                                    <h3 style="font-weight: bold;">Intisari Kuliah</h3>
+                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;"></p>                                    
                                 </div>
                                 <div class="span3">
                                     <h3 style="font-weight: bold;">Pemahaman Dasar</h3>
-                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">Bersama ..., <?php echo nl2br($pendidikan->information); ?></p>                                    
+                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;"></p>                                    
                                 </div>
                                 <div class="span3">
                                     <h3 style="font-weight: bold;">Akan Dipelajari</h3>
-                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">Bersama ..., <?php echo nl2br($pendidikan->information); ?></p>                                    
+                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;"></p>                                    
                                 </div>
                                 <div class="span3">
                                     <h3 style="font-weight: bold;">Pemateri Kuliah</h3>
-                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">Bersama ..., <?php echo nl2br($pendidikan->information); ?></p>                                    
+                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;"></p>                                    
                                 </div>
                             </div>
 
