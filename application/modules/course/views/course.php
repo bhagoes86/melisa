@@ -31,10 +31,10 @@
                         <div class="row" id="row-main-content">
 
                             <div class="span12 hero-unit" style="padding: 0px;">
-                                <div class="span4" style="padding: 0px;margin: 0px;">
+                                <div class="span5" style="padding: 0px;margin: 0px;">
                                     <img src="<?php echo base_url() . 'resource/' . $course->picture ?>" style="width: 100%;padding: 0px;margin: 5px 5px 0px 5px;"/>
                                 </div>
-                                <div class="span7" style="padding: 0px;margin: 0px 0px 0px 20px;">
+                                <div class="span6" style="padding: 0px;margin: 0px 0px 0px 20px;">
                                     <h3 style="margin-top: 0px;font-weight: bold;"><?php echo $course->course ?></h3>
                                     <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($course->description) ?></p>                                    
                                     <div class="addthis_toolbox addthis_default_style addthis_32x32_style" style="margin-top: 8px;">
