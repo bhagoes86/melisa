@@ -2,6 +2,12 @@
 <script src="<?php echo base_url() ?>asset/flowplayer/flowplayer.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/flowplayer/skin/minimalist.css" />
 <script type="text/javascript" src="<?php echo base_url(); ?>asset/js/jquery.paginatetable.js"></script>
+<script src="//connect.soundcloud.com/sdk.js"></script>
+<script>
+    SC.initialize({
+        client_id: "938418853596f90572983f377348dc57"
+    });
+</script>
 <style type="text/css">
     /* custom player skin */
     .flowplayer { background-color: #222; background-size: cover; }
@@ -134,12 +140,6 @@
                         </div>
                     <?php } elseif ($row->type == 5) { ?>
                     <?php } elseif ($row->type == 6) { ?>
-                        <script src="//connect.soundcloud.com/sdk.js"></script>
-                        <script>
-                            SC.initialize({
-                                client_id: "938418853596f90572983f377348dc57"
-                            });
-                        </script>
                         <div id="putTheWidgetHere"></div>
                         <script type="text/JavaScript">
                             SC.oEmbed("<?php echo $row->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere"));
