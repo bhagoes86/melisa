@@ -134,6 +134,7 @@
                         </div>
                     <?php } elseif ($row->type == 5) { ?>
                     <?php } elseif ($row->type == 6) { ?>
+                        <div id="putTheWidgetHere"></div>
                         <script type="text/JavaScript">
                             SC.oEmbed("<?php echo $row->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere"));
                         </script>
