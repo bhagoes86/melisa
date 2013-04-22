@@ -188,6 +188,7 @@
                         </div>
                     <?php } ?>
                     <div>
+                        <h4><?php echo $row->title; ?></h4>                        
                         <a class="button" target="_blank" href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>">
                             <i class="icon-screen"></i> Buka
                         </a>
