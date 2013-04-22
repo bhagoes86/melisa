@@ -187,10 +187,6 @@
                             ?>
                         </div>
                     <?php } ?>
-                </td>
-            </tr>
-            <tr>
-                <td>    
                     <a class="button" target="_blank" href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>"><i class="icon-screen"> Buka</a>
                 </td>
             </tr>
