@@ -21,227 +21,104 @@
             <div class="page-region">
                 <div class="page-region-content">
                     <div class="grid">
-                        <div class="row" style="margin-top: 10px;">
-                            <div class="span5">
-                                <!--Course Info-->
-                                <img src="<?php echo base_url() . 'resource/' . $course->picture ?>" style="width: 100%;"/>
-                                <!-- AddThis Button BEGIN -->
-                                <div class="addthis_toolbox addthis_default_style addthis_32x32_style" style="margin-top: 8px;">
-                                    <a class="addthis_button_facebook"></a>
-                                    <a class="addthis_button_twitter"></a>
-                                    <a class="addthis_button_google_plusone_share"></a>
-                                    <a class="addthis_button_linkedin"></a>
-                                    <a class="addthis_button_google"></a>
-                                    <a class="addthis_button_springpad"></a>
-                                    <a class="addthis_button_yahoomail"></a>
-                                    <a class="addthis_button_scoopit"></a>
+                        <div class="row" id="row-top-content" style="margin-top: 20px;margin-bottom: 20px;"></div>
+                        <div class="row" id="row-main-content">
+
+                            <div class="span12 hero-unit" style="padding: 0px;">
+                                <div class="span4" style="padding: 0px;margin: 0px;">
+                                    <img src="<?php echo base_url() . 'resource/' . $course->picture ?>" style="width: 100%;padding: 0px;margin: 5px 5px 0px 5px;"/>
                                 </div>
-                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
-                                <!--Quiz List-->
-                                <div class="hero-unit" style="margin-top: 12px;padding: 10px 10px 0px 10px;">
+                                <div class="span7" style="padding: 0px;margin: 0px 0px 0px 20px;">
+                                    <h3 style="margin-top: 0px;font-weight: bold;"><?php echo $course->course ?></h3>
+                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($course->description) ?></p>                                    
+                                    <div class="addthis_toolbox addthis_default_style addthis_32x32_style" style="margin-top: 8px;">
+                                        <a class="addthis_button_facebook"></a>
+                                        <a class="addthis_button_twitter"></a>
+                                        <a class="addthis_button_google_plusone_share"></a>
+                                        <a class="addthis_button_linkedin"></a>
+                                        <a class="addthis_button_google"></a>
+                                        <a class="addthis_button_springpad"></a>
+                                        <a class="addthis_button_yahoomail"></a>
+                                        <a class="addthis_button_scoopit"></a>
+                                    </div>
+                                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>                                    
+                                </div>  
+                            </div>
+
+                            <div class="span12">
+                                <div class="span3">
+                                    <h3 style="font-weight: bold;">Catatan Penting</h3>
+                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">Bersama ..., <?php echo nl2br($pendidikan->information); ?></p>                                    
+                                </div>
+                                <div class="span3">
+                                    <h3 style="font-weight: bold;">Pemahaman Dasar</h3>
+                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">Bersama ..., <?php echo nl2br($pendidikan->information); ?></p>                                    
+                                </div>
+                                <div class="span3">
+                                    <h3 style="font-weight: bold;">Akan Dipelajari</h3>
+                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">Bersama ..., <?php echo nl2br($pendidikan->information); ?></p>                                    
+                                </div>
+                                <div class="span3">
+                                    <h3 style="font-weight: bold;">Pemateri Kuliah</h3>
+                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">Bersama ..., <?php echo nl2br($pendidikan->information); ?></p>                                    
+                                </div>
+                            </div>
+
+                            <div class="span12">
+                                <div class="span8" id="learning-content" style="padding-top: 0px;"></div>
+                                <div class="span4" style="padding-top: 0px;">
+                                    <h3 style="padding-top: 0px;margin-top: 0px;font-weight: bold;">Silabus</h3>
+                                    <table class="bordered">                                    
+                                        <tbody>      
+                                            <?php foreach ($silabus as $row): ?>
+                                                <tr>
+                                                    <td>
+                                                        <a id="silabus-get-content" data-id="<?php echo $row->id_silabus; ?>" href="javascript:void(0)" style="cursor: pointer;"><?php echo $row->deskripsi; ?></a>
+                                                    </td>
+                                                </tr>
+                                                <?php echo modules::run('course/show_child', $row->id_silabus, $id) ?>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="span12">
+                                <div class="span6">
                                     <h3 style="margin-top: 0px;font-weight: bold;">Evaluasi</h3>
                                     <div id="list-quiz"></div>
                                 </div>
-                                <!--Pemateri-->
-                                <div class="hero-unit" style="margin-top: 12px;padding: 10px 10px 0px 10px;">
-                                    <h3 style="margin-top: 0px;font-weight: bold;">Pengajar</h3>
-                                    <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;">
-                                        <?php echo nl2br($pendidikan->information); ?><br/>
-                                        <?php echo nl2br($profil->information); ?>
-                                    </p>
-                                </div>
-                                <div class="page-control" data-role="page-control">
-                                    <ul>
-                                        <li class="active"><a href="#pengajaran">Kuliah</a></li>
-                                        <li><a href="#riset">Penelitian</a></li>
-                                        <li><a href="#publikasi">Publikasi</a></li>
-                                        <li><a href="#pengalaman">Pengalaman</a></li>
-                                    </ul>
-                                    <div class="frames">
-                                        <div class="frame active" id="pengajaran">
-                                            <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($pengajaran->information); ?></p>
-                                        </div>
-                                        <div class="frame" id="riset">
-                                            <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($riset->information); ?></p>
-                                        </div>
-                                        <div class="frame" id="publikasi">
-                                            <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($publikasi->information); ?></p>
-                                        </div>
-                                        <div class="frame" id="pengalaman">
-                                            <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($pengalaman->information); ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                <div class="span6">
+                                    <h3 style="margin-top: 0px;font-weight: bold;">Diskusi</h3>                                    
+                                    <div id="disqus_thread"></div>
+                                    <script type="text/javascript">
+                                        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                                        var disqus_shortname = 'sakoladotnet'; // required: replace example with your forum shortname
 
-                            <div class="span7">
-                                <div class="hero-unit" style="margin-top: 0px;padding: 10px 10px 0px 10px;">
-                                    <h3 style="margin-top: 0px;font-weight: bold;"><?php echo $course->course ?></h3>
-                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">Bersama</p>
-                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($course->description) ?></p>
+                                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                                        (function() {
+                                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                        })();
+                                    </script>
+                                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                                 </div>
-                                <!--Silabus-->
-                                <h3 style="padding-top: 0px;margin-top: 0px;font-weight: bold;">Silabus</h3>
-                                <table class="striped bordered">                                    
-                                    <tbody>      
-                                        <?php foreach ($silabus as $row): ?>
-                                            <tr>
-                                                <td>
-                                                    <a style="cursor: pointer;"><?php echo $row->deskripsi; ?></a>
-                                                </td>
-                                            </tr>
-                                            <?php echo modules::run('course/show_child', $row->id_silabus, $id) ?>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                                <!--Materi-->
-                                <h3 style="margin-top: 0px;font-weight: bold;">Bahan Ajar</h3>                                
-                                <div class="page-control" data-role="page-control">
-                                    <ul>
-                                        <li class="active"><a href="#video">Video</a></li>
-                                        <li><a href="#dokumen">Dokumen</a></li>
-                                    </ul>
-                                    <div class="frames">
-                                        <div class="frame active" id="video">
-                                            <table class="striped" id="my-table">
-                                                <tbody>
-                                                    <?php foreach ($video as $row): ?>
-                                                        <tr>
-                                                            <td style="border: 1px solid white;background: #000;width: 180px;padding: 0px 0px 0px 0px;">
-                                                                <?php if ($row->type == 0) { ?><!--Video-->
-                                                                    <?php if ($row->cover == 0) { ?>
-                                                                        Gambar Kosong
-                                                                    <?php } else { ?>
-                                                                        <a href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>"  target="_blank" >
-                                                                            <img src="<?php echo base_url() . 'resource/' . $row->id_content . '.jpg' ?>" style="width: 180px;height: 123px;vertical-align: top;"/>
-                                                                        </a>
-                                                                    <?php } ?>
-                                                                <?php } elseif ($row->type == 2) { ?><!--Youtube-->
-                                                                    <?php
-                                                                    $media = analyze_media($row->file);
-                                                                    $extract_id = explode('^^^', $media);
-                                                                    ?>
-                                                                    <a href="<?php echo site_url('content/youtube' . '/' . $row->id_content) ?>"  target="_blank" >
-                                                                        <img src="http://img.youtube.com/vi/<?php echo $extract_id[1]; ?>/1.jpg" style="width: 180px;height: 123px;vertical-align: top;">
-                                                                    </a>
-                                                                <?php } elseif ($row->type == 3) { ?><!--Vimeo-->
-                                                                    <?php $media = vimeo_cover($row->file); ?>
-                                                                    <a href="<?php echo site_url('content/vimeo' . '/' . $row->id_content) ?>"  target="_blank" >
-                                                                        <img src="<?php echo ($media['thumbnail_medium']) ?>" style="width: 180px;height: 123px;">
-                                                                    </a>
-                                                                <?php } ?>
-                                                            </td>
-                                                            <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
-                                                                <a style="color: #095b97;font-size: 18px;"><?php echo $row->title ?></a><br/>
-                                                                <p style="color: rgb(94,94,94);font-size: 13px;">
-                                                                    <?php echo nicetime(dtm2timestamp($row->date)) ?>
-                                                                    <br/>
-                                                                    Deskripsi : <?php echo cut_text($row->description, 15) . '...' ?>
-                                                                </p>                    
-                                                            </td>
-                                                        </tr>
-                                                    <?php endforeach; ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="frame " id="dokumen">
-                                            <table class="striped table-document" id="my-table">
-                                                <tbody>
-                                                    <?php foreach ($document as $row): ?>
-                                                        <tr>
-                                                            <td style="border: 1px solid white;background: #000;width: 180px;padding: 0px 0px 0px 0px;">
-                                                                <?php if ($row->type == 0) { ?><!--Video-->
-                                                                    <?php if ($row->cover == 0) { ?>
-                                                                        <a href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>">
-                                                                            <i class="icon-file" style="font-size: 45px;"></i>
-                                                                        </a>
-                                                                    <?php } else { ?>
-                                                                        <a href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>">
-                                                                            <img src="<?php echo base_url() . 'resource/' . $row->id_content . '.jpg' ?>" style="width: 180px;height: 123px;vertical-align: middle;"/>
-                                                                        </a>
-                                                                    <?php } ?>
-                                                                <?php } elseif ($row->type == 1) { ?><!--Document-->
-                                                                    <?php if ($row->cover == 0) { ?>
-                                                                        <a href="<?php echo site_url('content/document' . '/' . $row->id_content) ?>">
-                                                                            <i class="icon-file" style="font-size: 45px;"></i>
-                                                                        </a>
-                                                                    <?php } else { ?>
-                                                                        <a href="<?php echo site_url('content/document' . '/' . $row->id_content) ?>">
-                                                                            <img src="<?php echo base_url() . 'resource/' . $row->id_content . '.jpg' ?>" style="width: 180px;height: 123px;vertical-align: middle;"/>
-                                                                        </a>
-                                                                    <?php } ?>
-                                                                <?php } elseif ($row->type == 2) { ?><!--Youtube-->
-                                                                    <?php
-                                                                    $media = analyze_media($row->file);
-                                                                    $extract_id = explode('^^^', $media);
-                                                                    ?>
-                                                                    <a href="<?php echo site_url('content/youtube' . '/' . $row->id_content) ?>">
-                                                                        <img src="http://img.youtube.com/vi/<?php echo $extract_id[1]; ?>/1.jpg" style="width: 180px;height: 123px;vertical-align: middle;">
-                                                                    </a>
-                                                                <?php } elseif ($row->type == 3) { ?><!--Vimeo-->
-                                                                    <?php $media = vimeo_cover($row->file); ?>
-                                                                    <a href="<?php echo site_url('content/vimeo' . '/' . $row->id_content) ?>">
-                                                                        <img src="<?php echo ($media['thumbnail_medium']) ?>" style="width: 180px;height: 123px;">
-                                                                    </a>
-                                                                <?php } elseif ($row->type == 4) { ?><!--Scribd-->
-                                                                    <a href="<?php echo site_url('content/scribd' . '/' . $row->id_content) ?>">
-                                                                        <i class="icon-file" style="font-size: 45px;"></i>
-                                                                    </a>
-                                                                <?php } elseif ($row->type == 5) { ?><!--Slideshare-->
-                                                                    <?php
-                                                                    $media = analyze_media($row->file);
-                                                                    $extract_id = explode('^^^', $media);
-                                                                    $url = $extract_id[1];
-                                                                    $thumb = explode("/", slideshare_cover($url)->thumbnail);
-                                                                    $thumbnail = slideshare_cover($url)->thumbnail;
-                                                                    ?>
-                                                                    <a href="<?php echo site_url('content/slideshare' . '/' . $row->id_content) ?>">
-                                                                        <img src="<?php echo "http:" . $thumbnail ?>" style="width: 180px;height: 123px;vertical-align: middle;">
-                                                                    </a>
-                                                                <?php } elseif ($row->type == 6) { ?><!--SoundCloud-->
-                                                                    <a href="<?php echo site_url('content/soundcloud' . '/' . $row->id_content) ?>">
-                                                                        &nbsp;<i class="icon-soundcloud" style="font-size: 47px;"></i>
-                                                                    </a>
-                                                                <?php } elseif ($row->type == 7) { ?><!--Docstoc-->
-                                                                    <?php
-                                                                    $media = analyze_media($row->file);
-                                                                    $extract_id = explode('^^^', $media);
-                                                                    ?>
-                                                                    <a href="<?php echo site_url('content/docstoc' . '/' . $row->id_content) ?>">
-                                                                        <img src="http://img.docstoccdn.com/thumb/100/<?php echo $extract_id[1] ?>.png" style="width: 120px;height: 135px;vertical-align: middle;">
-                                                                    </a>
-                                                                <?php } ?>
-                                                            </td>
-                                                            <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
-                                                                <a style="color: #095b97;font-size: 18px;"><?php echo $row->title ?></a><br/>
-                                                                <p style="color: rgb(94,94,94);font-size: 13px;">
-                                                                    <?php echo nicetime(dtm2timestamp($row->date)) ?>
-                                                                    <br/>
-                                                                    Deskripsi : <?php echo cut_text($row->description, 15) . '...' ?>
-                                                                </p>                    
-                                                            </td>
-                                                        </tr>
-                                                    <?php endforeach; ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                            </div>     
 
-                            </div>
                         </div>
                         <div class="clearfix"></div>
                     </div>
                     <!--Loading Template-->
-                    <div class="message-dialog bg-color-green fg-color-white"  style="display: none;" id="loading-template">
+                    <div class="message-dialog bg-color-green fg-color-white"  style="display: none;position: fixed;top: 50%;" id="loading-template">
                         <img style="float: left;margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/preloader-w8-cycle-black.gif">
                         <p style="float: left;margin-left: 20px;margin-top: 30px;" id="message">Content for message dialog</p>
                     </div>
-                    <div class="message-dialog bg-color-red fg-color-white" style="display: none;" id="error-template">
+                    <div class="message-dialog bg-color-red fg-color-white" style="display: none;position: fixed;top: 50%;" id="error-template">
                         <p id="message-error">Content for message dialog</p>
                         <button class="place-right" id="close-error-message">Tutup Pesan</button>
                     </div>
-                    <div class="message-dialog bg-color-blue fg-color-white" style="display: none;" id="info-template">
+                    <div class="message-dialog bg-color-blue fg-color-white" style="display: none;position: fixed;top: 50%;" id="info-template">
                         <p id="message-info">Content for message dialog</p>
                         <button class="place-right" id="close-info-message">Tutup Pesan</button>
                     </div>
@@ -252,11 +129,21 @@
     </body>
 </html>
 <script type="text/javascript">    
-    $('#topbar').load("<?php echo site_url('site/topbar_nomenu') ?>");
+    $('#topbar').load("<?php echo site_url('site/topbar') ?>");    
+    $('#row-top-content').load("<?php echo site_url('home/top') ?>");
     $('#footbar').load("<?php echo site_url('site/footbar') ?>");
     setInterval(function(){
         $('#list-quiz').load('<?php echo site_url('course/list_quiz') . "/$course->id_course"; ?>')
     }, 1000);
+    
+    $('a#silabus-get-content').click(function(){
+        $('#message').html('Mengambil Data');
+        $('#loading-template').show();
+        var silabus_id = $(this).attr('data-id');
+        $('#learning-content').load("<?php echo site_url('course/list_content_by_sylabus') ?>"+"/"+silabus_id,function(){
+            $('#loading-template').hide();            
+        });
+    });
     
     //Hide Error Messaga
     $('#close-error-message').click(function(){

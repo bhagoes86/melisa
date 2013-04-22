@@ -15,7 +15,7 @@ class Model_course extends CI_Model {
         parent::__construct();
     }
 
-    function check_user_quiz_participate($user_id, $course_id, $quiz_id, $group_id){
+    function check_user_quiz_participate($user_id, $course_id, $quiz_id, $group_id) {
         $this->db->select('*');
         $this->db->from('quiz_result');
         $this->db->where('user_id', $user_id);
@@ -43,7 +43,7 @@ class Model_course extends CI_Model {
 
         $this->db->where('qc.course_id', $id_course);
         $this->db->where('qg.quiz_id = qf.id_quiz');
-        
+
         $this->db->order_by('qf.end_time', 'desc');
         return $this->db->get();
     }
@@ -110,7 +110,7 @@ class Model_course extends CI_Model {
         $this->db->where('show', 1);
         return $this->db->get();
     }
-    
+
     function select_course_limit($limit) {
         $this->db->select('*');
         $this->db->from('course');
@@ -460,6 +460,14 @@ class Model_course extends CI_Model {
         $this->db->where('course_id', $id_course);
         $this->db->where('topic_id', $id_topic);
         $this->db->delete('course_topic');
+    }
+
+    function select_content_by_sylabus($silabus_id) {
+        $this->db->select('*');
+        $this->db->from('content_silabus');
+        $this->db->join('content', 'content.id_content=content_silabus.content_id');
+        $this->db->where('content_silabus.silabus_id', $silabus_id);
+        return $this->db->get();
     }
 
 }
