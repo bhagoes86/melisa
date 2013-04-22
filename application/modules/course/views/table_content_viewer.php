@@ -49,8 +49,9 @@
                              position: absolute;
                              height: 30px;
                              width: 30px;
-                             float: right;
+                             float: left;
                              margin-top: 2px;
+                             margin-left: 150px;
                              right: 0px;"></div>
                         <iframe style="width: 100%;height: 600px;border: 0px;" src="http://docs.google.com/viewer?url=<?php echo base_url() . 'resource/' . $row->file . '&embedded=true' ?>"></iframe>
                     <?php } elseif ($row->type == 2) { ?>
