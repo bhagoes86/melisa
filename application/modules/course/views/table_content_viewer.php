@@ -149,41 +149,17 @@
                         curl_close($ch);
                         $slideshare = json_decode($output);
                         $presentation = explode("/", "$slideshare->slide_image_baseurl");
-                        print_r($presentation);
-                        print_r($slideshare);
+                        print_r("$slideshare");
                         ?>
-                        <iframe src="http://www.slideshare.net/slideshow/embed_code/19004055?rel=0" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="http://www.slideshare.net/KyleLacy/social-media-and-email-stats-from-six-countries" title="Social Media and Email Stats from Six Countries" target="_blank">Social Media and Email Stats from Six Countries</a> </strong> from <strong><a href="http://www.slideshare.net/KyleLacy" target="_blank">Kyle Lacy</a></strong> </div>
-<!--                        <script type="text/javascript">    
-                            var flashMovie;
-                            //Load the flash player. Properties for the player can be changed here.
-                            function loadPlayer() {
-                                //allowScriptAccess from other domains
-                                var params = { allowScriptAccess: "always" };
-                                var atts = { id: "player<?php echo $row->id_content ?>" };
-                                                                        
-                                //doc: The path of the file to be used
-                                //startSlide: The number of the slide to start from
-                                //rel: Whether to show a screen with related slideshows at the end or not. 0 means false and 1 is true..
-                                var flashvars = { doc : "<?php print_r($presentation['3']) ?>", startSlide : 1, rel : 0 };
-
-                                //Generate the embed SWF file
-                                swfobject.embedSWF("http://static.slidesharecdn.com/swf/ssplayer2.swf", "player", "100%", "560", "8", null, flashvars, params, atts);
-
-                                //Get a reference to the player
-                                flashMovie = document.getElementById("player<?php echo $row->id_content ?>");
-                            }
-
-                            //Jump to the appropriate slide
-                            function jumpTo(){
-                                flashMovie.jumpTo(parseInt(document.getElementById("slidenumber").value));
-                            }
-
-                            //Update the slide number in the field for the same
-                            function updateSlideNumber(){
-                                document.getElementById("slidenumber").value = flashMovie.getCurrentSlide();
-                            }
-                        </script>
-                        <div id="player<?php echo $row->id_content ?>" style="background: #e5e5e5;">You need Flash player 8+ and JavaScript enabled to view this video.</div>-->
+                        <iframe src="http://www.slideshare.net/slideshow/embed_code/19004055?rel=0" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe> 
+                        <div style="margin-bottom:5px"> 
+                            <strong> 
+                                <a href="http://www.slideshare.net/KyleLacy/social-media-and-email-stats-from-six-countries" title="Social Media and Email Stats from Six Countries" target="_blank">Social Media and Email Stats from Six Countries</a> 
+                            </strong> from 
+                            <strong>
+                                <a href="http://www.slideshare.net/KyleLacy" target="_blank">Kyle Lacy</a>
+                            </strong> 
+                        </div>
                     <?php } elseif ($row->type == 6) { ?>
                         <!--Soundcloud-->
                         <div id="putTheWidgetHere"></div>
