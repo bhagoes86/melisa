@@ -133,8 +133,8 @@
     $('a#btn-group').click(function(){
         $('#message').html('Loading Informasi');
         $('#loading-template').show();
-        var id_quiz = $(this).attr('data-id');
-        $('#content-right').load("<?php echo site_url('quiz/group_quiz') ?>/"+id_quiz,function(){
+        var id_assignment = $(this).attr('data-id');
+        $('#content-right').load("<?php echo site_url('assignment/list_group') ?>/"+id_assignment,function(){
             $('#loading-template').fadeOut("slow");
         });
     });

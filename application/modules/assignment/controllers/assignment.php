@@ -173,21 +173,80 @@ class Assignment extends MX_Controller {
     }
     
     function add_group(){
+        if (!$this->ion_auth->logged_in()) {
+            redirect();
+        } else {
+            $data['assignment_id'] = $this->input->post('id_assignment', true);
+            $data['title'] = $this->input->post('title', true);
+            $data['description'] = $this->input->post('description', true);
+            $data['status'] = 1;
+            $data['deleted'] = 0;
+            $today = getdate();
+            $temp_time = date_create($today['year'] . '-' . $today['mon'] . '-' . $today['mday']);
+            $data['date_created'] = date_format($temp_time, 'Y-m-d');
+
+            $this->model_assignment->insert_group($data);
+        }
     }
     
-    function show_form_add_group(){
+    function show_form_add_group($id_assignment){
+        if (!$this->ion_auth->logged_in()) {
+            redirect();
+        } else {
+            $data['assignment_id'] = $id_assignment;
+            $this->load->view('assignment/form_add_group', $data);
+        }
     }
     
-    function show_form_edit_group(){
+    function update_group(){
+        if (!$this->ion_auth->logged_in()) {
+            redirect();
+        } else {
+            $id_group = $this->input->post('id_group', true);
+            $data['title'] = $this->input->post('title', true);
+            $data['description'] = $this->input->post('description', true);
+            $data['status'] = $this->input->post('status', true);
+            $data['password'] = $this->input->post('password', true);
+
+            $this->model_assignment->update_group($id_group, $data);
+        }
     }
     
-    function edit_group(){ 
+    function show_form_edit_group($id_group){ 
+        if (!$this->ion_auth->logged_in()) {
+            redirect();
+        } else {
+            $temp = $this->model_assignment->select_group_by_id($id_group)->row();
+            
+            $data['assignment_id'] = $temp->assignment_id;
+            $data['group_id'] = $temp->id_group;
+
+            $data['title'] = $temp->title;
+            $data['description'] = $temp->description;
+            $data['status'] = $temp->status;
+            $data['password'] = $temp->password;
+            
+            $this->load->view('assignment/form_edit_group', $data);
+        }
     }
     
-    function list_group(){
+    function list_group($id_assignment){
+        if (!$this->ion_auth->logged_in()) {
+            redirect();
+        } else {
+            $data['list_group'] = $this->model_assignment->select_group_by_assignment($id_assignment)->result();
+            $data['assignment_id'] = $id_assignment;
+            $this->load->view('assignment/list_group', $data);
+        }
     }
     
-    function delete_group(){
+    function delete_group($id_group){
+        if (!$this->ion_auth->logged_in()) {
+            redirect();
+        } else {
+            $data['deleted'] = 1;
+            $this->load->model_assignment->update_group($id_group, $data);
+        }
     }
     
     function add_course(){

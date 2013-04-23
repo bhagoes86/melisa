@@ -64,4 +64,30 @@ class Model_assignment extends CI_Model {
         $this->db->where('id_assignment', $assignment_id);
         return $this->db->get();
     }
+    
+    function select_group_by_assignment($id_assignment){
+        $this->db->select('*');
+        $this->db->from('assignment_group');
+        $this->db->where('assignment_id', $id_assignment);
+        $this->db->where('assignment_group.deleted', 0);
+        $this->db->order_by('date_modified', 'desc');
+        return $this->db->get();
+    }
+    
+    function insert_group($data) {
+        $this->db->insert('assignment_group', $data);
+        return $this->db->insert_id();
+    }
+    
+    function update_group($id_group, $data) {
+        $this->db->where('id_group', $id_group);
+        $this->db->update('assignment_group', $data);
+    }
+    
+    function select_group_by_id($id_group){
+        $this->db->select('*');
+        $this->db->from('assignment_group');
+        $this->db->where('id_group', $id_group);
+        return $this->db->get();
+    }
 }
