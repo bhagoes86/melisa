@@ -35,6 +35,15 @@ class Model_assignment extends CI_Model {
         $this->db->update('assignment_file', $data);
     }
     
+    function insert_assignment_student($data) {
+        $this->db->insert('assignment_file_student', $data);
+        return $this->db->insert_id();
+    }
+    
+    function update_assignment_student($id_assignment, $data) {
+        $this->db->where('id_assignment_student', $id_assignment);
+        $this->db->update('assignment_file_student', $data);
+    }
     
     function select_all_course($user_id){
         $this->db->select('*');
