@@ -112,6 +112,7 @@
                                     <hr/>
                                     <div id="list-quiz"></div>
                                 </div>
+                                
                                 <div class="span6">
                                     <h3 style="margin-top: 0px;font-weight: bold;">Diskusi</h3>  
                                     <hr/>
@@ -130,7 +131,13 @@
                                     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                                 </div>
                             </div>     
-
+                            <div class="span12">
+                                <div class="span6">
+                                    <h3 style="margin-top: 0px;font-weight: bold;">Tugas</h3>
+                                    <hr/>
+                                    <div id="list-assignment"></div>
+                                </div>
+                            </div>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -157,8 +164,11 @@
     $('#topbar').load("<?php echo site_url('site/topbar') ?>");    
     $('#row-top-content').load("<?php echo site_url('home/top') ?>");
     $('#footbar').load("<?php echo site_url('site/footbar') ?>");
+    
+    
     setInterval(function(){
         $('#list-quiz').load('<?php echo site_url('course/list_quiz') . "/$course->id_course"; ?>')
+        $('#list-assignment').load('<?php echo site_url('course/list_assignment') . "/$course->id_course"; ?>')
     }, 1000);
     
     $('a#silabus-get-content').click(function(){

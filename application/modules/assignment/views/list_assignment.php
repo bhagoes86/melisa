@@ -25,7 +25,7 @@
             <tr style="margin-bottom:20px">
                 <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
                     <a style="color: #095b97;font-size: 18px;"><?php echo  character_limiter($assignment->title, 30); ?></a><br/>
-                    <p style="color: rgb(94,94,94);font-size: 13px;"><?php echo cut_text($assignment->description, 45) ?> ...</p>
+                    <p style="color: rgb(94,94,94);font-size: 13px;"><?php echo cut_text($assignment->description, 10) ?> ...</p>
                 </td>
                 
                 <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
@@ -133,8 +133,8 @@
     $('a#btn-group').click(function(){
         $('#message').html('Loading Informasi');
         $('#loading-template').show();
-        var id_quiz = $(this).attr('data-id');
-        $('#content-right').load("<?php echo site_url('quiz/group_quiz') ?>/"+id_quiz,function(){
+        var id_assignment = $(this).attr('data-id');
+        $('#content-right').load("<?php echo site_url('assignment/list_group') ?>/"+id_assignment,function(){
             $('#loading-template').fadeOut("slow");
         });
     });
