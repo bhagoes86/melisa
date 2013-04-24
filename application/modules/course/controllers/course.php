@@ -22,6 +22,17 @@ class Course extends MX_Controller {
         $this->load->helper(array('url', 'form'));
     }
 
+    function list_assignment($id_course){
+        if (!$this->ion_auth->logged_in()) {
+            redirect();
+        } else {
+            $user = $this->ion_auth->user()->row();
+            $data['id_course'] = $id_course;
+            $data['list_assignment'] = $this->model_course->select_avail_assignment_group($id_course)->result();
+            $this->load->view('course/list_assignment', $data);
+        }
+    }
+    
     function list_quiz($id_course) {
 
         $user = $this->ion_auth->user()->row();

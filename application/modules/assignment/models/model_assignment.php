@@ -90,4 +90,25 @@ class Model_assignment extends CI_Model {
         $this->db->where('id_group', $id_group);
         return $this->db->get();
     }
+    
+    function select_assignment_by_course_group($id_course, $id_assignment, $id_group){
+    
+        $this->db->select('af.start_time as start_time, af.end_time as end_time, ag.id_group as group_id, ag.assignment_id as group_assignment_id, af.title as assignment_title, ag.title as group_title, af.description, af.file_assignment, crs.course');
+        $this->db->from('assignment_group as ag');
+        $this->db->join('assignment_file as af', 'af.id_assignment = ag.assignment_id');
+        $this->db->join('course as crs', 'crs.id_course = af.course_id');
+        
+        $this->db->where('af.deleted', 0);
+        $this->db->where('ag.deleted', 0);
+        $this->db->where('af.status', 1);
+        $this->db->where('crs.show', 1);
+        
+        $this->db->where('crs.id_course', $id_course);
+        $this->db->where('af.id_assignment', $id_assignment);
+        $this->db->where('ag.id_group', $id_group);
+        
+        $this->db->order_by('ag.id_group', 'desc');
+        
+        return $this->db->get();
+    }
 }
