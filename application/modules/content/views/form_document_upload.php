@@ -1,14 +1,18 @@
 <div class="span8">
     <h2>Formulir Upload Dokumen</h2>
     <form id="do-upload-document" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+        <h3 style="margin-top: 0px; padding-top: 0px;">Judul Dokumen</h3>
         <div class="input-control text">
             <input name="title" id="title" type="text" placeholder="Judul Dokumen"/>
-            <button class="helper"></button>
+            
         </div>
+        <div class="clearfix"></div>
         <div class="input-control">
             <label>Format PDF</label>
             <input name="userfile" type="file" id="userfile"/>
         </div>
+        <div class="clearfix"></div>
+        <h3 style="margin-top: 0px; padding-top: 0px;">Deskripsi</h3>
         <div class="input-control textarea">
             <textarea name="description" id="description" placeholder="Deskripsi"></textarea>
         </div>

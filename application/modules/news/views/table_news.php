@@ -40,11 +40,7 @@
                             </div>
                             <div class="span9 fright" id="content-right">
                                 <div class="span6">
-                                    <?php if ($news == NULL) { ?>
-                                    <?php } else { ?>
-                                        <img src="<?php echo base_url() . 'attachment/' . $news->header ?>" style="width: 100%;">
-                                    <?php } ?>
-                                    <?php if ($news == NULL) { ?>
+                                    <?php if ($news->title == "") { ?>
 
                                     <?php } else { ?>
                                         <div  style="margin-bottom: 10px;">
@@ -52,8 +48,11 @@
                                         </div>
 
                                     <?php } ?>
-
-                                    <?php if ($news == NULL) { ?>
+                                    <?php if ($news->header == "") { ?>
+                                    <?php } else { ?>
+                                        <img src="<?php echo base_url() . 'attachment/' . $news->header ?>" style="width: 100%;">
+                                    <?php } ?>                                   
+                                    <?php if ($news->news == "") { ?>
 
                                     <?php } else { ?>
                                         <div  style="margin-bottom: 10px;">

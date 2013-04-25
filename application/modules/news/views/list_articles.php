@@ -11,15 +11,23 @@
         <button class="place-right" id="cancel-confirm-message1">Batal</button>
     </div>
 </div>
+<th><h3>Daftar Berita</h3></th>
 <table class="striped" id="my-table">
-    <thead>
-    <th><h3>Daftar Berita</h3></th>
-</thead>
 <tbody>
     <?php foreach ($news as $row): ?>
         <tr style="background: rgb(247,247,247);padding-bottom: 0px;margin-bottom: 0px;">
-            <td style="border: 1px solid white;padding: 0px;margin: 0px;width: 140px;height: 79px;">
-                <img src="<?php echo base_url() . 'attachment/' . $row->header ?>" style="width: 140px;height: 100%;vertical-align: middle;"/>
+            <td style="border: 1px solid white;padding: 0px;margin: 0px;width: 140px;height: 79px;align:center;valign:center;">
+                <?php
+                if ($row->header != NULL) {
+                    ?>
+                    <img src="<?php echo base_url() . 'attachment/' . $row->header ?>" style="width: 140px;height: 100%;vertical-align: middle;"/>
+                    <?php
+                } else {
+                    ?>
+                    <h1  class="icon-pictures" style="font-size: 130px; color: #136bc5;width: 130px;height: 100%;"></h1>                   
+                    <?php
+                }
+                ?>               
             </td>
             <td style="border: 1px solid white;width: 450px;vertical-align: top;">
                 <a style="font-family: sofiapro-medium,Arial,sans-serif;color: #095b97;font-size: 18px;line-height: 1.5em;"><?php echo $row->title ?></a>
