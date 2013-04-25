@@ -1,9 +1,12 @@
 <h3 style="margin-top: 0px;padding-top: 0px;">Edit Informasi Video</h3>
 <form id="update-content-info">
+    <h4 style="margin-top: 0px; padding-top: 0px;">Judul Video</h4>
     <div class="input-control text">
         <input name="title" id="title" type="text" placeholder="Judul Video" value="<?php echo $content->title ?>"/>
         <button class="helper"></button>
     </div>
+    <div class="clearfix"></div>
+    <h4 style="margin-top: 0px; padding-top: 0px;">Deskripsi</h4>
     <div class="input-control textarea">
         <textarea name="description" id="description" placeholder="Deskripsi"><?php echo $content->description ?></textarea>
     </div>

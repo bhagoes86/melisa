@@ -18,13 +18,18 @@
         ?>
     </h2>
     <form id="submit-link" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+        <h3 style="margin-top: 0px; padding-top: 0px;">Alamat URL Konten</h3>
         <div class="input-control">
             <input name="url" id="url" type="text" placeholder="Alamat URL Konten"/>
         </div>
+        <div class="clearfix"></div>
+        <h3 style="margin-top: 0px; padding-top: 0px;">Alamat URL Konten</h3>
         <div class="input-control text">
             <input name="title" id="title" type="text" placeholder="Judul Konten"/>
-            <button class="helper"></button>
+            
         </div>
+        <div class="clearfix"></div>
+        <h3 style="margin-top: 0px; padding-top: 0px;">Alamat URL Konten</h3>
         <div class="input-control textarea">
             <textarea name="description" id="description" placeholder="Deskripsi"></textarea>
         </div>
