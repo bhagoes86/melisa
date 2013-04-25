@@ -14,13 +14,14 @@ class Forum extends MX_Controller {
     function __construct() {
         parent::__construct();
         $this->load->library('ion_auth');
-        $this->load->model('model_content', '', true);
+        $this->load->model('model_forum', '', true);
         $this->load->helper('directory');
         $this->load->helper('text');
     }
 
-    function index($user_id) {
-        $data['user_id'] = $user_id;
+    function index($user_id = 1) {
+        $data['user_id'] = $user_id;        
+        $data['themes'] = $this->model_forum->select_themes()->row();
         $this->load->view('forum/index', $data);
     }
 
