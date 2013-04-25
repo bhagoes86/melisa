@@ -1,40 +1,43 @@
+
 <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/accordion.js"></script>
-<a class="button bg-color-yellow" id="quiz-add-form"><i class="icon-plus"></i>Tambah Kuis</a>
-<a class="button bg-color-blue fg-color-white" id="quiz-manage-resource"><i class="icon-wrench"></i>Pengaturan Konten</a>
-<a class="button bg-color-orange fg-color-white" id="quiz-my-quiz-result"><i class="icon-stats"></i>Nilai Saya</a>
-<a class="button bg-color-purple fg-color-white" id="quiz-file-sample" href="<?php echo base_url().'asset/help/contoh-file-kuis.xls'?>"><i class="icon-download"></i>Contoh File Kuis</a>
+<a class="button bg-color-yellow" id="assignment-add-form"><i class="icon-plus"></i>Tambah Tugas</a>
+<a class="button bg-color-orange fg-color-white" id="assignment-my-quiz-result"><i class="icon-stats"></i>Nilai Saya</a>
+
 
 <hr />
 
-    <?php if (count($list_avail_quiz) > 0) {?>
+
+
+
+<?php if (count($list_assignment) > 0) {?>
 
 <table class="striped" id="my-table">
     <thead>
         <tr >
-            <th style="text-align:center"><b>Kuis</b></th>
-            <th style="text-align:center"><b>Hasil Kuis</b></th>
+            <th style="text-align:center"><b>Tugas</b></th>
+            <th style="text-align:center"><b>Hasil Tugas</b></th>
             <th style="text-align:center"><b>Aktif</b></th>
             <th style="text-align:center"><b>Aksi</b></th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($list_quiz as $quiz): ?>
+        <?php foreach ($list_assignment as $assignment): ?>
             <tr style="margin-bottom:20px">
                 <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
-                    <a style="color: #095b97;font-size: 18px;"><?php echo  character_limiter($quiz->title, 30); ?></a><br/>
-                    <p style="color: rgb(94,94,94);font-size: 13px;"><?php echo cut_text($quiz->description, 45) ?> ...</p>
+                    <a style="color: #095b97;font-size: 18px;"><?php echo  character_limiter($assignment->title, 30); ?></a><br/>
+                    <p style="color: rgb(94,94,94);font-size: 13px;"><?php echo cut_text($assignment->description, 10) ?> ...</p>
                 </td>
                 
                 <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
                     <div id="list-quiz-result" style="width:480px;height:150px;overflow:scroll;overflow-x:hidden;margin:0px 5px 5px 5px;">
-                          <?php echo modules::run('quiz/show_quiz_course', $quiz->id_quiz); ?>
+                          <?php //echo modules::run('quiz/show_quiz_course', $quiz->id_quiz); ?>
                           
                     </div>
                 </td>
                 <td style="border: 1px solid white;vertical-align: middle;background-color:rgba(0, 0, 0, 0.0666667);">
                     <?php 
-                    $date1 = date_create($quiz->start_time);
-                    $date2 = date_create($quiz->end_time);
+                    $date1 = date_create($assignment->start_time);
+                    $date2 = date_create($assignment->end_time);
                     
                     if ($date1 == $date2) {
                         ?>
@@ -49,12 +52,11 @@
                     ?>
                 </td>
                 <td style="width: 30px;border: 1px solid white;vertical-align: middle;background-color:rgba(0, 0, 0, 0.0666667);">
-                    <a title="preview" href="javascript:void(0)" id="btn-preview" data-id="<?php echo $quiz->id_quiz; ?>"><i class="icon-book fg-color-black"></i></a>
-                    <a title="edit" href="javascript:void(0)" id="btn-edit" data-id="<?php echo $quiz->id_quiz; ?>"><i class="icon-pencil fg-color-pink"></i></a>
-                    <a title="grup" href="javascript:void(0)" id="btn-group" data-id="<?php echo $quiz->id_quiz; ?>"><i class="icon-briefcase fg-color-black"></i></a>
-                    <a title="daftar kuliah" href="javascript:void(0)" id="btn-list-course" data-id="<?php echo $quiz->id_quiz; ?>"><i class="icon-list fg-color-black"></i></a>
-                    <a title="konfigurasi" href="javascript:void(0)" id="btn-config" data-id="<?php echo $quiz->id_quiz; ?>"><i class="icon-cog fg-color-orange"></i></a>
-                    <a title="hapus" href="javascript:void(0)" id="btn-delete" data-id="<?php echo $quiz->id_quiz?>"><i class="icon-remove fg-color-red"></i></a>
+                    <a title="preview" href="javascript:void(0)" id="btn-preview" data-id="<?php echo $assignment->id_assignment; ?>"><i class="icon-book fg-color-black"></i></a>
+                    <a title="edit" href="javascript:void(0)" id="btn-edit" data-id="<?php echo $assignment->id_assignment; ?>"><i class="icon-pencil fg-color-pink"></i></a>
+                    <a title="grup" href="javascript:void(0)" id="btn-group" data-id="<?php echo $assignment->id_assignment; ?>"><i class="icon-briefcase fg-color-black"></i></a>
+                    <a title="daftar kuliah" href="javascript:void(0)" id="btn-list-course" data-id="<?php echo $assignment->id_assignment; ?>"><i class="icon-list fg-color-black"></i></a>
+                    <a title="hapus" href="javascript:void(0)" id="btn-delete" data-id="<?php echo $assignment->id_assignment?>"><i class="icon-remove fg-color-red"></i></a>
                </td>
 
             </tr>
@@ -65,11 +67,11 @@
 
         <?php } else { ?>
             <tr>
-                <td><h2>Tidak ada  quiz yang bisa dipakai....</h2></td>
+                <td><h2>Tidak ada tugas yang bisa dipakai....</h2></td>
             </tr>
         <?php }?>
             
-            
+
 <div class="row" id="row-message">
     <div class="message-dialog bg-color-yellow fg-color-black" style="display: none;" id="confirm-template" >
         <p id="message-confirm">Content for message dialog</p>
@@ -90,10 +92,10 @@
         });
     });
 
-    $('#quiz-add-form').click(function(){
+    $('#assignment-add-form').click(function(){
         $('#message').html("Loading Data");
         $('#loading-template').show();
-        $('#content-right').load("<?php echo site_url('quiz/show_add_quiz') ?>",function(){
+        $('#content-right').load("<?php echo site_url('assignment/show_form_add_assignment') ?>",function(){
             $('#loading-template').fadeOut("slow");
         });
     });
@@ -107,16 +109,7 @@
         });
     });
 
-    $('#quiz-help').click(function(){
-        $('#message').html("Loading Data");
-        $('#loading-template').show();
-        $('#content-right').load("<?php echo site_url('quiz/show_quiz_help') ?>",function(){
-            $('#loading-template').fadeOut("slow");
-
-        });
-    });
     
-
     $('#quiz-manage-result').click(function(){
         $('#message').html("Loading Data");
         $('#loading-template').show();
@@ -131,7 +124,7 @@
         $('#message').html('Loading Informasi');
         $('#loading-template').show();
         var id_quiz = $(this).attr('data-id');
-        $('#content-right').load("<?php echo site_url('quiz/list_course') ?>/"+id_quiz,function(){
+        $('#content-right').load("<?php echo site_url('assignment/list_course') ?>/"+id_quiz,function(){
             $('#loading-template').fadeOut("slow");
         });
     });
@@ -140,8 +133,8 @@
     $('a#btn-group').click(function(){
         $('#message').html('Loading Informasi');
         $('#loading-template').show();
-        var id_quiz = $(this).attr('data-id');
-        $('#content-right').load("<?php echo site_url('quiz/group_quiz') ?>/"+id_quiz,function(){
+        var id_assignment = $(this).attr('data-id');
+        $('#content-right').load("<?php echo site_url('assignment/list_group') ?>/"+id_assignment,function(){
             $('#loading-template').fadeOut("slow");
         });
     });
@@ -149,8 +142,8 @@
     $('a#btn-edit').click(function(){
         $('#message').html('Loading Informasi');
         $('#loading-template').show();
-        var id_quiz = $(this).attr('data-id');
-        $('#content-right').load("<?php echo site_url('quiz/edit_quiz') ?>/"+id_quiz,function(){
+        var id_assignment = $(this).attr('data-id');
+        $('#content-right').load("<?php echo site_url('assignment/show_form_edit_assignment') ?>/"+id_assignment,function(){
             $('#loading-template').fadeOut("slow");
         });
     });
@@ -172,6 +165,14 @@
             $('#loading-template').fadeOut("slow");
         });
     });
+    
+    
+    $('a#btn-delete').click(function(){
+        $('#message-confirm').html('Apakah Anda yakin akan menghapus tugas ini ? ');
+        $('#accept-confirm-message').attr('data-id', $(this).attr('data-id'));
+        $('#confirm-template').fadeIn("medium");
+    });
+    
 
       $('#accept-confirm-message').click(function(){
             $('#message').html('Sedang Menghapus .... ');
@@ -180,10 +181,10 @@
             var id_quiz = $(this).attr('data-id');
             $.ajax({
                 type:'POST',
-                url:"<?php echo site_url('quiz/delete_quiz') ?>/"+id_quiz,
+                url:"<?php echo site_url('assignment/delete_assignment') ?>/"+id_quiz,
                 data:id_quiz,
                 success:function (data) {
-                    $('#content-right').load("<?php echo site_url('quiz/index') ?>",function(){
+                    $('#content-right').load("<?php echo site_url('assignment/index') ?>",function(){
                         $('#loading-template').fadeOut("slow");
                     });
                 },
@@ -200,12 +201,6 @@
     });
 
 
-    $('a#btn-delete').click(function(){
-        $('#message-confirm').html('Apakah Anda yakin akan menghapus kuis ini ? ');
-        $('#accept-confirm-message').attr('data-id', $(this).attr('data-id'));
-        $('#confirm-template').fadeIn("medium");
-    });
-    
     
     $('table#my-table').each(function() {
         var currentPage = 0;

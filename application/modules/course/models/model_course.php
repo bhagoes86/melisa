@@ -15,7 +15,7 @@ class Model_course extends CI_Model {
         parent::__construct();
     }
 
-    function check_user_quiz_participate($user_id, $course_id, $quiz_id, $group_id){
+    function check_user_quiz_participate($user_id, $course_id, $quiz_id, $group_id) {
         $this->db->select('*');
         $this->db->from('quiz_result');
         $this->db->where('user_id', $user_id);
@@ -43,10 +43,28 @@ class Model_course extends CI_Model {
 
         $this->db->where('qc.course_id', $id_course);
         $this->db->where('qg.quiz_id = qf.id_quiz');
-        
+
         $this->db->order_by('qf.end_time', 'desc');
         return $this->db->get();
     }
+    function select_avail_assignment_group($id_course){
+    
+        $this->db->select('af.start_time as start_time, af.end_time as end_time, ag.id_group as group_id, ag.assignment_id as group_assignment_id, af.title as assignment_title, ag.title as group_title');
+        $this->db->from('assignment_group as ag');
+        $this->db->join('assignment_file as af', 'af.id_assignment = ag.assignment_id');
+        $this->db->join('course as crs', 'crs.id_course = af.course_id');
+        
+        $this->db->where('af.deleted', 0);
+        $this->db->where('ag.deleted', 0);
+        $this->db->where('af.status', 1);
+        $this->db->where('crs.show', 1);
+        
+        $this->db->where('crs.id_course', $id_course);
+        $this->db->order_by('ag.id_group', 'desc');
+        
+        return $this->db->get();
+    }
+    
 
     function select_topic() {
         $this->db->select('*');
@@ -110,7 +128,7 @@ class Model_course extends CI_Model {
         $this->db->where('show', 1);
         return $this->db->get();
     }
-    
+
     function select_course_limit($limit) {
         $this->db->select('*');
         $this->db->from('course');
@@ -463,6 +481,14 @@ class Model_course extends CI_Model {
         $this->db->where('course_id', $id_course);
         $this->db->where('topic_id', $id_topic);
         $this->db->delete('course_topic');
+    }
+
+    function select_content_by_sylabus($silabus_id) {
+        $this->db->select('*');
+        $this->db->from('content_silabus');
+        $this->db->join('content', 'content.id_content=content_silabus.content_id');
+        $this->db->where('content_silabus.silabus_id', $silabus_id);
+        return $this->db->get();
     }
 
 }

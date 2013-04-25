@@ -22,6 +22,17 @@ class Course extends MX_Controller {
         $this->load->helper(array('url', 'form'));
     }
 
+    function list_assignment($id_course){
+        if (!$this->ion_auth->logged_in()) {
+            redirect();
+        } else {
+            $user = $this->ion_auth->user()->row();
+            $data['id_course'] = $id_course;
+            $data['list_assignment'] = $this->model_course->select_avail_assignment_group($id_course)->result();
+            $this->load->view('course/list_assignment', $data);
+        }
+    }
+    
     function list_quiz($id_course) {
 
         $user = $this->ion_auth->user()->row();
@@ -69,7 +80,7 @@ class Course extends MX_Controller {
 
             $this->load->view('course/list_quiz', $data);
         } else {
-            echo "<h3>Silahkan membuat login untuk melihat <b>daftar kuis</b> ...</h3>";
+            echo "<p>Login untuk mengikuti evaluasi</p>";
         }
     }
 
@@ -479,6 +490,11 @@ class Course extends MX_Controller {
         $data['course'] = $this->model_course->select_course_by_id($id_course)->row();
         //print_r($data);
         $this->load->view('course/form_edit_course', $data);
+    }
+
+    function list_content_by_sylabus($silabus_id) {
+        $data['content'] = $this->model_course->select_content_by_sylabus($silabus_id)->result();
+        $this->load->view('course/table_content_viewer', $data);
     }
 
 }
