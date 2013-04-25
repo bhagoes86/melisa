@@ -379,8 +379,11 @@ class Course extends MX_Controller {
         $data['id'] = $id;
         $data['kuliah'] = $this->input->post('kuliah', true);
         $data['deskripsi'] = $this->input->post('deskripsi', true);
+        $data['intkuliah'] = $this->input->post('intkuliah', true);
+        $data['pemdasar'] = $this->input->post('pemdasar', true);
+        $data['dipelajari'] = $this->input->post('dipelajari', true);
         //print_r($data);
-        $this->model_course->update_kuliah($data['id'], $data['kuliah'], $data['deskripsi']);
+        $this->model_course->update_kuliah($data['id'], $data['kuliah'], $data['deskripsi'],$data['intkuliah'],$data['pemdasar'],$data['dipelajari']);
     }
 
     function delete_topic($id) {
