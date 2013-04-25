@@ -70,21 +70,21 @@
                             </div>
                         </div>
 
-                         
-                        <div class="row" id="row-message">
-                            <div class="message-dialog bg-color-green fg-color-white" style="display: none;" id="loading-template">
-                                <img style="float: left;margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/preloader-w8-cycle-black.gif">
-                                <p style="float: left;margin-left: 20px;margin-top: 30px;" id="message">Content for message dialog</p>
-                            </div>
-                            <div class="message-dialog bg-color-red fg-color-white" style="display: none;" id="error-template">
-                                <p id="message-error">Content for message dialog</p>
-                                <button class="place-right" id="close-error-message">Tutup Pesan</button>
-                            </div>
-                            <div class="message-dialog bg-color-blue fg-color-white" style="display: none;" id="info-template">
-                                <p id="message-info">Content for message dialog</p>
-                                <button class="place-right" id="close-info-message">Tutup Pesan</button>
-                            </div>
+
+                        <!--Loading Template-->
+                        <div class="message-dialog bg-color-green fg-color-white"  style="display: none;position: fixed;top: 50%;" id="loading-template">
+                            <img style="float: left;margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/preloader-w8-cycle-black.gif">
+                            <p style="float: left;margin-left: 20px;margin-top: 30px;" id="message">Content for message dialog</p>
                         </div>
+                        <div class="message-dialog bg-color-red fg-color-white" style="display: none;position: fixed;top: 50%;" id="error-template">
+                            <p id="message-error">Content for message dialog</p>
+                            <button class="place-right" id="close-error-message">Tutup Pesan</button>
+                        </div>
+                        <div class="message-dialog bg-color-blue fg-color-white" style="display: none;position: fixed;top: 50%;" id="info-template">
+                            <p id="message-info">Content for message dialog</p>
+                            <button class="place-right" id="close-info-message">Tutup Pesan</button>
+                        </div>
+                        <!--EOF Loading Template-->
 
                     </div>
                 </div>

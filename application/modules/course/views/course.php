@@ -56,21 +56,21 @@
                                     <h3 style="font-weight: bold;">Intisari Kuliah</h3>
                                     <hr/>
                                     <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                        <?php echo $course->intkuliah; ?>
                                     </p>                                    
                                 </div>
                                 <div class="span3">
                                     <h3 style="font-weight: bold;">Pemahaman Dasar</h3>
                                     <hr/>
                                     <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                        <?php echo $course->pemdasar; ?>
                                     </p>                                    
                                 </div>
                                 <div class="span3">
                                     <h3 style="font-weight: bold;">Akan Dipelajari</h3>
                                     <hr/>
                                     <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                        <?php echo $course->dipelajari; ?>
                                     </p>                                    
                                 </div>
                                 <div class="span3">
@@ -112,7 +112,7 @@
                                     <hr/>
                                     <div id="list-quiz"></div>
                                 </div>
-                                
+
                                 <div class="span6">
                                     <h3 style="margin-top: 0px;font-weight: bold;">Diskusi</h3>  
                                     <hr/>
