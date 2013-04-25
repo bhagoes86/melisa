@@ -43,9 +43,6 @@
                                         <a class="addthis_button_google_plusone_share"></a>
                                         <a class="addthis_button_linkedin"></a>
                                         <a class="addthis_button_google"></a>
-                                        <a class="addthis_button_springpad"></a>
-                                        <a class="addthis_button_yahoomail"></a>
-                                        <a class="addthis_button_scoopit"></a>
                                     </div>
                                     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>                                    
                                 </div>  
@@ -168,7 +165,7 @@
     
     setInterval(function(){
         $('#list-quiz').load('<?php echo site_url('course/list_quiz') . "/$course->id_course"; ?>')
-        $('#list-assignment').load('<?php echo site_url('course/list_assignment') . "/$course->id_course"; ?>')
+        //$('#list-assignment').load('<?php echo site_url('course/list_assignment') . "/$course->id_course"; ?>')
     }, 1000);
     
     $('a#silabus-get-content').click(function(){
