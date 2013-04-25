@@ -9,15 +9,21 @@
 <div class="span8">
     <?php if (!$this->ion_auth->logged_in()) { ?>
         <button class="bg-color-red fg-color-white" id="btn-login-first">SUBMIT KONTEN <i class="icon-upload"></i></button>
-        <button id="btn-login" style="margin-right: 0px;float: right;" class="image-button bg-color-blue fg-color-white">LOGIN<img class="bg-color-blue" src="<?php echo base_url() ?>asset/metro/images/lock-open.png"></button>
+        <button id="btn-login" style="margin-right: 0px;float: right;" class="bg-color-blue fg-color-white fright">MASUK / DAFTAR
+            <i class="icon-key"></i>
+        </button>
     <?php } else { ?>
         <button class="bg-color-red fg-color-white" id="btn-shortcut-content">SUBMIT KONTEN <i class="icon-upload"></i></button>
         <!--<button href="<?php echo site_url('feed'); ?>" class="bg-color-red fg-color-white" id="btn-shortcut-feed">FEED <i class="icon-upload"></i></button>-->
-        <button id="btn-manager" style="margin-right: 0px;float: right;" class="bg-color-blue fg-color-white">
+        <button id="btn-forum" class="bg-color-blue fg-color-white">
             <?php
             $user = $this->ion_auth->user()->row();
             echo strtoupper($user->username);
-            ?>
+            ?> 
+            <i class="icon-comments-4"></i> 
+        </button>
+        <button id="btn-manager" style="margin-right: 0px;float: right;" class="bg-color-blue fg-color-white">
+            LOKER
             <i class="icon-cabinet"></i> 
         </button>
     <?php } ?>

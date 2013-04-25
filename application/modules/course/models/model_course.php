@@ -372,10 +372,13 @@ class Model_course extends CI_Model {
         $this->db->update('category');
     }
 
-    function update_kuliah($id, $course, $description) {
+    function update_kuliah($id, $course, $description,$intkuliah,$pemdasar,$dipelajari) {
         $this->db->where('id_course', $id);
         $this->db->set('course', $course);
         $this->db->set('description', $description);
+        $this->db->set('intkuliah', $intkuliah);
+        $this->db->set('pemdasar', $pemdasar);
+        $this->db->set('dipelajari', $dipelajari);
         $this->db->update('course');
     }
 

@@ -22,7 +22,19 @@
 </div>
 <div class="span2" style="text-align: center;">
     <div class="clearfix" style="margin-bottom: 40px;">
-        <a id="btn-upload-picture" style="cursor: pointer;"><i class="icon-user" style="font-size: 100px;"></i></a>
+        <?php
+        if ($profic->profic != NULL) {
+            ?>
+
+            <a id ="btn-upload-picture" style="cursor: pointer;" title="Klik untuk edit foto"><img src="<?php echo base_url() . 'resource/' . $profic->profic; ?>" style="width:150px ; heigth:150px"></a>
+            <?php
+        } else {
+            ?>
+
+            <a id="btn-upload-picture" style="cursor: pointer;" title="Klik untuk edit foto"><i class="icon-user" style="font-size: 100px;"></i></a>
+            <?php
+        }
+        ?>
     </div>
 </div>
 <script type="text/javascript">

@@ -76,7 +76,7 @@ class Portofolio extends MX_Controller {
         $data['publikasi'] = $this->model_portofolio->select_metadata($user->id, 4)->row();
         $data['pengalaman'] = $this->model_portofolio->select_metadata($user->id, 5)->row();
         $data['pendidikan'] = $this->model_portofolio->select_metadata($user->id, 6)->row();
-
+        $data['profic'] = $this->model_portofolio->select_profic_user($user->id)->row();
         $this->load->view('portofolio/form_edit', $data);
     }
 
@@ -108,11 +108,12 @@ class Portofolio extends MX_Controller {
     }
 
     //fungsi save fote
-    public function upload_profic() {
+    public function upload_profic() {      
         $user = $this->ion_auth->user()->row();
         $config['upload_path'] = './resource/';
         $config['allowed_types'] = 'jpg|JPG|jpeg|JPEG';
         $config['max_size'] = '215000';
+        $config['file_name'] = "profic_$user->id"; //berkas dikirim kemudian diganti namanya
         $this->load->library('upload', $config);
         $this->upload->overwrite = true;
         if (!$this->upload->do_upload()) {
