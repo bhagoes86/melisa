@@ -3,6 +3,7 @@
     <h2>
         Formulir Integrasi Konten
     </h2>
+    <h3 style="margin-top: 0px; padding-top: 0px;">Alamat URL Konten</h3>
     <form id="submit-link" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
         <div class="input-control">
             <input name="url" id="url" type="text" placeholder="Alamat URL Konten"/>
