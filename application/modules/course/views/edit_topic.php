@@ -1,11 +1,13 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/input-control.js"></script>
 <h3 style="margin-top: 0px; padding-top: 0px;">Formulir Edit Topic</h3>
 <form id="do-input-topic" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+    <h4 style="margin-top: 0px; padding-top: 0px;">Topic</h4>
     <div class="input-control text span4 clearfix">
         <input name="topic" id="topic" type="text" placeholder="topic" value="<?php echo $topic->topic;?>"/>
-        <button class="helper"></button>
+        
     </div>
     <div class="clearfix"></div>
+    <h4 style="margin-top: 0px; padding-top: 0px;">Jenjang</h4>
     <div class="input-control select span5">
         <select name="status" id="status">
             <option value="5">PT Perguruan Tinggi</option>
