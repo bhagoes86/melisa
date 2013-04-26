@@ -19,6 +19,7 @@
     </div>
 </div>
 <div class="span9 fright" id="content-right">
+    <div id="sound_dashboard"></div>
     <div class="bg-color-blueDark" style="margin-bottom: 10px;">
         <a class="fg-color-white">&nbsp;Video Terbaru</a>
     </div>
@@ -84,6 +85,7 @@
     </table>
 </div>
 <script type="text/javascript">
+    $('#sound_dashboard').load("<?php echo site_url('content/sound_dashboard') ?>");
     $('a#video-by-category').click(function(){
         var url = $(this).attr('data-url');
         $('#message').html('Loading Data');

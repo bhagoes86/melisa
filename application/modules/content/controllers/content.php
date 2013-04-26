@@ -547,6 +547,11 @@ class Content extends MX_Controller {
         $this->load->view('content/plain_soundcloud', $data);
     }
 
+    function sound_dashboard() {
+        $data['content'] = $this->model_content->select_content_by_type_limit(6, 1)->result();
+        $this->load->view('content/plain_soundcloud', $data);
+    }
+
     function soundcloud($id_content) {
         $data['other_content'] = $this->model_content->select_content_by_type_limit(6, 50)->result();
         $data['content'] = $this->model_content->select_content_by_id($id_content)->row();
