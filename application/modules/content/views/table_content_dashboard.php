@@ -1,3 +1,9 @@
+<script src="http://connect.soundcloud.com/sdk.js"></script>
+<script>
+    SC.initialize({
+        client_id: "938418853596f90572983f377348dc57"
+    });
+</script>
 <div class="span3">
     <div class="page-sidebar bg-color-orangeDark" style="margin-top: 0px;margin-left: 0px;padding-bottom: 0px;margin-bottom: 10px;">
         <ul>
@@ -20,12 +26,6 @@
 </div>
 <div class="span9 fright" id="content-right">
     <div id="sound_dashboard">
-        <script src="http://connect.soundcloud.com/sdk.js"></script>
-        <script>
-            SC.initialize({
-                client_id: "938418853596f90572983f377348dc57"
-            });
-        </script>
         <div id="putTheWidgetHere"></div>
         <script type="text/JavaScript">
             SC.oEmbed("<?php echo $soundclooud->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere"));
