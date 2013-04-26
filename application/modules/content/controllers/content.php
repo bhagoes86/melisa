@@ -364,8 +364,7 @@ class Content extends MX_Controller {
         $data['category'] = $this->model_content->select_category()->result();
         $data['video'] = $this->model_content->select_video_by_type(0, 57)->result();
         $data['video_external'] = $this->model_content->select_video_by_type_in(array(2, 3), 57)->result();
-        $data['soundcloud'] = $this->model_content->select_content_by_type_limit(6, 1)->row();
-
+     
         $this->load->view('content/table_content_dashboard', $data);
     }
 
