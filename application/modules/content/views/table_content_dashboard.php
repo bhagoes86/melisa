@@ -96,7 +96,6 @@
     </table>
 </div>
 <script type="text/javascript">
-    $('#sound_dashboard').load("<?php echo site_url('content/sound_dashboard') ?>");
     $('a#video-by-category').click(function(){
         var url = $(this).attr('data-url');
         $('#message').html('Loading Data');
