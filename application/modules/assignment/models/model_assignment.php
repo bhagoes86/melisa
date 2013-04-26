@@ -62,7 +62,6 @@ class Model_assignment extends CI_Model {
         $this->db->where('assignment_file.course_id !=', 0);
         $this->db->where('assignment_file.id_assignment', $assignment_id);
         
-        
         return $this->db->get();
     }
     
@@ -120,4 +119,17 @@ class Model_assignment extends CI_Model {
         
         return $this->db->get();
     }
+    
+    function select_assignment_submited_by_cag($user_id, $course_id, $assignment_id, $group_id){
+        $this->db->select('*');
+        $this->db->from('assignment_file_student as afs');
+        $this->db->where('afs.course_id', $course_id);
+        $this->db->where('afs.assignment_id', $assignment_id);
+        $this->db->where('afs.group_id', $group_id);
+        
+        $this->db->order_by('afs.date_created', 'desc');
+        return $this->db->get();
+    }
+    
+    
 }
