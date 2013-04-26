@@ -19,7 +19,18 @@
     </div>
 </div>
 <div class="span9 fright" id="content-right">
-    <div id="sound_dashboard"></div>
+    <div id="sound_dashboard">
+        <script src="//connect.soundcloud.com/sdk.js"></script>
+        <script>
+            SC.initialize({
+                client_id: "938418853596f90572983f377348dc57"
+            });
+        </script>
+        <div id="putTheWidgetHere"></div>
+        <script type="text/JavaScript">
+            SC.oEmbed("<?php echo $soundclooud->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere"));
+        </script>
+    </div>
     <div class="bg-color-blueDark" style="margin-bottom: 10px;">
         <a class="fg-color-white">&nbsp;Video Terbaru</a>
     </div>

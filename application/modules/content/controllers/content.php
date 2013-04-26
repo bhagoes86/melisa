@@ -364,6 +364,8 @@ class Content extends MX_Controller {
         $data['category'] = $this->model_content->select_category()->result();
         $data['video'] = $this->model_content->select_video_by_type(0, 57)->result();
         $data['video_external'] = $this->model_content->select_video_by_type_in(array(2, 3), 57)->result();
+        $data['soundcloud'] = $this->model_content->select_content_by_type_limit(6, 1)->row();
+
         $this->load->view('content/table_content_dashboard', $data);
     }
 
@@ -544,11 +546,6 @@ class Content extends MX_Controller {
 
     function plain_soundcloud($id_content) {
         $data['content'] = $this->model_content->select_content_by_id($id_content)->row();
-        $this->load->view('content/plain_soundcloud', $data);
-    }
-
-    function sound_dashboard() {
-        $data['content'] = $this->model_content->select_content_by_type_limit(6, 1)->result();
         $this->load->view('content/plain_soundcloud', $data);
     }
 
