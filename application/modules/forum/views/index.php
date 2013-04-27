@@ -31,8 +31,13 @@
                                 <?php } ?>
                                 <div class="page-sidebar bg-color-red" style="margin:0px; padding-bottom: 0px;width:140px;">
                                     <ul>
-                                        <li><a id=""><i class="icon-film"></i> Podcast</a></li>
-                                        <li><a id=""><i class="icon-file-pdf"></i> Document</a></li>
+                                        <li><a id="wall-broadcast"><i class="icon-broadcast"></i> Broadcast</a></li>
+                                        <li><a id="wall-connection"><i class="icon-share-3"></i> Koneksi</a></li>
+                                        <li><a id="wall-activity"><i class="icon-clipboard-2"></i> Aktivitas</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a id="wall-podcast"><i class="icon-film"></i> Podcast</a></li>
+                                        <li><a id="wall-document"><i class="icon-file-pdf"></i> Document</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -91,8 +96,18 @@
         $('#topbar').load("<?php echo site_url('site/topbar') ?>");
         $('#footbar').load("<?php echo site_url('site/footbar') ?>");
         
+        //first feed
         $('#wall_container').load("<?php echo site_url('content/wall_podcast') ?>");
         
+        //feed nav
+        $('#wall-podcast').click(function(){
+            $('#message').html("Loading Data");
+            $('#loading-template').show();
+            $('#wall_container').load("<?php echo site_url('content/wall_podcast') ?>",function(){                
+                $('#loading-template').fadeOut("slow");
+            });
+        });
+                
         $('#row-top-content').load("<?php echo site_url('home/top') ?>");
         
         $('.hide-link').live('click', function(){
