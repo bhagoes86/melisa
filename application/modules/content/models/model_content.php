@@ -231,9 +231,11 @@ class Model_content extends CI_Model {
     function select_video_by_type($type, $limit) {
         $this->db->select('*');
         $this->db->from('content');
-        $this->db->where('type', $type);
-        $this->db->where('show', 1);
-        $this->db->order_by('id_content', 'desc');
+        $this->db->join('users', 'users.id = content.user_id');
+        $this->db->where('content.type', $type);
+        $this->db->where('content.show', 1);
+        $this->db->where('content.user_id !=', 0);
+        $this->db->order_by('content.id_content', 'desc');
         $this->db->limit($limit);
         return $this->db->get();
     }
@@ -241,9 +243,11 @@ class Model_content extends CI_Model {
     function select_video_by_type_in($type, $limit) {
         $this->db->select('*');
         $this->db->from('content');
-        $this->db->where_in('type', $type);
-        $this->db->where('show', 1);
-        $this->db->order_by('id_content', 'desc');
+        $this->db->join('users', 'users.id = content.user_id');
+        $this->db->where_in('content.type', $type);
+        $this->db->where('content.show', 1);
+        $this->db->where('content.user_id !=', 0);
+        $this->db->order_by('content.id_content', 'desc');
         $this->db->limit($limit);
         return $this->db->get();
     }

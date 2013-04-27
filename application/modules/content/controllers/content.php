@@ -362,10 +362,17 @@ class Content extends MX_Controller {
 
     function video_list() {
         $data['category'] = $this->model_content->select_category()->result();
-        $data['video'] = $this->model_content->select_video_by_type(0, 57)->result();
-        $data['video_external'] = $this->model_content->select_video_by_type_in(array(2, 3), 57)->result();
-     
+        $data['soundcloud'] = $this->model_content->select_video_by_type(6, 1)->result();
+        $data['youtube'] = $this->model_content->select_video_by_type(2, 5)->result();
+        $data['video'] = $this->model_content->select_video_by_type(1, 5)->result();
+        //$data['content'] = $this->model_content->select_video_by_type_in(array(0, 2), 5)->result();
+
         $this->load->view('content/table_content_dashboard', $data);
+    }
+
+    function wall_podcast() {
+        $data['content'] = $this->model_content->select_video_by_type_in(array(0, 2, 3, 6), 500)->result();
+        $this->load->view('content/wall_podcast', $data);
     }
 
     /*
@@ -546,6 +553,11 @@ class Content extends MX_Controller {
     function plain_soundcloud($id_content) {
         $data['content'] = $this->model_content->select_content_by_id($id_content)->row();
         $this->load->view('content/plain_soundcloud', $data);
+    }
+
+    function wall_player($id_content) {
+        $data['content'] = $this->model_content->select_content_by_id($id_content)->row();
+        $this->load->view('content/wall_player', $data);
     }
 
     function soundcloud($id_content) {

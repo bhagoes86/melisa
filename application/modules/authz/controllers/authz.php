@@ -216,7 +216,7 @@ class Authz extends MX_Controller {
         $data1['id'] = $id;
         $data['username'] = $this->input->post('username', true);
         $data['password'] = $this->input->post('password', true);
-        
+
         $data['email'] = $this->input->post('email', true);
         $this->ion_auth->update($data1['id'], $data);
         //print_r($test);
@@ -226,11 +226,21 @@ class Authz extends MX_Controller {
     function delete_user($id) {
         $this->model_authz->delete_user_db($id);
     }
-    
-    function update_active($id,$status){
+
+    function update_active($id, $status) {
         //print_r($status);
         //print_r($id);
-        $this->model_authz->update_active($id,$status);
+        $this->model_authz->update_active($id, $status);
+    }
+
+    function get_username($id) {
+        $user = $this->model_authz->select_one($id)->row();
+        echo $user->username;
+    }
+
+    function get_profic($id) {
+        $user = $this->model_authz->select_one($id)->row();
+        echo $user->profic;
     }
 
 }

@@ -21,4 +21,11 @@ class Model_forum extends CI_Model {
         return $this->db->get();
     }
 
+    function select_users($user_id) {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('id', $user_id);
+        return $this->db->get();
+    }
+
 }
