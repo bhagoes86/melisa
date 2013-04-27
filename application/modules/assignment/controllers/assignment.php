@@ -21,8 +21,28 @@ class Assignment extends MX_Controller {
             redirect();
         } else {
             $user = $this->ion_auth->user()->row();
-            $data['list_assignment'] = $this->load->model_assignment->select_all_assignment($user->id)->result();
+            $temp_list_assignment = $this->load->model_assignment->select_all_assignment($user->id)->result();
+            
+            $temp_array = array();
+            $i = 0;
+            foreach ($temp_list_assignment as $assignment){
+                $temp_array[$i] = $assignment;
+                $temp_course = $this->load->model_assignment->select_course_by_assignment_id($user->id, $assignment->id_assignment)->row();
+                $temp_array[$i]->course =  $temp_course->course;
+                $temp_group = $this->load->model_assignment->select_group_by_assignment($assignment->id_assignment)->result();
+                $temp_array[$i]->list_group = $temp_group;
+                $i++;
+            }
+            
+            /*
+            echo "<pre>";
+            print_r($temp_array);
+            echo "</pre>";
+            */
+            
+            $data['list_assignment'] = $temp_list_assignment;
             $this->load->view('assignment/list_assignment', $data);
+             
         }
     }
 
@@ -280,12 +300,6 @@ class Assignment extends MX_Controller {
             $data['list_course_chosen'] = $this->model_assignment->select_course_by_assignment_id($user->id, $assignment_id)->result();
             $data['assignment_id'] = $assignment_id;
             
-            /*
-            echo "<pre>";
-            print_r($data);
-            echo "</pre>";
-            */
-            
             $this->load->view('assignment/list_course', $data);
         }
     }
@@ -400,6 +414,19 @@ class Assignment extends MX_Controller {
                 echo "\"msg\": \"0\"";
                 echo "}";
             }
+        }
+    }
+    
+    function give_score($course_id, $assignment_id, $group_id){
+        if (!$this->ion_auth->logged_in()) {
+            redirect();
+        } else {
+            $user = $this->ion_auth->user()->row();
+            
+            $temp_result = $this->load->model_assignment->select_assignment_submited_by_cag($user->id, $course_id, $assignment_id, $group_id)->result();
+            $data['list_assignment_result'] = $temp_result;
+            $data['assignment_id'] = $assignment_id;
+            $this->load->view('assignment/assignment_score', $data);
         }
     }
     

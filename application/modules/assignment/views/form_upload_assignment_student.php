@@ -8,9 +8,9 @@
     <div class="input-control textarea">
         <textarea name="description" id="description" placeholder="Deskripsi"></textarea>
     </div>
-    <input type="text" name="id_course" id="id_course" value="<?php echo $id_course;?>"/>
-    <input type="text" name="id_group" id="id_group" value="<?php echo $id_group;?>"/>
-    <input type="text" name="id_assignment" id="id_assignment" value="<?php echo $id_assignment;?>"/>
+    <input type="hidden" name="id_course" id="id_course" value="<?php echo $id_course;?>"/>
+    <input type="hidden" name="id_group" id="id_group" value="<?php echo $id_group;?>"/>
+    <input type="hidden" name="id_assignment" id="id_assignment" value="<?php echo $id_assignment;?>"/>
     <input type="submit" value="Upload"/>
     <input class="bg-color-red" style="color:white" type="button" name="btn-cancel" id="btn-cancel" value="Cancel"/>
 </form>
