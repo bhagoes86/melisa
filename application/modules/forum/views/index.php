@@ -103,6 +103,8 @@
         $('#wall-podcast').click(function(){
             $('#message').html("Loading Data");
             $('#loading-template').show();
+            $('#wall_container').slideUp('fast');                
+            $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('content/wall_podcast') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
             });
