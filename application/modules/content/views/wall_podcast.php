@@ -1,7 +1,7 @@
 <style type="text/css">
     .pager {
         overflow:hidden;
-        padding-top:1em;
+        padding-top:0px;
     }
 
     .pager li{
