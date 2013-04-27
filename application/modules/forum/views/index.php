@@ -21,7 +21,7 @@
                                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="" style="padding: 0px;margin-top: 0px;width: 100%;"/>
                                 <?php } else { ?>
                                     <?php
-                                    $profpic = 'attachment/' . $content->profic;
+                                    $profpic = 'resource/' . $content->profic;
                                     if (file_exists($profpic)) {
                                         ?>
                                         <img src="<?php echo base_url() . $profpic ?>" class="userphoto" style="padding: 0px;margin-top: 0px;width: 100%;"/>
