@@ -73,7 +73,7 @@
                             <?php echo $row->title; ?>
                         </a>
                     </h4>
-                    <?php echo CutText($row->description, 300); ?>
+                    <?php echo CutText($row->description, 150); ?>
                 </div>
                 <div class="clearfix"></div>
             </div>            
