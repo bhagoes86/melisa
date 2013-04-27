@@ -32,13 +32,13 @@
                 <h4>
                     <a href="<?php echo site_url('forum' . '/' . $row->user_id) ?>"><?php echo modules::run('authz/get_username', $row->user_id) ?></a> 
                     <?php if ($row->type == 0) { ?><!--Video-->
-                    <a href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>" target="_blank" style="text-decoration: none;cursor: pointer;">mngunggah <i class="icon-film"></i>&nbsp;&nbsp;konten video</a>
+                    <a href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">mngunggah <i class="icon-film"></i>&nbsp;&nbsp;konten video</a>
                     <?php } elseif ($row->type == 2) { ?><!--Youtube-->
-                        <a href="<?php echo site_url('content/youtube' . '/' . $row->id_content) ?>" target="_blank" style="text-decoration: none;cursor: pointer;">menautkan <i class="icon-youtube"></i>&nbsp;&nbsp;konten youtube.com</a>
+                        <a href="<?php echo site_url('content/youtube' . '/' . $row->id_content) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">menautkan <i class="icon-youtube"></i>&nbsp;&nbsp;konten youtube.com</a>
                     <?php } elseif ($row->type == 3) { ?><!--Vimeo-->
-                        <a href="<?php echo site_url('content/vimeo' . '/' . $row->id_content) ?>" target="_blank" style="text-decoration: none;cursor: pointer;">menautkan <i class="icon-vimeo"></i>&nbsp;&nbsp;konten vimeo.com</a>
+                        <a href="<?php echo site_url('content/vimeo' . '/' . $row->id_content) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">menautkan <i class="icon-vimeo"></i>&nbsp;&nbsp;konten vimeo.com</a>
                     <?php } elseif ($row->type == 6) { ?><!--SoundCloud-->
-                        <a href="<?php echo site_url('content/soundcloud' . '/' . $row->id_content) ?>" target="_blank" style="text-decoration: none;cursor: pointer;">menautkan <i class="icon-soundcloud"></i>&nbsp;&nbsp;konten soundcloud.com</a>
+                        <a href="<?php echo site_url('content/soundcloud' . '/' . $row->id_content) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">menautkan <i class="icon-soundcloud"></i>&nbsp;&nbsp;konten soundcloud.com</a>
                     <?php } ?>
                 </h4>
                 <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
