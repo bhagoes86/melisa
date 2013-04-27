@@ -15,15 +15,15 @@
     <li class="feed-link" style="padding-left: 0px;">
         <span class="feed-avatar">
             <?php if ($row->profic == '') { ?>
-                <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="border-right: 1px solid #888;padding-right: 0px;width: 100%;"/>
+                <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;"/>
             <?php } else { ?>
                 <?php
                 $profpic = 'resource/' . $row->profic;
                 if (file_exists($profpic)) {
                     ?>
-                    <img src="<?php echo base_url() . $profpic ?>" class="userphoto" style="border-right: 1px solid #888;padding-right: 0px;width: 100%;"/>
+                    <img src="<?php echo base_url() . $profpic ?>" class="userphoto" style="padding-right: 0px;width: 100%;"/>
                 <?php } else { ?>
-                    <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="border-right: 1px solid #888;padding-right: 0px;width: 100%;"/>
+                    <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;"/>
                 <?php } ?>
             <?php } ?>
         </span>
