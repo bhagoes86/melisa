@@ -73,7 +73,16 @@
                             <?php echo $row->title; ?>
                         </a>
                     </h4>
-                    <?php echo CutText($row->description, 150); ?>
+                    <?php echo CutText($row->description, 150); ?>...
+                    <?php if ($row->type == 0) { ?><!--Video-->
+                        <a href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>" target="_blank">selengkapnya</a>
+                    <?php } elseif ($row->type == 2) { ?><!--youtube-->
+                        <a href="<?php echo site_url('content/youtube' . '/' . $row->id_content) ?>" target="_blank">selengkapnya</a>
+                    <?php } elseif ($row->type == 3) { ?><!--vimeo-->
+                        <a href="<?php echo site_url('content/vimeo' . '/' . $row->id_content) ?>" target="_blank">selengkapnya</a>
+                    <?php } elseif ($row->type == 6) { ?><!--SoundCloud-->
+                        <a href="<?php echo site_url('content/soundcloud' . '/' . $row->id_content) ?>" target="_blank">selengkapnya</a>
+                    <?php } ?>
                 </div>
                 <div class="clearfix"></div>
             </div>            
