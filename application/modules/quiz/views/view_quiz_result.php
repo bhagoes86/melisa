@@ -21,7 +21,8 @@
     </tbody>
 </table>
 
-<p>
-    catatan : silahkan lihat detail hasil kuis Anda di dasboard kelola kuis dengan
-    menekan tombol <b>Nilai Saya</b>.
-</p>
+<div id="hasil-ujian-detail"></div>
+<script type="text/javascript">
+    $('#hasil-ujian-detail').load("<?php echo site_url('quiz/detail_participant_quiz_result') ?>/"+<?php echo $result->id_result?>+"/"+3);
+    
+</script>

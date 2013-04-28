@@ -1,3 +1,4 @@
+
 <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/accordion.js"></script>
 <a class="button bg-color-yellow" id="quiz-add-form"><i class="icon-plus"></i>Tambah Kuis</a>
 <a class="button bg-color-blue fg-color-white" id="quiz-manage-resource"><i class="icon-wrench"></i>Pengaturan Konten</a>

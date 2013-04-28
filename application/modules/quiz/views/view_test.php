@@ -18,12 +18,13 @@
     </head>
     <?php $this->load->view('home/js'); ?>
     
-    <script src="//connect.soundcloud.com/sdk.js"></script>
+    <script src="http://connect.soundcloud.com/sdk.js"></script>
     <script>
         SC.initialize({
             client_id: "938418853596f90572983f377348dc57"
         });
     </script>
+    
     <script src="<?php echo base_url() ?>asset/flowplayer/flowplayer.min.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/flowplayer/skin/minimalist.css" />
     
@@ -165,7 +166,7 @@
 </html>
 <script type="text/javascript">
         $('#topbar').load("<?php echo site_url('site/topbar_nomenu') ?>");
-    $('#footbar').load("<?php echo site_url('site/footbar') ?>");
+        $('#footbar').load("<?php echo site_url('site/footbar') ?>");
     
 
          $('#close-error-message').click(function(){

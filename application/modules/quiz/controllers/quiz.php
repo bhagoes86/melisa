@@ -1001,7 +1001,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    function detail_participant_quiz_result($id_result) {
+    function detail_participant_quiz_result($id_result, $status) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
         } else {
@@ -1028,18 +1028,21 @@ class Quiz extends MX_Controller {
                 foreach ($temp_jawaban as $jawaban) {
                     $list_jawaban[] = get_object_vars($jawaban);
                 }
-
+                    
                 // mengambil jawaban peserta dari answer_log
                 $user_answer = $this->load->model_quiz->select_user_answer_by_soal($id_result, $soal->id_soal)->row();
 
                 // mengambil kunci jawaban
                 $kunci_jawaban = $this->load->model_quiz->select_key_choice_by_soal($soal->id_soal, $soal->answer, 1)->row();
 
+                $temp_resource = $this->load->model_quiz->select_quiz_resource_by_id($soal->resource_id)->row();
+                
 
                 // menyimpan ke dalam array
                 $list_soal[$i] = get_object_vars($soal);
                 $list_soal[$i]['jawaban'] = $list_jawaban;
-
+                $list_soal[$i]['resource'] = $temp_resource;
+                
                 if (count($user_answer) == 0) {
                     $list_soal[$i]['jawaban_user'] = null;
                 } else {
@@ -1047,7 +1050,7 @@ class Quiz extends MX_Controller {
                 }
 
                 $list_soal[$i]['kunci_jawaban'] = $kunci_jawaban;
-
+                
                 // destroy
                 $temp_jawaban = "";
                 $list_jawaban = "";
@@ -1069,7 +1072,7 @@ class Quiz extends MX_Controller {
             $data['start_time'] = $temp_result->start_time;
             $data['end_time'] = $temp_result->end_time;
             $data['participant'] = $this->model_quiz->select_user_by_id($temp_result->user_id)->row();
-
+            $data['status'] = $status;
 
             $this->load->view('quiz/manage_detail_quiz_result', $data);
         }

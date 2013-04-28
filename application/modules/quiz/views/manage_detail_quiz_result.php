@@ -1,8 +1,21 @@
+ <script src="http://connect.soundcloud.com/sdk.js"></script>
+    <script>
+        SC.initialize({
+            client_id: "938418853596f90572983f377348dc57"
+        });
+    </script>
+    
 
+<script src="<?php echo base_url() ?>asset/flowplayer/flowplayer.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/flowplayer/skin/minimalist.css" />
+    
+
+
+<?php if ($status != 3){?>
 
 <a class="button bg-color-orange fg-color-white" id="quiz-my-quiz-result"><i class="icon-arrow-left-2"></i> Kembali ke Nilai Saya</a>
 <input class="bg-color-blue" style="color:white" type="button" name="btn-cancel" id="btn-cancel" value="Kembali ke Daftar Kuis "/>
-
+<?php } ?>
 <hr/>
 
 <div class="span9">
@@ -148,7 +161,100 @@ foreach ($list_soal as $soal){
     ?>
     </div>
     <br /> <br/>
- </td></tr>
+    
+    <div id="summary-resource">
+         <?php echo $soal['resource_id']?>
+    
+         <?php
+
+                if ($soal['resource_id'] != 0){
+                ?>
+                    <?php
+                   
+                    if ($soal['resource']->type == 8){
+                        ?>
+                        <img width="60%" height="40%" src="<?php echo base_url()."resource/".$soal['resource']->file?>" />
+                        <?php
+                    }
+                    else if ($soal['resource']->type == 5){
+                        echo modules::run('quiz/show_slideshare', $soal['resource']->file);
+                    }
+                    else if ($soal['resource']->type == 0){
+                        echo modules::run('quiz/show_video', $soal['resource']);
+                   }
+                   else if ($soal['resource']->type == 9){
+                       echo modules::run('quiz/show_audio', $soal['resource']->id_quiz_resource);
+                        
+                   }
+                   else if ($soal['resource']->type == 1){
+                    ?>
+                        <div style="background-color: whiteSmoke;
+                                         z-index: 1;
+                                         position: absolute;
+                                         height: 30px;
+                                         width: 30px;
+                                         float: right;
+                                         margin-top: 2px;
+                                         right: 0px;"></div>
+                         <iframe style="width: 100%;height: 480px;border: 0px;" src="http://docs.google.com/viewer?url=<?php echo base_url() . 'resource/' . $soal['resource']->file . '&embedded=true' ?>"></iframe>
+
+
+                    <?php
+                        
+                    }
+                    else if ($soal['resource']->type == 6){
+                        ?>
+                        
+                        <div id="putTheWidgetHere-<?php echo $soal['id_soal']?>"></div>
+                        <script type="text/JavaScript">
+                            SC.oEmbed("<?php echo $soal['resource']->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere-<?php echo $soal['id_soal'] ?>"));
+                        </script>
+
+                        <?php
+                    }
+                    else {
+                        ?>
+
+                        <div style="background-color: #000;height: 394px;">
+                            <?php
+                            $media = analyze_media($soal['resource']->file);
+                            $trace = explode('^^^', $media);
+                            switch ($trace[0]) {
+                                case 'image' :
+                                    echo "<a href='" . $trace[3] . "' target='_blank'><img src='" . $trace[3] . "' width='100%' /></a>";
+                                    break;
+                                case 'youtube' :
+                                    echo youtube($trace[1]);
+                                    break;
+                                case 'vimeo' :
+                                    echo vimeoLarge($trace[1]);
+                                    break;
+                                case 'scribd' :
+                                    echo scribdLarge($trace[1]);
+                                    break;
+                                case 'docstoc' :
+                                    echo docstocLarge($trace[1]);
+                                    break;
+                                case 'link' :
+                                    break;
+                                default :
+                                    die;
+                            }
+                            ?>
+                        </div>
+
+                        <?php
+                    }
+
+                    
+                }
+                ?>
+    </div>
+    <div id="summary-forum"></div>
+ </td>
+    
+
+   </tr>
 
     <?php
 
@@ -166,15 +272,37 @@ foreach ($list_soal as $soal){
 </div>
 
 <script type="text/javascript">
-    $('#quiz-my-quiz-result').click(function(){
-        $('#message').html("Loading Data");
-        $('#loading-template').show();
+    <?php if ($status == 1){
+        ?>
+        $('#quiz-my-quiz-result').click(function(){
+            $('#message').html("Loading Data");
+            $('#loading-template').show();
 
-        $('#content-right').load("<?php echo site_url('quiz/show_manage_course_result')."/".$course_id."/".$quiz_id."/".$group_id ?>",function(){
-            $('#loading-template').fadeOut("slow");
+            $('#content-right').load("<?php echo site_url('quiz/show_manage_course_result')."/".$course_id."/".$quiz_id."/".$group_id ?>",function(){
+                $('#loading-template').fadeOut("slow");
 
+            });
         });
-    });
+            
+        <?php
+    }
+    else if ($status == 2){
+    
+        ?>
+        $('#quiz-my-quiz-result').click(function(){
+            $('#message').html("Loading Data");
+            $('#loading-template').show();
+
+            $('#content-right').load("<?php echo site_url('quiz/show_my_quiz_result') ?>",function(){
+                $('#loading-template').fadeOut("slow");
+
+            });
+        });
+            
+        <?php
+    }
+    ?>
+    
     $('#btn-cancel').click(function(){
         $('#message').html('Loading ... ');
         $('#loading-template').show();
