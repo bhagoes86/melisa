@@ -34,8 +34,11 @@
             {
                 if (data.msg == '1')
                 {                    
-                    $('#loading-template').hide();
-                    alert('Proses berhasil!');
+                    $('#message').html("Loading Data");
+                    $('#loading-template').show();
+                    $('#content-right').load("<?php echo site_url('portofolio/user') ?>",function(){
+                        $('#loading-template').fadeOut("slow");
+                    })
                 } else {
                     $('#loading-template').hide();
                     alert('Proses gagal!');

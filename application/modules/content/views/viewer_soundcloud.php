@@ -45,7 +45,7 @@
                                             </script>
                                         <?php } ?>
                                     <?php } elseif ($content->show == 1) { ?>
-                                        <script src="//connect.soundcloud.com/sdk.js"></script>
+                                        <script src="http://connect.soundcloud.com/sdk.js"></script>
                                         <script>
                                             SC.initialize({
                                                 client_id: "938418853596f90572983f377348dc57"

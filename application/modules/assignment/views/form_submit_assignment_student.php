@@ -53,7 +53,7 @@
 
                                 </p>
                             </div>
-                            <div id="check-submit-section" class="span12">
+                            <div id="submit-section" class="span12">
                                 <br />
                                 <hr/>
                                 <form id="form-check-submition-assignment">
@@ -73,9 +73,7 @@
                                 </form>
                                 <hr>
                             </div>
-                            <div id="submit-section" class="span12">
-                                <?php echo $id_course.' - '.$id_assignment.' - '.$id_group?>
-                            </div>
+                            
                             
                         </div>
                     </div>
@@ -106,8 +104,7 @@
         $('#topbar').load("<?php echo site_url('site/topbar_nomenu') ?>");
         $('#footbar').load("<?php echo site_url('site/footbar') ?>");
     
-         //$('#submit-section').hide();
-
+        
          $('#close-error-message').click(function(){
              $('#error-template').fadeOut('slow');
          });

@@ -35,6 +35,15 @@ class Model_assignment extends CI_Model {
         $this->db->update('assignment_file', $data);
     }
     
+    function insert_assignment_student($data) {
+        $this->db->insert('assignment_file_student', $data);
+        return $this->db->insert_id();
+    }
+    
+    function update_assignment_student($id_assignment, $data) {
+        $this->db->where('id_assignment_student', $id_assignment);
+        $this->db->update('assignment_file_student', $data);
+    }
     
     function select_all_course($user_id){
         $this->db->select('*');
@@ -52,7 +61,6 @@ class Model_assignment extends CI_Model {
         $this->db->where('assignment_file.deleted', 0);
         $this->db->where('assignment_file.course_id !=', 0);
         $this->db->where('assignment_file.id_assignment', $assignment_id);
-        
         
         return $this->db->get();
     }
@@ -111,4 +119,17 @@ class Model_assignment extends CI_Model {
         
         return $this->db->get();
     }
+    
+    function select_assignment_submited_by_cag($user_id, $course_id, $assignment_id, $group_id){
+        $this->db->select('*');
+        $this->db->from('assignment_file_student as afs');
+        $this->db->where('afs.course_id', $course_id);
+        $this->db->where('afs.assignment_id', $assignment_id);
+        $this->db->where('afs.group_id', $group_id);
+        
+        $this->db->order_by('afs.date_created', 'desc');
+        return $this->db->get();
+    }
+    
+    
 }

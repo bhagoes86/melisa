@@ -2,10 +2,13 @@
 <h3>Silabus Course</h3>
 <div class="span8">
     <form id="add-silabus">
+        <h4 style="margin-top: 0px; padding-top: 0px;">Deskripsi</h4>
         <div class="input-control text span6">
             <input name="deskripsi" id="deskripsi" type="text" placeholder="Deskripsi"/>
-            <button class="helper"></button>
+           
         </div>
+        <div class="clearfix"></div>
+        <h4 style="margin-top: 0px; padding-top: 0px;">Silabus</h4>
         <div class="input-control select span6">
             <select name="silabus_id" id="silabus_id">
                 <option value="0">Parent Utama</option>

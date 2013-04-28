@@ -31,7 +31,44 @@
                 <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
                     <div id="list-quiz-result" style="width:480px;height:150px;overflow:scroll;overflow-x:hidden;margin:0px 5px 5px 5px;">
                           <?php //echo modules::run('quiz/show_quiz_course', $quiz->id_quiz); ?>
-                          
+                          <a style="color: #095b97;font-size: 18px;"><?php echo  character_limiter($assignment->course, 30); ?></a><br/>
+                          <p style="color: rgb(94,94,94);font-size: 13px;">
+                          <ul>
+                              
+                              <?php foreach($assignment->list_group as $group ):?>
+                              <li>
+                              <?php
+                                    if ($group->status == 1){
+                                        ?>
+                                        <a title="masih aktif di kuliah ini" href="javascript:void(0)">
+                                            <i class="icon-unlocked fg-color-pink"></i>
+                                        </a>
+                                <?php
+                                    }
+                                    else {
+                                        ?>
+                                        <a title="sudah dinonaktifkan dari kuliah ini" href="javascript:void(0)">
+                                            <i class="icon-locked fg-color-pink"></i>
+                                        </a>
+                                        <?php
+                                    }
+                                ?>
+
+
+                            <?php echo character_limiter($group->title, 30);  ?>
+
+                            <a title="Pilih Ini" href="javascript:void(0)" id="btn-choose-result"
+                               data-id-course="<?php echo $assignment->course_id; ?>"
+                               data-id-assignment="<?php echo $assignment->id_assignment; ?>"
+                               data-id-group="<?php echo $group->id_group; ?>"
+                            >
+                                <i class="icon-arrow-right fg-color-pink"></i>
+                            </a>
+                              </li>
+                              <?php endforeach;?>
+                          </ul>
+                          </p>
+                    
                     </div>
                 </td>
                 <td style="border: 1px solid white;vertical-align: middle;background-color:rgba(0, 0, 0, 0.0666667);">
@@ -201,6 +238,18 @@
     });
 
 
+    $('a#btn-choose-result').click(function(){
+        $('#message').html('Loading Informasi');
+        $('#loading-template').show();
+        var course_id = $(this).attr('data-id-course');
+        var assignment_id = $(this).attr('data-id-assignment');
+        var group_id = $(this).attr('data-id-group');
+
+        $('#content-right').load("<?php echo site_url('assignment/give_score') ?>/"+course_id+"/"+assignment_id+"/"+group_id,function(){
+            $('#loading-template').fadeOut("slow");
+
+        });
+    });
     
     $('table#my-table').each(function() {
         var currentPage = 0;

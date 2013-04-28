@@ -119,6 +119,7 @@ class News extends MX_Controller {
         $config['upload_path'] = './attachment/';
         $config['allowed_types'] = 'jpg|JPG|jpeg|JPEG|png';
         $config['max_size'] = '215000';
+        $config['file_name'] = "header_$id";
         $this->load->library('upload', $config);
         $this->upload->overwrite = true;
         if (!$this->upload->do_upload()) {

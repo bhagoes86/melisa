@@ -15,9 +15,11 @@
     <?php } else { ?>
         <button class="bg-color-red fg-color-white" id="btn-shortcut-content">SUBMIT KONTEN <i class="icon-upload"></i></button>
         <!--<button href="<?php echo site_url('feed'); ?>" class="bg-color-red fg-color-white" id="btn-shortcut-feed">FEED <i class="icon-upload"></i></button>-->
-        <button id="btn-forum" class="bg-color-blue fg-color-white">
+        <?php
+        $user = $this->ion_auth->user()->row();
+        ?> 
+        <button href="<?php echo site_url('forum' . '/' . $user->id) ?>" id="btn-forum" class="bg-color-blue fg-color-white">
             <?php
-            $user = $this->ion_auth->user()->row();
             echo strtoupper($user->username);
             ?> 
             <i class="icon-comments-4"></i> 
@@ -52,16 +54,9 @@
     });
 
     //Show Feed Page
-    $('#btn-shortcut-feed').click(function(){
+    $('#btn-forum').click(function(){
         var href= $(this).attr('href');
         document.location = href;
-        // $('#row-main-other').hide();
-        // $('#row-button-other').hide();
-        // $('#message').html("Loading Data");
-        // $('#loading-template').show();
-        // $('#row-main-content').load("<?php echo site_url('feed') ?>",function(){
-        //     $('#loading-template').fadeOut("slow");
-        // });
         return false;
     });
     
