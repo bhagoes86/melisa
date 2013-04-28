@@ -13,7 +13,6 @@ class Course extends MX_Controller {
 
     function __construct() {
         parent::__construct();
-        //preload
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
         $this->load->library('session');
@@ -22,7 +21,7 @@ class Course extends MX_Controller {
         $this->load->helper(array('url', 'form'));
     }
 
-    function list_assignment($id_course){
+    function list_assignment($id_course) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
         } else {
@@ -32,7 +31,7 @@ class Course extends MX_Controller {
             $this->load->view('course/list_assignment', $data);
         }
     }
-    
+
     function list_quiz($id_course) {
 
         $user = $this->ion_auth->user()->row();
@@ -84,11 +83,6 @@ class Course extends MX_Controller {
         }
     }
 
-    function menu_topic() {
-        $data['content'] = $this->model_course->select_topic_for_navbar()->result();
-        $this->load->view('course/topic_list', $data);
-    }
-
     function form_add_topic() {
         $this->load->view('course/topic_form_add');
     }
@@ -101,7 +95,6 @@ class Course extends MX_Controller {
 
     function all_topic() {
         $data['select'] = $this->model_course->count_content_course_topic()->result();
-        //$data['total_content'] = count($data['content']);
         $this->load->view('course/topic', $data);
     }
 
@@ -111,23 +104,12 @@ class Course extends MX_Controller {
 
     function all_faculty() {
         $data['select'] = $this->model_course->count_content_course_faculty()->result();
-
-        //$data['total_content'] = count($data['content']);
-        //print_r($data);
         $this->load->view('course/faculty', $data);
     }
 
     function all_kuliah() {
-        //echo "test";
         $data['select'] = $this->model_course->count_course_topic_faculty()->result();
-        //print_r($data);
-
         $this->load->view('course/all_course', $data);
-    }
-
-    function menu_faculty() {
-        $data['content'] = $this->model_course->select_faculty()->result();
-        $this->load->view('course/faculty_list', $data);
     }
 
     function form_add_faculty() {
@@ -252,7 +234,6 @@ class Course extends MX_Controller {
         $data['course_topic'] = $this->model_course->select_course_topic($id_course)->result();
         $data['course_faculty'] = $this->model_course->select_course_faculty($id_course)->result();
         $data['course_bimbel'] = $this->model_course->select_course_topic_in($id_course, array('4', '3', '2'))->result();
-        //print_r($data['topic']);
         $this->load->view('course/course_form_configuration', $data);
     }
 
@@ -280,35 +261,6 @@ class Course extends MX_Controller {
         }
     }
 
-    function knowledge_by_faculty($faculty_id) {
-        $data['course'] = $this->model_course->select_course_by_faculty($faculty_id)->result();
-        $data['total_course'] = count($data['course']);
-        $data['video'] = $this->model_course->select_content_by_faculty($faculty_id, array(0))->result();
-        $data['total_video'] = count($data['video']);
-        $data['youtube'] = $this->model_course->select_content_by_faculty($faculty_id, array(2))->result();
-        $data['total_youtube'] = count($data['youtube']);
-        $data['vimeo'] = $this->model_course->select_content_by_faculty($faculty_id, array(3))->result();
-        $data['total_vimeo'] = count($data['vimeo']);
-        $this->load->view('course/knowledge_list', $data);
-    }
-
-    function knowledge_by_topic($topic_id) {
-        $data['course'] = $this->model_course->select_course_by_topic($topic_id)->result();
-        $data['total_course'] = count($data['course']);
-        $data['video'] = $this->model_course->select_content_by_topic($topic_id, array(0))->result();
-        $data['total_video'] = count($data['video']);
-        $data['youtube'] = $this->model_course->select_content_by_topic($topic_id, array(2))->result();
-        $data['total_youtube'] = count($data['youtube']);
-        $data['vimeo'] = $this->model_course->select_content_by_topic($topic_id, array(3))->result();
-        $data['total_vimeo'] = count($data['vimeo']);
-        $this->load->view('course/knowledge_list', $data);
-    }
-
-    function menu_bimbel() {
-        $data['content'] = $this->model_course->select_bimbel_for_navbar()->result();
-        $this->load->view('course/bimbel_list', $data);
-    }
-
     function delete_course($id_course) {
         $data['show'] = 2;
         $this->model_course->update_course($id_course, $data);
@@ -327,28 +279,24 @@ class Course extends MX_Controller {
     function form_edit_topic($id) {
         $data['id'] = $id;
         $data['topic'] = $this->model_course->select_one_topic($data['id'])->row();
-        //print_r($data['topic']);
         $this->load->view('edit_topic', $data);
     }
 
     function form_edit_faculty($id) {
         $data['id'] = $id;
         $data['faculty'] = $this->model_course->select_one_faculty($data['id'])->row();
-        //print_r($data['topic']);
         $this->load->view('edit_faculty', $data);
     }
 
     function form_edit_category($id) {
         $data['id'] = $id;
         $data['category'] = $this->model_course->select_one_category($data['id'])->row();
-        //print_r($data['topic']);
         $this->load->view('edit_category', $data);
     }
 
     function form_edit_kuliah($id) {
         $data['id'] = $id;
         $data['course'] = $this->model_course->select_one_course($data['id'])->row();
-        //print_r($data['topic']);
         $this->load->view('edit_course', $data);
     }
 
@@ -356,7 +304,6 @@ class Course extends MX_Controller {
         $data['id'] = $id;
         $data['topic'] = $this->input->post('topic', true);
         $data['status'] = $this->input->post('status', true);
-        //print_r($data);
         $this->model_course->update_topic($data['id'], $data['topic'], $data['status']);
     }
 
@@ -364,14 +311,12 @@ class Course extends MX_Controller {
         $data['id'] = $id;
         $data['faculty'] = $this->input->post('faculty', true);
         $data['singkatan'] = $this->input->post('singkatan', true);
-        //print_r($data);
         $this->model_course->update_faculty($data['id'], $data['faculty'], $data['singkatan']);
     }
 
     function category_update($id) {
         $data['id'] = $id;
         $data['category'] = $this->input->post('category', true);
-        //print_r($data);
         $this->model_course->update_category($data['id'], $data['category']);
     }
 
@@ -382,8 +327,7 @@ class Course extends MX_Controller {
         $data['intkuliah'] = $this->input->post('intkuliah', true);
         $data['pemdasar'] = $this->input->post('pemdasar', true);
         $data['dipelajari'] = $this->input->post('dipelajari', true);
-        //print_r($data);
-        $this->model_course->update_kuliah($data['id'], $data['kuliah'], $data['deskripsi'],$data['intkuliah'],$data['pemdasar'],$data['dipelajari']);
+        $this->model_course->update_kuliah($data['id'], $data['kuliah'], $data['deskripsi'], $data['intkuliah'], $data['pemdasar'], $data['dipelajari']);
     }
 
     function delete_topic($id) {
@@ -408,10 +352,7 @@ class Course extends MX_Controller {
 
     function course_silabus($id) {
         $data['id'] = $id;
-        //$data['silabus']=$this->model_course->course_silabus()->result();
         $data['silabus_parent'] = $this->model_course->course_silabus_parent($data['id'])->result();
-        //print_r($data1['course']->description);
-
         $this->load->view('add_course_silabus', $data);
     }
 
@@ -422,32 +363,24 @@ class Course extends MX_Controller {
         $user = $this->ion_auth->user()->row();
         $data['creator'] = $user->username;
         $data['user_id'] = $user->id;
-        //print_r($data['parent_id']);
         $this->model_course->insert_course_silabus($data);
     }
 
     function check_child($id_silabus, $id) {
-        //print_r($id_silabus);
         $data['id_silabus'] = $id_silabus;
         $data['id'] = $id;
         $data['silabus_anak'] = $this->model_course->course_silabus_child($data['id_silabus'])->result();
-        //print_r($data['id']);
-        //print_r($data['id_silabus']);
         $this->load->view('table_child', $data);
     }
 
     function show_child($id_silabus, $id) {
-        //print_r($id_silabus);
         $data['id_silabus'] = $id_silabus;
         $data['id'] = $id;
         $data['silabus_anak'] = $this->model_course->course_silabus_child($data['id_silabus'])->result();
-        //print_r($data['id']);
-        //print_r($data['id_silabus']);
         $this->load->view('show_sub_silabus', $data);
     }
 
     function delete_silabus($id_silabus) {
-        //print_r($id_silabus);
         $data['id'] = $id_silabus;
         $data['course'] = $this->model_course->cek_silabus($data['id'])->row();
         if ($data['course']->parent_id == 0) {
@@ -461,22 +394,17 @@ class Course extends MX_Controller {
     function silabus_edit($id_silabus, $id) {
         $data['id_silabus'] = $id_silabus;
         $data['id'] = $id;
-        //print_r($data);
         $data['select'] = $this->model_course->cek_silabus($data['id_silabus'])->row();
-        //print_r($data['id']);
-        //print_r($data['id_silabus']);
         $this->load->view('form_edit_silabus', $data);
     }
 
     function update_silabus($id) {
         $data['id'] = $id;
         $data['deskripsi'] = $this->input->post('deskripsi', true);
-        //print_r($data);
         $this->model_course->update_deskripsi_silabus($data['id'], $data['deskripsi']);
     }
 
     function delete_course_faculty($id_faculty, $id_course) {
-
         $this->model_course->delete_faculty_course($id_course, $id_faculty);
     }
 
@@ -485,16 +413,60 @@ class Course extends MX_Controller {
     }
 
     function edit_course($id_course) {
-        //print_r($id_course);
-
         $data['course'] = $this->model_course->select_course_by_id($id_course)->row();
-        //print_r($data);
         $this->load->view('course/form_edit_course', $data);
     }
 
     function list_content_by_sylabus($silabus_id) {
         $data['content'] = $this->model_course->select_content_by_sylabus($silabus_id)->result();
         $this->load->view('course/table_content_viewer', $data);
+    }
+
+    /*
+     * Menu
+     */
+
+    function menu_topic() {
+        $data['content'] = $this->model_course->select_topic_for_navbar()->result();
+        $this->load->view('course/topic_list', $data);
+    }
+
+    function menu_faculty() {
+        $data['content'] = $this->model_course->select_faculty()->result();
+        $this->load->view('course/faculty_list', $data);
+    }
+
+    function menu_bimbel() {
+        $data['content'] = $this->model_course->select_bimbel_for_navbar()->result();
+        $this->load->view('course/bimbel_list', $data);
+    }
+
+    /*
+     * List Course By Menu
+     */
+
+    function knowledge_by_faculty($faculty_id) {
+        $data['course'] = $this->model_course->select_course_by_faculty($faculty_id)->result();
+        $data['total_course'] = count($data['course']);
+        $data['video'] = $this->model_course->select_content_by_faculty($faculty_id, array(0))->result();
+        $data['total_video'] = count($data['video']);
+        $data['youtube'] = $this->model_course->select_content_by_faculty($faculty_id, array(2))->result();
+        $data['total_youtube'] = count($data['youtube']);
+        $data['vimeo'] = $this->model_course->select_content_by_faculty($faculty_id, array(3))->result();
+        $data['total_vimeo'] = count($data['vimeo']);
+        $this->load->view('course/knowledge_list', $data);
+    }
+
+    function knowledge_by_topic($topic_id) {
+        $data['course'] = $this->model_course->select_course_by_topic($topic_id)->result();
+        $data['total_course'] = count($data['course']);
+        $data['video'] = $this->model_course->select_content_by_topic($topic_id, array(0))->result();
+        $data['total_video'] = count($data['video']);
+        $data['youtube'] = $this->model_course->select_content_by_topic($topic_id, array(2))->result();
+        $data['total_youtube'] = count($data['youtube']);
+        $data['vimeo'] = $this->model_course->select_content_by_topic($topic_id, array(3))->result();
+        $data['total_vimeo'] = count($data['vimeo']);
+        $this->load->view('course/knowledge_list', $data);
     }
 
 }
