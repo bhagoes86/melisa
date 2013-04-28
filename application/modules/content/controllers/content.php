@@ -372,8 +372,12 @@ class Content extends MX_Controller {
 
     function wall_podcast() {
         $data['content'] = $this->model_content->select_video_by_type_in(array(0, 2, 3, 6), 500)->result();
-        //$this->load->view('content/wall_podcast', $data);
-        print_r($data);
+        $this->load->view('content/wall_podcast', $data);
+    }
+    
+    function wall_document() {
+        $data['content'] = $this->model_content->select_video_by_type_in(array(1, 4, 5, 7), 500)->result();
+        $this->load->view('content/wall_document', $data);
     }
 
     /*
