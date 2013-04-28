@@ -95,6 +95,7 @@
     });
     $('a#btn-content-activate').click(function(){
         $('.text').empty();
+        $('.text').hide();
         var id_content = $(this).attr('data-id');
         $('#wall-content-viewer-'+id_content).load("<?php echo site_url('content/wall_player') ?>/"+id_content,function(){
             $('#wall-content-viewer-'+id_content).slideToggle('fast');
@@ -102,6 +103,7 @@
     });
     $('a#pic-content-activate').click(function(){
         $('.text').empty();
+        $('.text').hide();
         var id_content = $(this).attr('data-id');
         $('#wall-content-viewer-'+id_content).load("<?php echo site_url('content/wall_player') ?>/"+id_content,function(){
             $('#wall-content-viewer-'+id_content).slideToggle('fast');
