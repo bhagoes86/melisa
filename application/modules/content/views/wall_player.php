@@ -12,7 +12,7 @@
 </style>
 <?php if ($content->type == 0) { ?>
     <!--Video-->
-    <div data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="background-color: #000;width: 100%;" data-ratio="0.5625">
+    <div data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="background-color: #000;width: 100%;padding: 0px;vertical-align: middle;" data-ratio="0.5625">
         <video>
             <?php if ($content->ext == '.mp4') { ?> 
                 <source type="video/mp4" src="<?php echo base_url() . 'resource/' . $content->id_content . '.mp4'; ?>"/>
@@ -138,7 +138,7 @@
     <iframe src="http://www.slideshare.net/slideshow/embed_code/<?php echo $slideshare->slideshow_id ?>?rel=0" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="width: 100%;padding: 0px;vertical-align: middle;height: 450px;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:0px;padding-bottom: 0px;" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe> 
 <?php } elseif ($content->type == 6) { ?>
     <!--Soundcloud-->
-    <div id="putTheWidgetHere"></div>
+    <div id="putTheWidgetHere" style="padding: 0px;vertical-align: middle;"></div>
     <script type="text/JavaScript">
         SC.oEmbed("<?php echo $content->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere"));
     </script>
