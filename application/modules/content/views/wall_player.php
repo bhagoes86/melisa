@@ -12,40 +12,23 @@
 </style>
 <?php if ($content->type == 0) { ?>
     <!--Video-->
-    <!--    <div data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="background-color: #000;width: 100%;padding: 0px;vertical-align: middle;" data-ratio="0.5625">
-        <video>
-    <?php //if ($content->ext == '.mp4') { ?> 
-                    <source type="video/mp4" src="<?php echo base_url() . 'resource/' . $content->id_content . '.mp4'; ?>"/>
-    <?php //} elseif ($content->ext == '.MP4') { ?>
-                    <source type="video/mp4" src="<?php echo base_url() . 'resource/' . $content->id_content . '.MP4'; ?>"/>
-    <?php //} elseif ($content->ext == '.FLV') { ?>
-                    <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_content . '.FLV'; ?>"/>
-    <?php //} elseif ($content->ext == '.flv') { ?>
-                    <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_content . '.flv'; ?>"/>
-    <?php //} elseif ($content->ext == '.MOV') { ?>
-                    <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_content . '.flv'; ?>"/>
-    <?php //} elseif ($content->ext == '.mov') { ?>
-                    <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_content . '.flv'; ?>"/>
-    <?php //} ?>
-        </video>-->
-    <a class="flowplayer" 
-    <?php if ($content->ext == '.mp4') { ?> 
-           href="<?php echo base_url() . 'resource/' . $content->id_content . '.mp4'; ?>"
-       <?php } elseif ($content->ext == '.MP4') { ?>
-           href="<?php echo base_url() . 'resource/' . $content->id_content . '.MP4'; ?>"
-       <?php } elseif ($content->ext == '.FLV') { ?>
-           href="<?php echo base_url() . 'resource/' . $content->id_content . '.FLV'; ?>"
-       <?php } elseif ($content->ext == '.flv') { ?>
-           href="<?php echo base_url() . 'resource/' . $content->id_content . '.flv'; ?>"
-       <?php } elseif ($content->ext == '.MOV') { ?>
-           href="<?php echo base_url() . 'resource/' . $content->id_content . '.MOV'; ?>"
-       <?php } elseif ($content->ext == '.mov') { ?>
-           href="<?php echo base_url() . 'resource/' . $content->id_content . '.mov'; ?>"
-       <?php } ?>
-       >
-        <img src="/media/img/player/btn/play_large.png" alt="Demo video 1"/>
-    </a>
-    <!--</div>-->
+    <div alt="<?php echo $content->id_content ?>" data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="background-color: #000;width: 100%;padding: 0px;vertical-align: middle;" data-ratio="0.5625">
+        <video alt="<?php echo $content->id_content ?>">
+            <?php if ($content->ext == '.mp4') { ?> 
+                <source type="video/mp4" src="<?php echo base_url() . 'resource/' . $content->id_content . '.mp4'; ?>"/>
+            <?php } elseif ($content->ext == '.MP4') { ?>
+                <source type="video/mp4" src="<?php echo base_url() . 'resource/' . $content->id_content . '.MP4'; ?>"/>
+            <?php } elseif ($content->ext == '.FLV') { ?>
+                <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_content . '.FLV'; ?>"/>
+            <?php } elseif ($content->ext == '.flv') { ?>
+                <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_content . '.flv'; ?>"/>
+            <?php } elseif ($content->ext == '.MOV') { ?>
+                <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_content . '.flv'; ?>"/>
+            <?php } elseif ($content->ext == '.mov') { ?>
+                <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_content . '.flv'; ?>"/>
+            <?php } ?>
+        </video>        
+    </div>
 <?php } elseif ($content->type == 1) { ?>
     <!--Document-->
     <iframe style="padding: 0px;vertical-align: middle;width: 100%;height: 600px;border: 0px;" src="http://docs.google.com/viewer?url=<?php echo base_url() . 'resource/' . $content->file . '&embedded=true' ?>"></iframe>
