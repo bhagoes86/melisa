@@ -101,9 +101,9 @@
         
         //feed nav
         $('#wall-podcast').click(function(){
+            $('div.pager').remove();                
             $('#message').html("Loading Data");
             $('#loading-template').show();                
-            $('div.pager').empty();                
             $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('content/wall_podcast') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
@@ -111,9 +111,9 @@
         });
         
         $('#wall-document').click(function(){
+            $('div.pager').remove();                
             $('#message').html("Loading Data");
             $('#loading-template').show();                
-            $('div.pager').empty();                
             $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('content/wall_document') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
