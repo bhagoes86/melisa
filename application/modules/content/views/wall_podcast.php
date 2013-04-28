@@ -43,7 +43,7 @@
                 </h4>
                 <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
             </div>
-            <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>
+            <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>
             <div class="image link-image">
                 <?php if ($row->type == 0) { ?><!--Video-->
                     <?php if ($row->cover == 0) { ?>
@@ -68,7 +68,7 @@
                 <?php } elseif ($row->type == 6) { ?><!--SoundCloud-->
                 <?php } ?>
                 <div class="description" style="padding-left: 141px;">
-                    <h4 style="padding-left: 0px;margin-left: 0px;">
+                    <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->id_content ?>">
                         <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>">                            
                             <?php echo $row->title; ?>
                         </a>
@@ -97,7 +97,8 @@
         var id_content = $(this).attr('data-id');
         $('#wall-content-viewer-'+id_content).load("<?php echo site_url('content/wall_player') ?>/"+id_content,function(){
             $('#wall-content-viewer-'+id_content).slideToggle('fast');
-        });
+        });           
+        return false;
     });
     $('a#pic-content-activate').click(function(){
         var id_content = $(this).attr('data-id');

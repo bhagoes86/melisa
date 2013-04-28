@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Quiz extends MX_Controller {
+class Quiz extends MX_Controller { 
 
     // inisiasi untuk meload library, helper, dan database
     function __construct() {
@@ -521,6 +521,7 @@ class Quiz extends MX_Controller {
             redirect();
         } else {
             $data['content'] = $content;
+            
             $this->load->view('quiz/viewer_video', $data);
         }
     }
@@ -551,7 +552,7 @@ class Quiz extends MX_Controller {
             curl_close($ch);
             $slideshare = json_decode($output);
             $data['presentation'] = explode("/", "$slideshare->slide_image_baseurl");
-
+            $data['slideshare'] = $slideshare;
             $this->load->view('quiz/viewer_slideshare', $data);
         }
     }
@@ -809,6 +810,23 @@ class Quiz extends MX_Controller {
         }
     }
 
+    function list_all_quiz_summary($id_soal){
+        if (!$this->ion_auth->logged_in()) {
+            redirect();
+        } else {
+            $user = $this->ion_auth->user()->row();
+
+            $data['id_soal'] = $id_soal;
+
+            $temp = $this->model_quiz->select_soal_by_id($id_soal)->row();
+            $data['summary_id'] = $temp->summary_id;
+
+            $data['list_quiz_resource'] = $this->model_quiz->select_all_quiz_resource($user->id)->result();
+            $data['list_avail_quiz_resource'] = 2;
+            $this->load->view('quiz/list_quiz_resource_summary', $data);
+        }
+    }
+    
     function list_all_quiz_attachment($id_soal) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1036,12 +1054,14 @@ class Quiz extends MX_Controller {
                 $kunci_jawaban = $this->load->model_quiz->select_key_choice_by_soal($soal->id_soal, $soal->answer, 1)->row();
 
                 $temp_resource = $this->load->model_quiz->select_quiz_resource_by_id($soal->resource_id)->row();
+                $temp_summary = $this->load->model_quiz->select_quiz_resource_by_id($soal->summary_id)->row();
                 
 
                 // menyimpan ke dalam array
                 $list_soal[$i] = get_object_vars($soal);
                 $list_soal[$i]['jawaban'] = $list_jawaban;
                 $list_soal[$i]['resource'] = $temp_resource;
+                $list_soal[$i]['summary'] = $temp_summary;
                 
                 if (count($user_answer) == 0) {
                     $list_soal[$i]['jawaban_user'] = null;
@@ -1904,8 +1924,10 @@ class Quiz extends MX_Controller {
             $data['id_soal'] = $id_soal;
             $data['quiz_id'] = $temp->quiz_id;
             $data['resource_id'] = $temp->resource_id;
+            $data['summary_id'] = $temp->summary_id;
             $data['resource'] = $this->model_quiz->select_quiz_resource_by_id($temp->resource_id)->row();
-
+            $data['summary'] = $this->model_quiz->select_quiz_resource_by_id($temp->summary_id)->row();
+            
             $data['list_choice'] = $this->model_quiz->select_choice_by_soal($id_soal, 1)->result();
             $this->load->view('quiz/form_edit_soal', $data);
         }
@@ -1993,6 +2015,22 @@ class Quiz extends MX_Controller {
         }
     }
 
+    function update_quiz_soal_summary($id_soal, $id_summary) {
+        if (!$this->ion_auth->logged_in()) {
+            redirect();
+        } else {
+            $id_soal = $id_soal;
+            $data['summary_id'] = $id_summary;
+            $this->model_quiz->update_soal($id_soal, $data);
+
+            $resource = $this->model_quiz->select_quiz_resource_by_id($id_summary)->row();
+
+            echo "{";
+            echo "msg: " . $resource->title;
+            echo "}";
+        }
+    }
+    
     function update_quiz_soal_resource($id_soal, $id_resource) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2101,6 +2139,7 @@ class Quiz extends MX_Controller {
                 $this->load->model_quiz->delete_quiz_resource($id_quiz_resource);
             }
             $data['resource_id'] = 0;
+            $data['summary_id'] = 0;
             $this->load->model_quiz->delete_quiz_resource_from_soal($id_quiz_resource, $data);
         }
     }

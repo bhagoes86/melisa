@@ -12,8 +12,8 @@
 </style>
 <?php if ($content->type == 0) { ?>
     <!--Video-->
-    <div data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="background-color: #000;width: 100%;padding: 0px;vertical-align: middle;" data-ratio="0.5625">
-        <video>
+    <div alt="<?php echo $content->id_content ?>" data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="background-color: #000;width: 100%;padding: 0px;vertical-align: middle;" data-ratio="0.5625">
+        <video alt="<?php echo $content->id_content ?>">
             <?php if ($content->ext == '.mp4') { ?> 
                 <source type="video/mp4" src="<?php echo base_url() . 'resource/' . $content->id_content . '.mp4'; ?>"/>
             <?php } elseif ($content->ext == '.MP4') { ?>
@@ -27,7 +27,7 @@
             <?php } elseif ($content->ext == '.mov') { ?>
                 <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_content . '.flv'; ?>"/>
             <?php } ?>
-        </video>
+        </video>        
     </div>
 <?php } elseif ($content->type == 1) { ?>
     <!--Document-->

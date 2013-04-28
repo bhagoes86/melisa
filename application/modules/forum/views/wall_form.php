@@ -1,7 +1,7 @@
 <fieldset class="feed" style="margin-top: 5px;padding-top: 0px;padding-right: 0px;margin-right: 6px;">
     <legend>Hi, Wanna Share Something ?</legend><br/>
     <form action="#" method="post">
-        <div class="input-control text">
+        <div class="input-control">
             <input type="text" id="feedtext" placeholder=""/>
         </div>
         <div class="input-control textarea hide">

@@ -448,24 +448,12 @@ class Course extends MX_Controller {
     function knowledge_by_faculty($faculty_id) {
         $data['course'] = $this->model_course->select_course_by_faculty($faculty_id)->result();
         $data['total_course'] = count($data['course']);
-        $data['video'] = $this->model_course->select_content_by_faculty($faculty_id, array(0))->result();
-        $data['total_video'] = count($data['video']);
-        $data['youtube'] = $this->model_course->select_content_by_faculty($faculty_id, array(2))->result();
-        $data['total_youtube'] = count($data['youtube']);
-        $data['vimeo'] = $this->model_course->select_content_by_faculty($faculty_id, array(3))->result();
-        $data['total_vimeo'] = count($data['vimeo']);
         $this->load->view('course/knowledge_list', $data);
     }
 
     function knowledge_by_topic($topic_id) {
         $data['course'] = $this->model_course->select_course_by_topic($topic_id)->result();
         $data['total_course'] = count($data['course']);
-        $data['video'] = $this->model_course->select_content_by_topic($topic_id, array(0))->result();
-        $data['total_video'] = count($data['video']);
-        $data['youtube'] = $this->model_course->select_content_by_topic($topic_id, array(2))->result();
-        $data['total_youtube'] = count($data['youtube']);
-        $data['vimeo'] = $this->model_course->select_content_by_topic($topic_id, array(3))->result();
-        $data['total_vimeo'] = count($data['vimeo']);
         $this->load->view('course/knowledge_list', $data);
     }
 
