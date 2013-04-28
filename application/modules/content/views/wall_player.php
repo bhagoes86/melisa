@@ -12,7 +12,7 @@
 </style>
 <?php if ($content->type == 0) { ?>
     <!--Video-->
-    <div data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="background-color: #000;width: 100%;padding: 0px;vertical-align: middle;" data-ratio="0.5625">
+    <div data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer<?php echo $content->id_content ?> play-button" style="background-color: #000;width: 100%;padding: 0px;vertical-align: middle;" data-ratio="0.5625">
         <video>
             <?php if ($content->ext == '.mp4') { ?> 
                 <source type="video/mp4" src="<?php echo base_url() . 'resource/' . $content->id_content . '.mp4'; ?>"/>
