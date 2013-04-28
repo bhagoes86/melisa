@@ -84,7 +84,7 @@
         $('#loading-template').show();
         var id_result= $(this).attr('data-id');
         
-        $('#content-right').load("<?php echo site_url('quiz/detail_my_quiz_result') ?>/"+id_result,function(){
+        $('#content-right').load("<?php echo site_url('quiz/detail_participant_quiz_result') ?>/"+id_result+"/"+2,function(){
             $('#loading-template').fadeOut("slow");
         });
     });

@@ -11,8 +11,7 @@
       ?>
           $('#end-quiz').empty();
           $('#content-quiz').empty();
-          $('#content-result').load("<?php echo site_url('quiz/quiz_result')."/".$quiz_result->quiz_id."/".$quiz_result->user_id."/".$quiz_result->id_result."/".$quiz_result->group_id; ?>");
-
+          
       <?php
             }
       ?>

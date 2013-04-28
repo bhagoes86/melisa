@@ -80,7 +80,7 @@
         $('#loading-template').show();
         var id_result= $(this).attr('data-id');
 
-        $('#content-right').load("<?php echo site_url('quiz/detail_participant_quiz_result') ?>/"+id_result,function(){
+        $('#content-right').load("<?php echo site_url('quiz/detail_participant_quiz_result') ?>/"+id_result+"/"+1,function(){
             $('#loading-template').fadeOut("slow");
         });
     });

@@ -43,7 +43,7 @@
                 </h4>
                 <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
             </div>
-            <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" style="display: none;padding: 4px 4px 0px 4px;margin: 0px;background: #000;"></div>
+            <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: #000;"></div>
             <div class="image link-image">
                 <?php if ($row->type == 0) { ?><!--Video-->
                     <?php if ($row->cover == 0) { ?>

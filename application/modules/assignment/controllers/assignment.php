@@ -430,4 +430,7 @@ class Assignment extends MX_Controller {
         }
     }
     
+    function show_form_edit_result($assignment_student_id){
+        echo $assignment_student_id;
+    }
 }
