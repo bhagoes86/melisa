@@ -192,19 +192,19 @@ function get_id_youtube($url) {
 }
 
 function youtube_teve_player($id) {
-    return '<object width="100%" height="350"><param name="movie" value="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed wmode="transparent" src="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="100%" height="350"></embed></object>';
+    return '<object width="100%" height="350" style="padding: 0px;vertical-align: middle"><param name="movie" value="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed wmode="transparent" src="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="100%" height="350"></embed></object>';
 }
 
 function youtube($id) {
-    return '<object width="100%" height="394"><param name="movie" value="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed wmode="transparent" src="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="100%" height="394"></embed></object>';
+    return '<object width="100%" height="394" style="padding: 0px;vertical-align: middle"><param name="movie" value="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed wmode="transparent" src="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="100%" height="394"></embed></object>';
 }
 
 function youtube_full($id) {
-    return '<object width="100%" height="100%"><param name="movie" value="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed wmode="transparent" src="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="100%" height="100%"></embed></object>';
+    return '<object width="100%" height="100%" style="padding: 0px;vertical-align: middle"><param name="movie" value="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed wmode="transparent" src="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="100%" height="100%"></embed></object>';
 }
 
 function vimeo($id) {
-    return '<iframe width="370" height="250" src="http://player.vimeo.com/video/' . $id . '"></iframe>';
+    return '<iframe width="370" height="250" style="padding: 0px;vertical-align: middle" src="http://player.vimeo.com/video/' . $id . '"></iframe>';
 }
 
 function scribd($id) {
@@ -216,19 +216,19 @@ function docstoc($id) {
 }
 
 function youtubeLarge($id) {
-    return '<object width="100%" height="100%"><param name="movie" value="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed wmode="transparent" src="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="100%" height="100%"></embed></object>';
+    return '<object width="100%" height="100%" style="padding: 0px;vertical-align: middle"><param name="movie" value="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed wmode="transparent" src="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="100%" height="100%"></embed></object>';
 }
 
 function vimeoLarge($id) {
-    return '<iframe width="100%" height="100%" src="http://player.vimeo.com/video/' . $id . '" style="border:0px;"></iframe>';
+    return '<iframe width="100%" height="100%" src="http://player.vimeo.com/video/' . $id . '" style="border:0px;padding: 0px;vertical-align: middle"></iframe>';
 }
 
 function scribdLarge($id) {
-    return '<iframe style="border:0px;" width="100%" height="100%" src="http://www.scribd.com/fullscreen/' . $id . '"></iframe>';
+    return '<iframe style="border:0px;padding: 0px;vertical-align: middle" width="100%" height="100%" src="http://www.scribd.com/fullscreen/' . $id . '"></iframe>';
 }
 
 function docstocLarge($id) {
-    return '<iframe width="100%" height="100%" style="border:1px solid #e5e5e5;" src="http://www.docstoc.com/docs/document-preview.aspx?doc_id=' . $id . '"></iframe>';
+    return '<iframe width="100%" height="100%" style="border:1px solid #e5e5e5;padding: 0px;vertical-align: middle" src="http://www.docstoc.com/docs/document-preview.aspx?doc_id=' . $id . '"></iframe>';
 }
 
 function cleartext($text) {
