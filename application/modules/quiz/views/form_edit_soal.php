@@ -3,9 +3,10 @@
     <div class="input-control textarea">
         <textarea name="soal" id="soal" placeholder="Soal"><?php echo $soal;?></textarea>
     </div>
-    <br />
+     <br />
 
-    
+     <br />
+     <hr />
      <div id="resource-detail" style="word-wrap: break-word;">
          <?php if ($resource !=null){
              ?>
@@ -18,9 +19,36 @@
                 Anda tidak memilih attachment manapun..
              <?php
          }?>
-      </div> <br />
+     </div> <br />
      <div id="list-resource" style="width:700px;height:150px;overflow:scroll;overflow-x:hidden">
      </div>
+      
+     <hr />
+     <br />
+     <br />
+     <hr />
+     <div id="summary-detail" style="word-wrap: break-word;">
+         <?php if ($summary !=null){
+             ?>
+                Anda memilih pembahasan dengan id : <br/> <?php echo $summary->title?>
+                <a title="Hapus Attachment ini.." href="javascript:void(0)" id="btn-delete-summary" data-id="0"  ><i class="icon-cancel fg-color-pink"></i></a>
+                    
+            <?php
+         } else {
+             ?>
+                Anda tidak memilih pembahasan manapun..
+             <?php
+         }?>
+    </div> 
+     
+    <br />
+    
+    <div id="list-summary" style="width:700px;height:150px;overflow:scroll;overflow-x:hidden">
+    </div>
+    
+    <hr />
+    <br />
+    <br />
 
     <h4 style="margin-top: 0px;padding-top: 0px;">Jawaban <?php //echo $option; ?></h4>
     <div class="input-control select span2">
@@ -84,30 +112,9 @@
     $('#list-resource').load("<?php echo site_url('quiz/list_all_quiz_attachment') ?>/<?php echo $id_soal?>",function(){
         
     });
-
-
-   $('a#btn-delete-attachment').click(function(){
-        var id_quiz_res = $(this).attr('data-id');
-       
-        $('#message').html("Loading Data");
-        $('#loading-template').show();
-        $.ajax({
-                type:'POST',
-                url:"<?php echo site_url('quiz/update_quiz_soal_resource') ?>/<?php echo $id_soal?>/"+id_quiz_res,
-                data:id_quiz_res,
-                success:function (data) {
-                    $('#list-resource').load("<?php echo site_url('quiz/list_all_quiz_attachment') ?>/<?php echo $id_soal?>");
-                    $('#resource-detail').html('Anda tidak memilih resource manapun ...');
-                    $('#loading-template').fadeOut("slow");
-                },
-                error:function (data){
-                    $('#loading-template').fadeOut("slow");
-                    alert('gagal');
-                }
-            });
-            return false;
+    $('#list-summary').load("<?php echo site_url('quiz/list_all_quiz_summary') ?>/<?php echo $id_soal?>",function(){
+        
     });
-
 
 
     $('#btn-cancel').click(function(){

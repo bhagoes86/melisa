@@ -37,134 +37,11 @@ $i = 1;
 foreach ($list_soal as $soal){
     ?>
          <tr><td>
-            <div class="body-text">
-                <p><?php echo $i.". ".$soal['soal']; ?></p>
-            </div>
-      <?php
-    //shuffle ($soal['jawaban']);
-    foreach($soal['jawaban'] as $jawaban){
-
-        ?>
-            <label class="input-control radio">
-                <input type="radio" value="<?php echo trim($jawaban['option_idx']); ?>" name="answer[<?php echo $soal['id_soal'];?>]" disabled
-                    <?php
-                    if ($soal['jawaban_user'] != null) {
-                        if ($jawaban['option_idx'] == $soal['jawaban_user']->answer) {
-                            echo "checked";
-                        }
-                    }
-                    else {
-
-                    }
-
-                    ?>
-
-                />
-                <span class="helper"><?php echo $jawaban['option_text']?></span>
-
-                <?php
-                    if ($soal['jawaban_user'] != null) {
-                        if ($jawaban['option_idx'] == $soal['jawaban_user']->answer) {
-                          if($soal['jawaban_user']->answer == $soal['answer']){
-                                ?>
-                                <a title="Jawaban benar ..." href="#" id="btn-correct" data-id=""><i class="icon-checkmark fg-color-green"></i></a>
-
-                                <?php
-                            }
-
-                            else {
-                                ?>
-                                <a title="Jawaban salah ..." href="#" id="btn-correct" data-id=""><i class="icon-cancel-2 fg-color-red"></i></a>
-
-                                <?php
-                            }
-                        }
-                        else if ($jawaban['option_idx'] == $soal['answer']) {
-                            ?>
-                            <a title="Jawaban benar ..." href="#" id="btn-correct" data-id=""><i class="icon-checkmark fg-color-green"></i></a>
-
-                            <?php
-                        }
-                    }
-                    else {
-                        if ($jawaban['option_idx'] == $soal['answer']) {
-                            ?>
-                            <a title="Jawaban benar ..." href="#" id="btn-correct" data-id=""><i class="icon-checkmark fg-color-green"></i></a>
-
-                            <?php
-                        }
-
-                    }
-
-                    ?>
-            </label>
-            <br />
-        <?php
-    }
-    echo "<br><br>";
-
-    ?>
-
-     <div class="notices">
-
-
-    <?php
-        if ($soal['jawaban_user'] != null) {
-            if($soal['jawaban_user']->answer == $soal['answer']){
-                ?>
-
-                <div class="bg-color-green fg-color-white">
-                    <div class="notice-icon"> </div>
-                    <div class="notice-image"><i class="icon-checkmark fg-color-black" style="font-size:22px;"></i></div>
-                    <div class="notice-header"> Jawaban <?php echo $participant->username; ?> <b>benar</b>.</div>
-                    <div class="notice-text ">
-                    <?php
-
-
-            //echo "Dijawab pada : ".$soal['jawaban_user']->date_modified;
-            ?>
-             </div>
-                </div>
-
-                <?php
-            }
-            else {
-                ?>
-                 <div class="bg-color-red fg-color-white">
-                    <div class="notice-icon"> </div>
-                    <div class="notice-image"><i class="icon-cancel-2 fg-color-black"></i></div>
-                    <div class="notice-header"> Jawaban <?php echo $participant->username; ?> <b>salah</b>. Jawaban yang benar adalah <?php  echo "<b>".$soal['kunci_jawaban']->option_text."</b>";?> </div>
-                    <div class="notice-text ">
-
-
-                <?php
-
-            }
-            //echo "Dijawab pada : ".$soal['jawaban_user']->date_modified;
-            ?>
-             </div>
-                </div>
-            <?php
-        }
-        else {
-            ?>
-                 <div class="bg-color-blue fg-color-white">
-                    <div class="notice-icon"> </div>
-                    <div class="notice-image"><i class="icon-blocked fg-color-black" style="font-size:20px"></i></div>
-                    <div class="notice-header"> <?php echo $participant->username; ?> <b>tidak memilih</b>  opsi manapun ... </div>
-                    <div class="notice-text ">
-                    </div>
-                </div>
-            <?php
-        }
-
-    ?>
-    </div>
-    <br /> <br/>
-    
-    <div id="summary-resource">
-         <?php echo $soal['resource_id']?>
-    
+       <br />        
+       <h3><b>Soal - <?php echo $i?> : </b></h3>
+       <br />
+       <div id="resource-view">
+         
          <?php
 
                 if ($soal['resource_id'] != 0){
@@ -249,8 +126,228 @@ foreach ($list_soal as $soal){
                     
                 }
                 ?>
+    </div>          
+                 
+            <br /><br/>
+            <div class="body-text">
+                <p><?php echo $i.". ".$soal['soal']; ?></p>
+            </div>
+      <?php
+    //shuffle ($soal['jawaban']);
+    foreach($soal['jawaban'] as $jawaban){
+
+        ?>
+            <label class="input-control radio">
+                <input type="radio" value="<?php echo trim($jawaban['option_idx']); ?>" name="answer[<?php echo $soal['id_soal'];?>]" disabled
+                    <?php
+                    if ($soal['jawaban_user'] != null) {
+                        if ($jawaban['option_idx'] == $soal['jawaban_user']->answer) {
+                            echo "checked";
+                        }
+                    }
+                    else {
+
+                    }
+
+                    ?>
+
+                />
+                <span class="helper"><?php echo $jawaban['option_text']?></span>
+
+                <?php
+                    if ($soal['jawaban_user'] != null) {
+                        if ($jawaban['option_idx'] == $soal['jawaban_user']->answer) {
+                          if($soal['jawaban_user']->answer == $soal['answer']){
+                                ?>
+                                <a title="Jawaban benar ..." href="#" id="btn-correct" data-id=""><i class="icon-checkmark fg-color-green"></i></a>
+
+                                <?php
+                            }
+
+                            else {
+                                ?>
+                                <a title="Jawaban salah ..." href="#" id="btn-correct" data-id=""><i class="icon-cancel-2 fg-color-red"></i></a>
+
+                                <?php
+                            }
+                        }
+                        else if ($jawaban['option_idx'] == $soal['answer']) {
+                            ?>
+                            <a title="Jawaban benar ..." href="#" id="btn-correct" data-id=""><i class="icon-checkmark fg-color-green"></i></a>
+
+                            <?php
+                        }
+                    }
+                    else {
+                        if ($jawaban['option_idx'] == $soal['answer']) {
+                            ?>
+                            <a title="Jawaban benar ..." href="#" id="btn-correct" data-id=""><i class="icon-checkmark fg-color-green"></i></a>
+
+                            <?php
+                        }
+
+                    }
+
+                    ?>
+            </label>
+            <br />
+        <?php
+    }
+    echo "<br><br>";
+
+    ?>
+
+     <div class="notices">
+
+
+    <?php
+        if ($soal['jawaban_user'] != null) {
+            if($soal['jawaban_user']->answer == $soal['answer']){
+                ?>
+
+                <div class="bg-color-green fg-color-white" height="50px">
+                    <div class="notice-icon"> </div>
+                    <div class="notice-image"><i class="icon-checkmark fg-color-black" style="font-size:22px;"></i></div>
+                    <div class="notice-header"> Jawaban <?php echo $participant->username; ?> <b>benar</b>.</div>
+                    <div class="notice-text ">
+                    <?php
+
+
+            //echo "Dijawab pada : ".$soal['jawaban_user']->date_modified;
+            ?>
+                    </div>
+                </div>
+
+                <?php
+            }
+            else {
+                ?>
+                 <div class="bg-color-red fg-color-white" height="50px">
+                    <div class="notice-icon"> </div>
+                    <div class="notice-image"><i class="icon-cancel-2 fg-color-black"></i></div>
+                    <div class="notice-header"> Jawaban <?php echo $participant->username; ?> <b>salah</b>. Jawaban yang benar adalah <?php  echo "<b>".$soal['kunci_jawaban']->option_text."</b>";?> </div>
+                    <div class="notice-text ">
+
+
+                <?php
+
+            }
+            //echo "Dijawab pada : ".$soal['jawaban_user']->date_modified;
+            ?>
+             </div>
+                </div>
+            <?php
+        }
+        else {
+            ?>
+                 <div class="bg-color-blue fg-color-white">
+                    <div class="notice-icon"> </div>
+                    <div class="notice-image"><i class="icon-blocked fg-color-black" style="font-size:20px"></i></div>
+                    <div class="notice-header"> <?php echo $participant->username; ?> <b>tidak memilih</b>  opsi manapun ... </div>
+                    <div class="notice-text ">
+                    </div>
+                </div>
+            <?php
+        }
+
+    ?>
     </div>
+    <br />
+    <h3><b>Pembahasan : </b></h3>
+    <br/>
+    <div id="summary-view">
+         
+         <?php
+
+                if ($soal['summary_id'] != 0){
+                ?>
+                    <?php
+                   
+                    if ($soal['summary']->type == 8){
+                        ?>
+                        <img width="60%" height="40%" src="<?php echo base_url()."resource/".$soal['summary']->file?>" />
+                        <?php
+                    }
+                    else if ($soal['summary']->type == 5){
+                        echo modules::run('quiz/show_slideshare', $soal['summary']->file);
+                    }
+                    else if ($soal['summary']->type == 0){
+                        echo modules::run('quiz/show_video', $soal['summary']);
+                   }
+                   else if ($soal['summary']->type == 9){
+                       echo modules::run('quiz/show_audio', $soal['summary']->id_quiz_resource);
+                        
+                   }
+                   else if ($soal['summary']->type == 1){
+                    ?>
+                        <div style="background-color: whiteSmoke;
+                                         z-index: 1;
+                                         position: absolute;
+                                         height: 30px;
+                                         width: 30px;
+                                         float: right;
+                                         margin-top: 2px;
+                                         right: 0px;"></div>
+                         <iframe style="width: 100%;height: 480px;border: 0px;" src="http://docs.google.com/viewer?url=<?php echo base_url() . 'resource/' . $soal['summary']->file . '&embedded=true' ?>"></iframe>
+
+
+                    <?php
+                        
+                    }
+                    else if ($soal['summary']->type == 6){
+                        ?>
+                        
+                        <div id="putTheWidgetSummaryHere-<?php echo $soal['id_soal']?>"></div>
+                        <script type="text/JavaScript">
+                            SC.oEmbed("<?php echo $soal['summary']->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetSummaryHere-<?php echo $soal['id_soal'] ?>"));
+                        </script>
+
+                        <?php
+                    }
+                    else {
+                        ?>
+
+                        <div style="background-color: #000;height: 394px;">
+                            <?php
+                            $media = analyze_media($soal['summary']->file);
+                            $trace = explode('^^^', $media);
+                            switch ($trace[0]) {
+                                case 'image' :
+                                    echo "<a href='" . $trace[3] . "' target='_blank'><img src='" . $trace[3] . "' width='100%' /></a>";
+                                    break;
+                                case 'youtube' :
+                                    echo youtube($trace[1]);
+                                    break;
+                                case 'vimeo' :
+                                    echo vimeoLarge($trace[1]);
+                                    break;
+                                case 'scribd' :
+                                    echo scribdLarge($trace[1]);
+                                    break;
+                                case 'docstoc' :
+                                    echo docstocLarge($trace[1]);
+                                    break;
+                                case 'link' :
+                                    break;
+                                default :
+                                    die;
+                            }
+                            ?>
+                        </div>
+
+                        <?php
+                    }
+
+                    
+                }
+                ?>
+    </div>          
+    
+    <br /><br /><br />
+    
     <div id="summary-forum"></div>
+    
+    <br /><br />
  </td>
     
 
