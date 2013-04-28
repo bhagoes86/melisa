@@ -102,27 +102,27 @@
             </tbody>
         </table>
     </div>
-</div><!--
+</div>
 
 <div class="span8">
     <h4>Bimbel</h4>
     <form id="insert-to-bimbel">
         <div class="input-control select span6">
             <select id="topic_id" name="topic_id">
-<?php foreach ($bimbel as $row_bimbel): ?>
-                                                            <option value="<?php echo $row_bimbel->id_topic; ?>">
-    <?php
-    if ($row_bimbel->status == 4) {
-        echo 'SMK - ';
-    } elseif ($row_bimbel->status == 3) {
-        echo 'SMA - ';
-    } elseif ($row_bimbel->status == 2) {
-        echo 'SMP - ';
-    }
-    ?>
-    <?php echo $row_bimbel->topic; ?>
-                                                            </option>
-<?php endforeach; ?>
+                <?php foreach ($bimbel as $row_bimbel): ?>
+                    <option value="<?php echo $row_bimbel->id_topic; ?>">
+                        <?php
+                        if ($row_bimbel->status == 4) {
+                            echo 'SMK - ';
+                        } elseif ($row_bimbel->status == 3) {
+                            echo 'SMA - ';
+                        } elseif ($row_bimbel->status == 2) {
+                            echo 'SMP - ';
+                        }
+                        ?>
+                        <?php echo $row_bimbel->topic; ?>
+                    </option>
+                <?php endforeach; ?>
             </select>
         </div>&nbsp;
         <input type="hidden" name="content_id" id="content_id" value="<?php echo $content_id; ?>"/>
@@ -137,27 +137,27 @@
                 </tr>
             </thead>
             <tbody>
-<?php foreach ($content_bimbel as $row_bimbel): ?>
-                                                            <tr>
-                                                                <td>
-    <?php
-    if ($row_bimbel->status == 4) {
-        echo 'SMK - ';
-    } elseif ($row_bimbel->status == 3) {
-        echo 'SMA - ';
-    } elseif ($row_bimbel->status == 2) {
-        echo 'SMP - ';
-    }
-    ?>
-    <?php echo $row_bimbel->topic ?>
-                                                                </td>
-                                                                <td style="width: 50px;text-align: center;"></td>
-                                                            </tr>
-<?php endforeach; ?>
+                <?php foreach ($content_bimbel as $row_bimbel): ?>
+                    <tr>
+                        <td>
+                            <?php
+                            if ($row_bimbel->status == 4) {
+                                echo 'SMK - ';
+                            } elseif ($row_bimbel->status == 3) {
+                                echo 'SMA - ';
+                            } elseif ($row_bimbel->status == 2) {
+                                echo 'SMP - ';
+                            }
+                            ?>
+                            <?php echo $row_bimbel->topic ?>
+                        </td>
+                        <td style="width: 50px;text-align: center;"></td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
-</div>-->
+</div>
 
 <div class="span8">
     <h4>Kategori</h4>
@@ -412,11 +412,11 @@
         return false;
     });
    
-     $('a#btn-add-content-silabus').click(function(){
+    $('a#btn-add-content-silabus').click(function(){
         var id_course = $(this).attr('data-id-course');
         $('#message').html('Loading Informasi');
         $('#loading-template').show();
-        $('#content-right').load("<?php echo site_url('content/content_silabus'. '/' . $content_id) ?>/"+id_course,function(){
+        $('#content-right').load("<?php echo site_url('content/content_silabus' . '/' . $content_id) ?>/"+id_course,function(){
             $('#loading-template').fadeOut("slow");                
         });
     });
