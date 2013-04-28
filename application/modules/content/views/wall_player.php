@@ -31,7 +31,7 @@
     </div>
 <?php } elseif ($content->type == 1) { ?>
     <!--Document-->
-    <iframe style="width: 100%;height: 600px;border: 0px;" src="http://docs.google.com/viewer?url=<?php echo base_url() . 'resource/' . $content->file . '&embedded=true' ?>"></iframe>
+    <iframe style="padding: 0px;vertical-align: middle;width: 100%;height: 600px;border: 0px;" src="http://docs.google.com/viewer?url=<?php echo base_url() . 'resource/' . $content->file . '&embedded=true' ?>"></iframe>
 <?php } elseif ($content->type == 2) { ?>
     <!--Youtube-->
     <?php
