@@ -20,14 +20,12 @@
             <li data-role="dropdown">
                 <a href="javascript:void(0)">Kampus</a>
                 <ul class="dropdown-menu" id="menu_fakultas"></ul>
-            </li>                
-            <!--
+            </li>                            
             <li data-role="dropdown">
                 <a href="javascript:void(0)">Bimbel</a>
                 <ul class="dropdown-menu" id="menu_bimbel"></ul>
-            </li>
-            -->
-            <li><a href="javascript:void(0)" id="btn-new-vid">Repositori</a></li>                
+            </li>            
+            <!--<li><a href="javascript:void(0)" id="btn-new-vid">Repositori</a></li>-->                
         </ul>
     </div>
 </div>
