@@ -23,13 +23,13 @@
             <input name="url" id="url" type="text" placeholder="Alamat URL Konten"/>
         </div>
         <div class="clearfix"></div>
-        <h3 style="margin-top: 0px; padding-top: 0px;">Alamat URL Konten</h3>
+        <h3 style="margin-top: 0px; padding-top: 0px;">Judul</h3>
         <div class="input-control text">
             <input name="title" id="title" type="text" placeholder="Judul Konten"/>
             
         </div>
         <div class="clearfix"></div>
-        <h3 style="margin-top: 0px; padding-top: 0px;">Alamat URL Konten</h3>
+        <h3 style="margin-top: 0px; padding-top: 0px;">Deskripsi</h3>
         <div class="input-control textarea">
             <textarea name="description" id="description" placeholder="Deskripsi"></textarea>
         </div>
