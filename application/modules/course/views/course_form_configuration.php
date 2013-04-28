@@ -67,27 +67,27 @@
             </tbody>
         </table>
     </div>
-</div><!--
+</div>
 
 <div class="span8">
     <h4>Bimbel</h4>
     <form id="insert-to-bimbel">
         <div class="input-control select span6">
             <select id="topic_id" name="topic_id">
-<?php foreach ($bimbel as $row_bimbel): ?>
-                                <option value="<?php echo $row_bimbel->id_topic; ?>">
-    <?php
-    if ($row_bimbel->status == 4) {
-        echo 'SMK - ';
-    } elseif ($row_bimbel->status == 3) {
-        echo 'SMA - ';
-    } elseif ($row_bimbel->status == 2) {
-        echo 'SMP - ';
-    }
-    ?>
-    <?php echo $row_bimbel->topic; ?>
-                                </option>
-<?php endforeach; ?>
+                <?php foreach ($bimbel as $row_bimbel): ?>
+                    <option value="<?php echo $row_bimbel->id_topic; ?>">
+                        <?php
+                        if ($row_bimbel->status == 4) {
+                            echo 'SMK - ';
+                        } elseif ($row_bimbel->status == 3) {
+                            echo 'SMA - ';
+                        } elseif ($row_bimbel->status == 2) {
+                            echo 'SMP - ';
+                        }
+                        ?>
+                        <?php echo $row_bimbel->topic; ?>
+                    </option>
+                <?php endforeach; ?>
             </select>
         </div>&nbsp;
         <input type="hidden" name="course_id" id="course_id" value="<?php echo $course_id; ?>"/>
@@ -102,27 +102,27 @@
                 </tr>
             </thead>
             <tbody>
-<?php foreach ($course_bimbel as $row_bimbel): ?>
-                                <tr>
-                                    <td>
-    <?php
-    if ($row_bimbel->status == 4) {
-        echo 'SMK - ';
-    } elseif ($row_bimbel->status == 3) {
-        echo 'SMA - ';
-    } elseif ($row_bimbel->status == 2) {
-        echo 'SMP - ';
-    }
-    ?>
-    <?php echo $row_bimbel->topic ?>
-                                    </td>
-                                    <td style="width: 50px;text-align: center;"></td>
-                                </tr>
-<?php endforeach; ?>
+                <?php foreach ($course_bimbel as $row_bimbel): ?>
+                    <tr>
+                        <td>
+                            <?php
+                            if ($row_bimbel->status == 4) {
+                                echo 'SMK - ';
+                            } elseif ($row_bimbel->status == 3) {
+                                echo 'SMA - ';
+                            } elseif ($row_bimbel->status == 2) {
+                                echo 'SMP - ';
+                            }
+                            ?>
+                            <?php echo $row_bimbel->topic ?>
+                        </td>
+                        <td style="width: 50px;text-align: center;"></td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
-</div>-->
+</div>
 <script type="text/javascript">
     $('form#insert-to-faculty').submit(function(){
         $('#loading-template').show();
@@ -219,13 +219,13 @@
         $('#message').html('Menghapus Konten');
         $('#loading-template').show();
         var id_topic = $(this).attr('data-id-topic');
-        var id_course = <?php echo $course_id;?>;
+        var id_course = <?php echo $course_id; ?>;
         $.ajax({
             type:'POST',
             url:"<?php echo site_url('course/delete_course_topic') ?>/"+id_topic+"/"+id_course,
             data:$(this).serialize(),
             success:function (data) {
-                $('#content-right').load("<?php echo site_url('course/course_config'  . '/' . $course_id) ?>",function(){
+                $('#content-right').load("<?php echo site_url('course/course_config' . '/' . $course_id) ?>",function(){
                     $('#loading-template').fadeOut("slow");
                 });
             },
@@ -242,13 +242,13 @@
         $('#message').html('Menghapus Konten');
         $('#loading-template').show();
         var id_faculty = $(this).attr('data-id-faculty');
-        var id_course = <?php echo $course_id;?>;
+        var id_course = <?php echo $course_id; ?>;
         $.ajax({
             type:'POST',
             url:"<?php echo site_url('course/delete_course_faculty') ?>/"+id_faculty+"/"+id_course,
             data:$(this).serialize(),
             success:function (data) {
-                $('#content-right').load("<?php echo site_url('course/course_config'  . '/' . $course_id) ?>",function(){
+                $('#content-right').load("<?php echo site_url('course/course_config' . '/' . $course_id) ?>",function(){
                     $('#loading-template').fadeOut("slow");
                 });
             },
