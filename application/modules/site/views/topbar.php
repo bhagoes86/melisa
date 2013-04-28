@@ -25,7 +25,12 @@
                     <?php echo modules::run('course/menu_faculty') ?>
                 </ul>
             </li>
-            <li><a href="javascript:void(0)" id="btn-new-vid"><?php echo $topbar->menu3; ?></a></li>                
+            <li>
+                <a href="javascript:void(0)" id="btn-new-vid"><?php echo $topbar->menu3; ?></a>
+                <ul class="dropdown-menu" id="menu_bimbel">
+                    <?php echo modules::run('course/menu_bimbel') ?>
+                </ul>
+            </li>   
         </ul>
     </div>
 </div>
