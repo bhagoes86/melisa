@@ -32,13 +32,13 @@
                 <h4>
                     <a href="<?php echo site_url('forum' . '/' . $row->user_id) ?>"><?php echo modules::run('authz/get_username', $row->user_id) ?></a> 
                     <?php if ($row->type == 1) { ?><!--document-->
-                        <a href="<?php echo site_url('content/document' . '/' . $row->id_content) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">mengunggah <i class="icon-film"></i>&nbsp;&nbsp;konten video</a>
+                        <a href="<?php echo site_url('content/document' . '/' . $row->id_content) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">mengunggah <i class="icon-document"></i>&nbsp;&nbsp;konten video</a>
                     <?php } elseif ($row->type == 4) { ?><!--scribd-->
-                        <a href="<?php echo site_url('content/scribd' . '/' . $row->id_content) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">menautkan <i class="icon-youtube"></i>&nbsp;&nbsp;konten youtube.com</a>
+                        <a href="<?php echo site_url('content/scribd' . '/' . $row->id_content) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">menautkan <i class="icon-scribd"></i>&nbsp;&nbsp;konten youtube.com</a>
                     <?php } elseif ($row->type == 5) { ?><!--slideshare-->
-                        <a href="<?php echo site_url('content/slideshare' . '/' . $row->id_content) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">menautkan <i class="icon-vimeo"></i>&nbsp;&nbsp;konten vimeo.com</a>
+                        <a href="<?php echo site_url('content/slideshare' . '/' . $row->id_content) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">menautkan <i class="icon-slideshare"></i>&nbsp;&nbsp;konten vimeo.com</a>
                     <?php } elseif ($row->type == 7) { ?><!--docstoc-->
-                        <a href="<?php echo site_url('content/docstoc' . '/' . $row->id_content) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">menautkan <i class="icon-soundcloud"></i>&nbsp;&nbsp;konten soundcloud.com</a>
+                        <a href="<?php echo site_url('content/docstoc' . '/' . $row->id_content) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">menautkan <i class="icon-docstoc"></i>&nbsp;&nbsp;konten soundcloud.com</a>
                     <?php } ?>
                 </h4>
                 <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
@@ -46,9 +46,38 @@
             <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" style="display: none;padding: 4px 4px 0px 4px;margin: 0px;background: #000;"></div>
             <div class="image link-image">
                 <?php if ($row->type == 1) { ?><!--document-->
+                    <?php if ($row->cover == 0) { ?>
+                        <a href="<?php echo site_url('content/document' . '/' . $row->id_content) ?>">
+                            <i class="icon-file" style="font-size: 45px;"></i>
+                        </a>
+                    <?php } else { ?>
+                        <a href="<?php echo site_url('content/document' . '/' . $row->id_content) ?>">
+                            <img src="<?php echo base_url() . 'resource/' . $row->id_content . '.jpg' ?>" style="width: 180px;vertical-align: middle;"/>
+                        </a>
+                    <?php } ?>
                 <?php } elseif ($row->type == 4) { ?><!--scribd-->
+                    <a href="<?php echo site_url('content/scribd' . '/' . $row->id_content) ?>">
+                        <i class="icon-file" style="font-size: 45px;"></i>
+                    </a>
                 <?php } elseif ($row->type == 5) { ?><!--slideshare-->
+                    <?php
+                    $media = analyze_media($row->file);
+                    $extract_id = explode('^^^', $media);
+                    $url = $extract_id[1];
+                    $thumb = explode("/", slideshare_cover($url)->thumbnail);
+                    $thumbnail = slideshare_cover($url)->thumbnail;
+                    ?>
+                    <a href="<?php echo site_url('content/slideshare' . '/' . $row->id_content) ?>">
+                        <img src="<?php echo "http:" . $thumbnail ?>" style="width: 180px;vertical-align: middle;">
+                    </a>
                 <?php } elseif ($row->type == 7) { ?><!--docstoc-->
+                    <?php
+                    $media = analyze_media($row->file);
+                    $extract_id = explode('^^^', $media);
+                    ?>
+                    <a href="<?php echo site_url('content/docstoc' . '/' . $row->id_content) ?>">
+                        <img src="http://img.docstoccdn.com/thumb/100/<?php echo $extract_id[1] ?>.png" style="width: 120px;height: 135px;vertical-align: middle;">
+                    </a>
                 <?php } ?>
                 <div class="description" style="padding-left: 141px;">
                     <h4 style="padding-left: 0px;margin-left: 0px;">
