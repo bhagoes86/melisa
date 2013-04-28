@@ -208,11 +208,11 @@ function vimeo($id) {
 }
 
 function scribd($id) {
-    return '<iframe width="370" height="350" src="http://www.scribd.com/fullscreen/' . $id . '"></iframe>';
+    return '<iframe width="100%" height="350" src="http://www.scribd.com/fullscreen/' . $id . '"></iframe>';
 }
 
 function docstoc($id) {
-    return '<iframe width="370" height="350" src="http://www.docstoc.com/docs/document-preview.aspx?doc_id=' . $id . '"></iframe>';
+    return '<iframe width="100%" height="350" src="http://www.docstoc.com/docs/document-preview.aspx?doc_id=' . $id . '"></iframe>';
 }
 
 function youtubeLarge($id) {
