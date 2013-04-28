@@ -365,18 +365,16 @@ class Content extends MX_Controller {
         $data['soundcloud'] = $this->model_content->select_video_by_type(6, 1)->result();
         $data['youtube'] = $this->model_content->select_video_by_type(2, 5)->result();
         $data['video'] = $this->model_content->select_video_by_type(1, 5)->result();
-        //$data['content'] = $this->model_content->select_video_by_type_in(array(0, 2), 5)->result();
-
         $this->load->view('content/table_content_dashboard', $data);
     }
 
     function wall_podcast() {
-        $data['content'] = $this->model_content->select_video_by_type_in(array(0, 2, 3, 6), 500)->result();
+        $data['content'] = $this->model_content->select_video_by_type_in(array(0, 2, 3, 6), 200)->result();
         $this->load->view('content/wall_podcast', $data);
     }
     
     function wall_document() {
-        $data['content'] = $this->model_content->select_video_by_type_in(array(1, 4, 5, 7), 500)->result();
+        $data['content'] = $this->model_content->select_video_by_type_in(array(1, 4, 5, 7), 200)->result();
         $this->load->view('content/wall_document', $data);
     }
 
