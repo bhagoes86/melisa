@@ -3,7 +3,7 @@
     <?php
 
     $temp = 1;
-    for ($i = 1; $i <= $list_avail_ticket / 8; $i++) {
+    for ($i = 1; $i <= $list_avail_ticket / 5; $i++) {
         
         ?>
 
