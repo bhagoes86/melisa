@@ -51,6 +51,11 @@
                         </a>
                     <?php } ?>
                     <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->id_content ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -66,6 +71,11 @@
                         </a>
                     <?php } ?>
                     <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->id_content ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -79,6 +89,11 @@
                         <img src="http://img.youtube.com/vi/<?php echo $extract_id[1]; ?>/1.jpg" style="margin:14px 0px 15px 10px;width: 125px;height: 100px;vertical-align: middle;">
                     </a>
                     <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->id_content ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -89,6 +104,11 @@
                         <img src="<?php echo ($media['thumbnail_medium']) ?>" style="margin:14px 0px 15px 10px;width: 125px;height: 100px;">
                     </a>
                     <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->id_content ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -96,6 +116,11 @@
                 <div class="image link-image">
                     <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->forum_id ?>"></a>
                     <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->id_content ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -131,24 +156,44 @@
                         <img src="http://img.docstoccdn.com/thumb/100/<?php echo $extract_id[1] ?>.png" style="width: 120px;height: 135px;vertical-align: middle;">
                     </a>
                     <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->id_content ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             <?php } elseif ($row->forum_type == 8) { ?><!--SoundCloud-->
                 <div class="image link-image">
                     <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->id_content ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             <?php } elseif ($row->forum_type == 9) { ?><!--wall-->
                 <div class="image link-image">
                     <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->id_content ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             <?php } elseif ($row->forum_type == 10) { ?><!--gambar-->
                 <div class="image link-image">
                     <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->id_content ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
                     </div>
                     <div class="clearfix"></div>
                 </div>
