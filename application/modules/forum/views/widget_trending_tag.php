@@ -1,4 +1,4 @@
-<fieldset class="feed">
+<fieldset class="feed" style="margin-top: 5px;">
     <legend>Trend Topik</legend>
     <ul style="list-style:none;color:#aaa">
         <?php foreach ($trending as $row): ?>

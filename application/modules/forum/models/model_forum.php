@@ -68,7 +68,7 @@ class Model_forum extends CI_Model {
     }
 
     function select_trending_tag() {
-        return $this->db->query('SELECT count(tag) as jml, user_id, tag, tag_type from tags group by tag order by jml DESC');
+        return $this->db->query('SELECT count(tag) as jml, user_id, tag, tag_type from tags group by tag order by jml DESC limit 5');
     }
 
 }

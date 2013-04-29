@@ -32,7 +32,6 @@
                                 <div class="page-sidebar bg-color-red" style="margin:0px; padding-bottom: 0px;width:140px;">
                                     <ul>
                                         <li><a id="wall-broadcast"><i class="icon-broadcast"></i> Broadcast</a></li>
-                                        <li><a id="wall-connection"><i class="icon-share-3"></i> Koneksi</a></li>
                                         <li><a id="wall-activity"><i class="icon-clipboard-2"></i> Aktivitas</a></li>
                                     </ul>
                                     <ul>
@@ -49,6 +48,7 @@
                             <!-- Rightbar -->
                             <div class="span3 rightbar">
                                 <div id="fixed">
+                                    <?php echo modules::run('forum/widget_profile') ?>
                                     <?php echo modules::run('forum/widget_trending_tag') ?>
                                 </div>
                             </div>
