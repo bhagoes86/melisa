@@ -92,4 +92,8 @@ class Forum extends MX_Controller {
         $this->load->view('forum/widget_trending_tag', $data);
     }
 
+    function widget_profile() {
+        $this->load->view('forum/widget_profile');
+    }
+
 }

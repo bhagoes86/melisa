@@ -49,6 +49,7 @@
                             <!-- Rightbar -->
                             <div class="span3 rightbar">
                                 <div id="fixed">
+                                    <?php echo modules::run('forum/widget_profile') ?>
                                     <?php echo modules::run('forum/widget_trending_tag') ?>
                                 </div>
                             </div>
