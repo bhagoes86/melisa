@@ -73,7 +73,7 @@ class Quiz extends MX_Controller {
                 $temp = "";
 
                 $start_code = 1001;
-                $end_code = 1999;
+                $end_code = 1201;
 
                 foreach ($temp_cg as $tcg) {
 

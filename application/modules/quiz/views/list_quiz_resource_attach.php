@@ -6,6 +6,70 @@
             <tr>
                 
                 <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
+                    <?php if ($row->type == 0){
+                    ?>
+                    <span class="icon fg-color-blueDark"><i class="icon-film"></i></span>
+                    <span class="label fg-color-blueDark">Video</span>
+                    
+                    <?php
+                    }
+                    else if ($row->type == 1){
+                        ?>
+                        <span class="icon fg-color-green"><i class="icon-libreoffice"></i></span>
+                        <span class="label fg-color-green">Dokumen</span>    
+                        <?php
+                    }
+                    else if ($row->type == 2){
+                        ?>
+                        <span class="icon  fg-color-red"><i class="icon-youtube"></i></span>
+                        <span class="label  fg-color-red">Youtube</span>    
+                        <?php
+                    }
+                    else if ($row->type == 3){
+                        ?>
+                        <span class="icon fg-color-blue"><i class="icon-vimeo"></i></span>
+                        <span class="label fg-color-blue">Vimeo</span>    
+                        <?php
+                    }
+                    else if ($row->type == 4){
+                        ?>
+                        <span class="icon fg-color-purple"><i class="icon-file-pdf"></i></span>
+                        <span class="label fg-color-purple">Scribd</span>    
+                        <?php
+                    }
+                    else if ($row->type == 5){
+                        ?>
+                        <span class="icon fg-color-orange"><i class="icon-file-powerpoint"></i></span>
+                        <span class="label fg-color-orange">Slideshare</span>    
+                        <?php
+                    }
+                    else if ($row->type == 6){
+                        ?>
+                        <span class="icon fg-color-orangeDark"><i class="icon-soundcloud"></i></span>
+                        <span class="label fg-color-orangeDark">Soundcloud</span>    
+                        <?php
+                    }
+                    else if ($row->type == 7){
+                        ?>
+                        <span class="icon fg-color-pink"><i class="icon-file-word"></i></span>
+                        <span class="label fg-color-pink">Docstoc</span>    
+                        <?php
+                    }
+                    else if ($row->type == 8){
+                        ?>
+                        <span class="icon fg-color-yellow"><i class="icon-pictures"></i></span>
+                        <span class="label fg-color-yellow">Gambar</span>    
+                        <?php
+                    }
+                    else if ($row->type == 9){
+                        ?>
+                        <span class="icon fg-color-darken"><i class="icon-mic"></i></span>
+                        <span class="label fg-color-darken">Suara</span>    
+                        <?php
+                    }
+                    
+                    
+                    ?>
                     <a style="color: #095b97;font-size: 18px;"><?php echo $row->title ?></a><br/>
                     <p style="color: rgb(94,94,94);font-size: 13px;"><?php echo cut_text($row->description, 45) ?> ...</p>
                 
