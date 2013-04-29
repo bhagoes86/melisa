@@ -99,7 +99,7 @@
         $('#footbar').load("<?php echo site_url('site/footbar') ?>");
         
         //first feed
-        $('#wall_container').load("<?php echo site_url('content/wall_podcast') ?>");
+        $('#wall_container').load("<?php echo site_url('forum/wall_list_first') ?>");
         
         //feed nav
         $('#wall-podcast').click(function(){
@@ -118,6 +118,26 @@
             $('#loading-template').show();                
             $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('content/wall_document') ?>",function(){                
+                $('#loading-template').fadeOut("slow");
+            });
+        });
+        
+        $('#wall-broadcast').click(function(){
+            $('div.pager').remove();                
+            $('#message').html("Loading Data");
+            $('#loading-template').show();                
+            $('#wall_container').empty();                
+            $('#wall_container').load("<?php echo site_url('forum/wall_list_first') ?>",function(){                
+                $('#loading-template').fadeOut("slow");
+            });
+        });
+        
+        $('#wall-activity').click(function(){
+            $('div.pager').remove();                
+            $('#message').html("Loading Data");
+            $('#loading-template').show();                
+            $('#wall_container').empty();                
+            $('#wall_container').load("<?php echo site_url('forum/wall_activity_first') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
             });
         });

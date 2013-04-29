@@ -81,4 +81,24 @@ class Model_forum extends CI_Model {
         return $this->db->get();
     }
 
+    function select_wall_first() {
+        $this->db->select('*');
+        $this->db->from('wall');
+        $this->db->join('users', 'users.id=wall.user_id');
+        $this->db->order_by('id_wall', 'DESC');
+        $this->db->limit(2);
+        return $this->db->get();
+    }
+
+    function select_activity_first($user_id) {
+        $this->db->select('*');
+        $this->db->from('wall');
+        $this->db->join('users', 'users.id=wall.user_id');
+        $this->db->where('wall.user_id', $user_id);
+        $this->db->or_where('wall.user_idto', $user_id);
+        $this->db->order_by('id_wall', 'DESC');
+        $this->db->limit(2);
+        return $this->db->get();
+    }
+
 }

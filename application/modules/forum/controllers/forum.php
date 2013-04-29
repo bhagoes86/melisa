@@ -98,8 +98,22 @@ class Forum extends MX_Controller {
 
     function content_list_by_tag($tag) {
         $data['content'] = $this->model_forum->select_tag_join_content($tag)->result();
-        //print_r($data);
         $this->load->view('forum/wall_content', $data);
+    }
+
+    function wall_list_first() {
+        $data['content'] = $this->model_forum->select_wall_first()->result();
+        $this->load->view('forum/wall_activity', $data);
+    }
+
+    function wall_list() {
+        
+    }
+
+    function wall_activity_first() {
+        $user = $this->ion_auth->user()->row();
+        $data['content'] = $this->model_forum->select_activity_first($user->id)->result();
+        $this->load->view('forum/wall_activity', $data);
     }
 
 }
