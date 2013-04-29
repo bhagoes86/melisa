@@ -71,4 +71,14 @@ class Model_forum extends CI_Model {
         return $this->db->query('SELECT count(tag) as jml, user_id, tag, tag_type from tags group by tag order by jml DESC limit 5');
     }
 
+    function select_tag_join_content($tag) {
+        $this->db->select('*');
+        $this->db->from('tags');
+        $this->db->join('content', 'content.id_content = tags.content_id');
+        $this->db->join('users', 'users.id = content.user_id');
+        $this->db->where('tags.tag', $tag);
+        $this->db->group_by('id_content');
+        return $this->db->get();
+    }
+
 }

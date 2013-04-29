@@ -2,7 +2,19 @@
     <legend>Trend Topik</legend>
     <ul style="list-style:none;color:#aaa">
         <?php foreach ($trending as $row): ?>
-            <li> <a style="text-decoration: none;cursor: pointer;"><i class="icon-tag"></i> <?php echo $row->tag ?></a></li>
+            <li> <a id="wall-trending" style="text-decoration: none;cursor: pointer;" data-tag="<?php echo $row->tag ?>"><i class="icon-tag"></i> <?php echo $row->tag ?></a></li>
         <?php endforeach; ?>
     </ul>
 </fieldset>
+<script type="text/javascript">
+    $('a#wall-trending').click(function(){
+        var tag = $(this).attr('data-tag');
+        $('div.pager').remove();                
+        $('#message').html("Loading Data");
+        $('#loading-template').show();                
+        $('#wall_container').empty();                
+        $('#wall_container').load("<?php echo site_url('forum/content_list_by_tag') ?>/"+tag,function(){                
+            $('#loading-template').fadeOut("slow");
+        });
+    });
+</script>
