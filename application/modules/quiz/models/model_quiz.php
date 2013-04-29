@@ -62,14 +62,18 @@ class Model_quiz extends CI_Model {
     }
 
     function select_pass_tryout($user_id, $group_id, $quiz_id){
-        $this->db->select('*');
-        $this->db->from('quiz_pass_tryout');
-        $this->db->where('user_id', $user_id);
-        $this->db->where('group_id', $group_id);
-        $this->db->where('quiz_id', $quiz_id);
+        $this->db->select('crs.course, qf.title as quiz_title, qg.title as group_title, qf.start_time, qf.end_time, qpr.password');
+        $this->db->from('quiz_pass_tryout as qpr');
+        $this->db->join('course as crs', 'crs.id_course=qpr.course_id');
+        $this->db->join('quiz_file as qf', 'qf.id_quiz=qpr.quiz_id');
+        $this->db->join('quiz_group as qg', 'qg.id_group=qpr.group_id');
+        
+        $this->db->where('qpr.user_id', $user_id);
+        $this->db->where('qpr.group_id', $group_id);
+        $this->db->where('qpr.quiz_id', $quiz_id);
 
 
-        $this->db->order_by('date', 'desc');
+        $this->db->order_by('qpr.date', 'desc');
 
         return $this->db->get();
     }
