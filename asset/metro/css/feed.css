@@ -34,8 +34,7 @@
     height: 60px;
     display: block;
     font-size: 32px;        
-    border: 1px solid #bbb;
-    border-right: 0;
+    border: 1px 0px 1px 1px solid #bbb;
     float: left;
 }
 .listview.image li .feed-avatar img {
