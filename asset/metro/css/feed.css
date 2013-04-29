@@ -38,6 +38,7 @@
     float: left;
 }
 .listview.image li .feed-avatar img {
+    border: 1px solid #bbb;
     height: 60px;
 }
 .user-description {
