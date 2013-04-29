@@ -97,7 +97,22 @@
                     <?php } ?>
                 </div>
                 <div class="clearfix"></div>
-            </div>            
+            </div>
+            <div class="utils">
+                <div class="toolbar place-left">
+                    <?php if ($row->type == 1) { ?><!--Video-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->id_content, 1) ?>
+                    <?php } elseif ($row->type == 4) { ?><!--youtube-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->id_content, 4) ?>
+                    <?php } elseif ($row->type == 5) { ?><!--vimeo-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->id_content, 5) ?>
+                    <?php } elseif ($row->type == 7) { ?><!--SoundCloud-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->id_content, 7) ?>
+                    <?php } ?>
+                </div>
+                <div class="toolbar place-right" style="visibility: hidden;"></div>
+                <div class="clearfix"></div>
+            </div>
         </div>
     </li>
 <?php endforeach; ?>

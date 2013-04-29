@@ -48,7 +48,9 @@
                             </div>
                             <!-- Rightbar -->
                             <div class="span3 rightbar">
-                                <div id="fixed"></div>
+                                <div id="fixed">
+                                    <?php echo modules::run('forum/widget_trending_tag') ?>
+                                </div>
                             </div>
                         </div>
 
