@@ -140,7 +140,7 @@
 
 
     $('a#btn-delete').click(function(){
-        $('#message-confirm').html('Apakah Anda yakin akan menghapus kuis ini ? ');
+        $('#message-confirm').html('Apakah Anda yakin akan menghapus konten kuis ini ? ');
         $('#accept-confirm-message').attr('data-id', $(this).attr('data-id'));
         $('#confirm-template').fadeIn("medium");
     });
