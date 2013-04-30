@@ -127,6 +127,7 @@
         $('#btn-login').click(function(){
             $('#message').html("Loading Data");
             $('#loading-template').show();            
+            $('#row-main-other').hide();            
             $('#row-center-content').load("<?php echo site_url('authz/login'); ?>",function(){
                 $('#loading-template').fadeOut("slow");
             });

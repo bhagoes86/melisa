@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<div class="grid">
+<!--<div class="grid">
     <div class="row">
         <div class="span4" style="text-align: center;">
             <div style="height: 220px">
@@ -33,13 +33,13 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
-<div class="grid">
+<!--<div class="grid">
     <div class="row" style="text-align: center;">
         <h2>~ ing ngarso sung tulodo, ing madyo mangun karso, tut wuri handayani ~</h2>
     </div>
-</div>
+</div>-->
 
 <div style="margin-top: 27px;">
     <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/carousel.js"></script>
@@ -62,11 +62,6 @@
                             <span class="icon fg-color-white"><i class="icon-play-alt"></i></span>
                             <span class="label fg-color-white">Play</span>
                         </a>
-                        <h3>Bergabunglah bersama komunitas sakola! 
-                            <?php if (!$this->ion_auth->logged_in()) { ?>
-                                <a class="bg-color-blue fg-color-white button" id="btn-registrasi-home">KLIK DISINI <i class="icon-enter"></i></a></h3>
-                        <?php } else { ?>
-                        <?php } ?>
                     </div>
 
                     <div class="slide" id="slide2">
@@ -115,12 +110,3 @@
         <iframe style="width: 100%;height: 301px;" src="http://www.youtube.com/embed/eW3gMGqcZQc" frameborder="0" allowfullscreen></iframe>
     </div>
 </div>
-<script type="text/javascript">
-    $('a#btn-registrasi-home').click(function(){        
-        $('#message').html("Loading Data");
-        $('#loading-template').show();
-        $('#row-main-content').load("<?php echo site_url('authz/register') ?>/",function(){
-            $('#loading-template').fadeOut("slow");
-        });
-    });
-</script>

@@ -18,3 +18,4 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>asset/js/jquery.paginatetable.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>asset/datatable/jquery.dataTables.js"></script>
 <script src="<?php echo base_url(); ?>asset/metro/js/sharrre/jquery.sharrre-1.3.4.min.js"></script>
+<script src="http://connect.soundcloud.com/sdk.js"></script>

@@ -112,19 +112,16 @@ class Authz extends MX_Controller {
         }
         if ($this->form_validation->run() == true && $this->ion_auth->register($name, $password, $email, $gender)) {
             /* apabila proses registrasi berhasil */
-            echo"1";
+            echo"Selamat :-D Anda sudah terdaftar";
         } else {
             /* apabila proses registrasi gagal */
             $message = (validation_errors()) ? validation_errors() : $this->ion_auth->errors();
-            echo"2";
+            echo $this->ion_auth->errors();
         }
     }
 
     function lupa_password() {
-        $main['page'] = 'dashboard';
-        $main['message'] = '';
-        $main['sidemenu'] = 'overview';
-        //$data['emails']= $this->input->post('emails',true);
+        $data['emails']= $this->input->post('emails',true);
         //print_r($data['emails']);
         /* set validasi untuk email */
         $this->form_validation->set_rules('emails', 'Alamat Email', 'required|valid_email');
@@ -134,8 +131,8 @@ class Authz extends MX_Controller {
                 'id' => 'emails',
                 'type' => 'text'
             );
-            echo 'Use Email Adress!';
-            //$data = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+            echo 'Gunakan Alamat Email Yang Anda Gunakan Pada Saat Mendaftar';
+            $data = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
             //$redirect('', $main);
         } else {
             /*
@@ -144,7 +141,7 @@ class Authz extends MX_Controller {
              */
             $forgotten = $this->ion_auth->forgotten_password($this->input->post('emails'));
             /* apabila tidak ada error */
-            //print_r($forgotten);
+            print_r($forgotten);
             if ($forgotten) {
                 /* set message dari library ke flashdata */
                 echo $this->ion_auth->messages();
