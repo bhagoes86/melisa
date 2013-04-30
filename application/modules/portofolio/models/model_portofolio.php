@@ -15,6 +15,13 @@ class Model_portofolio extends CI_Model {
         $this->db->where('id', $id);
         return $this->db->get();
     }
+    
+    function select_users($id){
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('id', $id);
+        return $this->db->get();
+    }
 
     function select_metadata($id, $type) {
         $this->db->select('*');
@@ -29,6 +36,13 @@ class Model_portofolio extends CI_Model {
         $this->db->where('type', $type);
         $this->db->set('information', $informasi);
         $this->db->update('user_meta');
+    }
+    
+    function update_name($id,$fname,$lname){
+        $this->db->where('id', $id);
+        $this->db->set('first_name', $fname);
+        $this->db->set('last_name', $lname);
+        $this->db->update('users');
     }
 
     function update_profic($id, $filename) {

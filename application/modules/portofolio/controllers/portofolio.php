@@ -32,34 +32,34 @@ class Portofolio extends MX_Controller {
         if ($this->model_portofolio->select_metadata($user->id, 2)->row() == NULL) {
             $this->model_portofolio->insert_usermeta($user->id, 2);
             $data['pengajaran'] = $this->model_portofolio->select_metadata($user->id, 2)->row();
-        }else{
+        } else {
             $data['pengajaran'] = $this->model_portofolio->select_metadata($user->id, 2)->row();
         }
         if ($this->model_portofolio->select_metadata($user->id, 3)->row() == NULL) {
             $this->model_portofolio->insert_usermeta($user->id, 3);
             $data['riset'] = $this->model_portofolio->select_metadata($user->id, 3)->row();
-        }else{
+        } else {
             $data['riset'] = $this->model_portofolio->select_metadata($user->id, 3)->row();
         }
         if ($this->model_portofolio->select_metadata($user->id, 4)->row() == NULL) {
             $this->model_portofolio->insert_usermeta($user->id, 4);
             $data['publikasi'] = $this->model_portofolio->select_metadata($user->id, 4)->row();
-        }else{
+        } else {
             $data['publikasi'] = $this->model_portofolio->select_metadata($user->id, 4)->row();
         }
         if ($this->model_portofolio->select_metadata($user->id, 5)->row() == NULL) {
             $this->model_portofolio->insert_usermeta($user->id, 5);
             $data['pengalaman'] = $this->model_portofolio->select_metadata($user->id, 5)->row();
-        }else{
+        } else {
             $data['pengalaman'] = $this->model_portofolio->select_metadata($user->id, 5)->row();
         }
         if ($this->model_portofolio->select_metadata($user->id, 6)->row() == NULL) {
             $this->model_portofolio->insert_usermeta($user->id, 6);
             $data['pendidikan'] = $this->model_portofolio->select_metadata($user->id, 6)->row();
-        }else{
+        } else {
             $data['pendidikan'] = $this->model_portofolio->select_metadata($user->id, 6)->row();
         }
-        
+
         //print_r($data['profic']);
         //print_r($data['user']);
         //print_r($data['publikasi']);
@@ -77,6 +77,8 @@ class Portofolio extends MX_Controller {
         $data['pengalaman'] = $this->model_portofolio->select_metadata($user->id, 5)->row();
         $data['pendidikan'] = $this->model_portofolio->select_metadata($user->id, 6)->row();
         $data['profic'] = $this->model_portofolio->select_profic_user($user->id)->row();
+        $data['users'] = $this->model_portofolio->select_users($user->id)->row();
+        //print_r($data['users']);
         $this->load->view('portofolio/form_edit', $data);
     }
 
@@ -89,7 +91,8 @@ class Portofolio extends MX_Controller {
         $data['publikasi'] = $this->input->post('publikasi', true);
         $data['pengalaman'] = $this->input->post('pengalaman', true);
         $data['pendidikan'] = $this->input->post('pendidikan', true);
-
+        $data['fname'] = $this->input->post('fname', true);
+        $data['lname'] = $this->input->post('lname', true);
         //print_r($data['profil']);
 
         $this->model_portofolio->update_data_portofolio($user->id, 1, $data['profil']);
@@ -98,6 +101,7 @@ class Portofolio extends MX_Controller {
         $this->model_portofolio->update_data_portofolio($user->id, 4, $data['publikasi']);
         $this->model_portofolio->update_data_portofolio($user->id, 5, $data['pengalaman']);
         $this->model_portofolio->update_data_portofolio($user->id, 6, $data['pendidikan']);
+        $this->model_portofolio->update_name($user->id,$data['fname'],$data['lname']);
         //redirect('portofolio/user');
     }
 
@@ -108,7 +112,7 @@ class Portofolio extends MX_Controller {
     }
 
     //fungsi save fote
-    public function upload_profic() {      
+    public function upload_profic() {
         $user = $this->ion_auth->user()->row();
         $config['upload_path'] = './resource/';
         $config['allowed_types'] = 'jpg|JPG|jpeg|JPEG';
