@@ -1,44 +1,18 @@
 <script type="text/javascript" src="<?php echo base_url() ?>asset/slideshare/swfobject.js"></script>
-<script type="text/javascript">    
-    var flashMovie;
-
-    //Load the flash player. Properties for the player can be changed here.
-    function loadPlayer() {
-        //allowScriptAccess from other domains
-        var params = { allowScriptAccess: "always" };
-        var atts = { id: "player" };
-
-        //doc: The path of the file to be used
-        //startSlide: The number of the slide to start from
-        //rel: Whether to show a screen with related slideshows at the end or not. 0 means false and 1 is true..
-        var flashvars = { doc : "<?php print_r($presentation['3']) ?>", startSlide : 1, rel : 0 };
-
-        //Generate the embed SWF file
-        swfobject.embedSWF("http://static.slidesharecdn.com/swf/ssplayer2.swf", "player", "100%", "560", "8", null, flashvars, params, atts);
-
-        //Get a reference to the player
-        flashMovie = document.getElementById("player");
-    }
-
-    //Jump to the appropriate slide
-    function jumpTo(){
-        flashMovie.jumpTo(parseInt(document.getElementById("slidenumber").value));
-    }
-
-    //Update the slide number in the field for the same
-    function updateSlideNumber(){
-        document.getElementById("slidenumber").value = flashMovie.getCurrentSlide();
-    }
-    //Google Analytic
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-31205461-3']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
-</script>
-<div onload="prettyPrint();loadPlayer();" id="player" style="background: #e5e5e5;">You need Flash player 8+ and JavaScript enabled to view this video.</div>
+<!--Slideshare-->
+    <?php
+    $url = $attachment;
+    if (!function_exists('curl_init'))
+        die('CURL is not installed!');
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "http://www.slideshare.net/api/oembed/2?url=$url&format=json&maxwidth=550");
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    $output = curl_exec($ch);
+    //$output = unserialize(curl_exec($ch));
+    curl_close($ch);
+    $slideshare = json_decode($output);
+    $presentation = explode("/", "$slideshare->slide_image_baseurl");
+    ?>
+<iframe src="http://www.slideshare.net/slideshow/embed_code/<?php echo $slideshare->slideshow_id ?>?rel=0" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="width: 100%;height: 450px;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:0px;padding-bottom: 0px;" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe>

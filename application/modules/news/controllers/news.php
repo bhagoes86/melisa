@@ -63,6 +63,13 @@ class News extends MX_Controller {
         $data['attachment'] = $attachment;
         $this->load->view('news/viewer_soundcloud',$data);
     }
+    
+    function slideshare_view($attachment){
+        $data['attachment'] = $attachment;
+        $this->load->view('news/viewer_slideshare',$data);
+    }
+    
+    
     function select_news($id_news){
         $data['news'] = $this->model_news->edit_news_db($id_news)->row();
         $this->load->view('news/selected_articles',$data);

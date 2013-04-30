@@ -73,6 +73,10 @@
                                     if ($news->attachment_type == 0) {
                                         echo modules::run('news/video_view', $news->attachment, $news->ext);
                                     }
+                                    
+                                    if($news->attachment_type == 5){
+                                        echo modules::run('news/slideshare_view', $news->attachment);
+                                    }
 
                                     if ($news->attachment_type == 6) {
                                         echo modules::run('news/soundcloud_view', $news->attachment);
