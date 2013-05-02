@@ -92,7 +92,7 @@
                                             <form  id="check-active-quiz">
                                                 <h4 style="margin-top: 0px;padding-top: 0px;">Sandi Masuk Ujian : </h4>
                                                 <div class="input-control text span2">
-                                                    <input name="password" id="password" type="text"  value=""/>
+                                                    <input name="password" id="password" type="password"  value=""/>
                                                 </div>
 
                                                 <br><br><br>
@@ -172,6 +172,7 @@
          $('#close-error-message').click(function(){
              $('#error-template').fadeOut('slow');
          });
+         
          $('#btn-cancel').click(function(){
             $('#message').html('Loading ... ');
             $('#loading-template').show();

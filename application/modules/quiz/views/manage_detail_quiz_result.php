@@ -1,9 +1,9 @@
  <script src="http://connect.soundcloud.com/sdk.js"></script>
-    <script>
-        SC.initialize({
-            client_id: "938418853596f90572983f377348dc57"
-        });
-    </script>
+ <script>
+    SC.initialize({
+        client_id: "938418853596f90572983f377348dc57"
+    });
+ </script>
     
 
 <script src="<?php echo base_url() ?>asset/flowplayer/flowplayer.min.js"></script>
@@ -13,7 +13,21 @@
 
 <?php if ($status != 3){?>
 
-<a class="button bg-color-orange fg-color-white" id="quiz-my-quiz-result"><i class="icon-arrow-left-2"></i> Kembali ke Nilai Saya</a>
+<a class="button bg-color-orange fg-color-white" id="quiz-my-quiz-result"><i class="icon-arrow-left-2"></i>
+    <?php if ($status == 1){
+        ?>
+        Kembali ke Daftar Nilai
+
+        <?php
+    } else {
+        ?>
+        Kembali ke Nilai Saya
+            
+        <?php
+    }?>
+    
+    
+</a>
 <input class="bg-color-blue" style="color:white" type="button" name="btn-cancel" id="btn-cancel" value="Kembali ke Daftar Kuis "/>
 <?php } ?>
 <hr/>
