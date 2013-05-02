@@ -85,7 +85,35 @@
                     <?php } ?>
                 </div>
                 <div class="clearfix"></div>
-            </div>            
+            </div>
+            <div class="utils">
+                <div class="toolbar place-left">
+                    <?php if ($row->type == 0) { ?><!--Video-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->id_content, 0) ?>
+                        <?php echo modules::run('forum/btn_tags', $row->id_content, 0) ?>
+                    <?php } elseif ($row->type == 2) { ?><!--youtube-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->id_content, 2) ?>
+                        <?php echo modules::run('forum/btn_tags', $row->id_content, 2) ?>
+                    <?php } elseif ($row->type == 3) { ?><!--vimeo-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->id_content, 3) ?>
+                        <?php echo modules::run('forum/btn_tags', $row->id_content, 3) ?>
+                    <?php } elseif ($row->type == 6) { ?><!--SoundCloud-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->id_content, 6) ?>
+                        <?php echo modules::run('forum/btn_tags', $row->id_content, 6) ?>
+                    <?php } ?>
+                </div>
+                <div class="toolbar place-right" style="visibility: hidden;"></div>
+                <div class="clearfix"></div>
+            </div>
+            <?php if ($row->type == 0) { ?><!--Video-->
+                <?php echo modules::run('forum/form_tag_add', $row->id_content, 0) ?>
+            <?php } elseif ($row->type == 2) { ?><!--youtube-->
+                <?php echo modules::run('forum/form_tag_add', $row->id_content, 2) ?>
+            <?php } elseif ($row->type == 3) { ?><!--vimeo-->
+                <?php echo modules::run('forum/form_tag_add', $row->id_content, 3) ?>
+            <?php } elseif ($row->type == 6) { ?><!--SoundCloud-->
+                <?php echo modules::run('forum/form_tag_add', $row->id_content, 6) ?>
+            <?php } ?>
         </div>
     </li>
 <?php endforeach; ?>

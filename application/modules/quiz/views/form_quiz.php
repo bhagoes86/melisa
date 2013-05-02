@@ -12,7 +12,7 @@ if ($random_soal == 1){
 }
 
 foreach ($list_soal as $soal){
-    ?>
+?>
         <tr><td>
             <div class="body-text">
                 <h1></h1>

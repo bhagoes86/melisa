@@ -353,6 +353,13 @@ class Model_content extends CI_Model {
         $this->db->where('content_id', $content_id);
         $this->db->delete('content_topic');
     }
+    
+    function delete_content_faculty($faculty_id, $content_id) {
+        //jimho
+        $this->db->where('faculty_id', $faculty_id);
+        $this->db->where('content_id', $content_id);
+        $this->db->delete('content_faculty');
+    }
 
     function delete_content_category($category_id, $content_id) {
         //jimho

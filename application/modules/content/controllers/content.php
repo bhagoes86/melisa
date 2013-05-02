@@ -692,6 +692,10 @@ class Content extends MX_Controller {
     function delete_content_topic($topic_id, $content_id) {
         $this->model_content->delete_content_topic($topic_id, $content_id);
     }
+    
+    function delete_content_faculty($faculty_id,$content_id){
+        $this->model_content->delete_content_faculty($faculty_id, $content_id);
+    }
 
     function delete_content_category($category_id, $content_id) {
         $this->model_content->delete_content_category($category_id, $content_id);

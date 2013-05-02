@@ -1,16 +1,16 @@
 /*additional style for feed by yllumi*/
 
 .listview li {
-	padding: 3px;
+    padding: 3px;
 }
 .listview li h4, .listview li h4 a {
-	margin-top: 0;
-	margin-bottom: 2px;
-	font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 2px;
+    font-size: 14px;
 }
 
 .listview li:hover {
-	outline: 0;
+    outline: 0;
 }
 
 .listview li .data {
@@ -25,215 +25,218 @@
     cursor: default;
 }
 .listview.side-list li .icon {
-	font-size: 30px;
-	padding: 12px 0 0 7px;
+    font-size: 30px;
+    padding: 12px 0 0 7px;
 }
 .listview.image li .feed-avatar {
-	background: url('../img/default.png') no-repeat top left;
-  	width: 60px;
-	height: 60px;
-	display: block;
-	font-size: 32px;
-	float: left;
+    background: url('../img/default.png') no-repeat top left;
+    width: 60px;
+    height: 60px;
+    display: block;
+    font-size: 32px;        
+    border: 1px solid #bbb;
+    border-right: 0;
+    float: left;
 }
 .listview.image li .feed-avatar img {
-	height: 60px;
+/*    border: 1px solid #bbb;
+    border-right: 0;*/
+    height: 60px;
 }
 .user-description {
-	height: 60px;
-	display: block;
-	border: 1px solid #bbb;
-	border-left: 0;
-	border-bottom: 0;
-	padding: 5px 10px;
+    height: 60px;
+    display: block;
+    border: 1px solid #bbb;
+    border-bottom: 0;
+    padding: 5px 10px;
 }
 
 .listview.image li .data {
-	margin-left: 60px;
+    margin-left: 60px;
 }
 
 .date-meta, .date-meta a {
-	font-size: 12px;
-	font-style: italic;
-	color: #bbb;
+    font-size: 12px;
+    font-style: italic;
+    color: #bbb;
 }
 img.avatar {
-	width: 140px;
+    width: 140px;
 }
 .small-avatar, .side-description, .side-utils {
-	display: inline-block;
+    display: inline-block;
 }
 .small-avatar {
-	width: 40px;
+    width: 40px;
 }
 .side-description {
-	width: 130px;
-	color: #aaa;
-	font-size: 12px;
+    width: 130px;
+    color: #aaa;
+    font-size: 12px;
 }
 .side-utils {
-	width: 25px;
+    width: 25px;
 }
 
 .side-description a {
-	font-size: 13px;
+    font-size: 13px;
 }
 
 .pseudo-btn {
-	padding: 2px 2px 0;
+    padding: 2px 2px 0;
 }
 
 /*vertical align*/
 .top {
-	vertical-align: top;
+    vertical-align: top;
 }
 .middle {
-	vertical-align: middle;
+    vertical-align: middle;
 }
 .bottom {
-	vertical-align: bottom;
+    vertical-align: bottom;
 }
 
 .small-avatar img {
-	width: 40px;
-	float: left;
+    width: 40px;
+    float: left;
 }
 fieldset .list {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 .video-image {
-	position: relative;
+    position: relative;
 }
 .video-image img {
-	width: 100%;
+    width: 100%;
 }
 .video-image .description {
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	padding: 10px;
-	background: rgba(0, 0, 0, 0.7);
-	color: #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
 }
 .layered {
-	position: absolute;
+    position: absolute;
 }
 .utils {
-	padding: 10px 10px 0;
-	border: 1px solid #bbb;
-	border-top: 0;
+    padding: 10px 10px 0;
+    border: 1px solid #bbb;
+    border-top: 0;
 }
 .toolbar button > .badge {
-	position: absolute;
-	right: -3px;
-	top: -7px;
-	background-color: white;
-	padding: 0 2px;
-	margin: 0 !important;
-	text-align: center;
-	display: block;
-	font-size: 7pt;
-	color: black;
-	border: 1px solid #ccc;
+    position: absolute;
+    right: -3px;
+    top: -7px;
+    background-color: white;
+    padding: 0 2px;
+    margin: 0 !important;
+    text-align: center;
+    display: block;
+    font-size: 7pt;
+    color: black;
+    border: 1px solid #ccc;
 }
 .listview li .text {
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-bottom: 0;
-	margin: 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-bottom: 0;
+    margin: 0;
 }
 .listview.image li .data p, .listview.image li .data a {
-	font-size: 14px;
+    font-size: 14px;
 }
 .hide {
-	display: none;
+    display: none;
 }
 .link-image {
-	padding-right: 10px;
-	border: 1px solid #bbb;
+    padding-right: 10px;
+    border: 1px solid #bbb;
 }
 .link-image img {
-	width: 150px;
-	float: left;
-	margin-right: 10px;
+    width: 150px;
+    float: left;
+    margin-right: 10px;
 }
 .link-image .description,
 .document-image .description {
-	color: #888;
-	line-height: 16px;
-	padding: 10px;
+    color: #888;
+    line-height: 16px;
+    padding: 10px;
 }
 .document-image {
-	border: 1px solid #bbb;
+    border: 1px solid #bbb;
 }
 .document-image .icon {
-	margin-right: 10px;
-	font-size: 60px;
-	text-align: center;
-	padding-top: 26px;
-	border: 0 !important;
+    margin-right: 10px;
+    font-size: 60px;
+    text-align: center;
+    padding-top: 26px;
+    border: 0 !important;
 }
 fieldset.feed {
-  position: relative;
-  margin-top: 30px;
-  border: 0;
-  border-top: 1px #eaeaea solid;
-  padding: 20px 10px 10px 0;
+    position: relative;
+    margin-top: 30px;
+    border: 0;
+    border-top: 1px #eaeaea solid;
+    padding: 20px 10px 10px 0;
 }
 fieldset.feed legend {
-  padding-left: 10px;
-  padding-right: 10px;
-  font-family: 'Segoe UI Semilight', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
-  font-weight: 300;
-  font-size: 10pt;
-  letter-spacing: 0.02em;
-  line-height: 20px;
-  color: #aaa;
-  position: absolute;
-  top: -12px;
-  left: -10px;
-  background: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: 'Segoe UI Semilight', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 10pt;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    color: #aaa;
+    position: absolute;
+    top: -12px;
+    left: -10px;
+    background: white;
 }
 .input-control .toolbar {
-	margin-top: 10px;
+    margin-top: 10px;
 }
 .input-control #postimage,
 .input-control #posturl {
-	margin-bottom: 10px;	
+    margin-bottom: 10px;	
 }
 .feed .progress-bar {
-	margin-bottom: 25px;
+    margin-bottom: 25px;
 }
 .feed .progress-bar .bar-caption {
-	position:absolute;
-	color:#666;
-	font-size:10px;
-	text-align: right;
+    position:absolute;
+    color:#666;
+    font-size:10px;
+    text-align: right;
 }
 .comments {
-	border: 1px solid #bbb;
-	border-top: 0;
-	background-color: #eee;
+    border: 1px solid #bbb;
+    border-top: 0;
+    background-color: #eee;
 }
 .comments ul {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 .listview .comments li {
-	width: 100% !important;
-	margin-bottom: 0;
+    width: 100% !important;
+    margin-bottom: 0;
 }
 .comments li img {
-	width: 40px;
-	float: left;
+    width: 40px;
+    float: left;
 }
 .comments li .comment-data {
-	margin-left: 50px;
+    margin-left: 50px;
 }
 .comment-form {
-	padding: 10px 10px 0;
+    padding: 10px 10px 0;
 }
 .comment-form textarea {
-	min-height: 30px;
+    min-height: 30px;
 }

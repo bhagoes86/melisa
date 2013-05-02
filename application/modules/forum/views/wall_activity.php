@@ -1,185 +1,286 @@
-<li class="feed-document">
-    <span class="feed-avatar">
-        <img src="http://localhost/melisa/application/modules/feed/img/avatar.jpg">
-    </span>
-    <div class="data">
-        <div class="user-description">
-            <h4><a href="#">Toni Haryanto</a> mengunggah dokumen
-                <span class="date-meta">&middot; kemarin 09:11 &middot; publik</span>
-            </h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-        <div class="text">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-        <div class="image document-image">
-            <div class="icon bg-color-green fg-color-white"><i class="icon-libreoffice"></i></div>
-            <div class="description">
-                <h4><a href="#">Toni Haryanto Code Playground</a></h4>
-                Ut egestas magna, sed rutrum felis fermentum quis. Aliquam congue ultricies elit, sit amet tempor tortor tempor nec.
+<?php foreach ($content as $row): ?>
+    <li class="feed-link" style="padding-left: 0px;">
+        <span class="feed-avatar">
+            <?php if ($row->profic == '') { ?>
+                <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;"/>
+            <?php } else { ?>
+                <?php
+                $profpic = 'resource/' . $row->profic;
+                if (file_exists($profpic)) {
+                    ?>
+                    <img src="<?php echo base_url() . $profpic ?>" class="userphoto" style="padding-right: 0px;width: 100%;"/>
+                <?php } else { ?>
+                    <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;"/>
+                <?php } ?>
+            <?php } ?>
+        </span>
+        <div class="data">
+            <div class="user-description">
+                <h4>
+                    <a href="<?php echo site_url('forum' . '/' . $row->user_id) ?>"><?php echo modules::run('authz/get_username', $row->user_id) ?></a> 
+                    <?php if ($row->forum_type == 0) { ?><!--Video-->
+                        <a href="<?php echo site_url('content/video' . '/' . $row->forum_id) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">mengunggah <i class="icon-film"></i>&nbsp;&nbsp;konten video</a>
+                    <?php } elseif ($row->forum_type == 1) { ?><!--document-->
+                        <a href="<?php echo site_url('content/document' . '/' . $row->forum_id) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">mengunggah <i class="icon-libreoffice"></i>&nbsp;&nbsp;konten dokumen</a>
+                    <?php } elseif ($row->forum_type == 2) { ?><!--Youtube-->
+                        <a href="<?php echo site_url('content/youtube' . '/' . $row->forum_id) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">menautkan <i class="icon-youtube"></i>&nbsp;&nbsp;konten youtube.com</a>
+                    <?php } elseif ($row->forum_type == 3) { ?><!--Vimeo-->
+                        <a href="<?php echo site_url('content/vimeo' . '/' . $row->forum_id) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">menautkan <i class="icon-vimeo"></i>&nbsp;&nbsp;konten vimeo.com</a>
+                    <?php } elseif ($row->forum_type == 4) { ?><!--scribd-->
+                        <a href="<?php echo site_url('content/scribd' . '/' . $row->forum_id) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">menautkan <i class="icon-file-pdf"></i>&nbsp;&nbsp;konten scribd.com</a>
+                    <?php } elseif ($row->forum_type == 6) { ?><!--SoundCloud-->
+                        <a href="<?php echo site_url('content/soundcloud' . '/' . $row->forum_id) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">menautkan <i class="icon-soundcloud"></i>&nbsp;&nbsp;konten soundcloud.com</a>
+                    <?php } elseif ($row->forum_type == 5) { ?><!--slideshare-->
+                        <a href="<?php echo site_url('content/slideshare' . '/' . $row->forum_id) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">menautkan <i class="icon-file-powerpoint"></i>&nbsp;&nbsp;konten slideshare.net</a>
+                    <?php } elseif ($row->forum_type == 7) { ?><!--docstoc-->
+                        <a href="<?php echo site_url('content/docstoc' . '/' . $row->forum_id) ?>" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">menautkan <i class="icon-file-word"></i>&nbsp;&nbsp;konten docstoc.com</a>
+                    <?php } elseif ($row->forum_type == 8) { ?><!--docstoc-->
+                    <?php } elseif ($row->forum_type == 9) { ?><!--plain-->
+                    <?php } elseif ($row->forum_type == 10) { ?><!--gambar-->
+                    <?php } ?>
+                </h4>
+                <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
             </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="utils">
-            <div class="toolbar place-left">
-                <button title="like"><i class="icon-thumbs-up"></i> <span class="badge">100</span></button>
-                <button title="comment"><i class="icon-comments"></i> <span class="badge">70</span></button>
-                <button title="share"><i class="icon-share"></i> <span class="badge">8</span></button>
-            </div>
-            <div class="toolbar place-right">
-                <button title="setting"><i class="icon-cog"></i></button>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="comments">
-            <ul>
-                <li><a href="#" title=""><i class="icon-comments-4"></i> 2 komentar terdahulu..</a></li>
-                <li><a href="#"><img src="http://localhost/melisa/application/modules/feed/img/avatar.jpg" alt=""></a>
-                    <div class="comment-data">
-                        <a href="#">Toni Haryanto</a>
-                        <small>&middot; 31 Juni, 09:15</small>
-                        <a href="#" class="delete-comment place-right hide"><i class="icon-cancel"></i></a>
-                        <p>Eeeee.. macarena! Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+            <div class="text" id="wall-content-viewer-<?php echo $row->forum_id ?>" data-id="<?php echo $row->forum_id ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>
+            <?php if ($row->forum_type == 0) { ?><!--Video-->
+                <div class="image link-image">
+                    <?php if ($row->cover == 0) { ?>
+                    <?php } else { ?>
+                        <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->forum_id ?>">
+                            <img src="<?php echo base_url() . 'resource/' . $row->forum_id . '.jpg' ?>" style="margin:14px 0px 15px 10px;width: 125px;height: 100px;vertical-align: middle;"/>
+                        </a>
+                    <?php } ?>
+                    <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->forum_id ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->forum_id ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
                     </div>
-                </li>
-                <li><a href="#"><img src="http://localhost/melisa/application/modules/feed/img/avatar.jpg" alt=""></a>
-                    <div class="comment-data">
-                        <a href="#">Toni Haryanto</a>
-                        <small>&middot; 31 Juni, 09:15</small>
-                        <a href="#" class="delete-comment place-right hide"><i class="icon-cancel"></i></a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga animi iusto illum illo corporis non dolorum asperiores quisquam obcaecati excepturi error architecto laboriosam quos ipsum enim accusamus natus nostrum praesentium.</p>
+                    <div class="clearfix"></div>
+                </div>
+            <?php } elseif ($row->forum_type == 1) { ?><!--Document-->
+                <div class="image link-image">
+                    <?php if ($row->cover == 0) { ?>
+                        <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->forum_id ?>">
+                            <!--<i class="icon-file" style="font-size: 45px;"></i>-->
+                        </a>
+                    <?php } else { ?>
+                        <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->forum_id ?>">
+                            <img src="<?php echo base_url() . 'resource/' . $row->forum_id . '.jpg' ?>" style="width: 180px;vertical-align: middle;"/>
+                        </a>
+                    <?php } ?>
+                    <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->forum_id ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->forum_id ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
                     </div>
-                </li >
-            </ul>
-            <div class="input-control textarea comment-form">
-                <textarea name="comment" id="" placeholder ="Your comment here.."></textarea>
+                    <div class="clearfix"></div>
+                </div>
+            <?php } elseif ($row->forum_type == 2) { ?><!--youtube-->
+                <div class="image link-image">
+                    <?php
+                    $media = analyze_media($row->url);
+                    $extract_id = explode('^^^', $media);
+                    ?>
+                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->forum_id ?>">
+                        <img src="http://img.youtube.com/vi/<?php echo $extract_id[1]; ?>/1.jpg" style="margin:14px 0px 15px 10px;width: 125px;height: 100px;vertical-align: middle;">
+                    </a>
+                    <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->forum_id ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->forum_id ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            <?php } elseif ($row->forum_type == 3) { ?><!--vimeo-->
+                <div class="image link-image">
+                    <?php $media = vimeo_cover($row->url); ?>
+                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->forum_id ?>">
+                        <img src="<?php echo ($media['thumbnail_medium']) ?>" style="margin:14px 0px 15px 10px;width: 125px;height: 100px;">
+                    </a>
+                    <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->forum_id ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->forum_id ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            <?php } elseif ($row->forum_type == 4) { ?><!--scribd-->
+                <div class="image link-image">
+                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->forum_id ?>"></a>
+                    <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->forum_id ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->forum_id ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            <?php } elseif ($row->forum_type == 5) { ?><!--slideshare-->
+                <div class="image link-image">
+                    <?php
+                    $media = analyze_media($row->url);
+                    $extract_id = explode('^^^', $media);
+                    $url = $extract_id[1];
+                    $thumb = explode("/", slideshare_cover($url)->thumbnail);
+                    $thumbnail = slideshare_cover($url)->thumbnail;
+                    ?>
+                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->forum_id ?>">
+                        <img src="<?php echo "http:" . $thumbnail ?>" style="width: 180px;vertical-align: middle;">
+                    </a>
+                    <div class="description" style="padding-left: 141px;">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            <?php } elseif ($row->forum_type == 6) { ?><!--SoundCloud-->
+                <div class="image link-image">
+                    <div class="description" style="padding-left: 141px;">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            <?php } elseif ($row->forum_type == 7) { ?><!--docstoc-->
+                <div class="image link-image">
+                    <?php
+                    $media = analyze_media($row->url);
+                    $extract_id = explode('^^^', $media);
+                    ?>
+                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->forum_id ?>">
+                        <img src="http://img.docstoccdn.com/thumb/100/<?php echo $extract_id[1] ?>.png" style="width: 120px;height: 135px;vertical-align: middle;">
+                    </a>
+                    <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->forum_id ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->forum_id ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            <?php } elseif ($row->forum_type == 8) { ?><!--SoundCloud-->
+                <div class="image link-image">
+                    <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->forum_id ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->forum_id ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            <?php } elseif ($row->forum_type == 9) { ?><!--wall-->
+                <div class="image link-image">
+                    <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->forum_id ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->forum_id ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            <?php } elseif ($row->forum_type == 10) { ?><!--gambar-->
+                <div class="image link-image">
+                    <div class="description" style="padding-left: 141px;">
+                        <h4 style="padding-left: 0px;margin-left: 0px;" data-id="<?php echo $row->forum_id ?>">
+                            <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->forum_id ?>">                            
+                                <?php echo $row->message; ?>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            <?php } ?>
+            <div class="utils">
+                <div class="toolbar place-left">
+                    <?php if ($row->forum_type == 0) { ?><!--Video-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->forum_id, 0) ?>
+                        <?php echo modules::run('forum/btn_tags', $row->forum_id, 0) ?>
+                    <?php } elseif ($row->forum_type == 1) { ?><!--document-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->forum_id, 1) ?>
+                        <?php echo modules::run('forum/btn_tags', $row->forum_id, 1) ?>
+                    <?php } elseif ($row->forum_type == 2) { ?><!--youtube-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->forum_id, 2) ?>
+                        <?php echo modules::run('forum/btn_tags', $row->forum_id, 2) ?>
+                    <?php } elseif ($row->forum_type == 3) { ?><!--vimeo-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->forum_id, 3) ?>
+                        <?php echo modules::run('forum/btn_tags', $row->forum_id, 3) ?>
+                    <?php } elseif ($row->forum_type == 4) { ?><!--Scribd-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->forum_id, 4) ?>
+                        <?php echo modules::run('forum/btn_tags', $row->forum_id, 4) ?>
+                    <?php } elseif ($row->forum_type == 5) { ?><!--Slideshare-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->forum_id, 5) ?>
+                        <?php echo modules::run('forum/btn_tags', $row->forum_id, 5) ?>
+                    <?php } elseif ($row->forum_type == 6) { ?><!--SoundCloud-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->forum_id, 6) ?>
+                        <?php echo modules::run('forum/btn_tags', $row->forum_id, 6) ?>
+                    <?php } elseif ($row->forum_type == 7) { ?><!--Docstoc-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->forum_id, 7) ?>
+                        <?php echo modules::run('forum/btn_tags', $row->forum_id, 7) ?>
+                    <?php } elseif ($row->forum_type == 8) { ?><!--Docstoc-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->forum_id, 8) ?>
+                        <?php echo modules::run('forum/btn_tags', $row->forum_id, 8) ?>
+                    <?php } elseif ($row->forum_type == 9) { ?><!--Docstoc-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->forum_id, 9) ?>
+                        <?php echo modules::run('forum/btn_tags', $row->forum_id, 9) ?>
+                    <?php } elseif ($row->forum_type == 10) { ?><!--Docstoc-->
+                        <?php echo modules::run('forum/btn_broadcast', $row->forum_id, 10) ?>
+                        <?php echo modules::run('forum/btn_tags', $row->forum_id, 10) ?>
+                    <?php } ?>
+                </div>
+                <div class="toolbar place-right" style="visibility: hidden;"></div>
+                <div class="clearfix"></div>
             </div>
+            <?php if ($row->forum_type == 0) { ?><!--Video-->
+                <?php echo modules::run('forum/form_tag_add', $row->forum_id, 0) ?>
+            <?php } elseif ($row->forum_type == 1) { ?><!--document-->
+                <?php echo modules::run('forum/form_tag_add', $row->forum_id, 1) ?>
+            <?php } elseif ($row->forum_type == 2) { ?><!--youtube-->
+                <?php echo modules::run('forum/form_tag_add', $row->forum_id, 2) ?>
+            <?php } elseif ($row->forum_type == 3) { ?><!--vimeo-->
+                <?php echo modules::run('forum/form_tag_add', $row->forum_id, 3) ?>
+            <?php } elseif ($row->forum_type == 4) { ?><!--scribd-->
+                <?php echo modules::run('forum/form_tag_add', $row->forum_id, 4) ?>
+            <?php } elseif ($row->forum_type == 5) { ?><!--slidshare-->
+                <?php echo modules::run('forum/form_tag_add', $row->forum_id, 5) ?>
+            <?php } elseif ($row->forum_type == 6) { ?><!--SoundCloud-->
+                <?php echo modules::run('forum/form_tag_add', $row->forum_id, 6) ?>
+            <?php } elseif ($row->forum_type == 7) { ?><!--docstoc-->
+                <?php echo modules::run('forum/form_tag_add', $row->forum_id, 7) ?>
+            <?php } elseif ($row->forum_type == 8) { ?><!--docstoc-->
+                <?php echo modules::run('forum/form_tag_add', $row->forum_id, 8) ?>
+            <?php } elseif ($row->forum_type == 9) { ?><!--docstoc-->
+                <?php echo modules::run('forum/form_tag_add', $row->forum_id, 9) ?>
+            <?php } elseif ($row->forum_type == 10) { ?><!--docstoc-->
+                <?php echo modules::run('forum/form_tag_add', $row->forum_id, 10) ?>
+            <?php } ?>
         </div>
-    </div>
-</li>
-
-<li class="feed-link">
-    <span class="feed-avatar">
-        <img src="http://localhost/melisa/application/modules/feed/img/avatar.jpg">
-    </span>
-    <div class="data">
-        <div class="user-description">
-            <h4><a href="#">Toni Haryanto</a> memposting tautan
-                <span class="date-meta">&middot; kemarin 09:11 &middot; publik</span>
-            </h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-        <div class="text">
-            <p>Lorem ipsum dolor sit amet <a href="#">#tempor</a>, consectetur adipisicing elit. Mollitia maxime placeat magnam laborum ullam quas odit molestiae eligendi nesciunt unde at accusantium excepturi commodi facilis similique quasi inventore deserunt a.</p>
-            <div class="hide">
-                <p><a href="#"><strong>Lorem ipsum</strong></a> dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <a href="#">#Excepteur</a> sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam unde facere perspiciatis nulla commodi labore accusamus dolorum ipsum alias tenetur quaerat animi sit doloremque ducimus laboriosam corporis ullam pariatur harum!</p>
-            </div>
-            <a class="hide-link">selengkapnya..</a>
-        </div>
-        <div class="image link-image">
-            <img src="http://localhost/melisa/application/modules/feed/img/avatar.jpg">
-            <div class="description">
-                <h4><a href="#"><i class="icon-link"></i> Toni Haryanto Code Playground</a></h4>
-                Ut egestas magna, sed rutrum felis fermentum quis. Aliquam congue ultricies elit, sit amet tempor tortor tempor nec.
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="utils">
-            <div class="toolbar">
-                <button title="like"><i class="icon-thumbs-up"></i> <span class="badge">100</span></button>
-                <button title="comment"><i class="icon-comments"></i> <span class="badge">70</span></button>
-                <button title="share"><i class="icon-share"></i> <span class="badge">8</span></button>
-            </div>
-        </div>
-        <div class="comments">
-            <ul>
-            </ul>
-            <div class="input-control textarea comment-form">
-                <textarea name="comment" id="" placeholder ="Your comment here.."></textarea>
-            </div>
-        </div>
-    </div>
-</li>
-
-<li class="feed-photo">
-    <span class="feed-avatar">
-        <img src="http://localhost/melisa/application/modules/feed/img/avatar.jpg">
-    </span>
-    <div class="data">
-        <div class="user-description">
-            <h4><a href="#">Toni Haryanto</a> mengunggah foto
-                <span class="date-meta">&middot; kemarin 09:11 &middot; publik</span>
-            </h4>
-        </div>
-        <div class="text">
-            <p>Lorem ipsum dolor sit amet <a href="#">#tempor</a>, consectetur adipisicing elit. Mollitia maxime placeat magnam laborum ullam quas odit molestiae eligendi nesciunt unde at accusantium excepturi commodi facilis similique quasi inventore deserunt a.</p>
-            <div class="hide">
-                <p><a href="#"><strong>Lorem ipsum</strong></a> dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <a href="#">#Excepteur</a> sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam unde facere perspiciatis nulla commodi labore accusamus dolorum ipsum alias tenetur quaerat animi sit doloremque ducimus laboriosam corporis ullam pariatur harum!</p>
-            </div>
-            <a class="hide-link">selengkapnya..</a>
-        </div>
-        <div class="image video-image">
-            <img src="http://localhost/melisa/application/modules/feed/img/i_love_you.jpg">
-            <div class="description">
-                Ut egestas magna, sed rutrum felis fermentum quis. Aliquam congue ultricies elit, sit amet tempor tortor tempor nec.
-            </div>
-        </div>
-        <div class="utils">
-            <div class="toolbar">
-                <button title="like"><i class="icon-thumbs-up"></i> <span class="badge">100</span></button>
-                <button title="comment"><i class="icon-comments"></i> <span class="badge">70</span></button>
-                <button title="share"><i class="icon-share"></i> <span class="badge">8</span></button>
-            </div>
-        </div>
-        <div class="comments">
-            <ul>
-            </ul>
-            <div class="input-control textarea comment-form">
-                <textarea name="comment" id="" placeholder ="Your comment here.."></textarea>
-            </div>
-        </div>
-    </div>
-</li>
-
-<li class="feed-video">
-    <span class="feed-avatar">
-        <img src="http://localhost/melisa/application/modules/feed/img/avatar.jpg">
-    </span>
-    <div class="data">
-        <div class="user-description">
-            <h4><a href="#">Toni Haryanto</a> mengunggah video
-                <span class="date-meta">&middot; kemarin 09:11 &middot; publik</span>
-            </h4>
-        </div>
-        <div class="image video-image fg-color-white">
-            <img src="http://localhost/melisa/application/modules/feed/img/photoshop-tutorial.jpg">
-            <i class="icon-film layered" style="font-size:80px;top:40%;left:40%;"></i>
-            <div class="description">
-                Ut egestas tempor magna, sed rutrum felis fermentum quis. Aliquam congue ultricies elit, sit amet tempor tortor tempor nec.
-            </div>
-        </div>
-        <div class="utils">
-            <div class="toolbar">
-                <button title="like"><i class="icon-thumbs-up"></i> <span class="badge">100</span></button>
-                <button title="comment"><i class="icon-comments"></i> <span class="badge">70</span></button>
-                <button title="share"><i class="icon-share"></i> <span class="badge">8</span></button>
-            </div>
-        </div>
-        <div class="comments">
-            <ul>
-            </ul>
-            <div class="input-control textarea comment-form">
-                <textarea name="comment" id="" placeholder ="Your comment here.."></textarea>
-            </div>
-        </div>
-    </div>
-</li>
+    </li>
+<?php endforeach; ?>
+<script forum_type="text/javascript">
+    $('a#btn-content-activate').click(function(){
+        var forum_id = $(this).attr('data-id');
+        $('#wall-content-viewer-'+forum_id).load("<?php echo site_url('content/wall_player') ?>/"+forum_id,function(){
+            $('#wall-content-viewer-'+forum_id).slideToggle('fast');
+        });           
+        return false;
+    });
+    $('a#pic-content-activate').click(function(){
+        var forum_id = $(this).attr('data-id');
+        $('#wall-content-viewer-'+forum_id).load("<?php echo site_url('content/wall_player') ?>/"+forum_id,function(){
+            $('#wall-content-viewer-'+forum_id).slideToggle('fast');
+        });
+    });
+</script>
+<script>
+    SC.initialize({
+        client_id: "938418853596f90572983f377348dc57"
+    });
+</script>

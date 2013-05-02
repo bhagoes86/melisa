@@ -73,7 +73,7 @@ class Quiz extends MX_Controller {
                 $temp = "";
 
                 $start_code = 1001;
-                $end_code = 1999;
+                $end_code = 1201;
 
                 foreach ($temp_cg as $tcg) {
 
@@ -1235,8 +1235,13 @@ class Quiz extends MX_Controller {
         if (!$this->ion_auth->logged_in()) {
             redirect();
         } else {
+            $user = $this->ion_auth->user()->row();
+            echo $quiz_id." - ".$user_id." - ".$tiket_quiz." - ".$group_id;
             $data['count_quiz_soal'] = count($this->load->model_quiz->select_soal_by_quiz($quiz_id, 1)->result());
-            $data['result'] = $this->load->model_quiz->select_quiz_result_by_quiz_user_group_id($quiz_id, $user_id, $group_id, $tiket_quiz)->row();
+            $data['result'] = $this->load->model_quiz->select_quiz_result_by_quiz_user_group_id($quiz_id, $user->id, $group_id, $tiket_quiz)->row();
+            echo "<pre>";
+            print_r($data);
+            echo "</pre>";
             $this->load->view('quiz/view_quiz_result', $data);
         }
     }
@@ -1314,6 +1319,7 @@ class Quiz extends MX_Controller {
             //echo $temp_start_time."<br>";
             //echo $temp_end_time."<br>";
             // apakah kuis bisa diresume atau gak
+            
             $temp2 = $this->load->model_quiz->select_quiz_result_by_status($id_quiz, $user->id, $id_group, 0)->result();
 
             // count array
@@ -1372,14 +1378,14 @@ class Quiz extends MX_Controller {
             $data['tiket_quiz'] = $tiket_quiz;
             $data['quiz_result'] = $temp;
             $data['course_id'] = $course_id;
+            $data['group_id'] = $group_id;
+            
 
             $today = getdate();
-            $temp_now = date_create($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes'] . ':00');
+            $temp_now = date_create($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes'] . ':'. $today['seconds']);
             $now = date_format($temp_now, 'Y-m-d H:i:s');
             $waktu2 = date_parse($temp->end_time);
-
-
-            $temp_interval2 = strtotime($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes'] . ':00') - strtotime($waktu2['year'] . '-' . $waktu2['month'] . '-' . $waktu2['day'] . ' ' . $waktu2['hour'] . ':' . $waktu2['minute'] . ':00');
+            $temp_interval2 = strtotime($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes']  . ':'. $today['seconds']) - strtotime($waktu2['year'] . '-' . $waktu2['month'] . '-' . $waktu2['day'] . ' ' . $waktu2['hour'] . ':' . $waktu2['minute'] . ':00');
 
             if ($temp->status == 0) {
                 if ($temp_interval2 < 0) {
@@ -1393,10 +1399,7 @@ class Quiz extends MX_Controller {
                 if ($this->session->userdata('data_quiz') != '') {
                     $this->session->unset_userdata('data_quiz');
                 }
-
-
-
-                echo "<fieldset>Waktu pengerjaan kuis <b>sudah habis</b> ... </fieldset>";
+                 echo "<fieldset>Waktu pengerjaan kuis <b>sudah habis</b> ... </fieldset>";
                 $this->load->view('quiz/form_end_quiz_trigger', $data);
             }
             echo "<hr>";
@@ -1641,6 +1644,7 @@ class Quiz extends MX_Controller {
             $data['random_soal'] = 0;
             $data['random_jawaban'] = 0;
             $data['num_per_page'] = 5;
+            $data['length_time'] = 10;
             $data['status'] = 1;
             $data['deleted'] = 1;
             
@@ -1809,6 +1813,7 @@ class Quiz extends MX_Controller {
             $temp2 = $this->load->model_quiz->select_pass_tryout_by_cqg_user($temp->course_id, $temp->quiz_id, $temp->group_id, $user->id)->row();
 
             // update kode tersebut telah expired
+            // penyebab error
             $data_tryout['expired'] = 1;
             $this->load->model_quiz->update_pass_tryout($temp2->id_quiz_pass_tryout, $data_tryout);
 
@@ -2069,14 +2074,20 @@ class Quiz extends MX_Controller {
             $menit2 = $this->input->post('menit2', true);
             $date2 = date_create($tahun2 . '-' . $bulan2 . '-' . $hari2 . " " . $jam2 . ":" . $menit2 . ":00");
             $tanggal2 = date_format($date2, 'Y-m-d H:i:s');
+            $length_time = $this->input->post('length_time', true);
+            $num_per_page = $this->input->post('num_per_page', true);
             
-            if ($date1 > $date2) {
+            if ($length_time < 10 || $num_per_page < 1){
+                echo "{";
+                echo "\"msg\": \"3\"";
+                echo "}";
+            }
+            else if ($date1 > $date2) {
                 echo "{";
                 echo "\"msg\": \"2\"";
                 echo "}";
             }
             else if ($date1 < $date2){
-                
                 $data['title'] = $this->input->post('title', true);
                 $data['description'] = $this->input->post('description', true);
                 $data['length_time'] = $this->input->post('length_time', true);
@@ -2114,7 +2125,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // meenghentikan kuis dan memulai session baru
+    // menghentikan kuis dan memulai session baru
     function quiz_terminate($tiket_quiz, $quiz_id) {
         if (!$this->ion_auth->logged_in()) {
             redirect();

@@ -419,11 +419,12 @@
                 message += '- Anda belum memberikan deskripsi <br>';
             }
             
-            if (num_per_page <= 0){
+            if (parseInt(num_per_page) <= 0){
                 message += '- Jumlah soal per halaman tidak boleh 0 <br>';
             }
             
-            if(length_time <= 0){
+            if(parseInt(length_time) <= 10){
+                
                 message += '- Lamanya waktu ujian tidak boleh 0 !!!';
             }
             
@@ -452,6 +453,15 @@
                 {
                     var message = '[PERINGATAN]<br><br>';
                     message += '- Waktu yang selesai salah';
+                    $('#message-error').html(message);
+                    $('#loading-template').fadeOut("slow");
+                    $('#error-template').show();
+                }
+                else if (data.msg == '3')
+                {
+                    var message = '[PERINGATAN]<br><br>';
+                    message += '- Lamanya ujian tidak boleh kurang dari 10 <br />';
+                    message += '- Jumlah soal per halaman tidak boleh kurang dari 1';
                     $('#message-error').html(message);
                     $('#loading-template').fadeOut("slow");
                     $('#error-template').show();

@@ -1,12 +1,8 @@
-
-
 <form id="update-quiz-result">
-    
-    <input type="hidden" name="tiket_quiz" id="tiket_quiz" value="<?php echo $tiket_quiz; ?>"/>
-    <input type="hidden" name="id_quiz" id="id_quiz" value="<?php echo $quiz_id; ?>"/>
-    
+    <input type="text" name="tiket_quiz" id="tiket_quiz" value="<?php echo $tiket_quiz; ?>"/>
+    <input type="text" name="id_quiz" id="id_quiz" value="<?php echo $quiz_id; ?>"/>
+    <input type="text" name="id_group" id="id_group" value="<?php echo $group_id; ?>"/>
     <input type="submit" value="Kumpulkan kuis ini dan saya yakin dengan jawaban yang telah saya pilih ..."/>
-
 </form>
 
 <br>

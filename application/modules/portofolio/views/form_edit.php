@@ -3,6 +3,11 @@
 <div class="span7">
     <form id="edit_portofolio" action="<?php echo site_url('portofolio/edit_save') ?>" method="POST" accept-charset="utf-8" >
         <div class="input-control textarea ">
+            <h3 style="margin-top: 0px; padding-top: 0px;">Nama depan</h3>
+            <textarea name="fname" id="fname" placeholder="Nama depan" style="resize: vertical;margin-bottom: 15px;"><?php echo $users->first_name; ?></textarea>
+            <h3 style="margin-top: 0px; padding-top: 0px;">Nama belakang</h3>
+            <textarea name="lname" id="lname" placeholder="Nama belakang" style="resize: vertical;margin-bottom: 15px;"><?php echo $users->last_name; ?></textarea>
+
             <h3 style="margin-top: 0px; padding-top: 0px;">Profil</h3>
             <textarea name="profil" id="profil" placeholder="Profil" style="resize: vertical;margin-bottom: 15px;"><?php echo $profil->information; ?></textarea>
             <h3 style="margin-top: 0px; padding-top: 0px;">Mengajar</h3>

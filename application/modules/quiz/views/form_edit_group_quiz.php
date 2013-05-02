@@ -114,6 +114,10 @@
 </form>
 
 
+
+
+
+
 <div class="row" id="row-message">
     <div class="message-dialog bg-color-yellow fg-color-black" style="display: none;" id="confirm-template" >
         <p id="message-confirm">Content for message dialog</p>

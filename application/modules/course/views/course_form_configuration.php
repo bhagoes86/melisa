@@ -24,10 +24,12 @@
             <tbody>
                 <?php foreach ($course_topic as $row_topic): ?>
                     <tr>
+                        <?php if($row_topic->status==5){ ?>
                         <td><?php echo $row_topic->topic ?></td>
                         <td style="width: 30px;border: 1px solid white;vertical-align: middle;background-color:rgba(0, 0, 0, 0.0666667);">
                             <a title="Hapus" href="javascript:void(0)" id="btn-delete-topic" data-id-topic="<?php echo $row_topic->id_topic; ?>"><i class="icon-remove fg-color-red"></i></a>
                         </td>
+                        <?php }?>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -53,6 +55,7 @@
             <thead>
                 <tr>
                     <td>Fakultas</td>
+                    <td style="width: 50px;text-align: center;">Aksi</td>
                 </tr>
             </thead>
             <tbody>
@@ -116,7 +119,10 @@
                             ?>
                             <?php echo $row_bimbel->topic ?>
                         </td>
-                        <td style="width: 50px;text-align: center;"></td>
+
+                        <td style="width: 30px;border: 1px solid white;vertical-align: middle;background-color:rgba(0, 0, 0, 0.0666667);">
+                            <a title="Hapus" href="javascript:void(0)" id="btn-delete-bimbel" data-id-bimbel="<?php echo $row_bimbel->id_topic; ?>"><i class="icon-remove fg-color-red"></i></a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -260,4 +266,28 @@
         });
         return false; 
     });
+    
+    $('a#btn-delete-bimbel').click(function(){
+        $('#message').html('Menghapus Konten');
+        $('#loading-template').show();
+        var id_topic = $(this).attr('data-id-bimbel');
+        var id_course = <?php echo $course_id; ?>;
+        $.ajax({
+            type:'POST',
+            url:"<?php echo site_url('course/delete_course_topic') ?>/"+id_topic+"/"+id_course,
+            data:$(this).serialize(),
+            success:function (data) {
+                $('#content-right').load("<?php echo site_url('course/course_config' . '/' . $course_id) ?>",function(){
+                    $('#loading-template').fadeOut("slow");
+                });
+            },
+            error:function (data){
+                $('#loading-template').fadeOut("slow");
+                $('#message-error').html('Proses Gagal');
+                $('#error-template').show();
+            }
+        });
+        return false; 
+    });
+    
 </script>

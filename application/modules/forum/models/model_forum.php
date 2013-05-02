@@ -28,4 +28,77 @@ class Model_forum extends CI_Model {
         return $this->db->get();
     }
 
+    function select_content($id_content, $type) {
+        $this->db->select('*');
+        $this->db->from('content');
+        $this->db->where('id_content', $id_content);
+        $this->db->where('type', $type);
+        return $this->db->get();
+    }
+
+    function insert_wall($data) {
+        $this->db->insert('wall', $data);
+        return $this->db->insert_id();
+    }
+
+    function insert_broadcast($databroadcast) {
+        $this->db->insert('broadcast', $databroadcast);
+        return $this->db->insert_id();
+    }
+
+    function insert_tag($data) {
+        $this->db->insert('tags', $data);
+        return $this->db->insert_id();
+    }
+
+    function select_broadcast($content_id, $broadcast_type) {
+        $this->db->select('*');
+        $this->db->from('broadcast');
+        $this->db->where('content_id', $content_id);
+        $this->db->where('broadcast_type', $broadcast_type);
+        return $this->db->get();
+    }
+
+    function select_tag($content_id, $tag_type) {
+        $this->db->select('*');
+        $this->db->from('tags');
+        $this->db->where('content_id', $content_id);
+        $this->db->where('tag_type', $tag_type);
+        return $this->db->get();
+    }
+
+    function select_trending_tag() {
+        return $this->db->query('SELECT count(tag) as jml, user_id, tag, tag_type from tags group by tag order by jml DESC limit 5');
+    }
+
+    function select_tag_join_content($tag) {
+        $this->db->select('*');
+        $this->db->from('tags');
+        $this->db->join('content', 'content.id_content = tags.content_id');
+        $this->db->join('users', 'users.id = content.user_id');
+        $this->db->where('tags.tag', $tag);
+        $this->db->group_by('id_content');
+        return $this->db->get();
+    }
+
+    function select_wall_first() {
+        $this->db->select('*');
+        $this->db->from('wall');
+        $this->db->join('users', 'users.id=wall.user_id');
+        $this->db->order_by('id_wall', 'DESC');
+        $this->db->limit(2);
+        return $this->db->get();
+    }
+
+    function select_activity_first($user_id) {
+        $this->db->select('*');
+        $this->db->from('wall');
+        $this->db->join('users', 'users.id=wall.user_id');
+        $this->db->where('wall.user_id', $user_id);
+        $this->db->or_where('wall.user_idto', $user_id);
+        $this->db->order_by('id_wall', 'DESC');
+        $this->db->limit(2);
+        return $this->db->get();
+    }
+
 }

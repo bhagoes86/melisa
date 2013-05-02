@@ -60,10 +60,12 @@
             <tbody>
                 <?php foreach ($content_topic as $row_topic): ?>
                     <tr>
-                        <td><?php echo $row_topic->topic ?></td>
-                        <td style="width: 50px;text-align: center;">
-                            <a id="btn-delete-content-topic" href="javascript:void(0)" style="cursor: pointer;" data-url="<?php echo site_url('content/delete_content_topic' . '/' . $row_topic->id_topic . '/' . $content_id) ?>"><i class="icon-remove fg-color-red"></i></a>
-                        </td>
+                        <?php if ($row_topic->status == 5) { ?>
+                            <td><?php echo $row_topic->topic ?></td>
+                            <td style="width: 50px;text-align: center;">
+                                <a id="btn-delete-content-topic" href="javascript:void(0)" style="cursor: pointer;" data-url="<?php echo site_url('content/delete_content_topic' . '/' . $row_topic->id_topic . '/' . $content_id) ?>"><i class="icon-remove fg-color-red"></i></a>
+                            </td>
+                        <?php } ?>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -88,7 +90,7 @@
         <table class="striped">
             <thead>
                 <tr>
-                    <td>Fakultas</td>
+                    <td>Kampus</td>
                     <td style="width: 50px;text-align: center;">Aksi</td>
                 </tr>
             </thead>
@@ -96,7 +98,9 @@
                 <?php foreach ($content_faculty as $row_faculty): ?>
                     <tr>
                         <td><?php echo $row_faculty->faculty ?></td>
-                        <td style="width: 50px;text-align: center;"></td>
+                        <td style="width: 50px;text-align: center;">
+                            <a id="btn-delete-content-faculty" href="javascript:void(0)" style="cursor: pointer;" data-url="<?php echo site_url('content/delete_content_faculty' . '/' . $row_faculty->id_faculty . '/' . $content_id) ?>"><i class="icon-remove fg-color-red"></i></a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -151,7 +155,9 @@
                             ?>
                             <?php echo $row_bimbel->topic ?>
                         </td>
-                        <td style="width: 50px;text-align: center;"></td>
+                        <td style="width: 50px;text-align: center;">
+                            <a id="btn-delete-content-bimbel" href="javascript:void(0)" style="cursor: pointer;" data-url="<?php echo site_url('content/delete_content_topic' . '/' . $row_bimbel->id_topic . '/' . $content_id) ?>"><i class="icon-remove fg-color-red"></i></a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -389,7 +395,76 @@
         return false;
     });
     
+     $('a#btn-delete-content-faculty').click(function(){
+        $('#loading-template').show();
+        $('#message').html("Loading");
+        var urlcontent = $(this).attr('data-url');
+        $('#content-right').fadeOut("fast");
+        $.ajax({
+            type:'POST',
+            url:urlcontent,
+            success:function (data) {
+                $('#content-right').load("<?php echo site_url('content/content_config' . '/' . $content_id) ?>");
+                $('#loading-template').fadeOut("slow");
+                $('#content-right').fadeIn("fast");
+            },
+            error:function (data){
+                $('#loading-template').fadeOut("slow");
+                $('#error-template').show();
+                $('#message-error').html("Koneksi / Sistem Error");
+                $('#content-right').fadeIn("fast");
+            }
+        });
+        return false;
+    });
+    
     $('a#btn-delete-content-category').click(function(){
+        $('#loading-template').show();
+        $('#message').html("Loading");
+        var urlcontent = $(this).attr('data-url');
+        $('#content-right').fadeOut("fast");
+        $.ajax({
+            type:'POST',
+            url:urlcontent,
+            success:function (data) {
+                $('#content-right').load("<?php echo site_url('content/content_config' . '/' . $content_id) ?>");
+                $('#loading-template').fadeOut("slow");
+                $('#content-right').fadeIn("fast");
+            },
+            error:function (data){
+                $('#loading-template').fadeOut("slow");
+                $('#error-template').show();
+                $('#message-error').html("Koneksi / Sistem Error");
+                $('#content-right').fadeIn("fast");
+            }
+        });
+        return false;
+    });
+    
+     $('a#btn-delete-content-bimbel').click(function(){
+        $('#loading-template').show();
+        $('#message').html("Loading");
+        var urlcontent = $(this).attr('data-url');
+        $('#content-right').fadeOut("fast");
+        $.ajax({
+            type:'POST',
+            url:urlcontent,
+            success:function (data) {
+                $('#content-right').load("<?php echo site_url('content/content_config' . '/' . $content_id) ?>");
+                $('#loading-template').fadeOut("slow");
+                $('#content-right').fadeIn("fast");
+            },
+            error:function (data){
+                $('#loading-template').fadeOut("slow");
+                $('#error-template').show();
+                $('#message-error').html("Koneksi / Sistem Error");
+                $('#content-right').fadeIn("fast");
+            }
+        });
+        return false;
+    });
+    
+    $('a#btn-delete-content-bimbel').click(function(){
         $('#loading-template').show();
         $('#message').html("Loading");
         var urlcontent = $(this).attr('data-url');
@@ -420,4 +495,5 @@
             $('#loading-template').fadeOut("slow");                
         });
     });
+    
 </script>
