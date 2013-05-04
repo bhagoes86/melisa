@@ -1,9 +1,16 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/input-control.js"></script>
-<div class="span12" id="action-info" style="margin-bottom: 15px;display: none;">
+<div class="grid" style="margin-bottom: 20px;">
+    <div class="row">
+        <div style="padding: 1px 1px 1px 10px;background-color: rgb(255,191,0);">
+            <h3 class="fg-color-darken"><i class="icon-comments-4"></i>&nbsp;Mari bergabung, Temukan cara asikmu dalam elearning</h3>
+        </div>
+    </div>
+</div>
+<!--<div class="span12" id="action-info" style="margin-bottom: 15px;display: none;">
     <div class="message bg-color-blue fg-color-white" style="padding: 15px 15px 45px 15px;">
         <p id="message-information">Content for message dialog</p>
         <button class="place-right" id="tutup-pesan">Tutup Pesan</button>
-    </div>
+    </div>-->
 </div>
 <div class="span6">
     <h3 style="margin-top: 0px;padding-top: 0px;">Hi :-)</h3>
@@ -109,18 +116,18 @@
                     $('#loading-template').fadeOut("slow");
                 }else if(data == 2){
                     $('#loading-template').fadeOut("slow");
-                    $('#action-info').show();
-                    $('#message-information').html("Login Gagal, Cek Username Dan Password");
+                    $('#error-template').show();
+                    $('#message-error').html("Login Gagal, Cek Username Dan Password");
                 }else if(data == 3){
                     $('#loading-template').fadeOut("slow");
-                    $('#action-info').show();
-                    $('#message-information').html("Login Gagal, Cek Username Dan Password");
+                    $('#error-template').show();
+                    $('#message-error').html("Login Gagal, Cek Username Dan Password");
                 }
             },
             error:function (data){                           
-                $('#action-info').show();
-                $('#message-information').html(data);
                 $('#loading-template').fadeOut("slow");
+                $('#error-template').show();
+                $('#error-template').html(data);
             }
         });
         return false;
@@ -164,8 +171,8 @@
             url:"<?php echo site_url('authz/registrasi'); ?>",
             data:$(this).serialize(),
             success:function (data){                
-                $('#action-info').show();
-                $('#message-information').html(data);
+                $('#info-template').show();
+                $('#message-info').html(data);                
                 $('#loading-template').fadeOut("slow");
             },
             error:function (data){
@@ -194,8 +201,8 @@
             url:"<?php echo site_url('authz/lupa_password'); ?>",
             data:$(this).serialize(),
             success:function (data){                
-                $('#action-info').show();
-                $('#message-information').html(data);
+                $('#info-template').show();
+                $('#message-info').html(data);
                 $('#loading-template').fadeOut("slow");
             },
             error:function (data){

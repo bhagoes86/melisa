@@ -51,7 +51,7 @@
 </table>
         <?php } else { ?>
             <tr>
-                <td><h2>Tidak ada  jawaban yang bisa dipakai....</h2></td>
+                <td><h3>Tidak ada  pilihan jawaban</h3></td>
             </tr>
         <?php }?>
 

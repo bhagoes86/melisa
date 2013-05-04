@@ -66,7 +66,7 @@
 
         <?php } else { ?>
             <tr>
-                <td><h2>Tidak ada  quiz yang bisa dipakai....</h2></td>
+                <td><h3>Tidak ada  quiz</h3></td>
             </tr>
         <?php }?>
             

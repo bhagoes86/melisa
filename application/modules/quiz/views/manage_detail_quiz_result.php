@@ -1,10 +1,11 @@
- <script src="http://connect.soundcloud.com/sdk.js"></script>
+
+<script src="http://connect.soundcloud.com/sdk.js"></script>
  <script>
     SC.initialize({
         client_id: "938418853596f90572983f377348dc57"
     });
- </script>
-    
+ </script><!-- 
+-->
 
 <script src="<?php echo base_url() ?>asset/flowplayer/flowplayer.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/flowplayer/skin/minimalist.css" />
@@ -64,7 +65,7 @@ foreach ($list_soal as $soal){
                    
                     if ($soal['resource']->type == 8){
                         ?>
-                        <img width="60%" height="40%" src="<?php echo base_url()."resource/".$soal['resource']->file?>" />
+                        <img src="<?php echo base_url()."resource/".$soal['resource']->file?>" />
                         <?php
                     }
                     else if ($soal['resource']->type == 5){
@@ -269,97 +270,10 @@ foreach ($list_soal as $soal){
     <br />
     <h3><b>Pembahasan : </b></h3>
     <br/>
-    <div id="summary-view">
-         
-         <?php
-
-                if ($soal['summary_id'] != 0){
-                ?>
-                    <?php
-                   
-                    if ($soal['summary']->type == 8){
-                        ?>
-                        <img width="60%" height="40%" src="<?php echo base_url()."resource/".$soal['summary']->file?>" />
-                        <?php
-                    }
-                    else if ($soal['summary']->type == 5){
-                        echo modules::run('quiz/show_slideshare', $soal['summary']->file);
-                    }
-                    else if ($soal['summary']->type == 0){
-                        echo modules::run('quiz/show_video', $soal['summary']);
-                   }
-                   else if ($soal['summary']->type == 9){
-                       echo modules::run('quiz/show_audio', $soal['summary']->id_quiz_resource);
-                        
-                   }
-                   else if ($soal['summary']->type == 1){
-                    ?>
-                        <div style="background-color: whiteSmoke;
-                                         z-index: 1;
-                                         position: absolute;
-                                         height: 30px;
-                                         width: 30px;
-                                         float: right;
-                                         margin-top: 2px;
-                                         right: 0px;"></div>
-                         <iframe style="width: 100%;height: 480px;border: 0px;" src="http://docs.google.com/viewer?url=<?php echo base_url() . 'resource/' . $soal['summary']->file . '&embedded=true' ?>"></iframe>
-
-
-                    <?php
-                        
-                    }
-                    else if ($soal['summary']->type == 6){
-                        ?>
-                        
-                        <div id="putTheWidgetSummaryHere-<?php echo $soal['id_soal']?>"></div>
-                        <script type="text/JavaScript">
-                            SC.oEmbed("<?php echo $soal['summary']->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetSummaryHere-<?php echo $soal['id_soal'] ?>"));
-                        </script>
-
-                        <?php
-                    }
-                    else {
-                        ?>
-
-                        <div style="background-color: #000;height: 394px;">
-                            <?php
-                            $media = analyze_media($soal['summary']->file);
-                            $trace = explode('^^^', $media);
-                            switch ($trace[0]) {
-                                case 'image' :
-                                    echo "<a href='" . $trace[3] . "' target='_blank'><img src='" . $trace[3] . "' width='100%' /></a>";
-                                    break;
-                                case 'youtube' :
-                                    echo youtube($trace[1]);
-                                    break;
-                                case 'vimeo' :
-                                    echo vimeoLarge($trace[1]);
-                                    break;
-                                case 'scribd' :
-                                    echo scribdLarge($trace[1]);
-                                    break;
-                                case 'docstoc' :
-                                    echo docstocLarge($trace[1]);
-                                    break;
-                                case 'link' :
-                                    break;
-                                default :
-                                    die;
-                            }
-                            ?>
-                        </div>
-
-                        <?php
-                    }
-
-                    
-                }
-                ?>
-    </div>          
+        
+        <a href="<?php echo site_url('quiz/quiz_summary'."/".$id_result."/".$soal['id_soal']."/".$i)?>" target="_blank" class="button bg-color-purple fg-color-white" id="open-summary">Buka pembahasan soal<i class="icon-arrow-right-3"></i></a>
     
-    <br /><br /><br />
     
-    <div id="summary-forum"></div>
     
     <br /><br />
  </td>
