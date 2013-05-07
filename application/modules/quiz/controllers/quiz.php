@@ -30,6 +30,84 @@ class Quiz extends MX_Controller {
         }
     }
 
+    
+    function quiz_summary($id_result, $id_soal, $idx_soal){
+           if (!$this->ion_auth->logged_in()) {
+                redirect();
+            } else {
+                $user = $this->ion_auth->user()->row();
+
+                $temp_result = $this->model_quiz->select_quiz_result_by_id($id_result)->row();
+
+                $temp_group = $this->model_quiz->select_group_by_id($temp_result->group_id)->row();
+                $temp_quiz = $this->model_quiz->select_quiz_by_id($temp_result->quiz_id)->row();
+                $temp_course = $this->model_quiz->select_course_by_id($temp_result->course_id)->row();
+
+
+                $list_soal = array();
+                $list_jawaban = array();
+                $i = 0;
+
+                // mengambil soal
+                $soal = $this->load->model_quiz->select_soal_by_quiz_and_id($temp_result->quiz_id, $id_soal, 1)->row();
+           
+                    // mengambil jawaban
+                    $temp_jawaban = $this->load->model_quiz->select_choice_by_soal($soal->id_soal, 1)->result();
+                    foreach ($temp_jawaban as $jawaban) {
+                        $list_jawaban[] = get_object_vars($jawaban);
+                    }
+
+                    // mengambil jawaban peserta dari answer_log
+                    $user_answer = $this->load->model_quiz->select_user_answer_by_soal($id_result, $soal->id_soal)->row();
+
+                    // mengambil kunci jawaban
+                    $kunci_jawaban = $this->load->model_quiz->select_key_choice_by_soal($soal->id_soal, $soal->answer, 1)->row();
+
+                    $temp_resource = $this->load->model_quiz->select_quiz_resource_by_id($soal->resource_id)->row();
+                    $temp_summary = $this->load->model_quiz->select_quiz_resource_by_id($soal->summary_id)->row();
+
+
+                    // menyimpan ke dalam array
+                    $list_soal = get_object_vars($soal);
+                    $list_soal['jawaban'] = $list_jawaban;
+                    $list_soal['resource'] = $temp_resource;
+                    $list_soal['summary'] = $temp_summary;
+
+                    if (count($user_answer) == 0) {
+                        $list_soal['jawaban_user'] = null;
+                    } else {
+                        $list_soal['jawaban_user'] = $user_answer;
+                    }
+
+                    $list_soal['kunci_jawaban'] = $kunci_jawaban;
+
+                    // destroy
+                    $temp_jawaban = "";
+                    $list_jawaban = "";
+                    $i++;
+                
+
+
+                $data['soal'] = $list_soal;
+                $data['quiz_id'] = $temp_result->quiz_id;
+                $data['course_id'] = $temp_result->course_id;
+                $data['group_id'] = $temp_result->group_id;
+                $data['user_id'] = $user->id;
+                $data['id_result'] = $id_result;
+
+
+                $data['group_title'] = $temp_group->title;
+                $data['quiz_title'] = $temp_quiz->title;
+                $data['course_title'] = $temp_course->course;
+                $data['start_time'] = $temp_result->start_time;
+                $data['end_time'] = $temp_result->end_time;
+                $data['participant'] = $this->model_quiz->select_user_by_id($temp_result->user_id)->row();
+                $data['idx_soal'] = $idx_soal;
+
+                $this->load->view('quiz/view_question_summary', $data);
+            }
+     }
+    
     /* --- VIEW   ---- */
 
     function check_tryout_password($group_id) {
@@ -1239,9 +1317,7 @@ class Quiz extends MX_Controller {
             echo $quiz_id." - ".$user_id." - ".$tiket_quiz." - ".$group_id;
             $data['count_quiz_soal'] = count($this->load->model_quiz->select_soal_by_quiz($quiz_id, 1)->result());
             $data['result'] = $this->load->model_quiz->select_quiz_result_by_quiz_user_group_id($quiz_id, $user->id, $group_id, $tiket_quiz)->row();
-            echo "<pre>";
-            print_r($data);
-            echo "</pre>";
+            
             $this->load->view('quiz/view_quiz_result', $data);
         }
     }
@@ -1315,18 +1391,14 @@ class Quiz extends MX_Controller {
 
             $data['end_time'] = date('Y-m-d H:i:s', $temp_end_time);
 
-            //echo $data['end_time']."<br>";
-            //echo $temp_start_time."<br>";
-            //echo $temp_end_time."<br>";
+            
             // apakah kuis bisa diresume atau gak
             
             $temp2 = $this->load->model_quiz->select_quiz_result_by_status($id_quiz, $user->id, $id_group, 0)->result();
 
             // count array
             $x = count($temp2);
-
-            //echo "Jumlah coba kuis yang belum dilakukan - ".$x."<br>";
-
+            
             if ($x == 1) {
                 //echo "Lanjutkan  ujian ... ";
                 $temp3 = $this->load->model_quiz->select_quiz_result_by_status($id_quiz, $user->id, $id_group, 0)->row();
@@ -2149,9 +2221,11 @@ class Quiz extends MX_Controller {
             } else {
                 $this->load->model_quiz->delete_quiz_resource($id_quiz_resource);
             }
-            $data['resource_id'] = 0;
-            $data['summary_id'] = 0;
-            $this->load->model_quiz->delete_quiz_resource_from_soal($id_quiz_resource, $data);
+            $data1['resource_id'] = 0;
+            $data2['summary_id'] = 0;
+            $this->load->model_quiz->delete_quiz_resource_from_soal($id_quiz_resource, $data1);
+            $this->load->model_quiz->delete_quiz_summary_from_soal($id_quiz_resource, $data2);
+            
         }
     }
 

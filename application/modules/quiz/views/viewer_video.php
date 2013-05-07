@@ -1,5 +1,5 @@
 
-    <?php $this->load->view('home/js'); ?>
+   
     <script src="<?php echo base_url() ?>asset/flowplayer/flowplayer.min.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/flowplayer/skin/minimalist.css" />
     <style type="text/css">

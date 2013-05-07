@@ -56,7 +56,7 @@
 </table>
         <?php } else { ?>
             <tr>
-                <td><h2>Tidak ada  soal yang bisa dipakai....</h2></td>
+                <td><h3>Tidak ada  soal </h3></td>
             </tr>
         <?php }?>
 <script type="text/javascript">
