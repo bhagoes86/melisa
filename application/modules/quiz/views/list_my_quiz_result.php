@@ -5,7 +5,7 @@
 <hr />
 
 <div class="span9">
-<h1>Daftar Hasil Kuis </h1>
+<h2>Daftar Hasil Kuis </h2>
 
 
 <hr>
