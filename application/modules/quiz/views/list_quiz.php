@@ -52,8 +52,8 @@
                 <td style="width: 30px;border: 1px solid white;vertical-align: middle;background-color:rgba(0, 0, 0, 0.0666667);">
                     <a title="preview" href="javascript:void(0)" id="btn-preview" data-id="<?php echo $quiz->id_quiz; ?>"><i class="icon-book fg-color-black"></i></a>
                     <a title="edit" href="javascript:void(0)" id="btn-edit" data-id="<?php echo $quiz->id_quiz; ?>"><i class="icon-pencil fg-color-pink"></i></a>
-                    <a title="grup" href="javascript:void(0)" id="btn-group" data-id="<?php echo $quiz->id_quiz; ?>"><i class="icon-briefcase fg-color-black"></i></a>
                     <a title="daftar kuliah" href="javascript:void(0)" id="btn-list-course" data-id="<?php echo $quiz->id_quiz; ?>"><i class="icon-list fg-color-black"></i></a>
+                    <a title="grup" href="javascript:void(0)" id="btn-group" data-id="<?php echo $quiz->id_quiz; ?>"><i class="icon-briefcase fg-color-black"></i></a>
                     <a title="konfigurasi" href="javascript:void(0)" id="btn-config" data-id="<?php echo $quiz->id_quiz; ?>"><i class="icon-cog fg-color-orange"></i></a>
                     <a title="hapus" href="javascript:void(0)" id="btn-delete" data-id="<?php echo $quiz->id_quiz?>"><i class="icon-remove fg-color-red"></i></a>
                </td>
