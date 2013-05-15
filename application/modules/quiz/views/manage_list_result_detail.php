@@ -6,9 +6,9 @@
 <div id="print-area"></div>
 <hr />
 
-<h1>Daftar Hasil Kuis </h1>
-<h2><?php echo $quiz_title; ?></h2>
-<h3><?php echo $course_title.'-'.$group_title; ?></h3>
+<h2>Daftar Hasil Kuis </h2>
+<h3><?php echo $quiz_title; ?></h3>
+<h4><?php echo $course_title.'-'.$group_title; ?></h4>
 
 <hr />
 <table id="my-table" class="striped">

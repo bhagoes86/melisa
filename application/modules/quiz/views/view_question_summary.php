@@ -390,7 +390,7 @@
                             
                             <div id="section-discussion" class="span9">
                                
-                                
+                                Disini akan ada diskusi mengenai soal
                             
                             </div>
                         </div>

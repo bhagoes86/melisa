@@ -34,11 +34,11 @@
 <hr/>
 
 <div class="span9">
-<h1>Daftar Hasil Kuis </h1>
-<h2><?php echo $quiz_title; ?></h2>
-<h2><?php echo $course_title.'-'.$group_title; ?></h2>
+<h2>Daftar Hasil Kuis </h2>
+<h4><?php echo $quiz_title; ?></h4>
+<h4><?php echo $course_title.'-'.$group_title; ?></h4>
 <br/>
-<h3>Dikerjakan oleh  : <b><?php echo $participant->username; ?></b></h3>
+<h4>Dikerjakan oleh  : <b><?php echo $participant->username; ?></b></h4>
 <h4>Waktu pengerjaan : <?php echo $start_time." s/d ".$end_time; ?></h4>
 <br/>
 <hr>
@@ -51,7 +51,7 @@ $i = 1;
 //shuffle($list_soal);
 foreach ($list_soal as $soal){
     ?>
-         <tr><td>
+         <tr><td style="padding:5px 5px;word-wrap: break-word;table-layout: fixed;width:160px">
        <br />        
        <h3><b>Soal - <?php echo $i?> : </b></h3>
        <br />
