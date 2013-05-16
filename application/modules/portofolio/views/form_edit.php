@@ -31,16 +31,19 @@
         if ($profic->profic != NULL) {
             ?>
 
-            <a id ="btn-upload-picture" style="cursor: pointer;" title="Klik untuk edit foto"><img src="<?php echo base_url() . 'resource/' . $profic->profic; ?>" style="width:150px ; heigth:150px"></a>
+            <img src="<?php echo base_url() . 'resource/' . $profic->profic; ?>" style="width:150px ; heigth:150px">
             <?php
         } else {
             ?>
-
-            <a id="btn-upload-picture" style="cursor: pointer;" title="Klik untuk edit foto"><i class="icon-user" style="font-size: 100px;"></i></a>
+            <i class="icon-user" style="font-size: 100px;"></i>
             <?php
         }
         ?>
     </div>
+    <a id="btn-edit-profic" class="button bg-color-blue" style="width: 150px;">
+        <i class="icon-user"></i>
+        Edit Foto
+    </a><br/>
 </div>
 <script type="text/javascript">
     $('form#edit_portofolio').submit(function(){
@@ -64,6 +67,13 @@
         return false;
     });
     $('a#btn-upload-picture').click(function(){        
+        $('#message').html("Loading Data");
+        $('#loading-template').show();
+        $('#content-right').load("<?php echo site_url('portofolio/form_upload_picture') ?>/",function(){
+            $('#loading-template').fadeOut("slow");
+        });
+    });
+    $('a#btn-edit-profic').click(function(){        
         $('#message').html("Loading Data");
         $('#loading-template').show();
         $('#content-right').load("<?php echo site_url('portofolio/form_upload_picture') ?>/",function(){

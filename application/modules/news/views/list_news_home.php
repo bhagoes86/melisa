@@ -24,6 +24,10 @@
                     </h3>
                 </div>
                 <?php foreach ($content as $row): ?>
-                    <a href="<?php echo site_url('news' . '/' . $row->id_news . '/' . $row->type); ?>"><?php echo $row->title; ?></a>
-                    </br>
+                    <div style="display: block;margin-top: 0px;padding-top: 0px;">
+                        <i class="icon-play-alt" style="width: 24px;position: absolute;"></i> 
+                        <div style="margin-left: 25px;">
+                            <a href="<?php echo site_url('news' . '/' . $row->id_news . '/' . $row->type); ?>" style="color: #004444;"><?php echo $row->title; ?></a>
+                        </div>
+                    </div>
                 <?php endforeach; ?>
