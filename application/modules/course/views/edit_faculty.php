@@ -1,5 +1,5 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/input-control.js"></script>
-<h3 style="margin-top: 0px; padding-top: 0px;">Formulir Edit Faculty</h3>
+<h3 style="margin-top: 0px; padding-top: 0px;">Formulir Edit Fakultas</h3>
 <form id="do-input-faculty" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
     <h4 style="margin-top: 0px; padding-top: 0px;">Fakultas</h4>
     <div class="input-control text span4 clearfix">
