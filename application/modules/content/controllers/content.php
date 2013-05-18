@@ -369,13 +369,13 @@ class Content extends MX_Controller {
     }
 
     function wall_podcast() {
-        $data['content'] = $this->model_content->select_video_by_type_in(array(0, 2, 3, 6), 200)->result();
-        $this->load->view('content/wall_podcast', $data);
+        $data['content'] = $this->model_content->select_video_by_type_in(array(0, 2, 3, 6), 2)->result();
+        $this->load->view('content/wall_podcast_little', $data);
     }
     
     function wall_document() {
-        $data['content'] = $this->model_content->select_video_by_type_in(array(1, 4, 5, 7), 200)->result();
-        $this->load->view('content/wall_document', $data);
+        $data['content'] = $this->model_content->select_video_by_type_in(array(1, 4, 5, 7), 2)->result();
+        $this->load->view('content/wall_document_little', $data);
     }
 
     /*

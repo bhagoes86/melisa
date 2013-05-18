@@ -46,7 +46,11 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
+<<<<<<< HEAD
 $db['default']['password'] = 'keripiksingkong';
+=======
+$db['default']['password'] = '';
+>>>>>>> 11f64480b5934c02988e01cfbac23dd09320ba74
 $db['default']['database'] = 'sakola';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
