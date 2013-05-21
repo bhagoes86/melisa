@@ -142,9 +142,21 @@
             $('#message').html('Loading ... ');
             $('#loading-template').show();
 
-            $('#content-right').load("<?php echo site_url('quiz/store_tryout_password') ?>/"+<?php echo $quiz_id?>+"/"+<?php echo $group_id?>,function(){
-                $('#loading-template').fadeOut("slow");
+            $.ajax({
+            type:'POST',
+            url:"<?php echo site_url('quiz/store_tryout_password') ?>/"+<?php echo $quiz_id?>+"/"+<?php echo $group_id?>,
+            data:$(this).serialize(),
+                success:function (data) {
+                    $('#content-right').load("<?php echo site_url('quiz/edit_group') ?>/"+<?php echo $group_id;?>,function(){
+                        $('#loading-template').fadeOut("slow");
+                    });
+                },
+                error:function (data){
+                    $('#loading-template').fadeOut("slow");
+                    alert('gagal');
+                }
             });
+            
 
            
      });
