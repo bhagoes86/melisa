@@ -117,12 +117,6 @@
                                         <hr/>
                                         <div id="list-assignment">
                                             
-                                            <?php 
-                                                for ($i = 0; $i <= 30 ; $i++){
-                                                    echo "line - ".$i."<br>";
-                                                }
-                                               
-                                            ?>
                                         </div>
                                     </div>
                                 </div>
@@ -132,12 +126,6 @@
                                     <hr/>
                                     <div id="disqus_thread">
                                         
-                                        <?php 
-                                                for ($i = 0; $i <= 100 ; $i++){
-                                                    echo "line - ".$i."<br>";
-                                                }
-                                               
-                                            ?>
                                     </div>
                                     <script type="text/javascript">
                                         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
