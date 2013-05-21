@@ -8,6 +8,7 @@
     </div>
     <div class="clearfix"></div>
     <h4 style="margin-top: 0px; padding-top: 0px;">Jenjang</h4>
+ 
     <div class="input-control select span5">
         <select name="status" id="status">
             <option value="5">PT Perguruan Tinggi</option>

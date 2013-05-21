@@ -1,4 +1,4 @@
-<a class="button bg-color-yellow" id="faculty-add-form"><i class="icon-plus"></i>Tambah Data Fakultas</a>
+<a class="button bg-color-yellow" id="faculty-add-form"><i class="icon-plus"></i>Buat Fakultas Baru</a>
 <div class="row" id="row-message">
     <div class="message-dialog bg-color-yellow fg-color-black" style="display: none;" id="confirm-template" >
         <p id="message-confirm">Content for message dialog</p>
