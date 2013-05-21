@@ -105,15 +105,40 @@
 
                             <div class="span12">
                                 <div class="span6">
-                                    <h3 style="margin-top: 0px;font-weight: bold;">Evaluasi</h3>
-                                    <hr/>
-                                    <div id="list-quiz"></div>
+                                    <div class="span6">
+                                        <h3 style="margin-top: 0px;font-weight: bold;">Evaluasi</h3>
+                                        <hr/>
+                                        <div id="list-quiz">
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="span6">
+                                        <h3 style="margin-top: 0px;font-weight: bold;">Tugas</h3>
+                                        <hr/>
+                                        <div id="list-assignment">
+                                            
+                                            <?php 
+                                                for ($i = 0; $i <= 30 ; $i++){
+                                                    echo "line - ".$i."<br>";
+                                                }
+                                               
+                                            ?>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="span6">
                                     <h3 style="margin-top: 0px;font-weight: bold;">Diskusi</h3>  
                                     <hr/>
-                                    <div id="disqus_thread"></div>
+                                    <div id="disqus_thread">
+                                        
+                                        <?php 
+                                                for ($i = 0; $i <= 100 ; $i++){
+                                                    echo "line - ".$i."<br>";
+                                                }
+                                               
+                                            ?>
+                                    </div>
                                     <script type="text/javascript">
                                         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
                                         var disqus_shortname = 'sakoladotnet'; // required: replace example with your forum shortname
@@ -127,13 +152,12 @@
                                     </script>
                                     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                                 </div>
+                                
+                                
                             </div>     
                             <div class="span12">
-                                <div class="span6">
-                                    <h3 style="margin-top: 0px;font-weight: bold;">Tugas</h3>
-                                    <hr/>
-                                    <div id="list-assignment"></div>
-                                </div>
+                                
+                               
                             </div>
                         </div>
                         <div class="clearfix"></div>
