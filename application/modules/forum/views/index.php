@@ -44,6 +44,9 @@
                             <div class="span7" id="content-right">
                                 <?php echo $this->load->view('forum/wall_form') ?>
                                 <ul class="listview list-long image" id="wall_container"></ul>
+                                <div class="span7">
+                                    
+                                </div>
                             </div>
                             <!-- Rightbar -->
                             <div class="span3 rightbar">
