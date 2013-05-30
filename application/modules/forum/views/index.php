@@ -32,20 +32,31 @@
                                 <div class="page-sidebar bg-color-red" style="margin:0px; padding-bottom: 0px;width:140px;">
                                     <ul>
                                         <li><a id="wall-broadcast"><i class="icon-broadcast"></i> Broadcast</a></li>
-                                        <li><a id="wall-activity"><i class="icon-clipboard-2"></i> Aktivitas</a></li>
+                                        <li><a id="wall-activity"><i class="icon-clock"></i> Aktivitas</a></li>                                        
                                     </ul>
                                     <ul>
                                         <li><a id="wall-podcast"><i class="icon-film"></i> Podcast</a></li>
                                         <li><a id="wall-document"><i class="icon-file-pdf"></i> Document</a></li>
+                                        <li><a id="wall-presentation"><i class="icon-monitor"></i> Presentasi</a></li>
+                                        <li><a id="wall-application"><i class="icon-embed"></i> Aplikasi</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a id="btn-watch-later"><i class="icon-bookmark-4"></i> Lihat Nanti</a></li>
+                                        <li><a id="btn-my-history"><i class="icon-history"></i> Penelusuran</a></li>
+                                        <li><a id="btn-"><i class="icon-search"></i> Pencarian</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a id="btn-logout"><i class="icon-key"></i> Keluar</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <!--Konten-->
                             <div class="span7" id="content-right">
-                                <?php echo $this->load->view('forum/wall_form') ?>
+                                <?php echo modules::run('forum/wall_form', $user_id) ?>
+                                <ul class="listview list-long image" id="wall_container_first"></ul>
                                 <ul class="listview list-long image" id="wall_container"></ul>
                                 <div class="span7">
-                                    
+
                                 </div>
                             </div>
                             <!-- Rightbar -->
@@ -86,7 +97,6 @@
                             <button class="place-right" id="close-info-message">Tutup Pesan</button>
                         </div>
                         <!--EOF Loading Template-->
-
                     </div>
                 </div>
             </div>
@@ -102,7 +112,7 @@
         $('#footbar').load("<?php echo site_url('site/footbar') ?>");
         
         //first feed
-        $('#wall_container').load("<?php echo site_url('forum/wall_list_first') ?>");
+        $('#wall_container').load("<?php echo site_url('forum/wall_broadcast_first') ?>");
         
         //feed nav
         $('#wall-podcast').click(function(){
@@ -144,40 +154,32 @@
                 $('#loading-template').fadeOut("slow");
             });
         });
-                
-        $('#row-top-content').load("<?php echo site_url('home/top') ?>");
         
-        $('.hide-link').live('click', function(){
-            $this = $(this);
-            $this.html('tutup detail.').removeClass('hide-link').addClass('show-link');
-            $this.siblings('.hide').removeClass('hide').addClass('show');
-        });
-        $('.show-link').live('click', function(){
-            $this = $(this);
-            $this.html('selengkapnya..').removeClass('show-link').addClass('hide-link');
-            $this.siblings('.show').removeClass('show').addClass('hide');
-        });
-        $('#feedtext').live('click', function(){
-            $(this).parent().addClass('hide');
-            $('#feedpost').parent().removeClass('hide');
-            $('#feedpost').focus();
-        });
-        $('#cancelpost').live('click', function(){
-            $('#feedtext').parent().removeClass('hide');
-            $('#feedpost').parent().addClass('hide');
-            $('#postimage, #posturl').addClass('hide').val('');
-        });
-        $('.btn-shortcut').live('click', function(){
-            $this = $(this);
-            if($this.attr('id') == 'image'){
-                $('#postimage').removeClass('hide').val('');
-                $('#posturl').addClass('hide').val('');
-            } else {
-                $('#postimage').addClass('hide').val('');
-                $('#posturl').removeClass('hide').val('').attr('placeholder', 'Tautan alamat ' + $this.attr('id'));
-            }
+        $('#btn-logout').click(function(){        
+            $('#message').html("Keluar Dari Sistem");
+            $('#loading-template').show();
+            $.ajax({
+                type:'POST',
+                url:"<?php echo site_url('authz/logout') ?>",
+                data:$(this).serialize(),
+                success:function (data) {
+                    $('#row-top-content').load("<?php echo site_url('home/top') ?>");
+                    $('#row-main-content').load("<?php echo site_url('home/welcome') ?>");
+                    $('#row-main-other').show();
+                    $('#loading-template').fadeOut("slow");
+                },
+                error:function (data){
+                    $('#row-top-content').load("<?php echo site_url('home/top') ?>");
+                    $('#row-main-content').load("<?php echo site_url('home/welcome') ?>");
+                    $('#row-main-other').show();
+                    $('#loading-template').fadeOut("slow");
+                }
+            });
             return false;
         });
+                
+        $('#row-top-content').load("<?php echo site_url('home/top') ?>");
+                
         $('.comments li').live('mouseover', function(){
             $(this).children().children('.delete-comment').removeClass('hide');
         });

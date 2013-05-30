@@ -41,8 +41,8 @@
     float: left;
 }
 .listview.image li .feed-avatar img {
-/*    border: 1px solid #bbb;
-    border-right: 0;*/
+    /*    border: 1px solid #bbb;
+        border-right: 0;*/
     height: 60px;
 }
 .user-description {
@@ -108,9 +108,13 @@ fieldset .list {
 }
 .video-image {
     position: relative;
+    border: 1px solid #bbb;
+    border-bottom: 0px;
+    vertical-align: middle;
 }
 .video-image img {
     width: 100%;
+    vertical-align: middle;
 }
 .video-image .description {
     position: absolute;
@@ -127,7 +131,7 @@ fieldset .list {
 .utils {
     padding: 10px 10px 0;
     border: 1px solid #bbb;
-    border-top: 0;
+    /*border-top: 0;*/
 }
 .toolbar button > .badge {
     position: absolute;
@@ -146,6 +150,7 @@ fieldset .list {
     padding: 10px;
     border: 1px solid #ccc;
     border-bottom: 0;
+    border-top: 0;
     margin: 0;
 }
 .listview.image li .data p, .listview.image li .data a {
