@@ -41,8 +41,13 @@ class Model_forum extends CI_Model {
         return $this->db->insert_id();
     }
 
-    function insert_broadcast($databroadcast) {
-        $this->db->insert('broadcast', $databroadcast);
+    function update_wall($id_wall, $data2) {
+        $this->db->where('id_wall', $id_wall);
+        $this->db->update('wall', $data2);
+    }
+
+    function insert_broadcast($data) {
+        $this->db->insert('broadcast', $data);
         return $this->db->insert_id();
     }
 
@@ -81,12 +86,12 @@ class Model_forum extends CI_Model {
         return $this->db->get();
     }
 
-    function select_wall_first() {
+    function select_wall_broadcast_first() {
         $this->db->select('*');
         $this->db->from('wall');
         $this->db->join('users', 'users.id=wall.user_id');
         $this->db->order_by('id_wall', 'DESC');
-        $this->db->limit(2);
+        $this->db->limit(10);
         return $this->db->get();
     }
 
@@ -98,6 +103,21 @@ class Model_forum extends CI_Model {
         $this->db->or_where('wall.user_idto', $user_id);
         $this->db->order_by('id_wall', 'DESC');
         $this->db->limit(2);
+        return $this->db->get();
+    }
+
+    function select_user_info($id) {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('id', $id);
+        return $this->db->get();
+    }
+
+    function select_wall_by_id($id_wall) {
+        $this->db->select('*');
+        $this->db->from('wall');
+        $this->db->join('users', 'users.id=wall.user_id');
+        $this->db->where('wall.id_wall', $id_wall);
         return $this->db->get();
     }
 

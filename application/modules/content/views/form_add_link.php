@@ -1,31 +1,33 @@
 <div class="span8">
     <h2>
-        Formulir Tautan Konten
+        Formulir Tautan Konten / Aplikasi
         <?php
         if ($type == '2') {
-            echo 'youtube.com';
+            echo '<a href="http://youtube.com" target="_blank">http://youtube.com</a>';
         } elseif ($type == '3') {
-            echo 'vimeo.com';
+            echo '<a href="http://vimeo.com" target="_blank">http://vimeo.com</a>';
         } elseif ($type == '4') {
-            echo 'scribd.com';
+            echo '<a href="http://scribd.com" target="_blank">http://scribd.com</a>';
         } elseif ($type == '5') {
-            echo 'slideshare.net';
+            echo '<a href="http://slideshare.net" target="_blank">http://slideshare.net</a>';
         } elseif ($type == '6') {
-            echo 'soundcloud.com';
+            echo '<a href="http://soundcloud.com" target="_blank">http://soundcloud.com</a>';
         } elseif ($type == '7') {
-            echo 'docstoc.com';
+            echo '<a href="http://docstoc.com" target="_blank">http://docstoc.com</a>';
+        } elseif ($type == '8') {
+            echo '<a href="http://proprofs.com" target="_blank">http://proprofs.com</a>';
         }
         ?>
     </h2>
     <form id="submit-link" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
         <h3 style="margin-top: 0px; padding-top: 0px;">Alamat URL Konten</h3>
         <div class="input-control">
-            <input name="url" id="url" type="text" placeholder="Alamat URL Konten"/>
+            <input name="url" id="url" type="text" placeholder="Alamat URL Konten / Aplikasi"/>
         </div>
         <div class="clearfix"></div>
         <h3 style="margin-top: 0px; padding-top: 0px;">Judul</h3>
         <div class="input-control text">
-            <input name="title" id="title" type="text" placeholder="Judul Konten"/>
+            <input name="title" id="title" type="text" placeholder="Judul Konten / Aplikasi"/>
             
         </div>
         <div class="clearfix"></div>
@@ -46,6 +48,8 @@
             <input type="hidden" name="type" id="type" value="6">
         <?php } elseif ($type == '7') { ?>
             <input type="hidden" name="type" id="type" value="7">
+        <?php } elseif ($type == '8') { ?>
+            <input type="hidden" name="type" id="type" value="8">
         <?php } ?>
     </form>
 </div>

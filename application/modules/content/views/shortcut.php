@@ -1,3 +1,5 @@
+<h3 style="padding-top: 0px; margin-top: 0px;">Video & Suara</h3>
+<div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
 <a class="shortcut bg-color-blueDark" id="insert-video">
     <span class="icon fg-color-white"><i class="icon-film"></i></span>
     <span class="label fg-color-white">Video</span>
@@ -10,6 +12,12 @@
     <span class="icon fg-color-white"><i class="icon-vimeo"></i></span>
     <span class="label fg-color-white">Vimeo</span>
 </a>
+<a class="shortcut bg-color-orangeDark" id="insert-soundcloud">
+    <span class="icon fg-color-white"><i class="icon-soundcloud"></i></span>
+    <span class="label fg-color-white">Soundcloud</span>
+</a>
+<h3>Dokumen & Presentasi</h3>
+<div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
 <a class="shortcut bg-color-green" id="insert-document">
     <span class="icon fg-color-white"><i class="icon-libreoffice"></i></span>
     <span class="label fg-color-white">Dokumen</span>
@@ -26,11 +34,13 @@
     <span class="icon fg-color-white"><i class="icon-file-word"></i></span>
     <span class="label fg-color-white">Docstoc</span>
 </a>
-<a class="shortcut bg-color-orangeDark" id="insert-soundcloud">
-    <span class="icon fg-color-white"><i class="icon-soundcloud"></i></span>
-    <span class="label fg-color-white">Soundcloud</span>
+<h3>Aplikasi</h3>
+<div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
+<a class="shortcut bg-color-pink" id="insert-proprofs">
+    <span class="icon fg-color-white"><i class="icon-list"></i></span>
+    <span class="label fg-color-white">Proprofs</span>
 </a>
-<h2>Tata Tertib Umum</h2>
+<h3>Tata Tertib Umum</h3>
 <div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
 <p>
     1. Konten video yang dapat di proses sistem merupakan file dengan format .mp4/.mov<br/>
@@ -40,7 +50,8 @@
     5. Konten yang di tambahkan ke dalam sistem akan diverifikasi oleh administrator konten dalam waktu 24 jam.<br/>
     6. Konten yang di tambahkan dapat di hapus oleh administrator tidak dengan pemberitahuan.<br/>
     7. Konten yang di tambahkan dapat di hapus oleh administrator tanpa banding.<br/>
-    8. Konten yang di tambahkan dapat di jika mengandung informasi bersifat (SARA, Kekerasan dan Pornografi).<br/>
+    8. Konten yang di tambahkan dapat di hapus oleh administrator jika mengandung informasi bersifat<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;(SARA, Kekerasan dan Pornografi).<br/>
     9. Legalitas konten menjadi tanggung jawab pengguna.<br/>
     10. Peraturan dapat dirubah kapan saja oleh pengelola menyesuaikan dengan kondisi yang terjadi.
 </p>
@@ -113,6 +124,15 @@
         $('#loading-template').show();
         $('#message').html("Memuat Halaman");
         $('#row-main-content').load("<?php echo site_url('content/form_add_link') ?>/"+7,function(){
+            $('#loading-template').fadeOut('slow');
+        });
+        return false;
+    });
+    //insert proprofs
+    $('a#insert-proprofs').click(function(){
+        $('#loading-template').show();
+        $('#message').html("Memuat Halaman");
+        $('#row-main-content').load("<?php echo site_url('content/form_add_link') ?>/"+8,function(){
             $('#loading-template').fadeOut('slow');
         });
         return false;

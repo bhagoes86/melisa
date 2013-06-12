@@ -2,9 +2,7 @@
 <div class="span3">
     <div class="page-sidebar bg-color-red" style="margin-top: 0px;margin-left: 0px;padding-bottom: 0px;">
         <ul>
-            <!--<li><a id="btn-statistik"><i class="icon-stats-up"></i> Statistik</a></li>-->
             <li><a id="btn-tentang-saya"><i class="icon-user"></i> Tentang Saya</a></li>
-            <li><a id="btn-logout"><i class="icon-key"></i> Keluar Sistem</a></li>
         </ul>
         <ul>
             <li><a id="btn-my-video"><i class="icon-film"></i> Video</a></li>
@@ -18,9 +16,7 @@
             
         </ul>
         <ul>
-            <li><a id="btn-watch-later"><i class="icon-bookmark-2"></i> Lihat Nanti</a></li>
-            <li><a id="btn-my-history"><i class="icon-list"></i> Riwayat Penelusuran</a></li>
-            <li><a id="btn-"><i class="icon-search"></i> Kunci Penelusuran</a></li>
+            
         </ul>
         <?php
         $group = $this->ion_auth->get_users_groups()->row();
@@ -129,32 +125,5 @@
         $('#content-right').load("<?php echo site_url('assignment/index') ?>",function(){
             $('#loading-template').fadeOut("slow");
         });
-    });
-    
-    
-    
-    
-    //Logout
-    $('#btn-logout').click(function(){        
-        $('#message').html("Keluar Dari Sistem");
-        $('#loading-template').show();
-        $.ajax({
-            type:'POST',
-            url:"<?php echo site_url('authz/logout') ?>",
-            data:$(this).serialize(),
-            success:function (data) {
-                $('#row-top-content').load("<?php echo site_url('home/top') ?>");
-                $('#row-main-content').load("<?php echo site_url('home/welcome') ?>");
-                $('#row-main-other').show();
-                $('#loading-template').fadeOut("slow");
-            },
-            error:function (data){
-                $('#row-top-content').load("<?php echo site_url('home/top') ?>");
-                $('#row-main-content').load("<?php echo site_url('home/welcome') ?>");
-                $('#row-main-other').show();
-                $('#loading-template').fadeOut("slow");
-            }
-        });
-        return false;
-    });
+    });    
 </script>
