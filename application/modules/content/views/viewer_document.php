@@ -43,7 +43,7 @@
                                                  float: right;
                                                  margin-top: 2px;
                                                  right: 0px;"></div>
-                                            <iframe style="width: 100%;height: 100%;border: 0px;" src="http://docs.google.com/viewer?url=<?php echo base_url() . 'resource/' . $content->file . '&embedded=true' ?>"></iframe>
+                                            <iframe style="width: 100%;height: 600px;border: 0px;" src="http://docs.google.com/viewer?url=<?php echo base_url() . 'resource/' . $content->file . '&embedded=true' ?>"></iframe>
                                         <?php } ?>
                                     <?php } ?>
                                 <?php } elseif ($content->show == 1) { ?>
@@ -55,7 +55,7 @@
                                          float: right;
                                          margin-top: 2px;
                                          right: 0px;"></div>
-                                    <iframe style="width: 100%;height: 100%;border: 0px;" src="http://docs.google.com/viewer?url=<?php echo base_url() . 'resource/' . $content->file . '&embedded=true' ?>"></iframe>
+                                    <iframe style="width: 100%;height: 600px;border: 0px;" src="http://docs.google.com/viewer?url=<?php echo base_url() . 'resource/' . $content->file . '&embedded=true' ?>"></iframe>
                                 <?php } ?>
                                 <div id="other-left" class="span6">
 
