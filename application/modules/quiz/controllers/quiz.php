@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Quiz extends MX_Controller { 
+class Quiz extends MX_Controller {
 
     // inisiasi untuk meload library, helper, dan database
     function __construct() {
@@ -30,84 +30,83 @@ class Quiz extends MX_Controller {
         }
     }
 
-    
-    function quiz_summary($id_result, $id_soal, $idx_soal){
-           if (!$this->ion_auth->logged_in()) {
-                redirect();
-            } else {
-                $user = $this->ion_auth->user()->row();
+    function quiz_summary($id_result, $id_soal, $idx_soal) {
+        if (!$this->ion_auth->logged_in()) {
+            redirect();
+        } else {
+            $user = $this->ion_auth->user()->row();
 
-                $temp_result = $this->model_quiz->select_quiz_result_by_id($id_result)->row();
+            $temp_result = $this->model_quiz->select_quiz_result_by_id($id_result)->row();
 
-                $temp_group = $this->model_quiz->select_group_by_id($temp_result->group_id)->row();
-                $temp_quiz = $this->model_quiz->select_quiz_by_id($temp_result->quiz_id)->row();
-                $temp_course = $this->model_quiz->select_course_by_id($temp_result->course_id)->row();
-
-
-                $list_soal = array();
-                $list_jawaban = array();
-                $i = 0;
-
-                // mengambil soal
-                $soal = $this->load->model_quiz->select_soal_by_quiz_and_id($temp_result->quiz_id, $id_soal, 1)->row();
-           
-                    // mengambil jawaban
-                    $temp_jawaban = $this->load->model_quiz->select_choice_by_soal($soal->id_soal, 1)->result();
-                    foreach ($temp_jawaban as $jawaban) {
-                        $list_jawaban[] = get_object_vars($jawaban);
-                    }
-
-                    // mengambil jawaban peserta dari answer_log
-                    $user_answer = $this->load->model_quiz->select_user_answer_by_soal($id_result, $soal->id_soal)->row();
-
-                    // mengambil kunci jawaban
-                    $kunci_jawaban = $this->load->model_quiz->select_key_choice_by_soal($soal->id_soal, $soal->answer, 1)->row();
-
-                    $temp_resource = $this->load->model_quiz->select_quiz_resource_by_id($soal->resource_id)->row();
-                    $temp_summary = $this->load->model_quiz->select_quiz_resource_by_id($soal->summary_id)->row();
+            $temp_group = $this->model_quiz->select_group_by_id($temp_result->group_id)->row();
+            $temp_quiz = $this->model_quiz->select_quiz_by_id($temp_result->quiz_id)->row();
+            $temp_course = $this->model_quiz->select_course_by_id($temp_result->course_id)->row();
 
 
-                    // menyimpan ke dalam array
-                    $list_soal = get_object_vars($soal);
-                    $list_soal['jawaban'] = $list_jawaban;
-                    $list_soal['resource'] = $temp_resource;
-                    $list_soal['summary'] = $temp_summary;
+            $list_soal = array();
+            $list_jawaban = array();
+            $i = 0;
 
-                    if (count($user_answer) == 0) {
-                        $list_soal['jawaban_user'] = null;
-                    } else {
-                        $list_soal['jawaban_user'] = $user_answer;
-                    }
+            // mengambil soal
+            $soal = $this->load->model_quiz->select_soal_by_quiz_and_id($temp_result->quiz_id, $id_soal, 1)->row();
 
-                    $list_soal['kunci_jawaban'] = $kunci_jawaban;
-
-                    // destroy
-                    $temp_jawaban = "";
-                    $list_jawaban = "";
-                    $i++;
-                
-
-
-                $data['soal'] = $list_soal;
-                $data['quiz_id'] = $temp_result->quiz_id;
-                $data['course_id'] = $temp_result->course_id;
-                $data['group_id'] = $temp_result->group_id;
-                $data['user_id'] = $user->id;
-                $data['id_result'] = $id_result;
-
-
-                $data['group_title'] = $temp_group->title;
-                $data['quiz_title'] = $temp_quiz->title;
-                $data['course_title'] = $temp_course->course;
-                $data['start_time'] = $temp_result->start_time;
-                $data['end_time'] = $temp_result->end_time;
-                $data['participant'] = $this->model_quiz->select_user_by_id($temp_result->user_id)->row();
-                $data['idx_soal'] = $idx_soal;
-
-                $this->load->view('quiz/view_question_summary', $data);
+            // mengambil jawaban
+            $temp_jawaban = $this->load->model_quiz->select_choice_by_soal($soal->id_soal, 1)->result();
+            foreach ($temp_jawaban as $jawaban) {
+                $list_jawaban[] = get_object_vars($jawaban);
             }
-     }
-    
+
+            // mengambil jawaban peserta dari answer_log
+            $user_answer = $this->load->model_quiz->select_user_answer_by_soal($id_result, $soal->id_soal)->row();
+
+            // mengambil kunci jawaban
+            $kunci_jawaban = $this->load->model_quiz->select_key_choice_by_soal($soal->id_soal, $soal->answer, 1)->row();
+
+            $temp_resource = $this->load->model_quiz->select_quiz_resource_by_id($soal->resource_id)->row();
+            $temp_summary = $this->load->model_quiz->select_quiz_resource_by_id($soal->summary_id)->row();
+
+
+            // menyimpan ke dalam array
+            $list_soal = get_object_vars($soal);
+            $list_soal['jawaban'] = $list_jawaban;
+            $list_soal['resource'] = $temp_resource;
+            $list_soal['summary'] = $temp_summary;
+
+            if (count($user_answer) == 0) {
+                $list_soal['jawaban_user'] = null;
+            } else {
+                $list_soal['jawaban_user'] = $user_answer;
+            }
+
+            $list_soal['kunci_jawaban'] = $kunci_jawaban;
+
+            // destroy
+            $temp_jawaban = "";
+            $list_jawaban = "";
+            $i++;
+
+
+
+            $data['soal'] = $list_soal;
+            $data['quiz_id'] = $temp_result->quiz_id;
+            $data['course_id'] = $temp_result->course_id;
+            $data['group_id'] = $temp_result->group_id;
+            $data['user_id'] = $user->id;
+            $data['id_result'] = $id_result;
+
+
+            $data['group_title'] = $temp_group->title;
+            $data['quiz_title'] = $temp_quiz->title;
+            $data['course_title'] = $temp_course->course;
+            $data['start_time'] = $temp_result->start_time;
+            $data['end_time'] = $temp_result->end_time;
+            $data['participant'] = $this->model_quiz->select_user_by_id($temp_result->user_id)->row();
+            $data['idx_soal'] = $idx_soal;
+
+            $this->load->view('quiz/view_question_summary', $data);
+        }
+    }
+
     /* --- VIEW   ---- */
 
     function check_tryout_password($group_id) {
@@ -599,7 +598,7 @@ class Quiz extends MX_Controller {
             redirect();
         } else {
             $data['content'] = $content;
-            
+
             $this->load->view('quiz/viewer_video', $data);
         }
     }
@@ -735,12 +734,11 @@ class Quiz extends MX_Controller {
             // kalau grupnya bertipe 0 (ujian biasa)
             if ($temp->type == 0) {
                 $temp3 = $this->model_quiz->select_quiz_result_by_cqg_user($id_course, $id_quiz, $id_group, $user->id)->row();
-                if ($temp3 != null){
+                if ($temp3 != null) {
                     echo "{";
                     echo "\"msg\": \"3\"";
                     echo "}";
-                }
-                else {
+                } else {
 
                     if ($password == $temp->password) {
                         echo "{";
@@ -752,7 +750,6 @@ class Quiz extends MX_Controller {
                         echo "}";
                     }
                 }
-                
             }
             // kalau grupnya bertipe 1 (try out)
             else if ($temp->type == 1) {
@@ -883,12 +880,12 @@ class Quiz extends MX_Controller {
             $user = $this->ion_auth->user()->row();
 
             $data['list_quiz_resource'] = $this->model_quiz->select_all_quiz_resource($user->id)->result();
-            
+
             $this->load->view('quiz/list_quiz_resource', $data);
         }
     }
 
-    function list_all_quiz_summary($id_soal){
+    function list_all_quiz_summary($id_soal) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
         } else {
@@ -904,7 +901,7 @@ class Quiz extends MX_Controller {
             $this->load->view('quiz/list_quiz_resource_summary', $data);
         }
     }
-    
+
     function list_all_quiz_attachment($id_soal) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1124,7 +1121,7 @@ class Quiz extends MX_Controller {
                 foreach ($temp_jawaban as $jawaban) {
                     $list_jawaban[] = get_object_vars($jawaban);
                 }
-                    
+
                 // mengambil jawaban peserta dari answer_log
                 $user_answer = $this->load->model_quiz->select_user_answer_by_soal($id_result, $soal->id_soal)->row();
 
@@ -1133,14 +1130,14 @@ class Quiz extends MX_Controller {
 
                 $temp_resource = $this->load->model_quiz->select_quiz_resource_by_id($soal->resource_id)->row();
                 $temp_summary = $this->load->model_quiz->select_quiz_resource_by_id($soal->summary_id)->row();
-                
+
 
                 // menyimpan ke dalam array
                 $list_soal[$i] = get_object_vars($soal);
                 $list_soal[$i]['jawaban'] = $list_jawaban;
                 $list_soal[$i]['resource'] = $temp_resource;
                 $list_soal[$i]['summary'] = $temp_summary;
-                
+
                 if (count($user_answer) == 0) {
                     $list_soal[$i]['jawaban_user'] = null;
                 } else {
@@ -1148,7 +1145,7 @@ class Quiz extends MX_Controller {
                 }
 
                 $list_soal[$i]['kunci_jawaban'] = $kunci_jawaban;
-                
+
                 // destroy
                 $temp_jawaban = "";
                 $list_jawaban = "";
@@ -1314,10 +1311,10 @@ class Quiz extends MX_Controller {
             redirect();
         } else {
             $user = $this->ion_auth->user()->row();
-            echo $quiz_id." - ".$user_id." - ".$tiket_quiz." - ".$group_id;
+            echo $quiz_id . " - " . $user_id . " - " . $tiket_quiz . " - " . $group_id;
             $data['count_quiz_soal'] = count($this->load->model_quiz->select_soal_by_quiz($quiz_id, 1)->result());
             $data['result'] = $this->load->model_quiz->select_quiz_result_by_quiz_user_group_id($quiz_id, $user->id, $group_id, $tiket_quiz)->row();
-            
+
             $this->load->view('quiz/view_quiz_result', $data);
         }
     }
@@ -1343,25 +1340,24 @@ class Quiz extends MX_Controller {
             $temp_group = $this->model_quiz->select_group_by_id($id_group)->row();
             $data['check_course_quiz_group_avail'] = count($temp_group);
 
-                if ($data['check_course_quiz_group_avail'] != 0) {
-                    // mengambil data kuis berdasarkan group
-                    $temp = $this->model_quiz->select_quiz_by_id($temp_group->quiz_id)->row();
-                    $data['id_group'] = $id_group;
-                    $data['id_quiz'] = $temp_group->quiz_id;
-                    $data['title'] = $temp->title;
-                    $data['description'] = $temp->description;
-                    $data['length_time'] = $temp->length_time;
-                    $data['password'] = $temp_group->password;
-                    $data['start_time'] = $temp->start_time;
-                    $data['end_time'] = $temp->end_time;
-                    $data['course_id'] = $id_course;
-                    $data['group_status'] = $temp_group->status;
+            if ($data['check_course_quiz_group_avail'] != 0) {
+                // mengambil data kuis berdasarkan group
+                $temp = $this->model_quiz->select_quiz_by_id($temp_group->quiz_id)->row();
+                $data['id_group'] = $id_group;
+                $data['id_quiz'] = $temp_group->quiz_id;
+                $data['title'] = $temp->title;
+                $data['description'] = $temp->description;
+                $data['length_time'] = $temp->length_time;
+                $data['password'] = $temp_group->password;
+                $data['start_time'] = $temp->start_time;
+                $data['end_time'] = $temp->end_time;
+                $data['course_id'] = $id_course;
+                $data['group_status'] = $temp_group->status;
 
-                    $temp2 = $this->model_quiz->check_quiz_result_by_cqg_user($user->id, $id_course, $temp_group->quiz_id, $id_group)->row();
-                    $data['has_participated'] = count($temp2);
-                }
-                $this->load->view('quiz/view_test', $data);
-            
+                $temp2 = $this->model_quiz->check_quiz_result_by_cqg_user($user->id, $id_course, $temp_group->quiz_id, $id_group)->row();
+                $data['has_participated'] = count($temp2);
+            }
+            $this->load->view('quiz/view_test', $data);
         }
     }
 
@@ -1381,7 +1377,7 @@ class Quiz extends MX_Controller {
             $data['user_id'] = $user->id;
             $data['course_id'] = $id_course;
             $today = getdate();
-            $temp_start_time = date_create($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes'] . ':'. $today['seconds']);
+            $temp_start_time = date_create($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes'] . ':' . $today['seconds']);
 
             $data['start_time'] = date_format($temp_start_time, 'Y-m-d H:i:s');
 
@@ -1391,14 +1387,14 @@ class Quiz extends MX_Controller {
 
             $data['end_time'] = date('Y-m-d H:i:s', $temp_end_time);
 
-            
+
             // apakah kuis bisa diresume atau gak
-            
+
             $temp2 = $this->load->model_quiz->select_quiz_result_by_status($id_quiz, $user->id, $id_group, 0)->result();
 
             // count array
             $x = count($temp2);
-            
+
             if ($x == 1) {
                 //echo "Lanjutkan  ujian ... ";
                 $temp3 = $this->load->model_quiz->select_quiz_result_by_status($id_quiz, $user->id, $id_group, 0)->row();
@@ -1451,13 +1447,13 @@ class Quiz extends MX_Controller {
             $data['quiz_result'] = $temp;
             $data['course_id'] = $course_id;
             $data['group_id'] = $group_id;
-            
+
 
             $today = getdate();
-            $temp_now = date_create($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes'] . ':'. $today['seconds']);
+            $temp_now = date_create($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes'] . ':' . $today['seconds']);
             $now = date_format($temp_now, 'Y-m-d H:i:s');
             $waktu2 = date_parse($temp->end_time);
-            $temp_interval2 = strtotime($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes']  . ':'. $today['seconds']) - strtotime($waktu2['year'] . '-' . $waktu2['month'] . '-' . $waktu2['day'] . ' ' . $waktu2['hour'] . ':' . $waktu2['minute'] . ':00');
+            $temp_interval2 = strtotime($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes'] . ':' . $today['seconds']) - strtotime($waktu2['year'] . '-' . $waktu2['month'] . '-' . $waktu2['day'] . ' ' . $waktu2['hour'] . ':' . $waktu2['minute'] . ':00');
 
             if ($temp->status == 0) {
                 if ($temp_interval2 < 0) {
@@ -1471,7 +1467,7 @@ class Quiz extends MX_Controller {
                 if ($this->session->userdata('data_quiz') != '') {
                     $this->session->unset_userdata('data_quiz');
                 }
-                 echo "<fieldset>Waktu pengerjaan kuis <b>sudah habis</b> ... </fieldset>";
+                echo "<fieldset>Waktu pengerjaan kuis <b>sudah habis</b> ... </fieldset>";
                 $this->load->view('quiz/form_end_quiz_trigger', $data);
             }
             echo "<hr>";
@@ -1719,18 +1715,18 @@ class Quiz extends MX_Controller {
             $data['length_time'] = 10;
             $data['status'] = 1;
             $data['deleted'] = 1;
-            
+
             $id_quiz = $this->model_quiz->insert_quiz($data);
 
             $config['upload_path'] = './resource/';
-            $config['allowed_types'] = 'xls|xlsx';
-            $config['max_size'] = '215000';
+            $config['allowed_types'] = '*';
+            $config['max_size'] = '2097152';
             $config['file_name'] = 'quiz_' . $id_quiz; //berkas dikirim kemudian diganti namanya
 
             $this->load->library('upload', $config);
-            $this->upload->overwrite = true;
+            //$this->upload->overwrite = true;
             if (!$this->upload->do_upload()) {
-                $error = array('error' => $this->upload->display_errors());
+                $error = array('error' => var_dump($this->upload->display_errors()));
                 echo "{";
                 echo "msg: '" . $error['error'] . "'";
                 echo "}";
@@ -1739,77 +1735,107 @@ class Quiz extends MX_Controller {
                 $data2['file_quiz'] = $hasil['file_name'];
                 $data2['size'] = $hasil['file_size'];
                 $data2['ext'] = $hasil['file_ext'];
+
                 $today = getdate();
-                $temp_time = date_create($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes'] . ':'. $today['seconds']);
+                $temp_time = date_create($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes'] . ':' . $today['seconds']);
 
                 $data2['start_time'] = date_format($temp_time, 'Y-m-d H:i:s');
                 $data2['end_time'] = date_format($temp_time, 'Y-m-d H:i:s');
 
                 $this->model_quiz->update_quiz($id_quiz, $data2);
 
-                error_reporting(E_ALL ^ E_NOTICE);
-                include_once (APPPATH . "libraries/Excel_reader2.php");
-                $filename = "resource/" . $hasil['file_name'];
-                $data = new Spreadsheet_Excel_Reader($filename);
+                if ($data2['ext'] != '.xls') {//delete quiz
+                    // ambil dulu soal
+                    $list_soal = $this->model_quiz->select_soal_by_quiz($id_quiz, 1)->result();
 
-                // memindahkan data ke dalam array
-                $question_bank = '';
-                $question = '';
-                for ($i = 2; $i <= $data->rowcount(); $i++) {
-                    for ($j = 1; $j <= $data->colcount(); $j++) {
-                        $question[$data->val(1, $j, 0)] = $data->val($i, $j, 0);
+                    foreach ($list_soal as $soal) {
+                        // ambil jawaban tiap soal
+                        $list_choice = $this->model_quiz->select_choice_by_soal($soal->id_soal, 1)->result();
+
+                        // hapus jawaban tiap soal
+                        foreach ($list_choice as $choice) {
+                            $data['deleted'] = 0;
+                            $this->load->model_quiz->update_choice($choice->id_choice, $data);
+                        }
+
+                        // hapus soal
+                        $data2['deleted'] = 0;
+                        $this->load->model_quiz->update_soal($soal->id_soal, $data2);
+
+                        unset($list_choice);
                     }
-                    $question_bank[] = $question;
+
+                    // hapus kuis
+                    $data3['deleted'] = 0;
+                    $this->load->model_quiz->update_quiz($id_quiz, $data3);
+                    
+                    echo "{";
+                    echo "msg: 2";
+                    echo "}";
+                } else {
+                    include_once (APPPATH . "libraries/Excel_reader2.php");
+                    $filename = "./resource/" . $hasil['file_name'];
+                    $data = new Spreadsheet_Excel_Reader($filename);
+
+                    // memindahkan data ke dalam array
+                    $question_bank = '';
                     $question = '';
-                }
+                    for ($i = 2; $i <= $data->rowcount(); $i++) {
+                        for ($j = 1; $j <= $data->colcount(); $j++) {
+                            $question[$data->val(1, $j, 0)] = $data->val($i, $j, 0);
+                        }
+                        $question_bank[] = $question;
+                        $question = '';
+                    }
 
 
-                $data3['quiz_id'] = $id_quiz;
-                $data3['status'] = 1;
-                $data3['deleted'] = 1;
+                    $data3['quiz_id'] = $id_quiz;
+                    $data3['status'] = 1;
+                    $data3['deleted'] = 1;
 
-                // menampilkan array question dalam bentuk quiz form
+                    // menampilkan array question dalam bentuk quiz form
 
-                foreach ($question_bank as $quest) {
+                    foreach ($question_bank as $quest) {
 
-                    $i = 0;
-                    foreach ($quest as $quiz_form => $value) {
-                        if ($quiz_form == "pertanyaan") {
-                            $data3['soal'] = $value;
-                        } else if ($quiz_form == 'jawaban') {
-                            $data3['answer'] = $value;
-                        } else if ($quiz_form == "no") {
-                            continue;
-                        } else {
-                            if ($value == "") {
+                        $i = 0;
+                        foreach ($quest as $quiz_form => $value) {
+                            if ($quiz_form == "pertanyaan") {
+                                $data3['soal'] = $value;
+                            } else if ($quiz_form == 'jawaban') {
+                                $data3['answer'] = $value;
+                            } else if ($quiz_form == "no") {
                                 continue;
-                            } else if ($value != "") {
-                                $list_option[$i]['option_idx'] = $quiz_form;
-                                $list_option[$i]['option_text'] = $value;
+                            } else {
+                                if ($value == "") {
+                                    continue;
+                                } else if ($value != "") {
+                                    $list_option[$i]['option_idx'] = $quiz_form;
+                                    $list_option[$i]['option_text'] = $value;
 
-                                $i++;
+                                    $i++;
+                                }
                             }
                         }
+                        $id_soal = $this->model_quiz->insert_soal($data3);
+
+                        foreach ($list_option as $option) {
+                            $data4['quiz_id'] = $id_quiz;
+                            $data4['soal_id'] = $id_soal;
+                            $data4['status'] = 1;
+                            $data4['option_idx'] = $option['option_idx'];
+                            $data4['option_text'] = $option['option_text'];
+                            $data4['deleted'] = 1;
+
+                            $this->model_quiz->insert_choice($data4);
+                        }
+
+                        unset($list_option);
                     }
-                    $id_soal = $this->model_quiz->insert_soal($data3);
 
-                    foreach ($list_option as $option) {
-                        $data4['quiz_id'] = $id_quiz;
-                        $data4['soal_id'] = $id_soal;
-                        $data4['status'] = 1;
-                        $data4['option_idx'] = $option['option_idx'];
-                        $data4['option_text'] = $option['option_text'];
-                        $data4['deleted'] = 1;
-
-                        $this->model_quiz->insert_choice($data4);
-                    }
-
-                    unset($list_option);
+                    echo "{";
+                    echo "msg: 1";
+                    echo "}";
                 }
-
-                echo "{";
-                echo "msg: 1";
-                echo "}";
             }
         }
     }
@@ -1914,7 +1940,7 @@ class Quiz extends MX_Controller {
             }
 
             $today = getdate();
-            $temp_finish_time = date_create($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes'] . ':'. $today['seconds']);
+            $temp_finish_time = date_create($today['year'] . '-' . $today['mon'] . '-' . $today['mday'] . ' ' . $today['hours'] . ':' . $today['minutes'] . ':' . $today['seconds']);
             $data['finish_time'] = date_format($temp_finish_time, 'Y-m-d H:i:s');
 
             $score = ($benar / $banyak_soal ) * 100;
@@ -1934,7 +1960,7 @@ class Quiz extends MX_Controller {
             redirect();
         } else {
             $temp = $this->model_quiz->select_group_by_id($id_group)->row();
-            
+
             $data['quiz_id'] = $temp->quiz_id;
             $data['group_id'] = $temp->id_group;
 
@@ -2004,7 +2030,7 @@ class Quiz extends MX_Controller {
             $data['summary_id'] = $temp->summary_id;
             $data['resource'] = $this->model_quiz->select_quiz_resource_by_id($temp->resource_id)->row();
             $data['summary'] = $this->model_quiz->select_quiz_resource_by_id($temp->summary_id)->row();
-            
+
             $data['list_choice'] = $this->model_quiz->select_choice_by_soal($id_soal, 1)->result();
             $this->load->view('quiz/form_edit_soal', $data);
         }
@@ -2107,7 +2133,7 @@ class Quiz extends MX_Controller {
             echo "}";
         }
     }
-    
+
     function update_quiz_soal_resource($id_soal, $id_resource) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2138,7 +2164,7 @@ class Quiz extends MX_Controller {
             $menit1 = $this->input->post('menit1', true);
             $date1 = date_create($tahun1 . '-' . $bulan1 . '-' . $hari1 . " " . $jam1 . ":" . $menit1 . ":00");
             $tanggal1 = date_format($date1, 'Y-m-d H:i:s');
-            
+
             $hari2 = $this->input->post('hari2', true);
             $bulan2 = $this->input->post('bulan2', true);
             $tahun2 = $this->input->post('tahun2', true);
@@ -2148,18 +2174,32 @@ class Quiz extends MX_Controller {
             $tanggal2 = date_format($date2, 'Y-m-d H:i:s');
             $length_time = $this->input->post('length_time', true);
             $num_per_page = $this->input->post('num_per_page', true);
-            
-            if ($length_time < 10 || $num_per_page < 1){
+
+            if ($length_time < 10 || $num_per_page < 1) {
                 echo "{";
                 echo "\"msg\": \"3\"";
                 echo "}";
-            }
-            else if ($date1 > $date2) {
+            } else if ($date1 > $date2) {
                 echo "{";
                 echo "\"msg\": \"2\"";
                 echo "}";
-            }
-            else if ($date1 < $date2){
+            } else if ($date1 < $date2) {
+                $data['title'] = $this->input->post('title', true);
+                $data['description'] = $this->input->post('description', true);
+                $data['length_time'] = $this->input->post('length_time', true);
+                $data['start_time'] = $tanggal1;
+                $data['end_time'] = $tanggal2;
+                $data['random_soal'] = $this->input->post('random-soal', true);
+                $data['random_jawaban'] = $this->input->post('random-jawaban', true);
+                $data['num_per_page'] = $this->input->post('num_per_page', true);
+                $data['max_answer_show'] = $this->input->post('max_answer_show', true);
+
+                $this->model_quiz->update_quiz($id_quiz, $data);
+
+                echo "{";
+                echo "\"msg\": \"1\"";
+                echo "}";
+            } else if ($date1 == $date2) {
                 $data['title'] = $this->input->post('title', true);
                 $data['description'] = $this->input->post('description', true);
                 $data['length_time'] = $this->input->post('length_time', true);
@@ -2176,24 +2216,6 @@ class Quiz extends MX_Controller {
                 echo "\"msg\": \"1\"";
                 echo "}";
             }
-            else if ($date1 == $date2){
-                $data['title'] = $this->input->post('title', true);
-                $data['description'] = $this->input->post('description', true);
-                $data['length_time'] = $this->input->post('length_time', true);
-                $data['start_time'] = $tanggal1;
-                $data['end_time'] = $tanggal2;
-                $data['random_soal'] = $this->input->post('random-soal', true);
-                $data['random_jawaban'] = $this->input->post('random-jawaban', true);
-                $data['num_per_page'] = $this->input->post('num_per_page', true);
-                $data['max_answer_show'] = $this->input->post('max_answer_show', true);
-
-                $this->model_quiz->update_quiz($id_quiz, $data);
-
-                echo "{";
-                echo "\"msg\": \"1\"";
-                echo "}";
-            }
-            
         }
     }
 
@@ -2225,7 +2247,6 @@ class Quiz extends MX_Controller {
             $data2['summary_id'] = 0;
             $this->load->model_quiz->delete_quiz_resource_from_soal($id_quiz_resource, $data1);
             $this->load->model_quiz->delete_quiz_summary_from_soal($id_quiz_resource, $data2);
-            
         }
     }
 
