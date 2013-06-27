@@ -50,8 +50,9 @@
                 <div class="utils">                    
                     <div class="toolbar place-left"></div>
                     <div class="toolbar place-right">
-                        <?php echo modules::run('forum/form_tag_add', $row->id_content, 6) ?>                        
+                        <?php echo modules::run('forum/btn_tags', $row->id_content, 0) ?>
                     </div>
+                    <?php echo modules::run('forum/form_tag_add', $row->id_content, 0) ?>                        
                 </div>
             </div>
         </li>
@@ -94,11 +95,12 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="text"><?php echo nl2br($row->description) ?></div>
-                <div class="utils">
+                <div class="utils">                    
                     <div class="toolbar place-left"></div>
                     <div class="toolbar place-right">
-                        <?php echo modules::run('forum/form_tag_add', $row->id_content, 6) ?>                        
+                        <?php echo modules::run('forum/btn_tags', $row->id_content, 0) ?>
                     </div>
+                    <?php echo modules::run('forum/form_tag_add', $row->id_content, 0) ?>                        
                 </div>
             </div>
         </li>
