@@ -51,6 +51,7 @@
                 <div class="utils">                    
                     <div class="toolbar place-left"></div>
                     <div class="toolbar place-right">
+                        <?php echo modules::run('forum/btn_download', $row->file) ?>
                         <?php echo modules::run('forum/btn_tags', $row->id_content, 0) ?>
                     </div>
                     <div class="clearfix"></div>
