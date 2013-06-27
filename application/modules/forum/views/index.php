@@ -38,7 +38,6 @@
                                         <li><a id="wall-podcast"><i class="icon-film"></i> Podcast</a></li>
                                         <li><a id="wall-document"><i class="icon-file-pdf"></i> Document</a></li>
                                         <li><a id="wall-presentation"><i class="icon-monitor"></i> Presentasi</a></li>
-                                        <li><a id="wall-application"><i class="icon-embed"></i> Aplikasi</a></li>
                                     </ul>
                                     <ul>
                                         <li><a id="btn-watch-later"><i class="icon-bookmark-4"></i> Lihat Nanti</a></li>
