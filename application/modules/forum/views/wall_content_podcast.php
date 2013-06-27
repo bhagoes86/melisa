@@ -6,6 +6,7 @@
 
     .pager li{
         float:left;
+        margin-left: 7px;
         list-style-type:none;
         margin-right:.3em;
         font-size:1.1em;
