@@ -132,6 +132,7 @@ class Model_forum extends CI_Model {
         $this->db->join('content', 'content.id_content=content_log.content_id');
         $this->db->join('users', 'users.id=content.user_id');
         $this->db->where('content_log.user_id', $user_id);
+        $this->db->group_by('content_log.content_id');
         return $this->db->get();
     }
 
@@ -141,6 +142,7 @@ class Model_forum extends CI_Model {
         $this->db->join('content', 'content.id_content=content_bookmark.content_id');
         $this->db->join('users', 'users.id=content.user_id');
         $this->db->where('content_bookmark.user_id', $user_id);
+        $this->db->group_by('content_bookmark.content_id');
         return $this->db->get();
     }
 
