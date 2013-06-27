@@ -52,8 +52,9 @@
                     <div class="toolbar place-right">
                         <?php echo modules::run('forum/btn_tags', $row->id_content, 0) ?>
                     </div>
-                    <?php echo modules::run('forum/form_tag_add', $row->id_content, 0) ?>                        
+                    <div class="clearfix"></div>
                 </div>
+                <?php echo modules::run('forum/form_tag_add', $row->id_content, 0) ?>                        
             </div>
         </li>
     <?php } elseif ($row->type == 2) { ?>
@@ -98,10 +99,11 @@
                 <div class="utils">                    
                     <div class="toolbar place-left"></div>
                     <div class="toolbar place-right">
-                        <?php echo modules::run('forum/btn_tags', $row->id_content, 0) ?>
+                        <?php echo modules::run('forum/btn_tags', $row->id_content, 2) ?>
                     </div>
-                    <?php echo modules::run('forum/form_tag_add', $row->id_content, 0) ?>                        
+                    <div class="clearfix"></div>
                 </div>
+                <?php echo modules::run('forum/form_tag_add', $row->id_content, 2) ?>                        
             </div>
         </li>
     <?php } elseif ($row->type == 3) { ?>
@@ -140,7 +142,14 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="text"><?php echo nl2br($row->description) ?></div> 
-                <div class="utils"></div>
+                <div class="utils">                    
+                    <div class="toolbar place-left"></div>
+                    <div class="toolbar place-right">
+                        <?php echo modules::run('forum/btn_tags', $row->id_content, 3) ?>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <?php echo modules::run('forum/form_tag_add', $row->id_content, 3) ?>  
             </div>
         </li>
     <?php } elseif ($row->type == 6) { ?>
@@ -174,11 +183,14 @@
                     </script>
                 </div>
                 <div class="text"><p><?php echo nl2br($row->description) ?></p></div>
-                <div class="utils">
-                    <div class="toolbar place-left">
-                        <?php echo modules::run('forum/form_tag_add', $row->id_content, 6) ?>                        
+                <div class="utils">                    
+                    <div class="toolbar place-left"></div>
+                    <div class="toolbar place-right">
+                        <?php echo modules::run('forum/btn_tags', $row->id_content, 6) ?>
                     </div>
+                    <div class="clearfix"></div>
                 </div>
+                <?php echo modules::run('forum/form_tag_add', $row->id_content, 6) ?>  
             </div>
         </li>
     <?php } ?>
