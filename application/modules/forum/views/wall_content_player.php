@@ -10,7 +10,7 @@
     .flowplayer .fp-progress { background-color: rgba(219, 0, 0, 1)}
     .flowplayer .fp-buffer { background-color: rgba(249, 249, 249, 1)}
 </style>
-<?php if ($content->forum_type == 0) { ?>
+<?php if ($content->type == 0) { ?>
     <!--Video-->
     <div alt="<?php echo $content->id_content ?>" data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="height: 394px;background-color: #000;width: 100%;padding: 0px;vertical-align: middle;" data-ratio="0.5625">
         <video alt="<?php echo $content->id_content ?>">
@@ -29,10 +29,10 @@
             <?php } ?>
         </video>        
     </div>
-<?php } elseif ($content->forum_type == 1) { ?>
+<?php } elseif ($content->type == 1) { ?>
     <!--Document-->
     <iframe style="padding: 0px;vertical-align: middle;width: 100%;height: 600px;border: 0px;" src="http://docs.google.com/viewer?url=<?php echo base_url() . 'resource/' . $content->url . '&embedded=true' ?>"></iframe>
-<?php } elseif ($content->forum_type == 2) { ?>
+<?php } elseif ($content->type == 2) { ?>
     <!--Youtube-->
     <?php
     $media = analyze_media($content->url);
@@ -59,7 +59,7 @@
             die;
     }
     ?>
-<?php } elseif ($content->forum_type == 3) { ?>
+<?php } elseif ($content->type == 3) { ?>
     <!--Vimeo-->
     <div style="background-color: #000;height: 320px;">
         <?php
@@ -88,7 +88,7 @@
         }
         ?>
     </div>
-<?php } elseif ($content->forum_type == 4) { ?>
+<?php } elseif ($content->type == 4) { ?>
     <!--Scribd-->
     <div style="background-color: #e5e5e5;height: 600px;">
         <?php
@@ -117,7 +117,7 @@
         }
         ?>
     </div>
-<?php } elseif ($content->forum_type == 5) { ?>
+<?php } elseif ($content->type == 5) { ?>
     <script type="text/javascript" src="<?php echo base_url() ?>asset/slideshare/swfobject.js"></script>
     <!--Slideshare-->
     <?php
@@ -136,13 +136,13 @@
     $presentation = explode("/", "$slideshare->slide_image_baseurl");
     ?>
     <iframe src="http://www.slideshare.net/slideshow/embed_code/<?php echo $slideshare->slideshow_id ?>?rel=0" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="width: 100%;padding: 0px;vertical-align: middle;height: 380px;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:0px;padding-bottom: 0px;" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe> 
-<?php } elseif ($content->forum_type == 6) { ?>
+<?php } elseif ($content->type == 6) { ?>
     <!--Soundcloud-->
     <div id="putTheWidgetHere-<?php echo $content->url ?>" style="padding: 4px 4px 0px 4px;vertical-align: middle;margin: 0px;"></div>
     <script type="text/JavaScript">
         SC.oEmbed("<?php echo $content->url ?>", {color: "ff0066",auto_play:true},  document.getElementById("putTheWidgetHere-<?php echo $content->url ?>"));
     </script>
-<?php } elseif ($content->forum_type == 7) { ?>
+<?php } elseif ($content->type == 7) { ?>
     <!--Docstoc-->
     <div style="background-color: #e5e5e5; height: 600px;">
         <?php
