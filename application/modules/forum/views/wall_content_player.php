@@ -12,20 +12,20 @@
 </style>
 <?php if ($content->forum_type == 0) { ?>
     <!--Video-->
-    <div alt="<?php echo $content->id_wall ?>" data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="height: 394px;background-color: #000;width: 100%;padding: 0px;vertical-align: middle;" data-ratio="0.5625">
-        <video alt="<?php echo $content->id_wall ?>">
+    <div alt="<?php echo $content->id_content ?>" data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="height: 394px;background-color: #000;width: 100%;padding: 0px;vertical-align: middle;" data-ratio="0.5625">
+        <video alt="<?php echo $content->id_content ?>">
             <?php if ($content->ext == '.mp4') { ?> 
-                <source type="video/mp4" src="<?php echo base_url() . 'resource/' . $content->id_wall . '.mp4'; ?>"/>
+                <source type="video/mp4" src="<?php echo base_url() . 'resource/' . $content->id_content . '.mp4'; ?>"/>
             <?php } elseif ($content->ext == '.MP4') { ?>
-                <source type="video/mp4" src="<?php echo base_url() . 'resource/' . $content->id_wall . '.MP4'; ?>"/>
+                <source type="video/mp4" src="<?php echo base_url() . 'resource/' . $content->id_content . '.MP4'; ?>"/>
             <?php } elseif ($content->ext == '.FLV') { ?>
-                <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_wall . '.FLV'; ?>"/>
+                <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_content . '.FLV'; ?>"/>
             <?php } elseif ($content->ext == '.flv') { ?>
-                <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_wall . '.flv'; ?>"/>
+                <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_content . '.flv'; ?>"/>
             <?php } elseif ($content->ext == '.MOV') { ?>
-                <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_wall . '.flv'; ?>"/>
+                <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_content . '.flv'; ?>"/>
             <?php } elseif ($content->ext == '.mov') { ?>
-                <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_wall . '.flv'; ?>"/>
+                <source type="video/flv" src="<?php echo base_url() . 'resource/' . $content->id_content . '.flv'; ?>"/>
             <?php } ?>
         </video>        
     </div>

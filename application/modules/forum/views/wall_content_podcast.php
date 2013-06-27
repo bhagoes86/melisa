@@ -221,14 +221,14 @@
     $('a#btn-content-activate').click(function(){
         var id_content = $(this).attr('data-id');
         $('#wall-content-viewer-'+id_content).slideToggle('fast');
-        $('#wall-content-viewer-'+id_content).load("<?php echo site_url('forum/wall_player') ?>/"+id_content);           
+        $('#wall-content-viewer-'+id_content).load("<?php echo site_url('forum/wall_content_player') ?>/"+id_content);           
         return false;
     });
     //picture activate preview
     $('a#pic-content-activate').click(function(){
         var id_content = $(this).attr('data-id');
         $('#wall-content-viewer-'+id_content).slideToggle('fast');
-        $('#wall-content-viewer-'+id_content).load("<?php echo site_url('forum/wall_player') ?>/"+id_content);
+        $('#wall-content-viewer-'+id_content).load("<?php echo site_url('forum/wall_content_player') ?>/"+id_content);
         return false;
     });
     //plugin soundcloud

@@ -156,4 +156,11 @@ class Model_forum extends CI_Model {
         return $this->db->get();
     }
 
+    function select_content_by_id($id_content) {
+        $this->db->select('*');
+        $this->db->from('content');
+        $this->db->where('id_content', $id_content);
+        return $this->db->get();
+    }
+
 }

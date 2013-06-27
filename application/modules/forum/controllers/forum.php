@@ -251,6 +251,11 @@ class Forum extends MX_Controller {
         $data['content'] = $this->model_forum->select_wall_by_id($id_wall)->row();
         $this->load->view('forum/wall_player', $data);
     }
+    
+    function wall_content_player($id_content) {
+        $data['content'] = $this->model_forum->select_content_by_id($id_content)->row();
+        $this->load->view('forum/wall_content_player', $data);
+    }
 
     /*
      * User
