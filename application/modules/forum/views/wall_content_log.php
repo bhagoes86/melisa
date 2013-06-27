@@ -32,7 +32,7 @@
             <div class="data">
                 <div class="user-description">
                     <h4>
-                        <a href="<?php echo site_url('forum' . '/' . $row->user_id) ?>"><?php echo modules::run('authz/get_username', $row->user_id) ?>video</a> 
+                        <a href="<?php echo site_url('forum' . '/' . $row->user_id) ?>"><?php echo modules::run('authz/get_username', $row->user_id) ?></a> 
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
@@ -42,10 +42,11 @@
                         <img src="<?php echo base_url() . 'resource/' . $row->id_content . '.jpg' ?>" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;"/>
                     </a>
                     <div class="description">
-                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>"><?php echo word_wrap(nl2br(auto_link($row->file)), 40); ?></a>
+                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>"><?php echo word_wrap(nl2br(auto_link($row->title)), 40); ?></a>
                     </div>
                     <div class="clearfix"></div>
-                </div>
+                </div>                
+                <div class="text"><?php echo $row->description ?></div>  
             </div>
         </li>
     <?php } elseif ($row->type == 1) { ?>
