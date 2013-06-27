@@ -47,7 +47,12 @@
                     <div class="clearfix"></div>
                 </div>                
                 <div class="text"><?php echo nl2br($row->description) ?></div>
-                <div class="utils"></div>
+                <div class="utils">                    
+                    <div class="toolbar place-left"></div>
+                    <div class="toolbar place-right">
+                        <?php echo modules::run('forum/form_tag_add', $row->id_content, 6) ?>                        
+                    </div>
+                </div>
             </div>
         </li>
     <?php } elseif ($row->type == 2) { ?>
@@ -89,7 +94,12 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="text"><?php echo nl2br($row->description) ?></div>
-                <div class="utils"></div>
+                <div class="utils">
+                    <div class="toolbar place-left"></div>
+                    <div class="toolbar place-right">
+                        <?php echo modules::run('forum/form_tag_add', $row->id_content, 6) ?>                        
+                    </div>
+                </div>
             </div>
         </li>
     <?php } elseif ($row->type == 3) { ?>
