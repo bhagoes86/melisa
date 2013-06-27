@@ -2,7 +2,7 @@
 <script type="text/javascript">
     $('button#download<?php echo $file ?>').click(function(){
         file = $(this).attr('data-file');
-        window.open("<?php echo base_url() ?>resource/"+file,"_blank");
+        location.href("<?php echo base_url() ?>resource/"+file,"_blank");
         return false;
     })
 </script>
