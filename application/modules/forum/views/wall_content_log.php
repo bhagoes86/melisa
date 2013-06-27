@@ -1,7 +1,20 @@
+<style type="text/css">
+    .pager {
+        overflow:hidden;
+        padding-top:0px;
+    }
+
+    .pager li{
+        float:left;
+        list-style-type:none;
+        margin-right:.3em;
+        font-size:1.1em;
+    }
+</style>
 <?php foreach ($content as $row): ?>
-    <?php if ($row->forum_type == 0) { ?>
+    <?php if ($row->type == 0) { ?>
         <!--Video-->
-        <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
+        <li class="feed-link" id="content<?php echo $row->id_content ?>">
             <span class="feed-avatar">
                 <?php if ($row->profic == '') { ?>
                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
@@ -19,16 +32,25 @@
             <div class="data">
                 <div class="user-description">
                     <h4>
-                        <a href="<?php echo site_url('forum' . '/' . $row->user_id) ?>"><?php echo modules::run('authz/get_username', $row->user_id) ?></a> 
+                        <a href="<?php echo site_url('forum' . '/' . $row->user_id) ?>"><?php echo modules::run('authz/get_username', $row->user_id) ?>video</a> 
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
-                <!--more todo-->
+                <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
+                <div class="image link-image">
+                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_content ?>">
+                        <img src="<?php echo base_url() . 'resource/' . $row->id_content . '.jpg' ?>" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;"/>
+                    </a>
+                    <div class="description">
+                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>"><?php echo word_wrap(nl2br(auto_link($row->file)), 40); ?></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
             </div>
         </li>
-    <?php } elseif ($row->forum_type == 1) { ?>
+    <?php } elseif ($row->type == 1) { ?>
         <!--document-->
-        <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
+        <li class="feed-link" id="content<?php echo $row->id_content ?>">
             <span class="feed-avatar">
                 <?php if ($row->profic == '') { ?>
                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
@@ -54,9 +76,9 @@
                 <!--more todo-->
             </div>
         </li>
-    <?php } elseif ($row->forum_type == 2) { ?>
+    <?php } elseif ($row->type == 2) { ?>
         <!--Youtube-->
-        <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
+        <li class="feed-link" id="content<?php echo $row->id_content ?>">
             <span class="feed-avatar">
                 <?php if ($row->profic == '') { ?>
                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
@@ -78,34 +100,34 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
-                <div class="text" id="wall-content-viewer-<?php echo $row->id_wall ?>" data-id="<?php echo $row->id_wall ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
+                <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="image link-image">
                     <?php
-                    $media = analyze_media($row->url);
+                    $media = analyze_media($row->file);
                     $extract_id = explode('^^^', $media);
                     ?>
-                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_wall ?>">
+                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_content ?>">
                         <img src="http://img.youtube.com/vi/<?php echo $extract_id[1]; ?>/1.jpg" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;">
                     </a>
                     <div class="description">
-                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_wall ?>"><?php echo word_wrap(nl2br(auto_link($row->url)), 40); ?></a>
+                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>"><?php echo word_wrap(nl2br(auto_link($row->file)), 40); ?></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <div class="text"><?php echo $row->message ?></div>
+                <div class="text"><?php echo $row->description ?></div>
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
                     <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_content ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </li>
-    <?php } elseif ($row->forum_type == 3) { ?>
+    <?php } elseif ($row->type == 3) { ?>
         <!--Vimeo-->
-        <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
+        <li class="feed-link" id="content<?php echo $row->id_content ?>">
             <span class="feed-avatar">
                 <?php if ($row->profic == '') { ?>
                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
@@ -127,31 +149,31 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
-                <div class="text" id="wall-content-viewer-<?php echo $row->id_wall ?>" data-id="<?php echo $row->id_wall ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
+                <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="image link-image">
-                    <?php $media = vimeo_cover($row->url); ?>
-                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_wall ?>">
+                    <?php $media = vimeo_cover($row->file); ?>
+                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_content ?>">
                         <img src="<?php echo ($media['thumbnail_medium']) ?>" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;">
                     </a>
                     <div class="description">
-                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_wall ?>"><i class="icon-link"></i> <?php echo word_wrap(nl2br(auto_link($row->url)), 40) ?></a>
+                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>"><i class="icon-link"></i> <?php echo word_wrap(nl2br(auto_link($row->file)), 40) ?></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <div class="text"><?php echo $row->message ?></div>
+                <div class="text"><?php echo $row->description ?></div>
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
                     <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_content ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </li>
-    <?php } elseif ($row->forum_type == 4) { ?>
+    <?php } elseif ($row->type == 4) { ?>
         <!--scribd-->
-        <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
+        <li class="feed-link" id="content<?php echo $row->id_content ?>">
             <span class="feed-avatar">
                 <?php if ($row->profic == '') { ?>
                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
@@ -173,26 +195,26 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
-                <div class="text" id="wall-content-viewer-<?php echo $row->id_wall ?>" data-id="<?php echo $row->id_wall ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
+                <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="text" style="border: 1px solid #bbb;color: #bbb;">
-                    <a id="btn-content-activate" data-id="<?php echo $row->id_wall ?>"><i class="icon-file-pdf"></i>&nbsp;<?php echo $row->url ?></a>
+                    <a id="btn-content-activate" data-id="<?php echo $row->id_content ?>"><i class="icon-file-pdf"></i>&nbsp;<?php echo $row->file ?></a>
                 </div>
                 <div class="text">
-                    <p><?php echo nl2br($row->message) ?></p>
+                    <p><?php echo nl2br($row->description) ?></p>
                 </div>
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
                     <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_content ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </li>
-    <?php } elseif ($row->forum_type == 6) { ?>
+    <?php } elseif ($row->type == 6) { ?>
         <!--SoundCloud-->
-        <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
+        <li class="feed-link" id="content<?php echo $row->id_content ?>">
             <span class="feed-avatar">
                 <?php if ($row->profic == '') { ?>
                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
@@ -215,27 +237,27 @@
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
                 <div class="text" style="background: #bbb;border:1px solid #bbb;vertical-align: middle;padding: 0px;width: 100%;height: 168px;">
-                    <div id="putTheWidgetHere-<?php echo $row->url ?>" style="height: 168px;"></div>
+                    <div id="putTheWidgetHere-<?php echo $row->file ?>" style="height: 168px;"></div>
                     <script type="text/JavaScript">
-                        SC.oEmbed("<?php echo $row->url ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere-<?php echo $row->url ?>"));
+                        SC.oEmbed("<?php echo $row->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere-<?php echo $row->file ?>"));
                     </script>
                 </div>
                 <div class="text">
-                    <p><?php echo nl2br($row->message) ?></p>
+                    <p><?php echo nl2br($row->description) ?></p>
                 </div>
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
                     <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_content ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </li>
-    <?php } elseif ($row->forum_type == 5) { ?>
+    <?php } elseif ($row->type == 5) { ?>
         <!--slideshare-->
-        <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
+        <li class="feed-link" id="content<?php echo $row->id_content ?>">
             <span class="feed-avatar">
                 <?php if ($row->profic == '') { ?>
                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
@@ -257,39 +279,39 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
-                <div class="text" id="wall-content-viewer-<?php echo $row->id_wall ?>" data-id="<?php echo $row->id_wall ?>" style="height: 380px;display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
+                <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="height: 380px;display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="image link-image">
                     <?php
-                    $media = analyze_media($row->url);
+                    $media = analyze_media($row->file);
                     $extract_id = explode('^^^', $media);
                     $url = $extract_id[1];
                     $thumb = explode("/", slideshare_cover($url)->thumbnail);
                     $thumbnail = slideshare_cover($url)->thumbnail;
                     ?>
-                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_wall ?>">
+                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_content ?>">
                         <img src="<?php echo "http:" . $thumbnail ?>" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;">
                     </a>
                     <div class="description">
-                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_wall ?>"><i class="icon-link"></i> <?php echo word_wrap(nl2br(auto_link($row->url)), 40) ?></a>
+                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>"><i class="icon-link"></i> <?php echo word_wrap(nl2br(auto_link($row->file)), 40) ?></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="text">
-                    <p><?php echo nl2br($row->message) ?></p>
+                    <p><?php echo nl2br($row->description) ?></p>
                 </div>
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
                     <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_content ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </li>
-    <?php } elseif ($row->forum_type == 7) { ?>
+    <?php } elseif ($row->type == 7) { ?>
         <!--docstoc-->
-        <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
+        <li class="feed-link" id="content<?php echo $row->id_content ?>">
             <span class="feed-avatar">
                 <?php if ($row->profic == '') { ?>
                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
@@ -311,36 +333,36 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
-                <div class="text" id="wall-content-viewer-<?php echo $row->id_wall ?>" data-id="<?php echo $row->id_wall ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
+                <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="image link-image">
                     <?php
-                    $media = analyze_media($row->url);
+                    $media = analyze_media($row->file);
                     $extract_id = explode('^^^', $media);
                     ?>
-                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_wall ?>">
+                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_content ?>">
                         <img src="http://img.docstoccdn.com/thumb/100/<?php echo $extract_id[1] ?>.png" style="width: 120px;height: 135px;vertical-align: middle;border-right: 1px solid #bbb;">
                     </a>
                     <div class="description">
-                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_wall ?>"><i class="icon-link"></i> <?php echo splitPhrase($row->url, 15) ?></a>
+                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>"><i class="icon-link"></i> <?php echo splitPhrase($row->file, 15) ?></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="text">
-                    <p><?php echo nl2br($row->message) ?></p>
+                    <p><?php echo nl2br($row->description) ?></p>
                 </div>
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
                     <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_content ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </li>
-    <?php } elseif ($row->forum_type == 8) { ?>
+    <?php } elseif ($row->type == 8) { ?>
         <!--proprofs-->
-        <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
+        <li class="feed-link" id="content<?php echo $row->id_content ?>">
             <span class="feed-avatar">
                 <?php if ($row->profic == '') { ?>
                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
@@ -365,9 +387,9 @@
                 <!--more todo-->
             </div>
         </li>
-    <?php } elseif ($row->forum_type == 9) { ?>
+    <?php } elseif ($row->type == 9) { ?>
         <!--picture-->
-        <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
+        <li class="feed-link" id="content<?php echo $row->id_content ?>">
             <span class="feed-avatar">
                 <?php if ($row->profic == '') { ?>
                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
@@ -390,22 +412,22 @@
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
                 <div class="image video-image" style="margin-bottom: 0px;padding-bottom: 0px;">
-                    <img src="<?php echo base_url() . 'resource/' . $row->url ?>" style="margin-bottom: 0px;padding-bottom: 0px;">
-                    <div class="description"><?php echo nl2br($row->message) ?></div>
+                    <img src="<?php echo base_url() . 'resource/' . $row->file ?>" style="margin-bottom: 0px;padding-bottom: 0px;">
+                    <div class="description"><?php echo nl2br($row->description) ?></div>
                 </div>
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
                     <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_content ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </li>
-    <?php } elseif ($row->forum_type == 10) { ?>
+    <?php } elseif ($row->type == 10) { ?>
         <!--plain-->
-        <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
+        <li class="feed-link" id="content<?php echo $row->id_content ?>">
             <span class="feed-avatar">
                 <?php if ($row->profic == '') { ?>
                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
@@ -428,13 +450,13 @@
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
                 <div class="text" style="border-top: 1px solid #bbb;">
-                    <p><?php echo nl2br($row->message) ?></p>
+                    <p><?php echo nl2br($row->description) ?></p>
                 </div>
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
                     <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_content ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -444,6 +466,9 @@
 <?php endforeach; ?>
 <script src="http://connect.soundcloud.com/sdk.js"></script>
 <script>
+    $('#wall_container').flexipage({
+        perpage:10
+    });
     //delete
     $("button#remove-status").click(function(){
         var id = $(this).attr('data-id');
@@ -463,16 +488,16 @@
     });
     //text activate preview
     $('a#btn-content-activate').click(function(){
-        var id_wall = $(this).attr('data-id');
-        $('#wall-content-viewer-'+id_wall).slideToggle('fast');
-        $('#wall-content-viewer-'+id_wall).load("<?php echo site_url('forum/wall_player') ?>/"+id_wall);           
+        var id_content = $(this).attr('data-id');
+        $('#wall-content-viewer-'+id_content).slideToggle('fast');
+        $('#wall-content-viewer-'+id_content).load("<?php echo site_url('forum/wall_player') ?>/"+id_content);           
         return false;
     });
     //picture activate preview
     $('a#pic-content-activate').click(function(){
-        var id_wall = $(this).attr('data-id');
-        $('#wall-content-viewer-'+id_wall).slideToggle('fast');
-        $('#wall-content-viewer-'+id_wall).load("<?php echo site_url('forum/wall_player') ?>/"+id_wall);
+        var id_content = $(this).attr('data-id');
+        $('#wall-content-viewer-'+id_content).slideToggle('fast');
+        $('#wall-content-viewer-'+id_content).load("<?php echo site_url('forum/wall_player') ?>/"+id_content);
         return false;
     });
     //plugin soundcloud

@@ -228,8 +228,16 @@ function scribdLarge($id) {
     return '<iframe style="border:0px;padding: 0px;vertical-align: middle" width="100%" height="100%" src="http://www.scribd.com/fullscreen/' . $id . '"></iframe>';
 }
 
+function scribd600($id) {
+    return '<iframe style="border:0px;padding: 0px;vertical-align: middle" width="100%" height="600px" src="http://www.scribd.com/fullscreen/' . $id . '"></iframe>';
+}
+
 function docstocLarge($id) {
     return '<iframe width="100%" height="100%" style="border:1px solid #e5e5e5;padding: 0px;vertical-align: middle" src="http://www.docstoc.com/docs/document-preview.aspx?doc_id=' . $id . '"></iframe>';
+}
+
+function docstoc600($id) {
+    return '<iframe width="100%" height="600px" style="border:1px solid #e5e5e5;padding: 0px;vertical-align: middle" src="http://www.docstoc.com/docs/document-preview.aspx?doc_id=' . $id . '"></iframe>';
 }
 
 function cleartext($text) {

@@ -109,11 +109,29 @@ class Forum extends MX_Controller {
      * Wall
      */
 
+    function delete_wall($id_wall) {
+        $this->model_forum->delete_wall($id_wall);
+    }
+
     function wall_form($user_idto) {
         $user = $this->ion_auth->user()->row();
         $data['user_id'] = $user->id;
         $data['user_idto'] = $user_idto;
         $this->load->view('forum/wall_form', $data);
+    }
+
+    function wall_content_log() {
+        $user = $this->ion_auth->user()->row();
+        $user_id = $user->id;
+        $data['content'] = $this->model_forum->select_content_log($user_id)->result();
+        $this->load->view('forum/wall_content_log', $data);
+    }
+
+    function wall_content_bookmark() {
+        $user = $this->ion_auth->user()->row();
+        $user_id = $user->id;
+        $data['content'] = $this->model_forum->select_content_bookmark($user_id)->result();
+        $this->load->view('forum/wall_content_bookmark', $data);
     }
 
     /*

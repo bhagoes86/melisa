@@ -46,6 +46,11 @@ class Model_forum extends CI_Model {
         $this->db->update('wall', $data2);
     }
 
+    function delete_wall($id_wall) {
+        $this->db->where('id_wall', $id_wall);
+        $this->db->delete('wall');
+    }
+
     function insert_broadcast($data) {
         $this->db->insert('broadcast', $data);
         return $this->db->insert_id();
@@ -118,6 +123,24 @@ class Model_forum extends CI_Model {
         $this->db->from('wall');
         $this->db->join('users', 'users.id=wall.user_id');
         $this->db->where('wall.id_wall', $id_wall);
+        return $this->db->get();
+    }
+
+    function select_content_log($user_id) {
+        $this->db->select('*');
+        $this->db->from('content_log');
+        $this->db->join('content', 'content.id_content=content_log.content_id');
+        $this->db->join('users', 'users.id=content.user_id');
+        $this->db->where('content_log.user_id', $user_id);
+        return $this->db->get();
+    }
+
+    function select_content_bookmark($user_id) {
+        $this->db->select('*');
+        $this->db->from('content_bookmark');
+        $this->db->join('content', 'content.id_content=content_bookmark.content_id');
+        $this->db->join('users', 'users.id=content.user_id');
+        $this->db->where('content_bookmark.user_id', $user_id);
         return $this->db->get();
     }
 

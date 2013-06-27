@@ -42,7 +42,7 @@
                                     </ul>
                                     <ul>
                                         <li><a id="btn-watch-later"><i class="icon-bookmark-4"></i> Lihat Nanti</a></li>
-                                        <li><a id="btn-my-history"><i class="icon-history"></i> Penelusuran</a></li>
+                                        <li><a id="wall-content-log"><i class="icon-history"></i> Penelusuran</a></li>
                                         <li><a id="btn-"><i class="icon-search"></i> Pencarian</a></li>
                                     </ul>
                                     <ul>
@@ -113,7 +113,7 @@
         
         //first feed
         $('#wall_container').load("<?php echo site_url('forum/wall_broadcast_first') ?>");
-        
+                
         //feed nav
         $('#wall-podcast').click(function(){
             $('div.pager').remove();                
@@ -121,6 +121,17 @@
             $('#loading-template').show();                
             $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('content/wall_podcast') ?>",function(){                
+                $('#loading-template').fadeOut("slow");
+            });
+        });
+        
+        //feed history
+        $('#wall-content-log').click(function(){
+            $('div.pager').remove();                
+            $('#message').html("Loading Data");
+            $('#loading-template').show();                
+            $('#wall_container').empty();                
+            $('#wall_container').load("<?php echo site_url('forum/wall_content_log') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
             });
         });

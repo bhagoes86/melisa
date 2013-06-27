@@ -48,7 +48,7 @@
                                                         echo vimeoLarge($trace[1]);
                                                         break;
                                                     case 'scribd' :
-                                                        echo scribdLarge($trace[1]);
+                                                        echo scribd600($trace[1]);
                                                         break;
                                                     case 'docstoc' :
                                                         echo docstocLarge($trace[1]);
@@ -78,7 +78,7 @@
                                                 echo vimeoLarge($trace[1]);
                                                 break;
                                             case 'scribd' :
-                                                echo scribdLarge($trace[1]);
+                                                echo scribd600($trace[1]);
                                                 break;
                                             case 'docstoc' :
                                                 echo docstocLarge($trace[1]);
