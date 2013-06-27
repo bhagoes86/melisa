@@ -31,11 +31,11 @@
     </div>
 <?php } elseif ($content->type == 1) { ?>
     <!--Document-->
-    <iframe style="padding: 0px;vertical-align: middle;width: 100%;height: 600px;border: 0px;" src="http://docs.google.com/viewer?url=<?php echo base_url() . 'resource/' . $content->url . '&embedded=true' ?>"></iframe>
+    <iframe style="padding: 0px;vertical-align: middle;width: 100%;height: 600px;border: 0px;" src="http://docs.google.com/viewer?url=<?php echo base_url() . 'resource/' . $content->file . '&embedded=true' ?>"></iframe>
 <?php } elseif ($content->type == 2) { ?>
     <!--Youtube-->
     <?php
-    $media = analyze_media($content->url);
+    $media = analyze_media($content->file);
     $trace = explode('^^^', $media);
     switch ($trace[0]) {
         case 'image' :
@@ -63,7 +63,7 @@
     <!--Vimeo-->
     <div style="background-color: #000;height: 320px;">
         <?php
-        $media = analyze_media($content->url);
+        $media = analyze_media($content->file);
         $trace = explode('^^^', $media);
         switch ($trace[0]) {
             case 'image' :
@@ -92,7 +92,7 @@
     <!--Scribd-->
     <div style="background-color: #e5e5e5;height: 600px;">
         <?php
-        $media = analyze_media($content->url);
+        $media = analyze_media($content->file);
         $trace = explode('^^^', $media);
         switch ($trace[0]) {
             case 'image' :
@@ -121,7 +121,7 @@
     <script type="text/javascript" src="<?php echo base_url() ?>asset/slideshare/swfobject.js"></script>
     <!--Slideshare-->
     <?php
-    $url = $content->url;
+    $url = $content->file;
     if (!function_exists('curl_init'))
         die('CURL is not installed!');
     $ch = curl_init();
@@ -138,15 +138,15 @@
     <iframe src="http://www.slideshare.net/slideshow/embed_code/<?php echo $slideshare->slideshow_id ?>?rel=0" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="width: 100%;padding: 0px;vertical-align: middle;height: 380px;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:0px;padding-bottom: 0px;" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe> 
 <?php } elseif ($content->type == 6) { ?>
     <!--Soundcloud-->
-    <div id="putTheWidgetHere-<?php echo $content->url ?>" style="padding: 4px 4px 0px 4px;vertical-align: middle;margin: 0px;"></div>
+    <div id="putTheWidgetHere-<?php echo $content->file ?>" style="padding: 4px 4px 0px 4px;vertical-align: middle;margin: 0px;"></div>
     <script type="text/JavaScript">
-        SC.oEmbed("<?php echo $content->url ?>", {color: "ff0066",auto_play:true},  document.getElementById("putTheWidgetHere-<?php echo $content->url ?>"));
+        SC.oEmbed("<?php echo $content->file ?>", {color: "ff0066",auto_play:true},  document.getElementById("putTheWidgetHere-<?php echo $content->file ?>"));
     </script>
 <?php } elseif ($content->type == 7) { ?>
     <!--Docstoc-->
     <div style="background-color: #e5e5e5; height: 600px;">
         <?php
-        $media = analyze_media($content->url);
+        $media = analyze_media($content->file);
         $trace = explode('^^^', $media);
         switch ($trace[0]) {
             case 'image' :
