@@ -152,6 +152,7 @@ class Model_forum extends CI_Model {
         $this->db->join('users', 'users.id=content.user_id');
         $type = array(0, 2, 3, 6);
         $this->db->where_in('content.type', $type);
+        $this->db->where('content.show', 1);
         return $this->db->get();
     }
 
