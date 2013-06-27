@@ -114,15 +114,7 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <div class="text"><?php echo $row->description ?></div>
-                <div class="utils">
-                    <div class="toolbar place-left">
-                    </div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_content ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
+                <div class="text"><?php echo $row->description ?></div>                
             </div>
         </li>
     <?php } elseif ($row->type == 3) { ?>
@@ -160,15 +152,7 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <div class="text"><?php echo $row->description ?></div>
-                <div class="utils">
-                    <div class="toolbar place-left">
-                    </div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_content ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
+                <div class="text"><?php echo $row->description ?></div>                
             </div>
         </li>
     <?php } elseif ($row->type == 4) { ?>
@@ -201,14 +185,6 @@
                 </div>
                 <div class="text">
                     <p><?php echo nl2br($row->description) ?></p>
-                </div>
-                <div class="utils">
-                    <div class="toolbar place-left">
-                    </div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_content ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
-                    <div class="clearfix"></div>
                 </div>
             </div>
         </li>
@@ -244,14 +220,6 @@
                 </div>
                 <div class="text">
                     <p><?php echo nl2br($row->description) ?></p>
-                </div>
-                <div class="utils">
-                    <div class="toolbar place-left">
-                    </div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_content ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
-                    <div class="clearfix"></div>
                 </div>
             </div>
         </li>
@@ -299,14 +267,6 @@
                 <div class="text">
                     <p><?php echo nl2br($row->description) ?></p>
                 </div>
-                <div class="utils">
-                    <div class="toolbar place-left">
-                    </div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_content ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
             </div>
         </li>
     <?php } elseif ($row->type == 7) { ?>
@@ -349,14 +309,6 @@
                 </div>
                 <div class="text">
                     <p><?php echo nl2br($row->description) ?></p>
-                </div>
-                <div class="utils">
-                    <div class="toolbar place-left">
-                    </div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_content ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
-                    <div class="clearfix"></div>
                 </div>
             </div>
         </li>
@@ -415,14 +367,6 @@
                     <img src="<?php echo base_url() . 'resource/' . $row->file ?>" style="margin-bottom: 0px;padding-bottom: 0px;">
                     <div class="description"><?php echo nl2br($row->description) ?></div>
                 </div>
-                <div class="utils">
-                    <div class="toolbar place-left">
-                    </div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_content ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
             </div>
         </li>
     <?php } elseif ($row->type == 10) { ?>
@@ -451,14 +395,6 @@
                 </div>
                 <div class="text" style="border-top: 1px solid #bbb;">
                     <p><?php echo nl2br($row->description) ?></p>
-                </div>
-                <div class="utils">
-                    <div class="toolbar place-left">
-                    </div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_content ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
-                    <div class="clearfix"></div>
                 </div>
             </div>
         </li>
