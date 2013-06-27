@@ -312,34 +312,7 @@
                     <p><?php echo nl2br($row->description) ?></p>
                 </div>
             </div>
-        </li>
-    <?php } elseif ($row->type == 8) { ?>
-        <!--proprofs-->
-        <li class="feed-link" id="content<?php echo $row->id_content ?>">
-            <span class="feed-avatar">
-                <?php if ($row->profic == '') { ?>
-                    <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                <?php } else { ?>
-                    <?php
-                    $profpic = 'resource/' . $row->profic;
-                    if (file_exists($profpic)) {
-                        ?>
-                        <img src="<?php echo base_url() . $profpic ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                    <?php } else { ?>
-                        <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                    <?php } ?>
-                <?php } ?>
-            </span>
-            <div class="data">
-                <div class="user-description">
-                    <h4>
-                        <a href="<?php echo site_url('forum' . '/' . $row->user_id) ?>"><?php echo modules::run('authz/get_username', $row->user_id) ?></a>                     
-                    </h4>
-                    <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
-                </div>
-                <!--more todo-->
-            </div>
-        </li>
+        </li>   
     <?php } ?>
 <?php endforeach; ?>
 <script src="http://connect.soundcloud.com/sdk.js"></script>
