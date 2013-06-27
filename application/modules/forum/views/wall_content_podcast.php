@@ -46,7 +46,8 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>                
-                <div class="text"><?php echo $row->description ?></div>  
+                <div class="text"><?php echo nl2br($row->description) ?></div>
+                <div class="utils"></div>
             </div>
         </li>
     <?php } elseif ($row->type == 2) { ?>
@@ -87,7 +88,8 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <div class="text"><?php echo $row->description ?></div>                
+                <div class="text"><?php echo nl2br($row->description) ?></div>
+                <div class="utils"></div>
             </div>
         </li>
     <?php } elseif ($row->type == 3) { ?>
@@ -125,7 +127,8 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <div class="text"><?php echo $row->description ?></div>                
+                <div class="text"><?php echo nl2br($row->description) ?></div> 
+                <div class="utils"></div>
             </div>
         </li>
     <?php } elseif ($row->type == 6) { ?>
@@ -158,8 +161,11 @@
                         SC.oEmbed("<?php echo $row->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere-<?php echo $row->file ?>"));
                     </script>
                 </div>
-                <div class="text">
-                    <p><?php echo nl2br($row->description) ?></p>
+                <div class="text"><p><?php echo nl2br($row->description) ?></p></div>
+                <div class="utils">
+                    <div class="toolbar place-left">
+                        <?php echo modules::run('forum/form_tag_add', $row->id_content, 6) ?>                        
+                    </div>
                 </div>
             </div>
         </li>
