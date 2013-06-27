@@ -146,4 +146,13 @@ class Model_forum extends CI_Model {
         return $this->db->get();
     }
 
+    function select_content_podcast() {
+        $this->db->select('*');
+        $this->db->from('content');
+        $this->db->join('users', 'users.id=content.user_id');
+        $type = array(0, 2, 3, 6);
+        $this->db->where_in('content', $type);
+        return $this->db->get();
+    }
+
 }
