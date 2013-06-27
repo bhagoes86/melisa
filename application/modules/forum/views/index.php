@@ -140,7 +140,7 @@
             $('#message').html("Loading Data");
             $('#loading-template').show();                
             $('#wall_container').empty();                
-            $('#wall_container').load("<?php echo site_url('content/wall_content_document') ?>",function(){                
+            $('#wall_container').load("<?php echo site_url('forum/wall_content_document') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
             });
         });
