@@ -266,13 +266,4 @@ class Forum extends MX_Controller {
         echo $user_info->first_name . ' ' . $user_info->last_name;
     }
 
-    /*
-     * Download
-     */
-
-    function btn_download($file) {
-        $data['file'] = $file;
-        $this->load->view('forum/btn_download', $data);
-    }
-
 }
