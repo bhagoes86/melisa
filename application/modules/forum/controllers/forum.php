@@ -94,7 +94,7 @@ class Forum extends MX_Controller {
 
     function content_list_by_tag($tag) {
         $data['content'] = $this->model_forum->select_tag_join_content($tag)->result();
-        $this->load->view('forum/wall_content', $data);
+        $this->load->view('forum/wall_content_tag', $data);
     }
 
     /*
