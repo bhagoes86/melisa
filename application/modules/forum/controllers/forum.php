@@ -120,13 +120,6 @@ class Forum extends MX_Controller {
         $this->load->view('forum/wall_form', $data);
     }
 
-    function wall_content_log() {
-        $user = $this->ion_auth->user()->row();
-        $user_id = $user->id;
-        $data['content'] = $this->model_forum->select_content_log($user_id)->result();
-        $this->load->view('forum/wall_content_log', $data);
-    }
-
     function wall_content_podcast() {
         $data['content'] = $this->model_forum->select_content_podcast()->result();
         $this->load->view('forum/wall_content_podcast', $data);
@@ -147,6 +140,13 @@ class Forum extends MX_Controller {
         $user_id = $user->id;
         $data['content'] = $this->model_forum->select_content_bookmark($user_id)->result();
         $this->load->view('forum/wall_content_bookmark', $data);
+    }
+    
+    function wall_content_log() {
+        $user = $this->ion_auth->user()->row();
+        $user_id = $user->id;
+        $data['content'] = $this->model_forum->select_content_log($user_id)->result();
+        $this->load->view('forum/wall_content_log', $data);
     }
 
     /*
