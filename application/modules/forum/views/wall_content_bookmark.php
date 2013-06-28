@@ -166,7 +166,7 @@
                         <img src="<?php echo ($media['thumbnail_medium']) ?>" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;">
                     </a>
                     <div class="description">
-                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>"><i class="icon-link"></i><?php echo word_wrap(nl2br(auto_link($row->title)), 40); ?></a>
+                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>"><?php echo word_wrap(nl2br(auto_link($row->title)), 40); ?></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
