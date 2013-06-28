@@ -126,26 +126,6 @@ class Model_forum extends CI_Model {
         return $this->db->get();
     }
 
-    function select_content_log($user_id) {
-        $this->db->select('*');
-        $this->db->from('content_log');
-        $this->db->join('content', 'content.id_content=content_log.content_id');
-        $this->db->join('users', 'users.id=content.user_id');
-        $this->db->where('content_log.user_id', $user_id);
-        $this->db->group_by('content_log.content_id');
-        return $this->db->get();
-    }
-
-    function select_content_bookmark($user_id) {
-        $this->db->select('*');
-        $this->db->from('content_bookmark');
-        $this->db->join('content', 'content.id_content=content_bookmark.content_id');
-        $this->db->join('users', 'users.id=content.user_id');
-        $this->db->where('content_bookmark.user_id', $user_id);
-        $this->db->group_by('content_bookmark.content_id');
-        return $this->db->get();
-    }
-
     function select_content_podcast() {
         $this->db->select('*');
         $this->db->from('content');
@@ -154,6 +134,7 @@ class Model_forum extends CI_Model {
         $this->db->where_in('content.type', $type);
         $this->db->where('content.show', 1);
         $this->db->order_by('content.id_content', 'DESC');
+        $this->db->limit(50);
         return $this->db->get();
     }
 
@@ -165,6 +146,7 @@ class Model_forum extends CI_Model {
         $this->db->where_in('content.type', $type);
         $this->db->where('content.show', 1);
         $this->db->order_by('content.id_content', 'DESC');
+        $this->db->limit(50);
         return $this->db->get();
     }
 
@@ -176,6 +158,31 @@ class Model_forum extends CI_Model {
         $this->db->where_in('content.type', $type);
         $this->db->where('content.show', 1);
         $this->db->order_by('content.id_content', 'DESC');
+        $this->db->limit(50);
+        return $this->db->get();
+    }
+    
+    function select_content_log($user_id) {
+        $this->db->select('*');
+        $this->db->from('content_log');
+        $this->db->join('content', 'content.id_content=content_log.content_id');
+        $this->db->join('users', 'users.id=content.user_id');
+        $this->db->where('content_log.user_id', $user_id);
+        $this->db->where('content.show', 1);
+        $this->db->group_by('content_log.content_id');
+        $this->db->limit(50);
+        return $this->db->get();
+    }
+
+    function select_content_bookmark($user_id) {
+        $this->db->select('*');
+        $this->db->from('content_bookmark');
+        $this->db->join('content', 'content.id_content=content_bookmark.content_id');
+        $this->db->join('users', 'users.id=content.user_id');
+        $this->db->where('content_bookmark.user_id', $user_id);
+        $this->db->where('content.show', 1);
+        $this->db->group_by('content_bookmark.content_id');
+        $this->db->limit(50);
         return $this->db->get();
     }
 
