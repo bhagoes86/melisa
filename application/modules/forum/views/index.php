@@ -109,42 +109,8 @@
     $(document).ready(function(){
         $('#topbar').load("<?php echo site_url('site/topbar') ?>");
         $('#footbar').load("<?php echo site_url('site/footbar') ?>");
-        
-        //first feed
         $('#wall_container').load("<?php echo site_url('forum/wall_broadcast_first') ?>");
                 
-        //feed nav
-        $('#wall-podcast').click(function(){
-            $('div.pager').remove();                
-            $('#message').html("Loading Data");
-            $('#loading-template').show();                
-            $('#wall_container').empty();                
-            $('#wall_container').load("<?php echo site_url('forum/wall_content_podcast') ?>",function(){                
-                $('#loading-template').fadeOut("slow");
-            });
-        });
-        
-        //feed history
-        $('#wall-content-log').click(function(){
-            $('div.pager').remove();                
-            $('#message').html("Loading Data");
-            $('#loading-template').show();                
-            $('#wall_container').empty();                
-            $('#wall_container').load("<?php echo site_url('forum/wall_content_log') ?>",function(){                
-                $('#loading-template').fadeOut("slow");
-            });
-        });
-        
-        $('#wall-document').click(function(){
-            $('div.pager').remove();                
-            $('#message').html("Loading Data");
-            $('#loading-template').show();                
-            $('#wall_container').empty();                
-            $('#wall_container').load("<?php echo site_url('forum/wall_content_document') ?>",function(){                
-                $('#loading-template').fadeOut("slow");
-            });
-        });
-        
         $('#wall-broadcast').click(function(){
             $('div.pager').remove();                
             $('#message').html("Loading Data");
@@ -161,6 +127,47 @@
             $('#loading-template').show();                
             $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('forum/wall_activity_first') ?>",function(){                
+                $('#loading-template').fadeOut("slow");
+            });
+        });
+        
+        $('#wall-podcast').click(function(){
+            $('div.pager').remove();                
+            $('#message').html("Loading Data");
+            $('#loading-template').show();                
+            $('#wall_container').empty();                
+            $('#wall_container').load("<?php echo site_url('forum/wall_content_podcast') ?>",function(){                
+                $('#loading-template').fadeOut("slow");
+            });
+        });
+        
+        $('#wall-document').click(function(){
+            $('div.pager').remove();                
+            $('#message').html("Loading Data");
+            $('#loading-template').show();                
+            $('#wall_container').empty();                
+            $('#wall_container').load("<?php echo site_url('forum/wall_content_document') ?>",function(){                
+                $('#loading-template').fadeOut("slow");
+            });
+        });
+        
+        $('#wall-presentation').click(function(){
+            $('div.pager').remove();                
+            $('#message').html("Loading Data");
+            $('#loading-template').show();                
+            $('#wall_container').empty();                
+            $('#wall_container').load("<?php echo site_url('forum/wall_content_presentation') ?>",function(){                
+                $('#loading-template').fadeOut("slow");
+            });
+        });
+        
+        //feed history
+        $('#wall-content-log').click(function(){
+            $('div.pager').remove();                
+            $('#message').html("Loading Data");
+            $('#loading-template').show();                
+            $('#wall_container').empty();                
+            $('#wall_container').load("<?php echo site_url('forum/wall_content_log') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
             });
         });
@@ -197,7 +204,6 @@
             $(this).children().children('.delete-comment').addClass('hide');
         });
 
-        //Load page welcome
         $('a#btn-welcome').click(function(){
             $('#message').html("Loading Data");
             $('#loading-template').show();
@@ -207,7 +213,6 @@
             return false;
         });
 
-        //Show Login Form
         $('#btn-login').click(function(){
             $('#message').html("Loading Data");
             $('#loading-template').show();            
@@ -240,22 +245,5 @@
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
         ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=240447809341438";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
- 
-    $(window).bind("load resize", function(){    
-        var container_width = $('#container').width();    
-        $('#container').html('<div class="fb-like-box" ' + 
-            'data-href="https://www.facebook.com/npaperbox"' +
-            ' data-width="' + container_width + '" data-height="300" data-show-faces="true" ' +
-            'data-stream="false" data-header="false"></div>');
-        FB.XFBML.parse( );    
-    }); 
+    })();    
 </script>

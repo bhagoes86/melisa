@@ -131,10 +131,15 @@ class Forum extends MX_Controller {
         $data['content'] = $this->model_forum->select_content_podcast()->result();
         $this->load->view('forum/wall_content_podcast', $data);
     }
-    
+
     function wall_content_document() {
         $data['content'] = $this->model_forum->select_content_document()->result();
         $this->load->view('forum/wall_content_document', $data);
+    }
+
+    function wall_content_presentation() {
+        $data['content'] = $this->model_forum->select_content_presentation()->result();
+        $this->load->view('forum/wall_content_presentation', $data);
     }
 
     function wall_content_bookmark() {
