@@ -34,11 +34,28 @@
                 <div class="user-description">
                     <h4>
                         <a href="<?php echo site_url('forum' . '/' . $row->user_id) ?>"><?php echo modules::run('authz/get_username', $row->user_id) ?></a> 
-                        <a href="javascript:void(0)" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">mengunggah <i class="icon-libreoffice"></i>&nbsp;&nbsp;konten dokumen</a>
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
-                <!--more todo-->
+                <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
+                <div class="image link-image">
+                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_content ?>">
+                        <img src="<?php echo base_url() . 'resource/' . $row->id_content . '.jpg' ?>" style="width: 120px;height: 135px;vertical-align: middle;border-right: 1px solid #bbb;">
+                    </a>
+                    <div class="description">
+                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>"><?php echo word_wrap(nl2br(auto_link($row->title)), 40); ?></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="text"><p><?php echo nl2br($row->description) ?></p></div>
+                <div class="utils">                    
+                    <div class="toolbar place-left"></div>
+                    <div class="toolbar place-right">
+                        <?php echo modules::run('forum/btn_tags', $row->id_content, 1) ?>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <?php echo modules::run('forum/form_tag_add', $row->id_content, 1) ?> 
             </div>
         </li>
     <?php } elseif ($row->type == 4) { ?>
@@ -69,9 +86,15 @@
                 <div class="text" style="border: 1px solid #bbb;color: #bbb;">
                     <a id="btn-content-activate" data-id="<?php echo $row->id_content ?>"><i class="icon-file-pdf"></i>&nbsp;<?php echo $row->file ?></a>
                 </div>
-                <div class="text">
-                    <p><?php echo nl2br($row->description) ?></p>
+                <div class="text"><p><?php echo nl2br($row->description) ?></p></div>
+                <div class="utils">                    
+                    <div class="toolbar place-left"></div>
+                    <div class="toolbar place-right">
+                        <?php echo modules::run('forum/btn_tags', $row->id_content, 4) ?>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
+                <?php echo modules::run('forum/form_tag_add', $row->id_content, 4) ?> 
             </div>
         </li>
     <?php } elseif ($row->type == 7) { ?>
@@ -108,55 +131,39 @@
                         <img src="http://img.docstoccdn.com/thumb/100/<?php echo $extract_id[1] ?>.png" style="width: 120px;height: 135px;vertical-align: middle;border-right: 1px solid #bbb;">
                     </a>
                     <div class="description">
-                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>"><i class="icon-link"></i><?php echo word_wrap(nl2br(auto_link($row->title)), 40); ?></a>
+                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_content ?>"><?php echo word_wrap(nl2br(auto_link($row->title)), 40); ?></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <div class="text">
-                    <p><?php echo nl2br($row->description) ?></p>
+                <div class="text"><p><?php echo nl2br($row->description) ?></p></div>
+                <div class="utils">                    
+                    <div class="toolbar place-left"></div>
+                    <div class="toolbar place-right">
+                        <?php echo modules::run('forum/btn_tags', $row->id_content, 7) ?>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
+                <?php echo modules::run('forum/form_tag_add', $row->id_content, 7) ?> 
             </div>
         </li>   
     <?php } ?>
 <?php endforeach; ?>
-<script src="http://connect.soundcloud.com/sdk.js"></script>
 <script>
     $('#wall_container').flexipage({
         perpage:10
-    });
-    //delete
-    $("button#remove-status").click(function(){
-        var id = $(this).attr('data-id');
-        var answer = confirm('Apakah anda yakin akan menghapus konten ini ?')
-        if (answer == true){            
-            $('#wall'+id).fadeOut('slow');        
-            $.ajax({
-                url: "<?php echo site_url('forum/delete_wall') ?>/"+id,
-                success: function(){
-                    $('#wall'+id).fadeOut('slow');
-                }
-            });
-        }else{
-            alert('Konten tidak jadi dihapus');
-        }        
-        return false;
     });
     //text activate preview
     $('a#btn-content-activate').click(function(){
         var id_content = $(this).attr('data-id');
         $('#wall-content-viewer-'+id_content).slideToggle('fast');
-        $('#wall-content-viewer-'+id_content).load("<?php echo site_url('forum/wall_player') ?>/"+id_content);           
+        $('#wall-content-viewer-'+id_content).load("<?php echo site_url('forum/wall_content_player') ?>/"+id_content);           
         return false;
     });
     //picture activate preview
     $('a#pic-content-activate').click(function(){
         var id_content = $(this).attr('data-id');
         $('#wall-content-viewer-'+id_content).slideToggle('fast');
-        $('#wall-content-viewer-'+id_content).load("<?php echo site_url('forum/wall_player') ?>/"+id_content);
+        $('#wall-content-viewer-'+id_content).load("<?php echo site_url('forum/wall_content_player') ?>/"+id_content);
         return false;
-    });
-    //plugin soundcloud
-    SC.initialize({
-        client_id: "938418853596f90572983f377348dc57"
     });
 </script>

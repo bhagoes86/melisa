@@ -201,23 +201,6 @@
     $('#wall_container').flexipage({
         perpage:10
     });
-    //delete
-    $("button#remove-status").click(function(){
-        var id = $(this).attr('data-id');
-        var answer = confirm('Apakah anda yakin akan menghapus konten ini ?')
-        if (answer == true){            
-            $('#wall'+id).fadeOut('slow');        
-            $.ajax({
-                url: "<?php echo site_url('forum/delete_wall') ?>/"+id,
-                success: function(){
-                    $('#wall'+id).fadeOut('slow');
-                }
-            });
-        }else{
-            alert('Konten tidak jadi dihapus');
-        }        
-        return false;
-    });
     //text activate preview
     $('a#btn-content-activate').click(function(){
         var id_content = $(this).attr('data-id');
