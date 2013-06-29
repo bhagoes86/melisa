@@ -12,7 +12,7 @@ function splitPhrase($str, $length = 51) {
                 $h .= substr($word, ($i * $length), $length) . ' ';
             }
         } else
-            $h .= $word . ' ';
+        $h .= $word . ' ';
     }
     return str_replace(array("\r\n", "\n"), "<br />", $h);
 }
