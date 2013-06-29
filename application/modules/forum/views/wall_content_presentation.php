@@ -56,7 +56,9 @@
                 </div>
                 <div class="text"><p><?php echo nl2br($row->description) ?></p></div>
                 <div class="utils">                    
-                    <div class="toolbar place-left"></div>
+                    <div class="toolbar place-left">                        
+                        <?php echo modules::run('forum/btn_broadcast', $row->id_content, 5) ?>
+                    </div>
                     <div class="toolbar place-right">
                         <?php echo modules::run('forum/btn_tags', $row->id_content, 5) ?>
                     </div>
