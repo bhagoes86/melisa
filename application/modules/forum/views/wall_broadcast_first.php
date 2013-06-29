@@ -23,7 +23,22 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
-                <!--more todo-->
+                <div class="text" id="wall-content-viewer-<?php echo $row->forum_id ?>" data-id="<?php echo $row->forum_id ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
+                <div class="image link-image">
+                    <a href="javascript:void(0)" id="pic-broadcast-content-activate" data-id="<?php echo $row->forum_id ?>">
+                        <img src="<?php echo base_url() . 'resource/' . $row->forum_id . '.jpg' ?>" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;"/>
+                    </a>
+                    <div class="description"></div>
+                    <div class="clearfix"></div>
+                </div>                
+                <div class="text"><?php echo nl2br($row->message) ?></div>
+                <div class="utils">                    
+                    <div class="toolbar place-left"></div>
+                    <div class="toolbar place-right">
+                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>                       
             </div>
         </li>
     <?php } elseif ($row->forum_type == 1) { ?>
@@ -446,6 +461,13 @@
         var id_wall = $(this).attr('data-id');
         $('#wall-content-viewer-'+id_wall).slideToggle('fast');
         $('#wall-content-viewer-'+id_wall).load("<?php echo site_url('forum/wall_player') ?>/"+id_wall);
+        return false;
+    });
+    //picture activate preview
+    $('a#pic-broadcast-content-activate').click(function(){
+        var id_content = $(this).attr('data-id');
+        $('#wall-content-viewer-'+id_content).slideToggle('fast');
+        $('#wall-content-viewer-'+id_content).load("<?php echo site_url('forum/wall_content_player') ?>/"+id_content);
         return false;
     });
     //plugin soundcloud
