@@ -25,25 +25,7 @@ class Plugin extends MX_Controller {
         $data['content_id'] = $content_id;
         $data['type'] = $type;
         $data['bookmark_status'] = count($this->model_plugin->select_bookmark_status($content_id, $type, $user_id)->row());
-        print_r($data);
-        //$this->load->view('plugin/btn_bookmark', $data);
+        $this->load->view('plugin/btn_bookmark', $data);
     }
 
-//    function action_broadcast($content_id, $type) {
-//        $user = $this->ion_auth->user()->row();
-//        $content = $this->model_forum->select_content($content_id, $type)->row();
-//        $data['user_id'] = $user->id;
-//        $data['user_idto'] = $content->user_id;
-//        $data['message'] = $content->title . ' - ' . $content->description;
-//        $data['url'] = $content->file;
-//        $data['forum_id'] = $content->id_content;
-//        $data['forum_type'] = $content->type;
-//        $this->model_forum->insert_wall($data);
-//        $databroadcast['user_id'] = $user->id;
-//        $databroadcast['content_id'] = $content->id_content;
-//        $databroadcast['broadcast_type'] = $content->type;
-//        $this->model_forum->insert_broadcast($databroadcast);
-//        $countbroadcast = count($this->model_forum->select_broadcast($content->id_content, $content->type)->result());
-//        echo '<i class="icon-broadcast"></i> <span class="badge">' . $countbroadcast . '</span>';
-//    }
 }
