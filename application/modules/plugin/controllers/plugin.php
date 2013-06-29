@@ -25,7 +25,8 @@ class Plugin extends MX_Controller {
         $data['content_id'] = $content_id;
         $data['type'] = $type;
         $data['bookmark_status'] = count($this->model_plugin->select_bookmark_status($content_id, $type, $user_id)->row());
-        $this->load->view('plugin/btn_bookmark', $data);
+        print_r($data);
+        //$this->load->view('plugin/btn_bookmark', $data);
     }
 
 //    function action_broadcast($content_id, $type) {
