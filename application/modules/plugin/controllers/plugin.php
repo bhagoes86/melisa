@@ -19,8 +19,9 @@ class Plugin extends MX_Controller {
         $this->load->helper('text');
     }
 
-    function btn_bookmark($content_id) {
+    function btn_bookmark($content_id, $type) {
         $data['content_id'] = $content_id;
+        $data['type'] = $type;
         $this->load->view('plugin/btn_bookmark', $data);
     }
 
@@ -41,5 +42,4 @@ class Plugin extends MX_Controller {
 //        $countbroadcast = count($this->model_forum->select_broadcast($content->id_content, $content->type)->result());
 //        echo '<i class="icon-broadcast"></i> <span class="badge">' . $countbroadcast . '</span>';
 //    }
-
 }

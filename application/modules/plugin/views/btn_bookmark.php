@@ -3,7 +3,7 @@
     $('#bookmark-<?php echo $content_id ?>').click(function(){
         $('#message').html("Loading Data");
         $('#loading-template').show();
-        $('#bookmark-<?php echo $content_id ?>').load("<?php echo site_url('forum/action_broadcast' . '/' . $content_id . '/' . $type) ?>",function(){
+        $('#bookmark-<?php echo $content_id ?>').load("<?php echo site_url('plugin/action_bookmark' . '/' . $content_id . '/' . $type) ?>",function(){
             $('#loading-template').hide();            
         });
         return false;
