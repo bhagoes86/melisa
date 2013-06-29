@@ -107,7 +107,7 @@ class Model_forum extends CI_Model {
         $this->db->where('wall.user_id', $user_id);
         $this->db->or_where('wall.user_idto', $user_id);
         $this->db->order_by('id_wall', 'DESC');
-        $this->db->limit(2);
+        $this->db->limit(50);
         return $this->db->get();
     }
 
