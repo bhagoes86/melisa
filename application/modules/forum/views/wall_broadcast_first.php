@@ -62,11 +62,25 @@
                 <div class="user-description">
                     <h4>
                         <a href="<?php echo site_url('forum' . '/' . $row->user_id) ?>"><?php echo modules::run('authz/get_username', $row->user_id) ?></a> 
-                        <a href="javascript:void(0)" target="_blank" style="text-decoration: none;cursor: pointer;color: #2f3e46;">mengunggah <i class="icon-libreoffice"></i>&nbsp;&nbsp;konten dokumen</a>
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
-                <!--more todo-->
+                <div class="text" id="wall-content-viewer-<?php echo $row->forum_id ?>" data-id="<?php echo $row->forum_id ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
+                <div class="image link-image">
+                    <a href="javascript:void(0)" id="pic-broadcast-content-activate" data-id="<?php echo $row->forum_id ?>">
+                        <img src="<?php echo base_url() . 'resource/' . $row->forum_id . '.jpg' ?>" style="width: 120px;height: 135px;vertical-align: middle;border-right: 1px solid #bbb;">
+                    </a>
+                    <div class="description"></div>
+                    <div class="clearfix"></div>
+                </div>                
+                <div class="text"><?php echo nl2br($row->message) ?></div>
+                <div class="utils">                    
+                    <div class="toolbar place-left"></div>
+                    <div class="toolbar place-right">
+                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>                       
             </div>
         </li>
     <?php } elseif ($row->forum_type == 2) { ?>
@@ -192,9 +206,7 @@
                 <div class="text" style="border: 1px solid #bbb;color: #bbb;">
                     <a id="btn-content-activate" data-id="<?php echo $row->id_wall ?>"><i class="icon-file-pdf"></i>&nbsp;<?php echo $row->url ?></a>
                 </div>
-                <div class="text">
-                    <p><?php echo nl2br($row->message) ?></p>
-                </div>
+                <div class="text"><p><?php echo nl2br($row->message) ?></p></div>
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
