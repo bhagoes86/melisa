@@ -107,6 +107,7 @@ class Model_forum extends CI_Model {
         $this->db->join('users', 'users.id=content.user_id');
         $this->db->where('content.show', 1);
         $this->db->group_by('content_log.content_id');
+        $this->db->order_by('id_content_log', 'DESC');
         $this->db->limit(50);
         return $this->db->get();
     }
