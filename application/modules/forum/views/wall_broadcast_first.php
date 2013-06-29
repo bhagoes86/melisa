@@ -23,7 +23,20 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
-                <!--more todo-->
+                <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
+                <div class="image link-image">
+                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_content ?>">
+                        <img src="<?php echo base_url() . 'resource/' . $row->id_content . '.jpg' ?>" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;"/>
+                    </a>
+                    <div class="description"></div>
+                    <div class="clearfix"></div>
+                </div>                
+                <div class="text"><?php echo nl2br($row->description) ?></div>
+                <div class="utils">                    
+                    <div class="toolbar place-left"></div>
+                    <div class="toolbar place-right"></div>
+                    <div class="clearfix"></div>
+                </div>                       
             </div>
         </li>
     <?php } elseif ($row->forum_type == 1) { ?>
