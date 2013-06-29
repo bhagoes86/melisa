@@ -109,10 +109,6 @@ class Forum extends MX_Controller {
      * Wall
      */
 
-    function delete_wall($id_wall) {
-        $this->model_forum->delete_wall($id_wall);
-    }
-
     function wall_form($user_idto) {
         $user = $this->ion_auth->user()->row();
         $data['user_id'] = $user->id;
@@ -120,9 +116,27 @@ class Forum extends MX_Controller {
         $this->load->view('forum/wall_form', $data);
     }
 
+    //list/
+   
     function wall_content_podcast() {
         $data['content'] = $this->model_forum->select_content_podcast()->result();
         $this->load->view('forum/wall_content_podcast', $data);
+    }
+    
+    function wall_by_id($id_wall) {
+        $data['content'] = $this->model_forum->select_wall_by_id($id_wall)->row();
+        $this->load->view('forum/wall_after_post', $data);
+    }
+
+    function wall_broadcast_first() {
+        $user = $this->ion_auth->user()->row();
+        $data['content'] = $this->model_forum->select_wall_broadcast_first()->result();
+        $this->load->view('forum/wall_layout_preview', $data);
+    }
+
+    function wall_content_activity() {
+        $data['content'] = $this->model_forum->select_activity()->result();
+        $this->load->view('forum/wall_content_activity', $data);
     }
 
     function wall_content_document() {
@@ -141,7 +155,7 @@ class Forum extends MX_Controller {
         $data['content'] = $this->model_forum->select_content_bookmark($user_id)->result();
         $this->load->view('forum/wall_content_bookmark', $data);
     }
-    
+
     function wall_content_log() {
         $user = $this->ion_auth->user()->row();
         $user_id = $user->id;
@@ -149,18 +163,11 @@ class Forum extends MX_Controller {
         $this->load->view('forum/wall_content_log', $data);
     }
 
-    /*
-     * 0video
-     * 1document
-     * 2Youtube
-     * 3Vimeo
-     * 4scribd
-     * 5slideshare
-     * 6SoundCloud
-     * 7docstoc
-     * 8proprofs
-     * 9picture
-     */
+    //action/
+    
+    function delete_wall($id_wall) {
+        $this->model_forum->delete_wall($id_wall);
+    }
 
     function add_wall() {
         $data['user_id'] = $this->input->post('user_id', TRUE);
@@ -201,61 +208,7 @@ class Forum extends MX_Controller {
             echo "msg: $id_wall";
             echo "}";
         }
-    }
-
-    function wall_by_id($id_wall) {
-        $data['content'] = $this->model_forum->select_wall_by_id($id_wall)->row();
-        $this->load->view('forum/wall_after_post', $data);
-    }
-
-    function wall_broadcast_first() {
-        $user = $this->ion_auth->user()->row();
-        $data['content'] = $this->model_forum->select_wall_broadcast_first()->result();
-        $this->load->view('forum/wall_layout_preview', $data);
-    }
-
-    function wall_activity_first() {
-        $user = $this->ion_auth->user()->row();
-        $data['content'] = $this->model_forum->select_activity_first($user->id)->result();
-        $this->load->view('forum/wall_activity', $data);
-    }
-
-    function wall_podcast_first() {
-        $user = $this->ion_auth->user()->row();
-        $data['content'];
-        $this->load->view('forum/wall_layout_preview', $data);
-    }
-
-    function wall_document_first() {
-        $user = $this->ion_auth->user()->row();
-        $data['content'];
-        $this->load->view('forum/wall_layout_preview', $data);
-    }
-
-    function wall_presentation_first() {
-        $data['content'];
-        $this->load->view('forum/wall_layout_preview', $data);
-    }
-
-    function wall_application_first() {
-        $data['content'];
-        $this->load->view('forum/wall_layout_preview', $data);
-    }
-
-    function wall_watch_latter_first() {
-        $data['content'];
-        $this->load->view('forum/wall_layout_preview', $data);
-    }
-
-    function wall_recent_view_first() {
-        $data['content'];
-        $this->load->view('forum/wall_layout_preview', $data);
-    }
-
-    function wall_search_result_first() {
-        $data['content'];
-        $this->load->view('forum/wall_layout_preview', $data);
-    }
+    }    
 
     function wall_player($id_wall) {
         $data['content'] = $this->model_forum->select_wall_by_id($id_wall)->row();

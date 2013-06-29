@@ -32,17 +32,17 @@
                                 <div class="page-sidebar bg-color-red" style="margin:0px; padding-bottom: 0px;width:140px;">
                                     <ul>
                                         <li><a id="wall-broadcast"><i class="icon-broadcast"></i> Broadcast</a></li>
-                                        <li><a id="wall-activity"><i class="icon-clock"></i> Aktivitas</a></li>                                        
+                                        <li><a id="wall-content-activity"><i class="icon-clock"></i> Aktivitas</a></li>                                        
                                     </ul>
                                     <ul>
-                                        <li><a id="wall-podcast"><i class="icon-film"></i> Podcast</a></li>
-                                        <li><a id="wall-document"><i class="icon-file-pdf"></i> Document</a></li>
-                                        <li><a id="wall-presentation"><i class="icon-monitor"></i> Presentasi</a></li>
+                                        <li><a id="wall-content-podcast"><i class="icon-film"></i> Podcast</a></li>
+                                        <li><a id="wall-content-document"><i class="icon-file-pdf"></i> Document</a></li>
+                                        <li><a id="wall-content-presentation"><i class="icon-monitor"></i> Presentasi</a></li>
                                     </ul>
                                     <ul>
                                         <li><a id="wall-content-bookmark"><i class="icon-bookmark-4"></i> Lihat Nanti</a></li>
                                         <li><a id="wall-content-log"><i class="icon-history"></i> Penelusuran</a></li>
-                                        <li><a id="btn-"><i class="icon-search"></i> Pencarian</a></li>
+                                        <li><a id="wall-content-search"><i class="icon-search"></i> Pencarian</a></li>
                                     </ul>
                                     <ul>
                                         <li><a id="btn-logout"><i class="icon-key"></i> Keluar</a></li>
@@ -107,31 +107,33 @@
 <div id="fb-root"></div>
 <script type="text/javascript">
     $(document).ready(function(){
+        $('#wall_container').load("<?php echo site_url('forum/wall_broadcast_first') ?>");
+        
         $('#topbar').load("<?php echo site_url('site/topbar') ?>");
         $('#footbar').load("<?php echo site_url('site/footbar') ?>");
-        $('#wall_container').load("<?php echo site_url('forum/wall_broadcast_first') ?>");
-                
+        $('#row-top-content').load("<?php echo site_url('home/top') ?>");
+        
         $('#wall-broadcast').click(function(){
             $('div.pager').remove();                
             $('#message').html("Loading Data");
             $('#loading-template').show();                
             $('#wall_container').empty();                
-            $('#wall_container').load("<?php echo site_url('forum/wall_list_first') ?>",function(){                
+            $('#wall_container').load("<?php echo site_url('forum/wall_broadcast_first') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
             });
         });
         
-        $('#wall-activity').click(function(){
+        $('#wall-content-activity').click(function(){
             $('div.pager').remove();                
             $('#message').html("Loading Data");
             $('#loading-template').show();                
             $('#wall_container').empty();                
-            $('#wall_container').load("<?php echo site_url('forum/wall_activity_first') ?>",function(){                
+            $('#wall_container').load("<?php echo site_url('forum/wall_content_activity') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
             });
         });
         
-        $('#wall-podcast').click(function(){
+        $('#wall-content-podcast').click(function(){
             $('div.pager').remove();                
             $('#message').html("Loading Data");
             $('#loading-template').show();                
@@ -141,7 +143,7 @@
             });
         });
         
-        $('#wall-document').click(function(){
+        $('#wall-content-document').click(function(){
             $('div.pager').remove();                
             $('#message').html("Loading Data");
             $('#loading-template').show();                
@@ -151,7 +153,7 @@
             });
         });
         
-        $('#wall-presentation').click(function(){
+        $('#wall-content-presentation').click(function(){
             $('div.pager').remove();                
             $('#message').html("Loading Data");
             $('#loading-template').show();                
@@ -203,8 +205,6 @@
             });
             return false;
         });
-                
-        $('#row-top-content').load("<?php echo site_url('home/top') ?>");
                 
         $('.comments li').live('mouseover', function(){
             $(this).children().children('.delete-comment').removeClass('hide');
