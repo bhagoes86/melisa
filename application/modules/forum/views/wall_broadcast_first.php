@@ -23,9 +23,9 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
-                <div class="text" id="wall-content-viewer-<?php echo $row->forum_id ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
+                <div class="text" id="wall-content-viewer-<?php echo $row->forum_id ?>" data-id="<?php echo $row->forum_id ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="image link-image">
-                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_content ?>">
+                    <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->forum_id ?>">
                         <img src="<?php echo base_url() . 'resource/' . $row->forum_id . '.jpg' ?>" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;"/>
                     </a>
                     <div class="description"></div>
