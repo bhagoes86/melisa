@@ -20,7 +20,7 @@ class Model_plugin extends CI_Model {
         $this->db->from('content_bookmark');
         $this->db->where('content_id', $content_id);
         $this->db->where('type', $type);
-        $this->db->where('user', $user_id);
+        $this->db->where('user_id', $user_id);
         $this->db->get();
     }
 
