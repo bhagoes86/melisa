@@ -18,10 +18,10 @@ class Model_plugin extends CI_Model {
     function select_bookmark_status($content_id, $type, $user_id) {
         $this->db->select('*');
         $this->db->from('content_bookmark');
+        $this->db->where('user_id', $user_id);
         $this->db->where('content_id', $content_id);
         $this->db->where('type', $type);
-        $this->db->where('user_id', $user_id);
-        $this->db->get();
+        return $this->db->get();
     }
 
 }
