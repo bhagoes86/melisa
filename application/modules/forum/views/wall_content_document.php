@@ -51,6 +51,7 @@
                 <div class="utils">                    
                     <div class="toolbar place-left">                        
                         <?php echo modules::run('forum/btn_broadcast', $row->id_content, 1) ?>
+                        <?php echo modules::run('plugin/btn_bookmark', $row->id_content, 1) ?>
                     </div>
                     <div class="toolbar place-right">
                         <?php echo modules::run('forum/btn_tags', $row->id_content, 1) ?>
@@ -92,6 +93,7 @@
                 <div class="utils">                    
                     <div class="toolbar place-left">
                         <?php echo modules::run('forum/btn_broadcast', $row->id_content, 4) ?>
+                        <?php echo modules::run('plugin/btn_bookmark', $row->id_content, 4) ?>
                     </div>
                     <div class="toolbar place-right">
                         <?php echo modules::run('forum/btn_tags', $row->id_content, 4) ?>
@@ -143,6 +145,7 @@
                 <div class="utils">                    
                     <div class="toolbar place-left">
                         <?php echo modules::run('forum/btn_broadcast', $row->id_content, 7) ?>
+                        <?php echo modules::run('plugin/btn_bookmark', $row->id_content, 7) ?>
                     </div>
                     <div class="toolbar place-right">
                         <?php echo modules::run('forum/btn_tags', $row->id_content, 7) ?>
