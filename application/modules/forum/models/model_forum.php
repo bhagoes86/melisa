@@ -46,6 +46,11 @@ class Model_forum extends CI_Model {
         $this->db->update('wall', $data2);
     }
 
+    function delete_wall($id_wall) {
+        $this->db->where('id_wall', $id_wall);
+        $this->db->delete('wall');
+    }
+
     function insert_broadcast($data) {
         $this->db->insert('broadcast', $data);
         return $this->db->insert_id();
@@ -118,6 +123,73 @@ class Model_forum extends CI_Model {
         $this->db->from('wall');
         $this->db->join('users', 'users.id=wall.user_id');
         $this->db->where('wall.id_wall', $id_wall);
+        return $this->db->get();
+    }
+
+    function select_content_podcast() {
+        $this->db->select('*');
+        $this->db->from('content');
+        $this->db->join('users', 'users.id=content.user_id');
+        $type = array(0, 2, 3, 6);
+        $this->db->where_in('content.type', $type);
+        $this->db->where('content.show', 1);
+        $this->db->order_by('content.id_content', 'DESC');
+        $this->db->limit(50);
+        return $this->db->get();
+    }
+
+    function select_content_document() {
+        $this->db->select('*');
+        $this->db->from('content');
+        $this->db->join('users', 'users.id=content.user_id');
+        $type = array(1, 4, 7);
+        $this->db->where_in('content.type', $type);
+        $this->db->where('content.show', 1);
+        $this->db->order_by('content.id_content', 'DESC');
+        $this->db->limit(50);
+        return $this->db->get();
+    }
+
+    function select_content_presentation() {
+        $this->db->select('*');
+        $this->db->from('content');
+        $this->db->join('users', 'users.id=content.user_id');
+        $type = array(5);
+        $this->db->where_in('content.type', $type);
+        $this->db->where('content.show', 1);
+        $this->db->order_by('content.id_content', 'DESC');
+        $this->db->limit(50);
+        return $this->db->get();
+    }
+    
+    function select_content_bookmark($user_id) {
+        $this->db->select('*');
+        $this->db->from('content_bookmark');
+        $this->db->join('content', 'content.id_content=content_bookmark.content_id');
+        $this->db->join('users', 'users.id=content.user_id');
+        $this->db->where('content_bookmark.user_id', $user_id);
+        $this->db->where('content.show', 1);
+        $this->db->group_by('content_bookmark.content_id');
+        $this->db->limit(50);
+        return $this->db->get();
+    }
+    
+    function select_content_log($user_id) {
+        $this->db->select('*');
+        $this->db->from('content_log');
+        $this->db->join('content', 'content.id_content=content_log.content_id');
+        $this->db->join('users', 'users.id=content.user_id');
+        $this->db->where('content_log.user_id', $user_id);
+        $this->db->where('content.show', 1);
+        $this->db->group_by('content_log.content_id');
+        $this->db->limit(50);
+        return $this->db->get();
+    }    
+
+    function select_content_by_id($id_content) {
+        $this->db->select('*');
+        $this->db->from('content');
+        $this->db->where('id_content', $id_content);
         return $this->db->get();
     }
 

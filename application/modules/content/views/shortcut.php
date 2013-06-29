@@ -34,12 +34,6 @@
     <span class="icon fg-color-white"><i class="icon-file-word"></i></span>
     <span class="label fg-color-white">Docstoc</span>
 </a>
-<h3>Aplikasi</h3>
-<div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
-<a class="shortcut bg-color-pink" id="insert-proprofs">
-    <span class="icon fg-color-white"><i class="icon-list"></i></span>
-    <span class="label fg-color-white">Proprofs</span>
-</a>
 <h3>Tata Tertib Umum</h3>
 <div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
 <p>
