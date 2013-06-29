@@ -20,8 +20,11 @@ class Plugin extends MX_Controller {
     }
 
     function btn_bookmark($content_id, $type) {
+        $user = $this->ion_auth->user()->row();
+        $user_id = $user->id;
         $data['content_id'] = $content_id;
         $data['type'] = $type;
+        $data['bookmark_status'] = count($this->model_plugin->select_bookmark_status($content_id, $type, $user_id)->row());
         $this->load->view('plugin/btn_bookmark', $data);
     }
 
