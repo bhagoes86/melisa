@@ -292,12 +292,13 @@
                     $url = $extract_id[1];
                     $thumb = explode("/", slideshare_cover($url)->thumbnail);
                     $thumbnail = slideshare_cover($url)->thumbnail;
+                    $slidesharetitle = slideshare_cover($url)->title;
                     ?>
                     <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_wall ?>">
                         <img src="<?php echo "http:" . $thumbnail ?>" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;">
                     </a>
                     <div class="description">
-                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_wall ?>"><?php echo word_wrap(splitPhrase(nl2br(auto_link($row->url)), 20), 15) ?></a>
+                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_wall ?>"><?php echo word_wrap(nl2br(auto_link($slidesharetitle), 20)) ?></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
