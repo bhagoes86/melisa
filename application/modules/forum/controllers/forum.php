@@ -131,7 +131,7 @@ class Forum extends MX_Controller {
     function wall_broadcast_first() {
         $user = $this->ion_auth->user()->row();
         $data['content'] = $this->model_forum->select_wall_broadcast_first()->result();
-        $this->load->view('forum/wall_layout_preview', $data);
+        $this->load->view('forum/wall_broadcast_first', $data);
     }
 
     function wall_content_activity() {
