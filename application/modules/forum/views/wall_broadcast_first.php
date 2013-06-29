@@ -134,7 +134,7 @@
                         <img src="<?php echo ($media['thumbnail_medium']) ?>" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;">
                     </a>
                     <div class="description">
-                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_wall ?>"><i class="icon-link"></i> <?php echo word_wrap(nl2br(auto_link($row->url)), 40) ?></a>
+                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_wall ?>"><?php echo word_wrap(nl2br(auto_link($row->url)), 40) ?></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -270,7 +270,7 @@
                         <img src="<?php echo "http:" . $thumbnail ?>" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;">
                     </a>
                     <div class="description">
-                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_wall ?>"><i class="icon-link"></i> <?php echo word_wrap(nl2br(auto_link($row->url)), 40) ?></a>
+                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_wall ?>"><?php echo word_wrap(nl2br(auto_link($row->url)), 40) ?></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -321,7 +321,7 @@
                         <img src="http://img.docstoccdn.com/thumb/100/<?php echo $extract_id[1] ?>.png" style="width: 120px;height: 135px;vertical-align: middle;border-right: 1px solid #bbb;">
                     </a>
                     <div class="description">
-                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_wall ?>"><i class="icon-link"></i> <?php echo splitPhrase($row->url, 15) ?></a>
+                        <a href="javascript:void(0)" id="btn-content-activate" data-id="<?php echo $row->id_wall ?>"><?php echo splitPhrase($row->url, 15) ?></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
