@@ -135,8 +135,7 @@ class Forum extends MX_Controller {
     }
 
     function wall_content_activity() {
-        $user = $this->ion_auth->user()->row();
-        $data['content'] = $this->model_forum->select_activity_first($user->id)->result();
+        $data['content'] = $this->model_forum->select_activity()->result();
         $this->load->view('forum/wall_content_activity', $data);
     }
 

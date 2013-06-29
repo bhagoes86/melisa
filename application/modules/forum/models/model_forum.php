@@ -100,13 +100,13 @@ class Model_forum extends CI_Model {
         return $this->db->get();
     }
 
-    function select_activity_first($user_id) {
+    function select_activity() {
         $this->db->select('*');
-        $this->db->from('wall');
-        $this->db->join('users', 'users.id=wall.user_id');
-        $this->db->where('wall.user_id', $user_id);
-        $this->db->or_where('wall.user_idto', $user_id);
-        $this->db->order_by('id_wall', 'DESC');
+        $this->db->from('content_log');
+        $this->db->join('content', 'content.id_content=content_log.content_id');
+        $this->db->join('users', 'users.id=content.user_id');
+        $this->db->where('content.show', 1);
+        $this->db->group_by('content_log.content_id');
         $this->db->limit(50);
         return $this->db->get();
     }
