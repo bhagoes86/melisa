@@ -46,7 +46,7 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'taufiksu';
+$db['default']['password'] = '';
 $db['default']['database'] = 'melisa';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
