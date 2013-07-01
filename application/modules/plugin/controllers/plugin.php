@@ -31,6 +31,7 @@ class Plugin extends MX_Controller {
     function tag_content_by_id_limit($content_id, $limit) {
         $data['content_id'] = $content_id;
         $data['content'] = $this->model_plugin->select_tags_content($content_id, $limit)->result();
+        $data['tag_counter'] = count($data['content']);
         $this->load->view('plugin/wall_content_tag_list', $data);
     }
 
