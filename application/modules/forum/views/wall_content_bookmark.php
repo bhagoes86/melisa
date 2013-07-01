@@ -45,6 +45,7 @@
                     </div>
                     <div class="toolbar place-right">
                         <?php echo modules::run('forum/btn_tags', $row->id_content, 0) ?>
+                        <?php echo modules::run('plugin/btn_bookmark_remove', $row->id_content, 0) ?>                    
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -93,6 +94,7 @@
                     </div>
                     <div class="toolbar place-right">
                         <?php echo modules::run('forum/btn_tags', $row->id_content, 1) ?>
+                        <?php echo modules::run('plugin/btn_bookmark_remove', $row->id_content, 1) ?>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -145,6 +147,7 @@
                     </div>
                     <div class="toolbar place-right">
                         <?php echo modules::run('forum/btn_tags', $row->id_content, 2) ?>
+                        <?php echo modules::run('plugin/btn_bookmark_remove', $row->id_content, 2) ?>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -194,6 +197,7 @@
                     </div>
                     <div class="toolbar place-right">
                         <?php echo modules::run('forum/btn_tags', $row->id_content, 3) ?>
+                        <?php echo modules::run('plugin/btn_bookmark_remove', $row->id_content, 3) ?>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -236,6 +240,7 @@
                     </div>
                     <div class="toolbar place-right">
                         <?php echo modules::run('forum/btn_tags', $row->id_content, 4) ?>
+                        <?php echo modules::run('plugin/btn_bookmark_remove', $row->id_content, 4) ?>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -291,6 +296,7 @@
                     </div>
                     <div class="toolbar place-right">
                         <?php echo modules::run('forum/btn_tags', $row->id_content, 5) ?>
+                        <?php echo modules::run('plugin/btn_bookmark_remove', $row->id_content, 5) ?>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -335,6 +341,7 @@
                     </div>
                     <div class="toolbar place-right">
                         <?php echo modules::run('forum/btn_tags', $row->id_content, 6) ?>
+                        <?php echo modules::run('plugin/btn_bookmark_remove', $row->id_content, 6) ?>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -387,6 +394,7 @@
                     </div>
                     <div class="toolbar place-right">
                         <?php echo modules::run('forum/btn_tags', $row->id_content, 7) ?>
+                        <?php echo modules::run('plugin/btn_bookmark_remove', $row->id_content, 7) ?>
                     </div>
                     <div class="clearfix"></div>
                 </div>

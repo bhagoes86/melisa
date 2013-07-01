@@ -2,7 +2,7 @@
 <?php } else { ?>
     <div class="text" style="border-top: 1px solid #bbb;" id="tags-content-<?php echo $content_id ?>">
         <?php foreach ($content as $row): ?>
-            <a href="javascript:void(0)" id="btn-tags-content-<?php echo $row->content_id ?>" data-tag="<?php echo $row->tag ?>"><i class="icon-bookmark-3"></i> <?php echo $row->tag ?></a>
+            <a href="javascript:void(0)" id="btn-tags-content-<?php echo $row->content_id ?>" data-tag="<?php echo $row->tag ?>"><i class="icon-tag"></i> <?php echo $row->tag ?></a>
         <?php endforeach; ?>
     </div>
     <div id="tags-content-container-<?php echo $content_id ?>" style="display: none;"></div>

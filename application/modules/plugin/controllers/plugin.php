@@ -28,13 +28,24 @@ class Plugin extends MX_Controller {
         $this->load->view('plugin/btn_bookmark', $data);
     }
 
+    function btn_bookmark_remove($content_id, $type) {
+        $data['content_id'] = $content_id;
+        $data['type'] = $type;
+        $this->load->view('plugin/btn_bookmark_remove', $data);
+    }
+
+    function delete_bookmark_me($content_id, $type) {
+        $user = $this->ion_auth->user()->row();
+        $user_id = $user->id;
+    }
+
     function tag_content_by_id_limit($content_id, $limit) {
         $data['content_id'] = $content_id;
         $data['content'] = $this->model_plugin->select_tags_content($content_id, $limit)->result();
         $data['tag_counter'] = count($data['content']);
         $this->load->view('plugin/wall_content_tag_list', $data);
     }
-    
+
     function tag_content_by_id_limit_in_bookmark($content_id, $limit) {
         $data['content_id'] = $content_id;
         $data['content'] = $this->model_plugin->select_tags_content($content_id, $limit)->result();
@@ -46,7 +57,7 @@ class Plugin extends MX_Controller {
         $data['content'] = $this->model_plugin->select_tag_join_content(urldecode($tag))->result();
         $this->load->view('plugin/wall_content_layout', $data);
     }
-    
+
     function get_content_from_tag_in_bookmark($tag) {
         $data['content'] = $this->model_plugin->select_tag_join_content(urldecode($tag))->result();
         $this->load->view('plugin/wall_content_bookmark_in_bookmark', $data);
