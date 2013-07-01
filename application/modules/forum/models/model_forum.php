@@ -171,6 +171,7 @@ class Model_forum extends CI_Model {
         $this->db->where('content_bookmark.user_id', $user_id);
         $this->db->where('content.show', 1);
         $this->db->group_by('content_bookmark.content_id');
+        $this->db->order_by('content.id_content', 'DESC');
         $this->db->limit(50);
         return $this->db->get();
     }
@@ -183,6 +184,7 @@ class Model_forum extends CI_Model {
         $this->db->where('content_log.user_id', $user_id);
         $this->db->where('content.show', 1);
         $this->db->group_by('content_log.content_id');
+        $this->db->order_by('content.id_content', 'DESC');
         $this->db->limit(50);
         return $this->db->get();
     }    
