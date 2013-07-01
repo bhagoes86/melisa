@@ -36,7 +36,7 @@ class Plugin extends MX_Controller {
     }
 
     function get_content_from_tag($tag) {
-        $data['content'] = $this->model_plugin->select_tag_join_content($tag)->result();
+        $data['content'] = $this->model_plugin->select_tag_join_content(urldecode($tag))->result();
         $this->load->view('plugin/wall_content_layout', $data);
     }
 
