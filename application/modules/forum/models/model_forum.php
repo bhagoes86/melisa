@@ -167,7 +167,7 @@ class Model_forum extends CI_Model {
         $this->db->select('*');
         $this->db->from('content_bookmark');
         $this->db->join('content', 'content.id_content=content_bookmark.content_id');
-        $this->db->join('users', 'users.id=content.user_id');
+        $this->db->join('users', 'users.id=content_bookmark.user_id');
         $this->db->where('content_bookmark.user_id', $user_id);
         $this->db->where('content.show', 1);
         $this->db->group_by('content_bookmark.content_id');
