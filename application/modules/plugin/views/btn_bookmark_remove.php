@@ -9,7 +9,7 @@
             $.ajax({
                 url: "<?php echo site_url('plugin/delete_bookmark_me') ?>/"+content_id+'/'+type,
                 success: function(){
-                    $('#wall'+id).fadeOut('slow');
+                    $('#content'+content_id).slideUp('slow');
                 }
             });
         }else{

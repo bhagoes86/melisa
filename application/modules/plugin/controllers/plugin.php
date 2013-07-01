@@ -37,6 +37,7 @@ class Plugin extends MX_Controller {
     function delete_bookmark_me($content_id, $type) {
         $user = $this->ion_auth->user()->row();
         $user_id = $user->id;
+        $this->model_plugin->delete_bookmark($content_id, $type, $user_id);
     }
 
     function tag_content_by_id_limit($content_id, $limit) {

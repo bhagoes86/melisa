@@ -31,7 +31,7 @@ class Model_plugin extends CI_Model {
         $this->db->limit($limit);
         return $this->db->get();
     }
-    
+
     function select_tag_join_content($tag) {
         $this->db->select('*');
         $this->db->from('tags');
@@ -40,6 +40,13 @@ class Model_plugin extends CI_Model {
         $this->db->where('tags.tag', $tag);
         $this->db->group_by('id_content');
         return $this->db->get();
+    }
+
+    function delete_bookmark($content_id, $type, $user_id) {
+        $this->db->where('content_id', $content_id);
+        $this->db->where('type', $type);
+        $this->db->where('user_id', $user_id);
+        $this->db->delete('content_bookmark');
     }
 
 }
