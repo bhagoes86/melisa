@@ -3,6 +3,7 @@
         <a href="javascript:void(0)" id="btn-tags-content-<?php echo $row->content_id ?>" data-tag="<?php echo $row->tag ?>"><i class="icon-bookmark-3"></i> <?php echo $row->tag ?></a>
     <?php endforeach; ?>
 </div>
+<div id="tags-content-container-<?php echo $content_id ?>" style="display: none;"></div>
 <script type="text/javascript">
     $('a#btn-tags-content-<?php echo $content_id ?>').click(function(){
         var tag = $(this).attr('data-tag');
@@ -12,7 +13,8 @@
             data:$(this).serialize(),
             success: function (data, status)
             {
-                $('#tags-content-<?php echo $content_id ?>').append(data);
+                $('#tags-content-container-<?php echo $content_id ?>').html(data);
+                $('#tags-content-container-<?php echo $content_id ?>').slideDown('slow');
             },
             error: function (data, status, e)
             {
