@@ -37,6 +37,7 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
+                <?php echo modules::run('plugin/tag_content_by_id_limit', $row->id_content, 3) ?>
                 <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="height: 380px;display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="image link-image">
                     <?php

@@ -37,6 +37,7 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
+                <?php echo modules::run('plugin/tag_content_by_id_limit', $row->id_content, 3) ?>
                 <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="image link-image">
                     <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_content ?>">
@@ -84,6 +85,7 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
+                <?php echo modules::run('plugin/tag_content_by_id_limit', $row->id_content, 3) ?>
                 <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="image link-image">
                     <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_content ?>">
@@ -131,6 +133,7 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
+                <?php echo modules::run('plugin/tag_content_by_id_limit', $row->id_content, 3) ?>
                 <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="image link-image">
                     <?php
@@ -182,6 +185,7 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
+                <?php echo modules::run('plugin/tag_content_by_id_limit', $row->id_content, 3) ?>
                 <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="image link-image">
                     <?php $media = vimeo_cover($row->file); ?>
@@ -230,6 +234,7 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
+                <?php echo modules::run('plugin/tag_content_by_id_limit', $row->id_content, 3) ?>
                 <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="text" style="border: 1px solid #bbb;color: #bbb;">
                     <a id="btn-content-activate" data-id="<?php echo $row->id_content ?>"><i class="icon-file-pdf"></i>&nbsp;<?php echo $row->file ?></a>
@@ -271,6 +276,7 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
+                <?php echo modules::run('plugin/tag_content_by_id_limit', $row->id_content, 3) ?>
                 <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="height: 380px;display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="image link-image">
                     <?php
@@ -325,6 +331,7 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
+                <?php echo modules::run('plugin/tag_content_by_id_limit', $row->id_content, 3) ?>
                 <div class="text" style="background: #bbb;border:1px solid #bbb;vertical-align: middle;padding: 0px;width: 100%;height: 168px;">
                     <div id="putTheWidgetHere-<?php echo $row->file ?>" style="height: 168px;"></div>
                     <script type="text/JavaScript">
@@ -368,6 +375,7 @@
                     </h4>
                     <span class="date-meta"><?php echo nicetime(dtm2timestamp($row->date)) ?></span>
                 </div>
+                <?php echo modules::run('plugin/tag_content_by_id_limit', $row->id_content, 3) ?>
                 <div class="text" id="wall-content-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="image link-image">
                     <?php
