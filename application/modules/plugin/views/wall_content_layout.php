@@ -2,7 +2,7 @@
     <?php if ($row->type == 0) { ?>
         <!--Video-->
         <div class="text" id="wall-bookmark-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>                            
-        <div class="image link-image">
+        <div class="image link-image" style="border-bottom: 0px;">
             <a href="javascript:void(0)" id="pic-bookmark-activate" data-id="<?php echo $row->id_content ?>">
                 <img src="<?php echo base_url() . 'resource/' . $row->id_content . '.jpg' ?>" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;"/>
             </a>
@@ -14,7 +14,7 @@
     <?php } elseif ($row->type == 1) { ?>
         <!--document-->
         <div class="text" id="wall-bookmark-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>                            
-        <div class="image link-image">
+        <div class="image link-image" style="border-bottom: 0px;">
             <a href="javascript:void(0)" id="pic-bookmark-activate" data-id="<?php echo $row->id_content ?>">
                 <img src="<?php echo base_url() . 'resource/' . $row->id_content . '.jpg' ?>" style="width: 120px;height: 135px;vertical-align: middle;border-right: 1px solid #bbb;">
             </a>
@@ -26,7 +26,7 @@
     <?php } elseif ($row->type == 2) { ?>
         <!--Youtube-->
         <div class="text" id="wall-bookmark-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>                            
-        <div class="image link-image">
+        <div class="image link-image" style="border-bottom: 0px;">
             <?php
             $media = analyze_media($row->file);
             $extract_id = explode('^^^', $media);
@@ -42,7 +42,7 @@
     <?php } elseif ($row->type == 3) { ?>
         <!--Vimeo-->
         <div class="text" id="wall-bookmark-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>                            
-        <div class="image link-image">
+        <div class="image link-image" style="border-bottom: 0px;">
             <?php $media = vimeo_cover($row->file); ?>
             <a href="javascript:void(0)" id="pic-bookmark-activate" data-id="<?php echo $row->id_content ?>">
                 <img src="<?php echo ($media['thumbnail_medium']) ?>" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;">
@@ -61,7 +61,7 @@
     <?php } elseif ($row->type == 5) { ?>
         <!--slideshare-->
         <div class="text" id="wall-bookmark-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>                            
-        <div class="image link-image">
+        <div class="image link-image" style="border-bottom: 0px;">
             <?php
             $media = analyze_media($row->file);
             $extract_id = explode('^^^', $media);
@@ -88,7 +88,7 @@
     <?php } elseif ($row->type == 7) { ?>
         <!--docstoc-->
         <div class="text" id="wall-bookmark-viewer-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>                            
-        <div class="image link-image">
+        <div class="image link-image" style="border-bottom: 0px;">
             <?php
             $media = analyze_media($row->file);
             $extract_id = explode('^^^', $media);
