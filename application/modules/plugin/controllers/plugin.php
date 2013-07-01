@@ -28,4 +28,9 @@ class Plugin extends MX_Controller {
         $this->load->view('plugin/btn_bookmark', $data);
     }
 
+    function tag_content_by_id_limit($content_id, $limit) {
+        $data['tags'] = $this->model_plugin->select_tags_content($content_id, $limit)->result();
+        print_r($data);
+    }
+
 }

@@ -24,4 +24,12 @@ class Model_plugin extends CI_Model {
         return $this->db->get();
     }
 
+    function select_tags_content($content_id, $limit) {
+        $this->db->select('*');
+        $this->db->from('tags');
+        $this->db->where('content_id', $content_id);
+        $this->db->limit($limit);
+        return $this->db->get();
+    }
+
 }
