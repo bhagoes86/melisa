@@ -1,16 +1,6 @@
 <style type="text/css">
-    .pager {
-        overflow:hidden;
-        padding-top:0px;
-    }
-
-    .pager li{
-        float:left;
-        margin-left: 7px;
-        list-style-type:none;
-        margin-right:.3em;
-        font-size:1.1em;
-    }
+    .pager {overflow:hidden;padding-top:0px;}
+    .pager li{float:left;margin-left: 7px;list-style-type:none;margin-right:.3em;font-size:1.1em;}
 </style>
 <?php foreach ($content as $row): ?>
     <?php if ($row->type == 5) { ?>
