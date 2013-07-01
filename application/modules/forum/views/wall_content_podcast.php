@@ -12,6 +12,17 @@
         font-size:1.1em;
     }
 </style>
+<script src="<?php echo base_url() ?>asset/flowplayer/flowplayer.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/flowplayer/skin/minimalist.css" />
+<script type="text/javascript" src="<?php echo base_url(); ?>asset/js/jquery.paginatetable.js"></script>   
+<style type="text/css">
+    /* custom player skin */
+    .flowplayer { background-color: #222; background-size: cover; }
+    .flowplayer .fp-controls { background-color: rgba(0, 0, 0, 0.4)}
+    .flowplayer .fp-timeline { background-color: rgba(0, 0, 0, 0.5)}
+    .flowplayer .fp-progress { background-color: rgba(219, 0, 0, 1)}
+    .flowplayer .fp-buffer { background-color: rgba(249, 249, 249, 1)}
+</style>
 <?php foreach ($content as $row): ?>
     <?php if ($row->type == 0) { ?>
         <!--Video-->
