@@ -27,6 +27,7 @@ class Model_search extends CI_Model {
         $this->db->from('content');
         $this->db->like('title', $title);
         $this->db->where_in('type', $type);
+        $this->db->where('show', 1);
         return $this->db->get();
     }
 
