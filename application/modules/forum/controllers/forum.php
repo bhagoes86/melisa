@@ -117,12 +117,12 @@ class Forum extends MX_Controller {
     }
 
     //list/
-   
+
     function wall_content_podcast() {
         $data['content'] = $this->model_forum->select_content_podcast()->result();
         $this->load->view('forum/wall_content_podcast', $data);
     }
-    
+
     function wall_by_id($id_wall) {
         $data['content'] = $this->model_forum->select_wall_by_id($id_wall)->row();
         $this->load->view('forum/wall_after_post', $data);
@@ -164,7 +164,7 @@ class Forum extends MX_Controller {
     }
 
     //action/
-    
+
     function delete_wall($id_wall) {
         $this->model_forum->delete_wall($id_wall);
     }
@@ -208,7 +208,7 @@ class Forum extends MX_Controller {
             echo "msg: $id_wall";
             echo "}";
         }
-    }    
+    }
 
     function wall_player($id_wall) {
         $data['content'] = $this->model_forum->select_wall_by_id($id_wall)->row();
@@ -217,6 +217,11 @@ class Forum extends MX_Controller {
 
     function wall_content_player($id_content) {
         $data['content'] = $this->model_forum->select_content_by_id($id_content)->row();
+        $user = $this->ion_auth->user()->row();
+        $datalog['content_id'] = $data['content']->id_content;
+        $datalog['user_id'] = $user->id;
+        $datalog['type'] = $data['content']->type;
+        $this->model_forum->insert_log($datalog);
         $this->load->view('forum/wall_content_player', $data);
     }
 

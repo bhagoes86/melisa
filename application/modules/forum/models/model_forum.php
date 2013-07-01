@@ -41,6 +41,10 @@ class Model_forum extends CI_Model {
         return $this->db->insert_id();
     }
 
+    function insert_log($data) {
+        $this->db->insert('content_log', $data);
+    }
+
     function update_wall($id_wall, $data2) {
         $this->db->where('id_wall', $id_wall);
         $this->db->update('wall', $data2);
@@ -162,7 +166,7 @@ class Model_forum extends CI_Model {
         $this->db->limit(50);
         return $this->db->get();
     }
-    
+
     function select_content_bookmark($user_id) {
         $this->db->select('*');
         $this->db->from('content_bookmark');
@@ -175,7 +179,7 @@ class Model_forum extends CI_Model {
         $this->db->limit(50);
         return $this->db->get();
     }
-    
+
     function select_content_log($user_id) {
         $this->db->select('*');
         $this->db->from('content_log');
@@ -187,7 +191,7 @@ class Model_forum extends CI_Model {
         $this->db->order_by('content.id_content', 'DESC');
         $this->db->limit(50);
         return $this->db->get();
-    }    
+    }
 
     function select_content_by_id($id_content) {
         $this->db->select('*');
