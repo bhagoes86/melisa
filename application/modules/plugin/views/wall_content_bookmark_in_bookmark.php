@@ -52,7 +52,7 @@
             </div>
             <div class="clearfix"></div>
         </div>
-    <?php } elseif ($row->type == 5) { ?>
+    <?php } elseif ($row->type == 4) { ?>
         <!--scribd-->
         <div class="text" id="wall-bookmark-viewer-in-bookmark-<?php echo $row->id_content ?>" data-id="<?php echo $row->id_content ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>                            
         <div class="text" style="border: 1px solid #bbb;color: #bbb;">

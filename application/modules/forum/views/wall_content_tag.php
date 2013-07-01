@@ -203,7 +203,7 @@
                 <?php echo modules::run('forum/form_tag_add', $row->id_content, 3) ?>  
             </div>
         </li>
-    <?php } elseif ($row->type == 5) { ?>
+    <?php } elseif ($row->type == 4) { ?>
         <!--scribd-->
         <li class="feed-link" id="content<?php echo $row->id_content ?>">
             <span class="feed-avatar">
