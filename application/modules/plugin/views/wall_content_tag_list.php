@@ -14,7 +14,7 @@
             success: function (data, status)
             {
                 $('#tags-content-container-<?php echo $content_id ?>').html(data);
-                $('#tags-content-container-<?php echo $content_id ?>').slideDown('slow');
+                $('#tags-content-container-<?php echo $content_id ?>').slideToggle('fast');
             },
             error: function (data, status, e)
             {
