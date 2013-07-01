@@ -49,4 +49,8 @@ class Model_plugin extends CI_Model {
         $this->db->delete('content_bookmark');
     }
 
+    function insert_bookmark($data) {
+        $this->db->insert('content_bookmark', $data);
+    }
+
 }

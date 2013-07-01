@@ -43,7 +43,10 @@ class Plugin extends MX_Controller {
     function add_bookmark_me($content_id, $type) {
         $user = $this->ion_auth->user()->row();
         $user_id = $user->id;
-        $this->model_plugin->insert_bookmark($content_id, $type, $user_id);
+        $data['content_id'] = $content_id;
+        $data['user_id'] = $user_id;
+        $data['type'] = $type;
+        $this->model_plugin->insert_bookmark($data);
     }
 
     function tag_content_by_id_limit($content_id, $limit) {
