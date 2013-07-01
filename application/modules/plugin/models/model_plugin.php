@@ -31,5 +31,15 @@ class Model_plugin extends CI_Model {
         $this->db->limit($limit);
         return $this->db->get();
     }
+    
+    function select_tag_join_content($tag) {
+        $this->db->select('*');
+        $this->db->from('tags');
+        $this->db->join('content', 'content.id_content = tags.content_id');
+        $this->db->join('users', 'users.id = content.user_id');
+        $this->db->where('tags.tag', $tag);
+        $this->db->group_by('id_content');
+        return $this->db->get();
+    }
 
 }
