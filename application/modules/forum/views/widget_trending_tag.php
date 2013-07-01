@@ -21,7 +21,7 @@
             {
                 $('#wall_container').html(data);
                 $('#wall_container').slideDown('fast');
-                $('#loading-template').hide('fast');                
+                $('#loading-template').fadeOut('fast');                
             },
             error: function (data, status, e)
             {
