@@ -1,18 +1,11 @@
-<script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/assets/jquery-1.8.2.min.js"></script>
-<script src="<?php echo base_url() ?>asset/flowplayer/flowplayer.min.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/flowplayer/skin/minimalist.css" />
-<script type="text/javascript" src="<?php echo base_url(); ?>asset/js/jquery.paginatetable.js"></script>   
-<style type="text/css">
-    /* custom player skin */
-    .flowplayer { background-color: #222; background-size: cover; }
-    .flowplayer .fp-controls { background-color: rgba(0, 0, 0, 0.4)}
-    .flowplayer .fp-timeline { background-color: rgba(0, 0, 0, 0.5)}
-    .flowplayer .fp-progress { background-color: rgba(219, 0, 0, 1)}
-    .flowplayer .fp-buffer { background-color: rgba(249, 249, 249, 1)}
-</style>
+<script type="text/javascript">
+    $(function () {
+        $(".vidplayer<?php echo $content->id_wall ?>").flowplayer();
+    });
+</script>
 <?php if ($content->forum_type == 0) { ?>
     <!--Video-->
-    <div alt="<?php echo $content->id_wall ?>" data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="height: 394px;background-color: #000;width: 100%;padding: 0px;vertical-align: middle;" data-ratio="0.5625">
+    <div class="vidplayer<?php echo $content->id_wall ?>" alt="<?php echo $content->id_wall ?>" data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="height: 394px;background-color: #000;width: 100%;padding: 0px;vertical-align: middle;" data-ratio="0.5625">
         <video alt="<?php echo $content->id_wall ?>">
             <?php if ($content->ext == '.mp4') { ?> 
                 <source type="video/mp4" src="<?php echo base_url() . 'resource/' . $content->id_wall . '.mp4'; ?>"/>
