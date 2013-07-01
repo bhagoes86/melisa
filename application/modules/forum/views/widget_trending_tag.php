@@ -12,10 +12,7 @@
         $('div.pager').remove();                
         $('#message').html("Loading Data");
         $('#loading-template').show();                
-        $('#wall_container').empty();                
-        //        $('#wall_container').load("<?php // echo site_url('forum/content_list_by_tag') ?>/"+tag,function(){                
-        //            $('#loading-template').fadeOut("slow");
-        //        });
+        $('#wall_container').empty();
         $.ajax({
             type:'POST',
             url:"<?php echo site_url('forum/content_list_by_tag') ?>/"+tag,
@@ -24,6 +21,7 @@
             {
                 $('#wall_container').html(data);
                 $('#wall_container').slideDown('fast');
+                $('#loading-template').show('fast');                
             },
             error: function (data, status, e)
             {
