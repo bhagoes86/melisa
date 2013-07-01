@@ -12,7 +12,7 @@
             data:$(this).serialize(),
             success: function (data, status)
             {
-                $('tags-content-<?php echo $content_id ?>').slideDown(data);
+                $('tags-content-<?php echo $content_id ?>').append(data);
             },
             error: function (data, status, e)
             {
