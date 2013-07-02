@@ -8,7 +8,11 @@
             </label><br/>
             <label class="input-control radio fg-color-orangeDark">
                 <input type="radio" name="radio">
-                <span class="helper">Podcast Bulan Lalu</span>
+                <span class="helper">Podcast Bulan Sekarang</span>
+            </label><br/>
+            <label class="input-control radio fg-color-orangeDark">
+                <input type="radio" name="radio">
+                <span class="helper">Podcast Bulan Kemarin</span>
             </label><br/>
             <label class="input-control radio fg-color-orangeDark">
                 <input type="radio" name="radio">
@@ -20,7 +24,7 @@
             </label><br/>
             <label class="input-control radio fg-color-orangeDark">
                 <input type="radio" name="radio">
-                <span class="helper">Podcast Tahun <?php echo date('Y')-1; ?> , ...</span>
+                <span class="helper">Podcast Tahun < <?php echo date('Y'); ?></span>
             </label>
         </li>
     </ul>
