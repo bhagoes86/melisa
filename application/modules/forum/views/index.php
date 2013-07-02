@@ -34,14 +34,14 @@
         <script src="<?php echo base_url() ?>asset/flowplayer/flowplayer.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/flowplayer/skin/minimalist.css" />
         <style type="text/css">
-            /* custom player skin */
-/*            .flowplayer { background-color: #222; background-size: cover; }
+            /*
             .flowplayer .fp-controls { background-color: rgba(0, 0, 0, 0.4)}
             .flowplayer .fp-timeline { background-color: rgba(0, 0, 0, 0.5)}
             .flowplayer .fp-progress { background-color: rgba(219, 0, 0, 1)}
-            .flowplayer .fp-buffer { background-color: rgba(249, 249, 249, 1)}*/
-            /* custom player skin */
+            .flowplayer .fp-buffer { background-color: rgba(249, 249, 249, 1)}
             .flowplayer { width: 80%; background-color: #222; background-size: cover; max-width: 800px; }
+            */
+            .flowplayer { background-color: #222; background-size: cover; }
             .flowplayer .fp-controls { background-color: rgba(0, 0, 0, 0.4)}
             .flowplayer .fp-timeline { background-color: rgba(0, 0, 0, 0.5)}
             .flowplayer .fp-progress { background-color: rgba(219, 0, 0, 1)}
@@ -128,9 +128,9 @@
 
 
                         <!--Loading Template-->
-                        <div class="message-dialog bg-color-green fg-color-white"  style="display: none;position: fixed;top: 50%;" id="loading-template">
-                            <img style="float: left;margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/preloader-w8-cycle-black.gif">
-                            <p style="float: left;margin-left: 20px;margin-top: 30px;" id="message">Content for message dialog</p>
+                        <div class="message-dialog bg-color-blueDark fg-color-white"  style="text-align: center;display: none;position: fixed;top: 50%;" id="loading-template">
+                            <img style="margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/ajax-loader.gif">
+                            <p style="margin-top: 10px;" id="message">Loading Data</p>
                         </div>
                         <div class="message-dialog bg-color-red fg-color-white" style="display: none;position: fixed;top: 50%;" id="error-template">
                             <p id="message-error">Content for message dialog</p>

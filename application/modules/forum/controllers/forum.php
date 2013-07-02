@@ -233,5 +233,13 @@ class Forum extends MX_Controller {
         $user_info = $this->model_forum->select_user_info($id)->row();
         echo $user_info->first_name . ' ' . $user_info->last_name;
     }
+    
+    /*
+     * widget
+     */
+    
+    function widget_podcast_meta_time() {
+        
+    }
 
 }
