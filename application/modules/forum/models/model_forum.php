@@ -36,6 +36,12 @@ class Model_forum extends CI_Model {
         return $this->db->get();
     }
 
+    function select_faculty() {
+        $this->db->select('*');
+        $this->db->from('faculty');
+        return $this->db->get();
+    }
+
     function insert_wall($data) {
         $this->db->insert('wall', $data);
         return $this->db->insert_id();
@@ -197,6 +203,19 @@ class Model_forum extends CI_Model {
         $this->db->select('*');
         $this->db->from('content');
         $this->db->where('id_content', $id_content);
+        return $this->db->get();
+    }
+
+    function select_content_podcast_by_faculty($id_faculty) {
+        $this->db->select('*');
+        $this->db->from('content_faculty');
+        $this->db->join('content', 'content.id_content=content_faculty.content_id');
+        $this->db->join('users', 'users.id=content.user_id');
+        $this->db->where('content_faculty.faculty_id', $id_faculty);
+        $type = array(0, 2, 3, 6);
+        $this->db->where_in('content.type', $type);
+        $this->db->where('content.show', 1);
+        $this->db->order_by('content.id_content', 'DESC');
         return $this->db->get();
     }
 

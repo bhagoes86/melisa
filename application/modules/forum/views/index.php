@@ -105,10 +105,10 @@
                             </div>
                             <!-- Rightbar -->
                             <div class="span3 rightbar">
-                                <div id="fixed">
-                                    <?php echo modules::run('forum/widget_profile') ?>
-                                    <?php echo modules::run('forum/widget_trending_tag') ?>
-                                </div>
+                                <div id="fixed"><?php echo modules::run('forum/widget_profile') ?></div>
+                                <div id="fixed"><?php echo modules::run('forum/widget_trending_tag') ?></div>
+                                <div id="fixed" class="category_time" style="display: none;"></div>
+                                <div id="fixed" class="category_faculty" style="display: none;"></div>
                             </div>
                         </div>
 
@@ -125,8 +125,7 @@
                                 </div>
                             </div>
                         </div>
-
-
+                        
                         <!--Loading Template-->
                         <div class="message-dialog bg-color-blueDark fg-color-white"  style="text-align: center;display: none;position: fixed;top: 50%;" id="loading-template">
                             <img style="margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/ajax-loader.gif">
@@ -185,6 +184,8 @@
             $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('forum/wall_content_podcast') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
+                $('.category_time').load("<?php echo site_url('forum/widget_podcast_meta_time') ?>",function(){$('.category_time').slideDown('slow');});
+                $('.category_faculty').load("<?php echo site_url('forum/widget_podcast_meta_faculty') ?>",function(){$('.category_faculty').slideDown('slow');});
             });
         });
         

@@ -163,6 +163,11 @@ class Forum extends MX_Controller {
         $this->load->view('forum/wall_content_log', $data);
     }
 
+    function wall_content_podcast_faculty($id_faculty) {
+        $data['content'] = $this->model_forum->select_content_podcast_by_faculty($id_faculty)->result();
+        $this->load->view('forum/wall_content_podcast', $data);
+    }
+
     //action/
 
     function delete_wall($id_wall) {
@@ -233,13 +238,18 @@ class Forum extends MX_Controller {
         $user_info = $this->model_forum->select_user_info($id)->row();
         echo $user_info->first_name . ' ' . $user_info->last_name;
     }
-    
+
     /*
      * widget
      */
-    
+
     function widget_podcast_meta_time() {
-        
+        $this->load->view('forum/widget_podcast_meta_time');
+    }
+
+    function widget_podcast_meta_faculty() {
+        $data['content'] = $this->model_forum->select_faculty()->result();
+        $this->load->view('forum/widget_podcast_meta_faculty', $data);
     }
 
 }

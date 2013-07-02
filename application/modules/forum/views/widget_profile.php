@@ -1,5 +1,5 @@
 <fieldset class="feed" style="margin-top: 5px;">
-    <legend>Profilku</legend>
+    <legend><i class="icon-user"></i>Profil</legend>
     <div class="progress-bar">
         <div class="bar-caption" style="width:70%"> 70%</div>
         <div class="bar bg-color-green" style="width:70%"></div>
