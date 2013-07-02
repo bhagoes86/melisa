@@ -125,7 +125,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!--Loading Template-->
                         <div class="message-dialog bg-color-blueDark fg-color-white"  style="text-align: center;display: none;position: fixed;top: 50%;" id="loading-template">
                             <img style="margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/ajax-loader.gif">
@@ -151,11 +151,20 @@
 <div id="fb-root"></div>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#wall_container').load("<?php echo site_url('forum/wall_broadcast_first') ?>");
-        
         $('#topbar').load("<?php echo site_url('site/topbar') ?>");
-        $('#footbar').load("<?php echo site_url('site/footbar') ?>");
         $('#row-top-content').load("<?php echo site_url('home/top') ?>");
+        $('#footbar').load("<?php echo site_url('site/footbar') ?>");
+        
+        $('#message').html("Loading Data");
+        $('#loading-template').show(); 
+        $('#wall_container').empty(); 
+        $('#wall_container').load("<?php echo site_url('forum/wall_broadcast_first') ?>",function(){            
+            $('#loading-template').fadeOut('slow');
+            $("html, body").animate({
+                scrollTop: 0
+            }, 1000);
+        });
+        
         
         $('#wall-broadcast').click(function(){
             $('div.pager').remove();                
