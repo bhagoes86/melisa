@@ -176,6 +176,7 @@
                 $('.category_time').slideUp('slow');
                 $('.category_faculty').slideUp('slow');
             });
+            return false;
         });
         
         $('#wall-content-activity').click(function(){
@@ -188,6 +189,7 @@
                 $('.category_time').slideUp('slow');
                 $('.category_faculty').slideUp('slow');
             });
+            return false;
         });
         
         $('#wall-content-podcast').click(function(){
@@ -200,6 +202,7 @@
                 $('.category_time').load("<?php echo site_url('forum/widget_podcast_meta_time') ?>",function(){$('.category_time').slideDown('slow');});
                 $('.category_faculty').load("<?php echo site_url('forum/widget_podcast_meta_faculty') ?>",function(){$('.category_faculty').slideDown('slow');});
             });
+            return false;
         });
         
         $('#wall-content-document').click(function(){
@@ -209,10 +212,9 @@
             $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('forum/wall_content_document') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
-                $('.category_time').load("<?php echo site_url('forum/widget_podcast_meta_time') ?>",function(){$('.category_time').slideDown('slow');});
                 $('.category_faculty').load("<?php echo site_url('forum/widget_document_meta_faculty') ?>",function(){$('.category_faculty').slideDown('slow');});
-            
             });
+            return false;
         });
         
         $('#wall-content-presentation').click(function(){
@@ -222,7 +224,6 @@
             $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('forum/wall_content_presentation') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
-                $('.category_time').load("<?php echo site_url('forum/widget_podcast_meta_time') ?>",function(){$('.category_time').slideDown('slow');});
                 $('.category_faculty').load("<?php echo site_url('forum/widget_presentation_meta_faculty') ?>",function(){$('.category_faculty').slideDown('slow');});
             });
         });
@@ -233,8 +234,11 @@
             $('#loading-template').show();                
             $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('forum/wall_content_log') ?>",function(){                
-                $('#loading-template').fadeOut("slow");
+                $('#loading-template').fadeOut("slow");                
+                $('.category_time').slideUp('slow');
+                $('.category_faculty').slideUp('slow');
             });
+            return false;
         });
         
         $('#wall-content-bookmark').click(function(){
@@ -243,8 +247,11 @@
             $('#loading-template').show();                
             $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('forum/wall_content_bookmark') ?>",function(){                
-                $('#loading-template').fadeOut("slow");
+                $('#loading-template').fadeOut("slow");                
+                $('.category_time').slideUp('slow');
+                $('.category_faculty').slideUp('slow');
             });
+            return false;
         });
         
         $('#btn-logout').click(function(){        
