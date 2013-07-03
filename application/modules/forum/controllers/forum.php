@@ -179,7 +179,7 @@ class Forum extends MX_Controller {
     }
 
     function wall_content_podcast_year($year) {
-        $data['content'] = $this->model_forum->select_podcast_year() - result();
+        $data['content'] = $this->model_forum->select_podcast_year($year)->result();
         print_r($data);
     }
 
