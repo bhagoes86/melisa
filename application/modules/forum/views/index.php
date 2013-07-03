@@ -173,8 +173,8 @@
             $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('forum/wall_broadcast_first') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
-                $('.category_time').slideUp('slow');
-                $('.category_faculty').slideUp('slow');
+                $('.category_time').empty();
+                $('.category_faculty').empty();
             });
             return false;
         });
@@ -186,18 +186,14 @@
             $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('forum/wall_content_activity') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
-                $('.category_time').slideUp('slow');
-                $('.category_faculty').slideUp('slow');
+                $('.category_time').empty();
+                $('.category_faculty').empty();
             });
             return false;
         });
         
         $('#wall-content-podcast').click(function(){
             $('div.pager').remove();
-            $('.category_time').slideUp('slow');
-            $('.category_time').empty();
-            $('.category_faculty').slideUp('slow');
-            $('.category_faculty').empty();
             $('#message').html("Loading Data");
             $('#loading-template').show();                
             $('#wall_container').empty();                
@@ -211,10 +207,6 @@
         
         $('#wall-content-document').click(function(){
             $('div.pager').remove();                
-            $('.category_time').slideUp('slow');
-            $('.category_time').empty();
-            $('.category_faculty').slideUp('slow');
-            $('.category_faculty').empty();
             $('#message').html("Loading Data");
             $('#loading-template').show();                
             $('#wall_container').empty();                
@@ -227,10 +219,6 @@
         
         $('#wall-content-presentation').click(function(){
             $('div.pager').remove();                
-            $('.category_time').slideUp('slow');
-            $('.category_time').empty();
-            $('.category_faculty').slideUp('slow');
-            $('.category_faculty').empty();
             $('#message').html("Loading Data");
             $('#loading-template').show();                
             $('#wall_container').empty();                
@@ -247,8 +235,8 @@
             $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('forum/wall_content_log') ?>",function(){                
                 $('#loading-template').fadeOut("slow");                
-                $('.category_time').slideUp('slow');
-                $('.category_faculty').slideUp('slow');
+                $('.category_time').empty();
+                $('.category_faculty').empty();
             });
             return false;
         });
@@ -260,8 +248,8 @@
             $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('forum/wall_content_bookmark') ?>",function(){                
                 $('#loading-template').fadeOut("slow");                
-                $('.category_time').slideUp('slow');
-                $('.category_faculty').slideUp('slow');
+                $('.category_time').empty();
+                $('.category_faculty').empty();
             });
             return false;
         });
