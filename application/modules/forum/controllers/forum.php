@@ -183,7 +183,6 @@ class Forum extends MX_Controller {
         $this->db->from('content_faculty');
         $this->db->join('content', 'content.id_content=content_faculty.content_id');
         $this->db->join('users', 'users.id=content.user_id');
-        $this->db->where('content_faculty.faculty_id', $id_faculty);
         $type = array(0, 2, 3, 6);
         $this->db->where_in('content.type', $type);
         $this->db->where('content.show', 1);
