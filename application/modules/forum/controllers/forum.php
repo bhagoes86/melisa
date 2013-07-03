@@ -256,6 +256,14 @@ class Forum extends MX_Controller {
     function widget_podcast_meta_time() {
         $this->load->view('forum/widget_podcast_meta_time');
     }
+    
+    function widget_document_meta_time() {
+        $this->load->view('forum/widget_document_meta_time');
+    }
+    
+    function widget_presentation_meta_time() {
+        $this->load->view('forum/widget_presentation_meta_time');
+    }
 
     function widget_podcast_meta_faculty() {
         $data['content'] = $this->model_forum->select_faculty()->result();

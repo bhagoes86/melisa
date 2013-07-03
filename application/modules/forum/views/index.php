@@ -206,6 +206,7 @@
             $('#message').html("Loading Data");
             $('#loading-template').show();                
             $('#wall_container').empty();                
+            $('.category_time').load("<?php echo site_url('forum/widget_document_meta_time') ?>",function(){$('.category_time').slideDown('slow');});
             $('.category_faculty').load("<?php echo site_url('forum/widget_document_meta_faculty') ?>",function(){$('.category_faculty').slideDown('slow');});
             $('#wall_container').load("<?php echo site_url('forum/wall_content_document') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
@@ -217,6 +218,7 @@
             $('#message').html("Loading Data");
             $('#loading-template').show();                
             $('#wall_container').empty();                
+            $('.category_time').load("<?php echo site_url('forum/widget_presentation_meta_time') ?>",function(){$('.category_time').slideDown('slow');});
             $('.category_faculty').load("<?php echo site_url('forum/widget_presentation_meta_faculty') ?>",function(){$('.category_faculty').slideDown('slow');});
             $('#wall_container').load("<?php echo site_url('forum/wall_content_presentation') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
