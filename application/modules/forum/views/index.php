@@ -172,8 +172,8 @@
             $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('forum/wall_broadcast_first') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
-                $('.category_time').empty();
-                $('.category_faculty').empty();
+                $('.category_time').hide();
+                $('.category_faculty').hide();
             });
         });
         
@@ -184,8 +184,8 @@
             $('#wall_container').empty();                
             $('#wall_container').load("<?php echo site_url('forum/wall_content_activity') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
-                $('.category_time').empty();
-                $('.category_faculty').empty();
+                $('.category_time').hide();
+                $('.category_faculty').hide();
             });
         });
         
