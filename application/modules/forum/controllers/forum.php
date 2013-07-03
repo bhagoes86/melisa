@@ -179,15 +179,8 @@ class Forum extends MX_Controller {
     }
 
     function wall_content_podcast_year($year) {
-        $this->db->select('*');
-        $this->db->from('content_faculty');
-        $this->db->join('content', 'content.id_content=content_faculty.content_id');
-        $this->db->join('users', 'users.id=content.user_id');
-        $type = array(0, 2, 3, 6);
-        $this->db->where_in('content.type', $type);
-        $this->db->where('content.show', 1);
-        $this->db->group_by('YEAR(date)', $year);
-        $this->db->order_by('content.id_content', 'DESC');
+        $data['content'] = $this->model_forum->select_podcast_year() - result();
+        print_r($data);
     }
 
     function wall_content_podcast_year_month($year, $month) {
