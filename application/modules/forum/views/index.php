@@ -175,7 +175,6 @@
                 $('.category_time').empty();
                 $('.category_faculty').empty();
             });
-            return false;
         });
         
         $('#wall-content-activity').click(function(){
@@ -188,7 +187,6 @@
                 $('.category_time').empty();
                 $('.category_faculty').empty();
             });
-            return false;
         });
         
         $('#wall-content-podcast').click(function(){
@@ -201,7 +199,6 @@
             $('#wall_container').load("<?php echo site_url('forum/wall_content_podcast') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
             });
-            return false;
         });
         
         $('#wall-content-document').click(function(){
@@ -213,7 +210,6 @@
             $('#wall_container').load("<?php echo site_url('forum/wall_content_document') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
             });
-            return false;
         });
         
         $('#wall-content-presentation').click(function(){
@@ -237,7 +233,6 @@
                 $('.category_time').empty();
                 $('.category_faculty').empty();
             });
-            return false;
         });
         
         $('#wall-content-bookmark').click(function(){
@@ -250,7 +245,6 @@
                 $('.category_time').empty();
                 $('.category_faculty').empty();
             });
-            return false;
         });
         
         $('#btn-logout').click(function(){        
@@ -289,7 +283,6 @@
             $('#row-center-content').load("<?php echo site_url('home/welcome'); ?>",function(){
                 $('#loading-template').fadeOut("slow");
             });
-            return false;
         });
 
         $('#btn-login').click(function(){
