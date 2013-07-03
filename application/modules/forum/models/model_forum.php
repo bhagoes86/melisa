@@ -253,7 +253,7 @@ class Model_forum extends CI_Model {
         $type = array(0, 2, 3, 6);
         $this->db->where_in('content.type', $type);
         $this->db->where('content.show', 1);
-        $this->db->group_by('YEAR(content.date)', $year);
+        $this->db->group_by(YEAR('content.date'), $year);
         $this->db->order_by('content.id_content', 'DESC');
         return $this->db->get();
     }
