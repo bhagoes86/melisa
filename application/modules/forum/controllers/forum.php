@@ -167,15 +167,32 @@ class Forum extends MX_Controller {
         $data['content'] = $this->model_forum->select_content_podcast_by_faculty($id_faculty)->result();
         $this->load->view('forum/wall_content_podcast', $data);
     }
-    
+
     function wall_content_document_faculty($id_faculty) {
         $data['content'] = $this->model_forum->select_content_document_by_faculty($id_faculty)->result();
         $this->load->view('forum/wall_content_document', $data);
     }
-    
+
     function wall_content_presentation_faculty($id_faculty) {
         $data['content'] = $this->model_forum->select_content_presentation_by_faculty($id_faculty)->result();
         $this->load->view('forum/wall_content_presentation', $data);
+    }
+
+    function wall_content_podcast_year($year) {
+        $this->db->select('*');
+        $this->db->from('content_faculty');
+        $this->db->join('content', 'content.id_content=content_faculty.content_id');
+        $this->db->join('users', 'users.id=content.user_id');
+        $this->db->where('content_faculty.faculty_id', $id_faculty);
+        $type = array(0, 2, 3, 6);
+        $this->db->where_in('content.type', $type);
+        $this->db->where('content.show', 1);
+        $this->db->group_by('YEAR(date)', $year);
+        $this->db->order_by('content.id_content', 'DESC');
+    }
+
+    function wall_content_podcast_year_month($year, $month) {
+        //$this->db->group_by('MONTH(date), YEAR(date)');
     }
 
     //action/
@@ -256,11 +273,11 @@ class Forum extends MX_Controller {
     function widget_podcast_meta_time() {
         $this->load->view('forum/widget_podcast_meta_time');
     }
-    
+
     function widget_document_meta_time() {
         $this->load->view('forum/widget_document_meta_time');
     }
-    
+
     function widget_presentation_meta_time() {
         $this->load->view('forum/widget_presentation_meta_time');
     }
@@ -269,12 +286,12 @@ class Forum extends MX_Controller {
         $data['content'] = $this->model_forum->select_faculty()->result();
         $this->load->view('forum/widget_podcast_meta_faculty', $data);
     }
-    
+
     function widget_document_meta_faculty() {
         $data['content'] = $this->model_forum->select_faculty()->result();
         $this->load->view('forum/widget_document_meta_faculty', $data);
     }
-    
+
     function widget_presentation_meta_faculty() {
         $data['content'] = $this->model_forum->select_faculty()->result();
         $this->load->view('forum/widget_presentation_meta_faculty', $data);
