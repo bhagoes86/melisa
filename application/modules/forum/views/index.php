@@ -193,7 +193,11 @@
         });
         
         $('#wall-content-podcast').click(function(){
-            $('div.pager').remove();                
+            $('div.pager').remove();
+            $('.category_time').slideUp('slow');
+            $('.category_time').empty();
+            $('.category_faculty').slideUp('slow');
+            $('.category_faculty').empty();
             $('#message').html("Loading Data");
             $('#loading-template').show();                
             $('#wall_container').empty();                
@@ -207,6 +211,10 @@
         
         $('#wall-content-document').click(function(){
             $('div.pager').remove();                
+            $('.category_time').slideUp('slow');
+            $('.category_time').empty();
+            $('.category_faculty').slideUp('slow');
+            $('.category_faculty').empty();
             $('#message').html("Loading Data");
             $('#loading-template').show();                
             $('#wall_container').empty();                
@@ -219,6 +227,10 @@
         
         $('#wall-content-presentation').click(function(){
             $('div.pager').remove();                
+            $('.category_time').slideUp('slow');
+            $('.category_time').empty();
+            $('.category_faculty').slideUp('slow');
+            $('.category_faculty').empty();
             $('#message').html("Loading Data");
             $('#loading-template').show();                
             $('#wall_container').empty();                
