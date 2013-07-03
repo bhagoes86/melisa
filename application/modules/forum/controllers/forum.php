@@ -167,6 +167,16 @@ class Forum extends MX_Controller {
         $data['content'] = $this->model_forum->select_content_podcast_by_faculty($id_faculty)->result();
         $this->load->view('forum/wall_content_podcast', $data);
     }
+    
+    function wall_content_document_faculty($id_faculty) {
+        $data['content'] = $this->model_forum->select_content_document_by_faculty($id_faculty)->result();
+        $this->load->view('forum/wall_content_document', $data);
+    }
+    
+    function wall_content_presentation_faculty($id_faculty) {
+        $data['content'] = $this->model_forum->select_content_presentation_by_faculty($id_faculty)->result();
+        $this->load->view('forum/wall_content_presentation', $data);
+    }
 
     //action/
 
@@ -250,6 +260,16 @@ class Forum extends MX_Controller {
     function widget_podcast_meta_faculty() {
         $data['content'] = $this->model_forum->select_faculty()->result();
         $this->load->view('forum/widget_podcast_meta_faculty', $data);
+    }
+    
+    function widget_document_meta_faculty() {
+        $data['content'] = $this->model_forum->select_faculty()->result();
+        $this->load->view('forum/widget_document_meta_faculty', $data);
+    }
+    
+    function widget_presentation_meta_faculty() {
+        $data['content'] = $this->model_forum->select_faculty()->result();
+        $this->load->view('forum/widget_presentation_meta_faculty', $data);
     }
 
 }

@@ -219,4 +219,30 @@ class Model_forum extends CI_Model {
         return $this->db->get();
     }
 
+    function select_content_document_by_faculty($id_faculty) {
+        $this->db->select('*');
+        $this->db->from('content_faculty');
+        $this->db->join('content', 'content.id_content=content_faculty.content_id');
+        $this->db->join('users', 'users.id=content.user_id');
+        $this->db->where('content_faculty.faculty_id', $id_faculty);
+        $type = array(1, 4, 7);
+        $this->db->where_in('content.type', $type);
+        $this->db->where('content.show', 1);
+        $this->db->order_by('content.id_content', 'DESC');
+        return $this->db->get();
+    }
+
+    function select_content_presentation_by_faculty($id_faculty) {
+        $this->db->select('*');
+        $this->db->from('content_faculty');
+        $this->db->join('content', 'content.id_content=content_faculty.content_id');
+        $this->db->join('users', 'users.id=content.user_id');
+        $this->db->where('content_faculty.faculty_id', $id_faculty);
+        $type = array(5);
+        $this->db->where_in('content.type', $type);
+        $this->db->where('content.show', 1);
+        $this->db->order_by('content.id_content', 'DESC');
+        return $this->db->get();
+    }
+
 }
