@@ -184,7 +184,8 @@ class Forum extends MX_Controller {
     }
 
     function wall_content_podcast_year_month($year, $month) {
-        //$this->db->group_by('MONTH(date), YEAR(date)');
+        $data['content'] = $this->model_forum->select_podcast_year_month($year, $month)->result();
+        print_r($data);
     }
 
     //action/
