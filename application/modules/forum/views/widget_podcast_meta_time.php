@@ -32,17 +32,18 @@
 <script type="text/javascript">
     $('input[name=podcast-year]:radio').change(function(){
         var year = $(this).attr('data-year');
-        $('div.pager').remove(); 
-        $('#message').html("Loading Data");
-        $('#loading-template').show(); 
-        $('#wall_container').empty(); 
-        $('#wall_container').load("<?php echo site_url('forum/wall_content_podcast_year') ?>/"+year,function(){            
-            $('#loading-template').fadeOut('slow');
-            $("html, body").animate({
-                scrollTop: 0
-            }, 1000);
-        });
-        return false; 
+        alert(year);
+//        $('div.pager').remove(); 
+//        $('#message').html("Loading Data");
+//        $('#loading-template').show(); 
+//        $('#wall_container').empty(); 
+//        $('#wall_container').load("<?php echo site_url('forum/wall_content_podcast_year') ?>/"+year,function(){            
+//            $('#loading-template').fadeOut('slow');
+//            $("html, body").animate({
+//                scrollTop: 0
+//            }, 1000);
+//        });
+//        return false; 
     });
     //$('input[name=podcast-last-year]:radio').change(function(){});
 </script>
