@@ -3,27 +3,23 @@
     <ul style="list-style:none;color:#aaa">
         <li>
             <label class="input-control radio fg-color-orangeDark">
-                <input checked="" type="radio" name="radio">
-                <span class="helper">Podcast Minggu Terakhir</span>
-            </label><br/>
-            <label class="input-control radio fg-color-orangeDark">
-                <input checked="" type="radio" name="radio">
+                <input type="radio" name="podcast-year">
                 <span class="helper">Podcast Bulan Sekarang</span>
             </label><br/>
             <label class="input-control radio fg-color-orangeDark">
-                <input checked="" type="radio" name="radio">
+                <input type="radio" name="podcast-year">
                 <span class="helper">Podcast Bulan Kemarin</span>
             </label><br/>
             <label class="input-control radio fg-color-orangeDark">
-                <input checked="" type="radio" name="podcast-year" id="podcast-year" data-year="<?php echo date('Y') ?>">
+                <input type="radio" name="podcast-year" id="podcast-year" data-year="<?php echo date('Y') ?>">
                 <span class="helper">Podcast Tahun Sekarang</span>
             </label><br/>
             <label class="input-control radio fg-color-orangeDark">
-                <input checked="" type="radio" name="podcast-year" id="podcast-year" date-year="<?php echo date('Y') - 1 ?>">
+                <input type="radio" name="podcast-year" id="podcast-year" date-year="<?php echo date('Y') - 1 ?>">
                 <span class="helper">Podcast Tahun Lalu</span>
             </label><br/>
             <label class="input-control radio fg-color-orangeDark">
-                <input checked="" type="radio" name="radio">
+                <input type="radio" name="podcast-year">
                 <span class="helper">Podcast Tahun < <?php echo date('Y'); ?></span>
             </label>
         </li>
