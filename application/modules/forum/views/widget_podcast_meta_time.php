@@ -1,10 +1,10 @@
 <fieldset class="feed" style="margin-top: 5px;">
     <legend><i class="icon-filter"></i>Filter Waktu</legend>
     <div class="input-control select">
-        <select id="podcast_option_time">
-            <option href="javascript:void(0)" id="podcast_option" value="<?php echo date('Y'); ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">-- Pilih Waktu --</a></option>
-            <option href="javascript:void(0)" id="podcast_option" value="<?php echo date('Y'); ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">Tahun Sekarang</a></option>
-            <option href="javascript:void(0)" id="podcast_option" value="<?php echo date('Y') - 1; ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y') - 1; ?>">Tahun Kemarin</a></option>
+        <select id="podcast_option_time" class="fg-color-orangeDark">
+            <option class="fg-color-orangeDark" href="javascript:void(0)" id="podcast_option" value="<?php echo date('Y'); ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">Pilih Waktu</a></option>
+            <option class="fg-color-orangeDark" href="javascript:void(0)" id="podcast_option" value="<?php echo date('Y'); ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">Tahun Sekarang</a></option>
+            <option class="fg-color-orangeDark" href="javascript:void(0)" id="podcast_option" value="<?php echo date('Y') - 1; ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y') - 1; ?>">Tahun Kemarin</a></option>
         </select>
     </div>
 </fieldset>
