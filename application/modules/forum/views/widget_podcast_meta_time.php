@@ -1,14 +1,16 @@
 <fieldset class="feed" style="margin-top: 5px;">
     <legend><i class="icon-filter"></i>Filter Waktu</legend>
-    <select>
-        <option href="javascript:void(0)" id="podcast_option" data-year="<?php echo date('Y'); ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">Pilih </a></option>
-        <option href="javascript:void(0)" id="podcast_option" data-year="<?php echo date('Y'); ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">Tahun Sekarang</a></option>
-        <option href="javascript:void(0)" id="podcast_option" data-year="<?php echo date('Y') - 1; ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y') - 1; ?>">Tahun Kemarin</a></option>
-    </select>
+    <div class="input-control select">
+        <select id="podcast_option_time">
+            <option href="javascript:void(0)" id="podcast_option" value="<?php echo date('Y'); ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">Pilih </a></option>
+            <option href="javascript:void(0)" id="podcast_option" value="<?php echo date('Y'); ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">Tahun Sekarang</a></option>
+            <option href="javascript:void(0)" id="podcast_option" value="<?php echo date('Y') - 1; ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y') - 1; ?>">Tahun Kemarin</a></option>
+        </select>
+    </div>
 </fieldset>
 <script type="text/javascript">
-    $('option#podcast_time').select(function(){
-        var year = $(this).attr('data-year');
+    $("select").change(function(){
+        var year = $("#podcast_option_time").val();
         $('div.pager').remove(); 
         $('#message').html("Loading Data");
         $('#loading-template').show(); 
@@ -19,6 +21,6 @@
                 scrollTop: 0
             }, 1000);
         });
-        return false; 
+        return false;
     });
 </script>
