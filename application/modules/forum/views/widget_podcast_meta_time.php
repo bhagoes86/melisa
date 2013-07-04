@@ -15,11 +15,11 @@
                 <span class="helper">Podcast Bulan Kemarin</span>
             </label><br/>
             <label class="input-control radio fg-color-orangeDark">
-                <input type="radio" name="radio">
+                <input type="radio" name="podcast-year" data-year="<?php echo date('Y') ?>">
                 <span class="helper">Podcast Tahun Sekarang</span>
             </label><br/>
             <label class="input-control radio fg-color-orangeDark">
-                <input type="radio" name="radio">
+                <input type="radio" name="podcast-year" date-year="<?php echo date('Y') - 1 ?>">
                 <span class="helper">Podcast Tahun Lalu</span>
             </label><br/>
             <label class="input-control radio fg-color-orangeDark">
@@ -29,3 +29,19 @@
         </li>
     </ul>
 </fieldset>
+<script type="text/javascript">
+    $('input[name=podcast-year]:radio').change(function(){
+        var year = $(this).attr('data-year');
+        $('div.pager').remove(); 
+        $('#message').html("Loading Data");
+        $('#loading-template').show(); 
+        $('#wall_container').empty(); 
+        $('#wall_container').load("<?php echo site_url('forum/wall_content_podcast_year') ?>/"+year,function(){            
+            $('#loading-template').fadeOut('slow');
+            $("html, body").animate({
+                scrollTop: 0
+            }, 1000);
+        });
+        return false; 
+    });
+</script>
