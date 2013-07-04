@@ -31,7 +31,7 @@
 <fieldset class="feed" style="margin-top: 5px;">
     <legend><i class="icon-filter"></i>Filter Fakultas</legend>
     <div class="input-control select" style="width: 100%">
-        <select id="podcast-filter-faculty" class="fg-color-orangeDark" style="width: 100%">
+        <select id="podcast-filter-faculty" class="fg-color-greenDark" style="width: 100%">
             <option class="fg-color-greenDark" href="javascript:void(0)">Pilih Fakultas</option>
             <?php foreach ($content as $row): ?>
                 <option class="fg-color-greenDark" href="javascript:void(0)" id="podcast_option_faculty" value="<?php echo $row->id_faculty ?>"><?php echo $row->faculty ?></option>
