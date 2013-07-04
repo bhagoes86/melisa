@@ -107,7 +107,7 @@
                             <div class="span3 rightbar">
                                 <div id="fixed"><?php echo modules::run('forum/widget_profile') ?></div>
                                 <div id="fixed"><?php echo modules::run('forum/widget_trending_tag') ?></div>
-                                <!--<div id="fixed" class="category_time" style="display: none;"></div>-->
+                                <div id="fixed" class="category_time" style="display: none;"></div>
                                 <div id="fixed" class="category_faculty" style="display: none;"></div>
                             </div>
                         </div>

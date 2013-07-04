@@ -1,12 +1,13 @@
 <fieldset class="feed" style="margin-top: 5px;">
     <legend><i class="icon-filter"></i>Filter Waktu</legend>
     <select>
-        <option><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">Tahun Sekarang</a></option>
-        <option><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y') - 1; ?>">Tahun Kemarin</a></option>
-    </option>
+        <option href="javascript:void(0)" id="podcast_option" data-year="<?php echo date('Y'); ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">Pilih </a></option>
+        <option href="javascript:void(0)" id="podcast_option" data-year="<?php echo date('Y'); ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">Tahun Sekarang</a></option>
+        <option href="javascript:void(0)" id="podcast_option" data-year="<?php echo date('Y') - 1; ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y') - 1; ?>">Tahun Kemarin</a></option>
+    </select>
 </fieldset>
 <script type="text/javascript">
-    $('a#podcast_time').click(function(){
+    $('option#podcast_time').select(function(){
         var year = $(this).attr('data-year');
         $('div.pager').remove(); 
         $('#message').html("Loading Data");
