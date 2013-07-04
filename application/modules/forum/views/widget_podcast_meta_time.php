@@ -19,7 +19,7 @@
                 <span class="helper">Podcast Tahun Sekarang</span>
             </label><br/>
             <label class="input-control radio fg-color-orangeDark">
-                <input type="radio" name="podcast-year" id="podcast-year" date-year="<?php echo date('Y') - 1 ?>">
+                <input type="radio" name="podcast--last-year" id="podcast-year" date-year="<?php echo date('Y') - 1 ?>">
                 <span class="helper">Podcast Tahun Lalu</span>
             </label><br/>
             <label class="input-control radio fg-color-orangeDark">
@@ -46,4 +46,9 @@
 //        return false; 
     });
     //$('input[name=podcast-last-year]:radio').change(function(){});
+    
+    $('input[name=podcast-last-year]:radio').change(function(){
+        var year = $(this).attr('data-year');
+        alert(year);
+    });
 </script>
