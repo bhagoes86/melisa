@@ -30,7 +30,7 @@
     </ul>
 </fieldset>
 <script type="text/javascript">
-    $('input#podcast-year').change(function(){
+    $('input[name=podcast-year]:radio').change(function(){
         var year = $(this).attr('data-year');
         $('div.pager').remove(); 
         $('#message').html("Loading Data");
