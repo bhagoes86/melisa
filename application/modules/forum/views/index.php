@@ -166,6 +166,7 @@
         });
         
         $('#wall-broadcast').click(function(){
+            $('#after-post').hide();                
             $('div.pager').remove();                
             $('#message').html("Loading Data");
             $('#loading-template').show();                
@@ -178,6 +179,7 @@
         });
         
         $('#wall-content-activity').click(function(){
+            $('#after-post').hide();
             $('div.pager').remove();                
             $('#message').html("Loading Data");
             $('#loading-template').show();                
@@ -190,6 +192,7 @@
         });
         
         $('#wall-content-podcast').click(function(){
+            $('#after-post').hide();
             $('div.pager').remove();
             $('#message').html("Loading Data");
             $('#loading-template').show();                
@@ -202,6 +205,7 @@
         });
         
         $('#wall-content-document').click(function(){
+            $('#after-post').hide();
             $('div.pager').remove();                
             $('#message').html("Loading Data");
             $('#loading-template').show();                
@@ -214,6 +218,7 @@
         });
         
         $('#wall-content-presentation').click(function(){
+            $('#after-post').hide();
             $('div.pager').remove();                
             $('#message').html("Loading Data");
             $('#loading-template').show();                
@@ -226,6 +231,7 @@
         });
         
         $('#wall-content-log').click(function(){
+            $('#after-post').hide();
             $('div.pager').remove();                
             $('#message').html("Loading Data");
             $('#loading-template').show();                
@@ -238,6 +244,7 @@
         });
         
         $('#wall-content-bookmark').click(function(){
+            $('#after-post').hide();
             $('div.pager').remove();                
             $('#message').html("Loading Data");
             $('#loading-template').show();                

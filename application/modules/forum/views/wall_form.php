@@ -1,4 +1,4 @@
-<fieldset class="feed" style="margin-top: 5px;padding-top: 0px;padding-right: 0px;margin-right: 6px;">
+<fieldset class="feed" style="margin-top: 5px;padding-top: 0px;padding-right: 0px;margin-right: 2px;">
     <legend><?php echo modules::run('forum/user_name', $user_id) ?></legend><br/>
     <form id="add-wall" method="post">
         <div class="input-control">

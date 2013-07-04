@@ -6105,8 +6105,8 @@ pre code {
 }
 .listview li {
   margin-bottom: 10px;
-  border: 4px transparent solid;
-  padding: 10px;
+  border: 0px 0px 0px 0px transparent solid;
+  padding: 10px 15px 10px 10px;
   width: 300px;
   position: relative;
   display: block;

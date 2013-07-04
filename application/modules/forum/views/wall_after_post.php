@@ -1,6 +1,6 @@
 <?php if ($content->forum_type == 0) { ?>
     <!--Video-->
-    <li class="feed-link">
+    <li class="feed-link" id="after-post">
         <span class="feed-avatar">
             <?php if ($content->profic == '') { ?>
                 <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
