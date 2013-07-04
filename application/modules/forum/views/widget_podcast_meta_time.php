@@ -11,11 +11,12 @@
                 <span class="helper">Podcast Bulan Kemarin</span>
             </label><br/>
             <label class="input-control radio fg-color-orangeDark">
-                <input type="radio" name="podcast-year" id="podcast-year" data-year="<?php echo date('Y') ?>">
+                <input type="radio" name="podcast-year" id="podcast-year" data-year="<?php echo date('Y'); ?>">
                 <span class="helper">Podcast Tahun Sekarang</span>
             </label><br/>
+            <?php $last_year = date('Y') - 1; ?>
             <label class="input-control radio fg-color-orangeDark">
-                <input type="radio" name="podcast-year" id="podcast-year" date-year="<?php echo date('Y') - 1 ?>">
+                <input type="radio" name="podcast-year" id="podcast-year" date-year="<?php echo $last_year; ?>">
                 <span class="helper">Podcast Tahun Lalu</span>
             </label><br/>
             <label class="input-control radio fg-color-orangeDark">
