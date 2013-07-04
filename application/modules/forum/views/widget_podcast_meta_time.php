@@ -2,14 +2,14 @@
     <legend><i class="icon-filter"></i>Filter Waktu</legend>
     <div class="input-control select" style="width: 100%">
         <select id="podcast_option_time" class="fg-color-orangeDark" style="width: 100%">
-            <option class="fg-color-orangeDark" href="javascript:void(0)" id="podcast_option" value="<?php echo date('Y'); ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>"><i class="icon-arrow-right-3"></i> Pilih Waktu</a></option>
-            <option class="fg-color-orangeDark" href="javascript:void(0)" id="podcast_option" value="<?php echo date('Y'); ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>"><i class="icon-arrow-right-3"></i> Tahun Sekarang</a></option>
-            <option class="fg-color-orangeDark" href="javascript:void(0)" id="podcast_option" value="<?php echo date('Y') - 1; ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y') - 1; ?>"><i class="icon-arrow-right-3"></i> Tahun Kemarin</a></option>
+            <i class="icon-arrow-right-3"></i> <option class="fg-color-orangeDark" href="javascript:void(0)" id="podcast_option" value="<?php echo date('Y'); ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">Pilih Waktu</a></option>
+            <i class="icon-arrow-right-3"></i> <option class="fg-color-orangeDark" href="javascript:void(0)" id="podcast_option" value="<?php echo date('Y'); ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">Tahun Sekarang</a></option>
+            <i class="icon-arrow-right-3"></i> <option class="fg-color-orangeDark" href="javascript:void(0)" id="podcast_option" value="<?php echo date('Y') - 1; ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y') - 1; ?>">Tahun Kemarin</a></option>
         </select>
     </div>
 </fieldset>
 <script type="text/javascript">
-    $("select").change(function(){
+    $("select#podcast_option_time").change(function(){
         var year = $("#podcast_option_time").val();
         $('div.pager').remove(); 
         $('#message').html("Loading Data");
