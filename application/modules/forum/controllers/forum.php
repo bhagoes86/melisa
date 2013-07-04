@@ -189,22 +189,22 @@ class Forum extends MX_Controller {
     }
 
     function wall_content_document_year($year) {
-        $data['content'] = $this->model_forum->select_podcast_year($year)->result();
+        $data['content'] = $this->model_forum->select_document_year($year)->result();
         $this->load->view('forum/wall_content_document', $data);
     }
 
     function wall_content_document_year_month($year, $month) {
-        $data['content'] = $this->model_forum->select_podcast_year_month($year, $month)->result();
+        $data['content'] = $this->model_forum->select_document_year_month($year, $month)->result();
         $this->load->view('forum/wall_content_document', $data);
     }
 
     function wall_content_presentation_year($year) {
-        $data['content'] = $this->model_forum->select_podcast_year($year)->result();
+        $data['content'] = $this->model_forum->select_presentation_year($year)->result();
         $this->load->view('forum/wall_content_presentation', $data);
     }
 
     function wall_content_presentation_year_month($year, $month) {
-        $data['content'] = $this->model_forum->select_podcast_year_month($year, $month)->result();
+        $data['content'] = $this->model_forum->select_presentation_year_month($year, $month)->result();
         $this->load->view('forum/wall_content_presentation', $data);
     }
 
