@@ -1,9 +1,9 @@
 <fieldset class="feed" style="margin-top: 5px;">
     <legend><i class="icon-filter"></i>Filter Waktu</legend>
-    <ul class="dropdown-menu">
-        <li><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">Tahun Sekarang</a></li>
-        <li><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y') - 1; ?>">Tahun Kemarin</a></li>
-    </ul>
+    <select>
+        <option><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">Tahun Sekarang</a></option>
+        <option><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y') - 1; ?>">Tahun Kemarin</a></option>
+    </option>
 </fieldset>
 <script type="text/javascript">
     $('a#podcast_time').click(function(){
