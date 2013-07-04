@@ -1,5 +1,5 @@
 <fieldset class="feed" style="margin-top: 5px;">
-    <legend style="padding-top: 2px;"><i class="icon-filter"></i>Filter Fakultas</legend>
+    <legend style="padding-top: 2px;"><i class="icon-filter"></i>Filter Podcast Fakultas</legend>
     <div class="input-control select" style="width: 100%">
         <select id="podcast-filter-faculty" style="width: 100%">
             <option href="javascript:void(0)">Pilih Fakultas</option>
