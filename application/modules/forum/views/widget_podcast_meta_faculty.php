@@ -3,10 +3,10 @@
     <ul style="list-style:none;color:#aaa">
         <li>
 <?php foreach ($content as $row): ?>
-                    <label class="input-control radio fg-color-greenDark">
-                        <input checked="" type="radio" name="id_faculty" id="id_faculty" data-id="<?php echo $row->id_faculty ?>">
-                        <span class="helper" title="<?php echo $row->faculty ?>"><?php echo $row->short ?></span> 
-                    </label><br/>
+                        <label class="input-control radio fg-color-greenDark">
+                            <input checked="" type="radio" name="id_faculty" id="id_faculty" data-id="<?php echo $row->id_faculty ?>">
+                            <span class="helper" title="<?php echo $row->faculty ?>"><?php echo $row->short ?></span> 
+                        </label><br/>
 <?php endforeach; ?>
         </li>
     </ul>
@@ -32,16 +32,16 @@
     <legend><i class="icon-filter"></i>Filter Fakultas</legend>
     <div class="input-control select" style="width: 100%">
         <select id="podcast-filter-faculty" class="fg-color-orangeDark" style="width: 100%">
-            <option class="fg-color-orangeDark" href="javascript:void(0)" id="podcast_option_faculty" value="<?php echo $row->id_faculty ?>">Pilih Fakultas</option>
+            <option class="fg-color-greenDark" href="javascript:void(0)">Pilih Fakultas</option>
             <?php foreach ($content as $row): ?>
-                <option class="fg-color-orangeDark" href="javascript:void(0)" id="podcast_option_faculty" value="<?php echo $row->id_faculty ?>"><?php echo $row->faculty ?></option>
+                <option class="fg-color-greenDark" href="javascript:void(0)" id="podcast_option_faculty" value="<?php echo $row->id_faculty ?>"><?php echo $row->faculty ?></option>
             <?php endforeach; ?>
         </select>
     </div>
 </fieldset>
 <script type="text/javascript">
     $("select#podcast-filter-faculty").change(function(){
-        var id_faculty = $("#podcast_option_faculty").val();
+        var id_faculty = $("#podcast-filter-faculty").val();
         $('div.pager').remove(); 
         $('#message').html("Loading Data");
         $('#loading-template').show(); 
