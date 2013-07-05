@@ -12,7 +12,7 @@
 
 
 <a class="button bg-color-green fg-color-white" id="quiz-back-btn" data-id="<?php //echo $assignment_id; ?>" ><i class="icon-arrow-left-2" ></i>Kembali ke Tugas</a>
-<a class="button bg-color-yellow" id="quiz-add-form"><i class="icon-plus"></i>Tambah Grup</a>
+<a class="button bg-color-yellow" id="assignment-result"><i class="icon-plus"></i>Cetak Nilai Tugas</a>
 
 
  <?php if (count($list_assignment_result) > 0) {?>
@@ -20,22 +20,26 @@
 <table class="striped" id="my-table">
     <thead>
         <tr>
-            <th><b>Kode</b></th>
-            <th><b>Nama</b></th>
-            <th><b>Deskripsi</b></th>
-            <th><b>Hasil</b></th>
+            <th><b>No</b></th>
+            <th><b>Tugas</b></th>
             <th><b>Aksi</b></th>
         </tr>
     </thead>
 
     <tbody>
-        <?php foreach ($list_assignment_result as $result): ?>
+        <?php $number = 1; foreach ($list_assignment_result as $result): ?>
             <?php if ($result->deleted == 0){ ?>
+            
             <tr>
-                <td><?php echo $result->course_id." - ".$result->assignment_id." - ".$result->group_id; ?></td>
-                <td><?php echo $result->user_id; ?></td>
-                <td><?php echo $result->description; ?></td>
-                <td>Score : <?php echo $result->score?> <br /> <?php echo $result->feedback?></td>
+                <td><?php echo $number ?></td>
+                <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
+                    <a style="color: #095b97;font-size: 18px;"><?php echo $result->username; ?></a> <br />
+                    <a style="color: #095b97;font-size: 18px;"><?php echo $result->file?></a> <br />
+                    <p style="color: rgb(94,94,94);font-size: 13px;"><?php echo cut_text($result->description, 45) ?> ...</p>
+                    <br />
+                    <a style="color: #095b97;font-size: 18px;">Score : <?php echo $result->score?> </a> <br /> 
+                    <p style="color: rgb(94,94,94);font-size: 13px;"><?php echo cut_text($result->feedback, 45) ?> ...</p>
+                </td>
 
                 <td style="width: 30px;border: 1px solid white;vertical-align: middle;background-color:rgba(0, 0, 0, 0.0666667);">
                     <a title="edit grup" href="javascript:void(0)" id="btn-edit" data-id="<?php echo $result->id_assignment_student; ?>"><i class="icon-pencil fg-color-pink"></i></a>
@@ -43,12 +47,12 @@
                </td>
             </tr>
            <?php } ?>
-        <?php endforeach; ?>
+        <?php $number ++; endforeach; ?>
     </tbody>
 </table>
         <?php } else { ?>
             <tr>
-                <td><h2>Tidak ada  grup yang bisa dipakai....</h2></td>
+                <td><h3>Tidak ada tugas</h3></td>
             </tr>
         <?php }?>
 
@@ -61,6 +65,15 @@
     </div>
 </div>           
 <script type="text/javascript">
+    $('#assignment-result').click(function(){
+        $('#message').html("Loading Data");
+        $('#loading-template').show();
+
+        $('#content-right').load("<?php echo site_url('assignment/show_assignment_result') ?>",function(){
+            $('#loading-template').fadeOut("slow");
+
+        });
+    });
 
     $('#accept-confirm-message').click(function(){
             $('#message').html('Sedang Menghapus .... ');

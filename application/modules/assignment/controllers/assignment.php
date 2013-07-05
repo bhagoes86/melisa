@@ -28,7 +28,13 @@ class Assignment extends MX_Controller {
             foreach ($temp_list_assignment as $assignment){
                 $temp_array[$i] = $assignment;
                 $temp_course = $this->load->model_assignment->select_course_by_assignment_id($user->id, $assignment->id_assignment)->row();
-                $temp_array[$i]->course =  $temp_course->course;
+                if ($temp_course!=null){
+                    $temp_array[$i]->course =  $temp_course->course;
+                }
+                else {
+                    $temp_array[$i]->course =  null;
+                    
+                }
                 $temp_group = $this->load->model_assignment->select_group_by_assignment($assignment->id_assignment)->result();
                 $temp_array[$i]->list_group = $temp_group;
                 $i++;
@@ -365,7 +371,7 @@ class Assignment extends MX_Controller {
             $config['upload_path'] = './resource/'; //upload ke folder resource/id/pdf
             $config['allowed_types'] = 'zip|rar|pdf|ZIP|RAR|PDF';
             $config['max_size'] = '215000'; //dengan maksimal ukuran berkas 50 Mb
-            $config['file_name'] = 'assignment_file_student_' . $id_assignment; //berkas dikirim kemudian diganti namanya
+            //$config['file_name'] = 'assignment_file_student_' . $id_assignment; //berkas dikirim kemudian diganti namanya
 
             $this->load->library('upload', $config); //panggil librari upload
             $this->upload->overwrite = true;
@@ -391,6 +397,7 @@ class Assignment extends MX_Controller {
     function success_upload_assignment(){
         echo "<h2>Upload tugas berhasil</h2>";
     }
+    
     function check_submit_assignment(){
          if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -431,6 +438,53 @@ class Assignment extends MX_Controller {
     }
     
     function show_form_edit_result($assignment_student_id){
-        echo $assignment_student_id;
+        if (!$this->ion_auth->logged_in()) {
+            redirect();
+        } else {
+            $temp = $this->model_assignment->select_assignment_result_by_id($assignment_student_id)->row();
+            
+            $data['assignment_student_id'] = $assignment_student_id;
+            $data['course_id'] = $temp->course_id;
+            $data['assignment_id'] = $temp->assignment_id;
+            $data['group_id'] = $temp->group_id;
+            $data['course_title'] = $temp->course;
+            $data['group_title'] = $temp->group_title;
+            $data['assignment_title'] = $temp->assignment_title;
+            $data['user'] = $temp->username;
+            $data['file'] = $temp->file;
+            $data['description'] = $temp->description;
+            $data['feedback'] = $temp->feedback;
+            $data['score'] = $temp->score;
+            
+            $this->load->view('assignment/form_edit_score', $data);
+        }
+    }
+    
+    function update_result(){
+        if (!$this->ion_auth->logged_in()) {
+            redirect();
+        } else {
+            
+            $id_assignment_student = $this->input->post('assignment_student_id', true);
+            $data['feedback'] = $this->input->post('feedback', true);
+            $data['score'] = $this->input->post('score', true);
+            
+            $this->model_assignment->update_assignment_student($id_assignment_student, $data);
+            
+        }
+    }
+    
+    
+    function show_my_assignment_result(){
+        if (!$this->ion_auth->logged_in()) {
+            redirect();
+        } else {
+            $user = $this->ion_auth->user()->row();
+            $temp = $this->model_assignment->select_assignment_result_by_user($user->id)->result();
+            
+            echo "<pre>";
+            print_r($temp);
+            echo "</pre>";
+        }
     }
 }

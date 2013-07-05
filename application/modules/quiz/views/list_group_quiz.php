@@ -9,7 +9,7 @@
     </div>
 </div>
 
- <?php if (count($list_avail_group) > 0) {?>
+ <?php if ($list_avail_group > 0) {?>
 
 <table class="striped" id="my-table">
     <thead>
@@ -55,9 +55,9 @@
     </tbody>
 </table>
         <?php } else { ?>
-            <tr>
-                <td><h2>Tidak ada  grup yang bisa dipakai....</h2></td>
-            </tr>
+            
+                <h2>Tidak ada  grup yang bisa dipakai....</h2>
+           
         <?php }?>
 
             

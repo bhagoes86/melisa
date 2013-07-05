@@ -1,4 +1,3 @@
-
 <a class="button bg-color-green fg-color-white" id="quiz-back-btn" data-id="" ><i class="icon-arrow-left-2" ></i>Kelola Kuis</a>
 <a target="_blank" href="<?php echo site_url('quiz/print_my_quiz_result') ?>" class="button bg-color-orange fg-color-white" id="print-report" data-id="" ><i class="icon-printer" ></i>Cetak Laporan (PDF)</a>
 

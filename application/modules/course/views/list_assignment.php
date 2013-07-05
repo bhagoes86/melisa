@@ -6,7 +6,10 @@
     <table class="striped" id="my-table">
         <tbody>
             <?php
-            foreach ($list_assignment as $assignment) {?>
+            foreach ($list_assignment as $assignment) {
+                
+                ?>
+            
             <tr>
                 <td><?php echo $assignment->assignment_title; ?> - <?php echo $assignment->group_title ?></td>
                 

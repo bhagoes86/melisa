@@ -217,7 +217,9 @@ class Model_quiz extends CI_Model {
         $this->db->select('*');
         $this->db->from('quiz_group');
         $this->db->where('quiz_id', $id_quiz);
+        $this->db->where('deleted', 0);
         $this->db->order_by('date_modified', 'desc');
+       
         return $this->db->get();
     }
 

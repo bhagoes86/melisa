@@ -1,59 +1,42 @@
-<h2 style="margin-top: 0px; padding-top: 0px;">Edit Grup</h2>
+<h2 style="margin-top: 0px; padding-top: 0px;">Edit Nilai Tugas</h2>
 
-<hr />
-<br />
-<br />
-
-<h3>Edit data grups</h3>
+<br>
 <form id="add-group" >
 
+    <hr>
+    Dikumpulkan oleh : <b><?php echo $user;?></b> <br />
+    Kuliah : <?php echo $course_title;?> <br />
+    Kelas : <?php echo $group_title;?> <br />
+    Tugas : <?php echo $assignment_title; ?>
+    <hr>
     <div class="input-control text">
-        <input name="title" id="title" type="text" placeholder="Judul Grup" value="<?php echo $title;?>"/>
-        <button class="helper"></button>
+        <a class="button bg-color-purple fg-color-white" id="quiz-file-sample" href="<?php echo base_url()."resource/".$file;?>"><i class="icon-download"></i><?php echo $file;?></a>
+        <p></p>
     </div>
     <div class="input-control textarea">
-        <textarea name="description" id="description" placeholder="Deskripsi"><?php echo $description;?></textarea>
+        <p>Pesan : <br /> <?php echo $description;?></p>
     </div>
-
-    <div class="input-control select span2">
-        <select name="status" id="status">
-            <?php
-                if ($status == 1){
-                    ?>
-                    <option value="1">Tampilkan</option>
-                    <option value="0">Sembunyikan</option>
-                    <?php
-                }
-                else {
-                    ?>
-                    <option value="1">Tampilkan</option>
-                    <option value="0" selected>Sembunyikan</option>
-                    <?php
-                }
-            ?>
-
-        </select>
-    </div><br /><br /><br/>
-    <hr>
+    
+    <hr />
+    <br />
+    
+    <fieldset>
+    <h4 style="margin-top: 0px;padding-top: 0px;">Berikan komentar Anda mengenai tugas ini : </h4>
+    <div class="input-control textarea">
+        <textarea name="feedback" id="feedback" placeholder="Feedback"><?php echo $feedback;?></textarea>
+    </div>
     
     <br />
     
-    
-    <br />
-    <div id="ujian-biasa">
-        <fieldset>
-        <h4 style="margin-top: 0px;padding-top: 0px;">Sandi Masuk Ujian : </h4>
-        <div class="input-control text span2">
-            <input name="password" id="password" type="password"  value="<?php echo $password;?>"/>
-        </div>
-        </fieldset>
+    <h4 style="margin-top: 0px;padding-top: 0px;">Berikan nilai untuk tugas ini: </h4>
+    <div class="input-control text span2">
+        <input name="score" id="score" type="text"  value="<?php echo $score;?>"/>
     </div>
+    </fieldset>
+    
    
-
-    
-
     <br><br><br>
-    <input type="hidden" name="id_group" id="id_group" value="<?php echo $group_id ?>"/>
+    <input type="hidden" name="assignment_student_id" id="assignment_student_id" value="<?php echo $assignment_student_id ?>"/>
     <input type="submit" value="Submit"/>
     <input class="bg-color-red" style="color:white" type="button" name="btn-cancel" id="btn-cancel" value="Cancel"/>
 </form>
@@ -74,7 +57,7 @@
     $('#btn-cancel').click(function(){
             $('#message').html('Loading ... ');
             $('#loading-template').show();
-            $('#content-right').load("<?php echo site_url('assignment/list_group') ?>/"+<?php echo $assignment_id; ?>,function(){
+            $('#content-right').load("<?php echo site_url('assignment/give_score') ?>/"+<?php echo $course_id; ?> + "/"+<?php echo $assignment_id; ?>+ "/"+<?php echo $group_id; ?>,function(){
                 $('#loading-template').fadeOut("slow");
             });
      });
@@ -106,11 +89,11 @@
         
         $.ajax({
             type:'POST',
-            url:"<?php echo site_url('assignment/update_group') ?>",
+            url:"<?php echo site_url('assignment/update_result') ?>",
             data:$(this).serialize(),
             success:function (data) {
-                $('#content-right').load("<?php echo site_url('assignment/list_group') ?>/"+<?php echo $assignment_id;?>,function(){
-                    $('#loading-template').fadeOut("slow");
+                $('#content-right').load("<?php echo site_url('assignment/give_score') ?>/"+<?php echo $course_id; ?> + "/"+<?php echo $assignment_id; ?>+ "/"+<?php echo $group_id; ?>,function(){
+                     $('#loading-template').fadeOut("slow");
                 });
             },
             error:function (data){

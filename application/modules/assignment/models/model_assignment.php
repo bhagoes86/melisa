@@ -123,6 +123,7 @@ class Model_assignment extends CI_Model {
     function select_assignment_submited_by_cag($user_id, $course_id, $assignment_id, $group_id){
         $this->db->select('*');
         $this->db->from('assignment_file_student as afs');
+        $this->db->join('users as usr', 'usr.id = afs.user_id');
         $this->db->where('afs.course_id', $course_id);
         $this->db->where('afs.assignment_id', $assignment_id);
         $this->db->where('afs.group_id', $group_id);
@@ -131,5 +132,29 @@ class Model_assignment extends CI_Model {
         return $this->db->get();
     }
     
+    
+    function select_assignment_result_by_id($assignment_student_id){
+        $this->db->select('afs.course_id, afs.assignment_id, afs.group_id, crs.course, ag.title as group_title, af.title as assignment_title, usr.username, afs.file, afs.description, afs.feedback, afs.score');
+        $this->db->from('assignment_file_student as afs');
+        $this->db->join('users as usr', 'usr.id = afs.user_id');
+        $this->db->join('course as crs', 'crs.id_course = afs.course_id');
+        $this->db->join('assignment_group as ag', 'ag.id_group = afs.group_id');
+        $this->db->join('assignment_file as af', 'af.id_assignment = afs.assignment_id');
+        $this->db->where('afs.id_assignment_student', $assignment_student_id);
+        
+        return $this->db->get();
+    }
+    
+    function select_assignment_result_by_user($user_id){
+        $this->db->select('afs.course_id, afs.assignment_id, afs.group_id, crs.course, ag.title as group_title, af.title as assignment_title, af.file_assignment, usr.username, afs.file, afs.description, afs.feedback, afs.score');
+        $this->db->from('assignment_file_student as afs');
+        $this->db->join('course as crs', 'crs.id_course = afs.course_id');
+        $this->db->join('assignment_group as ag', 'ag.id_group = afs.group_id');
+        $this->db->join('assignment_file as af', 'af.id_assignment = afs.assignment_id');
+        $this->db->join('users as usr', 'usr.id = af.user_id');
+        $this->db->where('afs.user_id', $user_id);
+        
+        return $this->db->get();
+    }
     
 }

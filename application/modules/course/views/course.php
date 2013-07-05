@@ -176,8 +176,8 @@
     
     
     setInterval(function(){
-        $('#list-quiz').load('<?php echo site_url('course/list_quiz') . "/$course->id_course"; ?>')
-        //$('#list-assignment').load('<?php echo site_url('course/list_assignment') . "/$course->id_course"; ?>')
+        $('#list-quiz').load('<?php echo site_url('course/list_quiz') . "/$course->id_course"; ?>');
+        $('#list-assignment').load('<?php echo site_url('course/list_assignment') . "/$course->id_course"; ?>');
     }, 1000);
     
     $('a#silabus-get-content').click(function(){

@@ -15,7 +15,7 @@ class Quiz extends MX_Controller {
         $this->load->model('model_quiz', '', true);
     }
 
-    // fungsi utama yang dipanggil untuk mulai mengelola kuis
+    // fungsi utama yang dipanggil untuk mulai mengelola kuis : manajemen kuis
     function index() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -30,7 +30,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    
+    // melihat pembahasan soal : rekap nilai saya, mengerjakan kuis
     function quiz_summary($id_result, $id_soal, $idx_soal){
            if (!$this->ion_auth->logged_in()) {
                 redirect();
@@ -109,7 +109,7 @@ class Quiz extends MX_Controller {
      }
     
     /* --- VIEW   ---- */
-
+    // fungsi yang digunakan untuk mengecheck password tryout saat mengakses kuis jika bertipe tryout : mengerjakan kuis [*]
     function check_tryout_password($group_id) {
         $check_pass_tryout = count($this->model_quiz->select_pass_tryout_by_group($group_id)->result());
         if ($check_pass_tryout != 0) {
@@ -118,7 +118,8 @@ class Quiz extends MX_Controller {
             echo "Anda belum memiliki kumpulan password untuk tryout. Tekan tombol Generate untuk menghasilkan kumpulan password tryout <br /><br />";
         }
     }
-
+    
+    // fungsi yang digunakan untuk menyimpan kumpulan tiket tryout ke database : manajemen grup kuis
     function store_tryout_password($quiz_id, $group_id) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -197,6 +198,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi yang digunakan untuk melihat cara penggunaan modul kuis : manajemen kuis [*]
     function show_quiz_help() {
 
         if (!$this->ion_auth->logged_in()) {
@@ -206,6 +208,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi yang digunakan untuk mencetak kumpulan tiket tryout : manajemen grup kuis
     function print_ticket_tryout($group_id, $quiz_id) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -237,6 +240,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // mencetak hasil kuis yang pernah diikuti user : rekap nilai saya
     function print_my_quiz_result() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -245,28 +249,34 @@ class Quiz extends MX_Controller {
 
             $user = $this->ion_auth->user()->row();
             $temp_result = $this->model_quiz->select_quiz_result_by_user($user->id, 1)->result();
-            foreach ($temp_result as $result) {
-                $result->num_soal = count($this->model_quiz->select_soal_by_quiz($result->quiz_id, 0)->result());
+            if ($temp_result == null) {
+                echo "Tidak ada data...";
             }
-            $data['list_my_quiz_result'] = $temp_result;
-            $data['list_avail_my_quiz_result'] = count($data['list_my_quiz_result']);
-            $data['username'] = $user->username;
-            // convert in PDF
-            $content = $this->load->view('quiz/list_my_quiz_result_print', $data, true);
-            //echo $content;
+            else {
+                foreach ($temp_result as $result) {
+                    $result->num_soal = count($this->model_quiz->select_soal_by_quiz($result->quiz_id, 0)->result());
+                }
+                $data['list_my_quiz_result'] = $temp_result;
+                $data['list_avail_my_quiz_result'] = count($data['list_my_quiz_result']);
+                $data['username'] = $user->username;
+                // convert in PDF
+                $content = $this->load->view('quiz/list_my_quiz_result_print', $data, true);
+                //echo $content;
 
-            try {
-                $html2pdf = new HTML2PDF('P', 'A4', 'en');
-                $html2pdf->setDefaultFont('Arial');
-                $html2pdf->writeHTML($content);
-                $html2pdf->Output("daftar-hasil-kuis-" . $user->username . ".pdf");
-            } catch (HTML2PDF_exception $e) {
-                echo $e;
-                exit;
+                try {
+                    $html2pdf = new HTML2PDF('P', 'A4', 'en');
+                    $html2pdf->setDefaultFont('Arial');
+                    $html2pdf->writeHTML($content);
+                    $html2pdf->Output("daftar-hasil-kuis-" . $user->username . ".pdf");
+                } catch (HTML2PDF_exception $e) {
+                    echo $e;
+                    exit;
+                }
             }
         }
     }
 
+    // fungsi yang digunakan untuk mencetak hasil kuis peserta kedalam excel : manajemen kuis
     function print_participant_quiz_result_excel($id_course, $id_quiz, $id_group) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -311,8 +321,6 @@ class Quiz extends MX_Controller {
                     $temp_idx_header = $i + 6;
                     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($temp_idx_header, 1, $i);
                 }
-
-
 
                 $temp_quiz_result = $this->model_quiz->select_quiz_result_by_course_quiz_group($user->id, $id_course, $id_quiz, $id_group, 1)->result();
 
@@ -405,6 +413,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi yang digunakan untuk mencetak hasil kuis peserta kedalam pdf : manajemen kuis
     function print_participant_quiz_result_pdf($id_course, $id_quiz, $id_group) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -488,6 +497,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi untuk menampilkan kuliah yang terhubung ke kuis : manajemen kuis [*]
     function show_quiz_course($quiz_id) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -502,6 +512,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi untuk menampilkan grup yang terhubung ke kuliah yang terhubung ke kuis : manajemen kuis [*]
     function show_quiz_course_group($quiz_id, $course_id) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -517,6 +528,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi untuk melihat daftar hasil kuis peserta : manajemen kuis
     function show_manage_course_result($id_course, $id_quiz, $id_group) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -542,6 +554,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi untuk melihat daftar nilai dari kuis yang pernah diikuti oleh user : rekap nilai peserta
     function show_my_quiz_result() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -557,6 +570,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // unknown function : manajemen grup kuis [*]
     function show_manage_course_group($id_quiz, $id_course) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -570,6 +584,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // unknown function : manajemen kuliah [*]
     function show_manage_course_quiz($id_course) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -582,6 +597,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // unknown function : manajemen kuis [*]
     function show_manage_result() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -594,6 +610,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi yang digunakan untuk melihat video offline : mengerjakan kuis [*], rekap nilai saya [*], manajemen kuis [*]
     function show_video($content) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -604,6 +621,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi yang digunakan untuk mendengar audio offline : mengerjakan kuis [*], rekap nilai saya [*], manajemen kuis [*]
     function show_audio($content) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -613,6 +631,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi yang digunakan untuk melihat konten slideshare : mengerjakan kuis [*], rekap nilai saya [*], manajemen kuis [*]
     function show_slideshare($file_url) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -635,6 +654,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi yang digunakan untuk menampilkan form upload video offline : manajemen konten [*]
     function show_form_upload_quiz_video() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -643,6 +663,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi yang digunakan untuk menampilkan form upload dokumen offline : manajemen konten [*]
     function show_form_upload_quiz_document() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -651,6 +672,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi yang digunakan untuk menampilkan form upload suara : manajemen konten [*]
     function show_form_upload_quiz_voice() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -659,6 +681,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi yang digunakan untuk menampilkan form upload gambar : manajemnen konten [*]
     function show_form_upload_quiz_picture() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -667,6 +690,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi yang digunakan untuk menampilkan form embed link youtube, slideshare, docstoc, soundcloud, scribd : manajemen konten [*]
     function show_form_quiz_embed_link($type) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -676,6 +700,8 @@ class Quiz extends MX_Controller {
         }
     }
 
+    
+    // fungsi yang digunakan untuk menyimpan hasil pengerjaan kuis : mengerjakan kuis
     function save_quiz_answer_temp() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -699,6 +725,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // unknown function  : mengerjakan kuis [*], rekap nilai saya [*], manajemen kuis [*]
     function display_particular_answer($answer_id, $answer_value) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -707,17 +734,22 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi yang digunakan untuk melihat daftar grup kuis : manajemen grup kuis
     function group_quiz($id_quiz) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
         } else {
-            $data['list_group'] = $this->model_quiz->select_group_by_quiz($id_quiz)->result();
+            $temp = $this->model_quiz->select_group_by_quiz($id_quiz)->result();
+            $data['list_group'] = $temp;
             $data['quiz_id'] = $id_quiz;
-            $data['list_avail_group'] = $this->model_quiz->count_avail_group()->result();
+            $data['list_avail_group'] = count($temp);
+            
+            
             $this->load->view('quiz/list_group_quiz', $data);
         }
     }
 
+    // fungsi yang digunakan untuk memeriksa password kuis : mengerjakan kuis [*]
     function check_quiz_password() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -797,6 +829,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi yang digunakan untuk melihat form tambah grup : manajemen grup kuis [*]
     function show_add_group($id_quiz) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -806,6 +839,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi yang digunakan untuk melihat daftar menu untuk menambahkan konten kuis : manajemen konten [*]
     function show_add_resource() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -814,7 +848,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // menampilkan form tambah kuis
+    // fungsi yang digunakan untuk menampilkan form tambah kuis : manajemen kuis [*]
     function show_add_quiz() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -823,7 +857,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // menampilkan form tambah soal
+    // menampilkan form tambah soal : manajemen soal [*]
     function show_add_soal($id_quiz) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -833,7 +867,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // menampilkan form tambah jawaban
+    // menampilkan form tambah jawaban : manajemen jawaban [*]
     function show_add_choice($id_soal, $id_quiz) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -844,6 +878,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // menampilkan kuliah yang memakai kuis : manajemen kuliah [*]
     function list_course($quiz_id) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -859,6 +894,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // menampilkan kuliah yang memakai grup : manajemen grup kuis [*]
     function list_course_group($quiz_id, $group_id) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -876,6 +912,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi yang digunakan untuk melihat daftar konten yang telah ditambahkan : manajemen konten [*]
     function list_all_quiz_resource() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -888,6 +925,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // fungsi yang digunakan untuk melihat daftar konten untuk pembahasan soal : manajemen soal [*]
     function list_all_quiz_summary($id_soal){
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -905,6 +943,8 @@ class Quiz extends MX_Controller {
         }
     }
     
+    
+    // fungsi yang digunakan untuk melihat daftar konten untuk konten soal : manajemen soal [*]
     function list_all_quiz_attachment($id_soal) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -922,19 +962,29 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // menampilkan daftar soal dari suatu kuis
+    // menampilkan daftar soal dari suatu kuis : manajemen soal [*]
     function list_all_soal($id_quiz) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
         } else {
-            $data['list_soal'] = $this->model_quiz->select_soal_by_quiz($id_quiz, 1)->result();
+            $temp = $this->model_quiz->select_soal_by_quiz($id_quiz, 1)->result();
+           
+            
+            $data['list_soal'] = $temp;
             $data['quiz_id'] = $id_quiz;
-            $data['list_avail_soal'] = $this->model_quiz->count_avail_soal()->result();
+            $data['list_avail_soal'] = count($temp);
+            
+            /*
+            echo $data['list_avail_soal'];
+            echo "<pre>";
+            print_r($temp);
+            echo "</pre>";
+            */
             $this->load->view('quiz/list_soal_by_quiz', $data);
         }
     }
 
-    // menampilkan daftar jawaban dari suatu soal
+    // menampilkan daftar jawaban dari suatu soal   :   manajemen jawaban [*]
     function list_all_choice($id_soal) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -950,7 +1000,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // proses menampilkan lembar kuis dan membuat session baru pengerjaan
+    // proses menampilkan lembar kuis dan membuat session baru pengerjaan : mengerjakan kuis [*]
     function view_form_quiz($id_quiz, $tiket_quiz, $id_group, $course_id) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1033,6 +1083,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // proses melihat detail hasil kuis semua peserta : manajemen kuis
     function detail_quiz_result($id_course, $id_quiz, $id_group) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1097,6 +1148,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // melihat detail pengerjaan kuis peserta : manajemen kuis   
     function detail_participant_quiz_result($id_result, $status) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1176,6 +1228,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // melihat detail pengerjaan kuis saya : rekap nilai saya    
     function detail_my_quiz_result($id_result) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1248,7 +1301,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // menampilkan kuis yang telah dibuat
+    // menampilkan kuis yang telah dibuat : manajemen kuis
     function preview_quiz($id_quiz) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1293,7 +1346,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // menampilkan tombol submit kuis ketika waktu telah habis
+    // menampilkan tombol submit kuis ketika waktu telah habis : mengerjakan kuis [*]
     function quiz_submit_wtro($tiket_quiz, $quiz_id, $group_id) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1308,7 +1361,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // menampilkan hasil kuis
+    // menampilkan hasil kuis : mengerjakan kuis [*]
     function quiz_result($quiz_id, $user_id, $tiket_quiz, $group_id) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1322,7 +1375,8 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // menampilkan daftar kuis yang aktif untuk dikerjakan
+    
+    // menampilkan daftar kuis yang aktif untuk dikerjakan : mengakses kuliah
     function list_avail_quiz() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1333,7 +1387,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // menampilkan halaman pengecekan kuis jika memakai kode masuk
+    // menampilkan halaman pengecekan kuis jika memakai kode masuk : mengerjakan kuis
     function gate_avail_quiz($id_group, $id_course) {
 
         if (!$this->ion_auth->logged_in()) {
@@ -1365,14 +1419,14 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // melakukan pengerjaan kuis
+    // melakukan pengerjaan kuis : mengerjakan kuis [*]
     function do_quiz($id_quiz, $id_group, $id_course) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
         } else {
 
             $user = $this->ion_auth->user()->row();
-
+            
             $temp = $this->model_quiz->select_quiz_by_id($id_quiz)->row();
 
 
@@ -1425,7 +1479,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // menampilkan waktu pengerjaan kuis
+    // menampilkan waktu pengerjaan kuis : mengerjakan kuis [*]
     function quiz_clock($tiket_quiz, $quiz_id, $group_id, $course_id) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1438,7 +1492,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // menampilkan berakhirnya pengerjaan kuis
+    // menampilkan berakhirnya pengerjaan kuis : mengerjakan kuis [*]
     function quiz_end($tiket_quiz, $quiz_id, $group_id, $course_id) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1479,7 +1533,7 @@ class Quiz extends MX_Controller {
     }
 
     /* --- INSERT ---- */
-
+    // proses penambahan kuliah : manajemen kuliah
     function add_course() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1505,6 +1559,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // proses penugasan grup ke kuliah : manajemen grup kuis
     function add_course_group() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1530,6 +1585,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // proses menambahkan konten media online : manajemen konten [*]
     function add_quiz_embed_link() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1546,6 +1602,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // proses menambahkan video di kuis : manajemen konten [*]
     function upload_video() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1585,6 +1642,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // proses menambahkan document di kuis : manajemen konten [*]
     function upload_document() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1624,6 +1682,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // proses menambahkan gambar di kuis : manajemen konten [*]
     function upload_picture() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1662,7 +1721,8 @@ class Quiz extends MX_Controller {
             }
         }
     }
-
+    
+    // proses menambahkan sound di kuis : manajemen konten [*]
     function upload_sound() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1702,7 +1762,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // proses mengupload kuis dari file kemudian diparsing ke database
+    // proses mengupload kuis dari file kemudian diparsing ke database : manajemen kuis
     function upload_quiz() {
 
         if (!$this->ion_auth->logged_in()) {
@@ -1814,7 +1874,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // proses untuk menambah soal
+    // proses untuk menambah soal : manajemen soal
     function add_soal() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1829,7 +1889,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // proses untuk menambah jawaban
+    // proses untuk menambah jawaban : manajemen jawaban
     function add_choice() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1847,7 +1907,8 @@ class Quiz extends MX_Controller {
             $this->model_quiz->insert_choice($data);
         }
     }
-
+    
+    // proses tambah grup kuis : manajemen grup kuis
     function add_group() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1865,7 +1926,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // menyimpan hasil kuis
+    // menyimpan hasil kuis : mengerjakan kuis
     function save_quiz_result() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1928,7 +1989,7 @@ class Quiz extends MX_Controller {
     }
 
     /* --- UPDATE ---- */
-
+    // menampilkan form edit grup kuis : manajemen grup kuis [*]
     function edit_group($id_group) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1948,6 +2009,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // menampilkan form edit konten kuis : manajemen konten [*]
     function edit_quiz_resource($id_quiz_resource) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1962,7 +2024,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // menampilkan form edit quiz
+    // menampilkan form edit quiz : manajemen kuis [*]
     function edit_quiz($id_quiz) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -1989,7 +2051,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // menampilkan form edit soal
+    // menampilkan form edit soal : manajemen soal [*]
     function edit_soal($id_soal) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2010,7 +2072,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // menampilkan form edit jawaban
+    // menampilkan form edit jawaban : manajemen jawaban [*]
     function edit_choice($id_choice) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2028,7 +2090,7 @@ class Quiz extends MX_Controller {
     }
 
     /* --- UPDATE - PROCESS ---- */
-
+     // proses mengubah data konten kuis : manajemen konten
     function update_quiz_resource() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2042,6 +2104,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // proses mengubah jenis grup : manajemen grup kuis
     function update_quiz_group_type() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2053,6 +2116,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // proses mengubah data grup kuis : manajemen grup kuis
     function update_quiz_group() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2067,7 +2131,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // proses mengubah data - data jawaban
+    // proses mengubah data - data jawaban : manajemen jawaban
     function update_quiz_choice() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2079,7 +2143,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // proses mengubah data - data soal
+    // proses mengubah data - data soal : manajemen soal
     function update_quiz_soal() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2092,6 +2156,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // proses mengubah dan menambahkan pembahasan soal kuis : manajemen soal
     function update_quiz_soal_summary($id_soal, $id_summary) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2108,6 +2173,7 @@ class Quiz extends MX_Controller {
         }
     }
     
+    // proses menambahkan dan mengubah konten kuis : manajemen soal
     function update_quiz_soal_resource($id_soal, $id_resource) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2124,7 +2190,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // proses mengubah data - data kuis
+    // proses mengubah data - data kuis : manajemen kuis
     function update_quiz() {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2210,6 +2276,7 @@ class Quiz extends MX_Controller {
 
     /* --- DELETE ---- */
 
+    // proses menghapus konten kuis : manajemen konten
     function delete_quiz_resource($id_quiz_resource) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2229,6 +2296,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // proses menghapus kuliah dari kuis : manajemen kuis ke kuliah
     function delete_course($id_course) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2239,6 +2307,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // proses menghapus relasi grup kuliah secara tidak permanen : manajemen grup kuis
     function delete_course_group($id_course) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2249,6 +2318,7 @@ class Quiz extends MX_Controller {
         }
     }
 
+    // proses menghapus group kuis secara tidak permanen : manajemen grup kuis
     function delete_group($id_group) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2258,7 +2328,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // proses menghapus kuis secara tidak permanen
+    // proses menghapus kuis secara tidak permanen : manajemen kuis
     function delete_quiz($id_quiz) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2289,7 +2359,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // proses menghapus soal secara tidak permanen
+    // proses menghapus soal secara tidak permanen : manajemen soal
     function delete_soal($id_soal) {
         if (!$this->ion_auth->logged_in()) {
             redirect();
@@ -2306,7 +2376,7 @@ class Quiz extends MX_Controller {
         }
     }
 
-    // proses menghapus jawaban secara tidak permanen
+    // proses menghapus jawaban secara tidak permanen : manajemen jawaban
     function delete_choice($id_choice) {
         if (!$this->ion_auth->logged_in()) {
             redirect();

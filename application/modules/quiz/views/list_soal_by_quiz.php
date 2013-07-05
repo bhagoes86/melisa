@@ -10,7 +10,7 @@
 </div>
 
 
-       <?php if (count($list_avail_soal) > 0) {?>
+       <?php if ($list_avail_soal > 0) {?>
 <table class="striped" id="my-table">
     <thead>
         <tr>

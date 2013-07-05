@@ -1,7 +1,7 @@
 
 <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/accordion.js"></script>
 <a class="button bg-color-yellow" id="assignment-add-form"><i class="icon-plus"></i>Tambah Tugas</a>
-<a class="button bg-color-orange fg-color-white" id="assignment-my-quiz-result"><i class="icon-stats"></i>Nilai Saya</a>
+<a class="button bg-color-orange fg-color-white" id="my-assignment-result"><i class="icon-stats"></i>Nilai Saya</a>
 
 
 <hr />
@@ -31,7 +31,15 @@
                 <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
                     <div id="list-quiz-result" style="width:480px;height:150px;overflow:scroll;overflow-x:hidden;margin:0px 5px 5px 5px;">
                           <?php //echo modules::run('quiz/show_quiz_course', $quiz->id_quiz); ?>
-                          <a style="color: #095b97;font-size: 18px;"><?php echo  character_limiter($assignment->course, 30); ?></a><br/>
+                          <a style="color: #095b97;font-size: 18px;"><?php 
+                          
+                           if ($assignment->course!=null){
+                               echo  character_limiter($assignment->course, 30); 
+                           }
+                           else {
+                               echo "Tidak kuliah yang menyelenggarakan tugas ini";
+                           }
+                          ?></a><br/>
                           <p style="color: rgb(94,94,94);font-size: 13px;">
                           <ul>
                               
@@ -91,8 +99,8 @@
                 <td style="width: 30px;border: 1px solid white;vertical-align: middle;background-color:rgba(0, 0, 0, 0.0666667);">
                     <a title="preview" href="javascript:void(0)" id="btn-preview" data-id="<?php echo $assignment->id_assignment; ?>"><i class="icon-book fg-color-black"></i></a>
                     <a title="edit" href="javascript:void(0)" id="btn-edit" data-id="<?php echo $assignment->id_assignment; ?>"><i class="icon-pencil fg-color-pink"></i></a>
-                    <a title="grup" href="javascript:void(0)" id="btn-group" data-id="<?php echo $assignment->id_assignment; ?>"><i class="icon-briefcase fg-color-black"></i></a>
                     <a title="daftar kuliah" href="javascript:void(0)" id="btn-list-course" data-id="<?php echo $assignment->id_assignment; ?>"><i class="icon-list fg-color-black"></i></a>
+                    <a title="grup" href="javascript:void(0)" id="btn-group" data-id="<?php echo $assignment->id_assignment; ?>"><i class="icon-briefcase fg-color-black"></i></a>
                     <a title="hapus" href="javascript:void(0)" id="btn-delete" data-id="<?php echo $assignment->id_assignment?>"><i class="icon-remove fg-color-red"></i></a>
                </td>
 
@@ -119,11 +127,11 @@
 
 <script type="text/javascript">
 
-    $('#quiz-my-quiz-result').click(function(){
+    $('#my-assignment-result').click(function(){
         $('#message').html("Loading Data");
         $('#loading-template').show();
 
-        $('#content-right').load("<?php echo site_url('quiz/show_my_quiz_result') ?>",function(){
+        $('#content-right').load("<?php echo site_url('assignment/show_my_assignment_result') ?>",function(){
             $('#loading-template').fadeOut("slow");
 
         });
@@ -135,26 +143,6 @@
         $('#content-right').load("<?php echo site_url('assignment/show_form_add_assignment') ?>",function(){
             $('#loading-template').fadeOut("slow");
         });
-    });
-
-    $('#quiz-manage-resource').click(function(){
-        $('#message').html("Loading Data");
-        $('#loading-template').show();
-        $('#content-right').load("<?php echo site_url('quiz/show_add_resource') ?>",function(){
-            $('#loading-template').fadeOut("slow");
-            
-        });
-    });
-
-    
-    $('#quiz-manage-result').click(function(){
-        $('#message').html("Loading Data");
-        $('#loading-template').show();
-        $('#content-right').load("<?php echo site_url('quiz/show_manage_result') ?>",function(){
-            $('#loading-template').fadeOut("slow");
-
-        });
-
     });
 
     $('a#btn-list-course').click(function(){
