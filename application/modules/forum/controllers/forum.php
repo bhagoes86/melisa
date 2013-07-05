@@ -178,34 +178,34 @@ class Forum extends MX_Controller {
         $this->load->view('forum/wall_content_presentation', $data);
     }
 
-    function wall_content_podcast_year($year) {
-        $data['content'] = $this->model_forum->select_podcast_year($year)->result();
-        $this->load->view('forum/wall_content_podcast', $data);
+    function wall_content_podcast_year($year, $month) {
+        if ($month == 0) {
+            $data['content'] = $this->model_forum->select_podcast_year($year)->result();
+            $this->load->view('forum/wall_content_podcast', $data);
+        } elseif ($month > 0) {
+            $data['content'] = $this->model_forum->select_podcast_year_month($year, $month)->result();
+            $this->load->view('forum/wall_content_podcast', $data);
+        }
     }
 
-    function wall_content_podcast_year_month($year, $month) {
-        $data['content'] = $this->model_forum->select_podcast_year_month($year, $month)->result();
-        $this->load->view('forum/wall_content_podcast', $data);
+    function wall_content_document_year($year, $month) {
+        if ($month == 0) {
+            $data['content'] = $this->model_forum->select_document_year($year)->result();
+            $this->load->view('forum/wall_content_document', $data);
+        } elseif ($month > 0) {
+            $data['content'] = $this->model_forum->select_document_year_month($year, $month)->result();
+            $this->load->view('forum/wall_content_document', $data);
+        }
     }
 
-    function wall_content_document_year($year) {
-        $data['content'] = $this->model_forum->select_document_year($year)->result();
-        $this->load->view('forum/wall_content_document', $data);
-    }
-
-    function wall_content_document_year_month($year, $month) {
-        $data['content'] = $this->model_forum->select_document_year_month($year, $month)->result();
-        $this->load->view('forum/wall_content_document', $data);
-    }
-
-    function wall_content_presentation_year($year) {
-        $data['content'] = $this->model_forum->select_presentation_year($year)->result();
-        $this->load->view('forum/wall_content_presentation', $data);
-    }
-
-    function wall_content_presentation_year_month($year, $month) {
-        $data['content'] = $this->model_forum->select_presentation_year_month($year, $month)->result();
-        $this->load->view('forum/wall_content_presentation', $data);
+    function wall_content_presentation_year($year, $month) {
+        if ($month == 0) {
+            $data['content'] = $this->model_forum->select_presentation_year($year)->result();
+            $this->load->view('forum/wall_content_presentation', $data);
+        } elseif ($month > 0) {
+            $data['content'] = $this->model_forum->select_presentation_year_month($year, $month)->result();
+            $this->load->view('forum/wall_content_presentation', $data);
+        }
     }
 
     //action/

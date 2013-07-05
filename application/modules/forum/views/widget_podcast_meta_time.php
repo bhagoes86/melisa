@@ -2,20 +2,23 @@
     <legend style="padding-top: 2px;"><i class="icon-filter"></i>Filter Waktu Podcast</legend>
     <div class="input-control select" style="width: 100%">
         <select id="podcast_option_time" style="width: 100%">
-            <option href="javascript:void(0)" value="<?php echo date('Y'); ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">Pilih Waktu</a></option>
-            <option href="javascript:void(0)" value="<?php echo date('Y'); ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y'); ?>">Tahun Sekarang</a></option>
-            <option href="javascript:void(0)" value="<?php echo date('Y') - 1; ?>"><a href="javascript:void(0)" id="podcast_time" data-year="<?php echo date('Y') - 1; ?>">Tahun Kemarin</a></option>
+            <option href="javascript:void(0)" value="<?php echo date('Y'); ?>" data-month="0">Pilih Waktu</option>
+            <option href="javascript:void(0)" value="<?php echo date('Y'); ?>" data-month="<?php echo date('m'); ?>">Bulan Sekarang</option>
+            <option href="javascript:void(0)" value="<?php echo date('Y'); ?>" data-month="<?php echo date('m') - 01; ?>">Bulan lalu</option>
+            <option href="javascript:void(0)" value="<?php echo date('Y'); ?>" data-month="0">Tahun Sekarang</option>
+            <option href="javascript:void(0)" value="<?php echo date('Y') - 1; ?>" data-month="0">Tahun Kemarin</option>
         </select>
     </div>
 </fieldset>
 <script type="text/javascript">
     $("select#podcast_option_time").change(function(){
         var year = $("#podcast_option_time").val();
+        var month = $("#podcast_option_time option:selected").attr("data-month");
         $('div.pager').remove(); 
         $('#message').html("Loading Data");
         $('#loading-template').show(); 
         $('#wall_container').empty(); 
-        $('#wall_container').load("<?php echo site_url('forum/wall_content_podcast_year') ?>/"+year,function(){            
+        $('#wall_container').load("<?php echo site_url('forum/wall_content_podcast_year') ?>/"+year+"/"+month,function(){            
             $('#loading-template').fadeOut('slow');
             $("html, body").animate({
                 scrollTop: 0
