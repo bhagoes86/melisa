@@ -35,7 +35,7 @@
 
                             <div class="grid" style="margin-bottom: 20px;"><div class="row" id="course-home"></div></div>
                             <div class="grid" style="margin-bottom: 20px;"><div class="row" id="video-home"></div></div>
-                            <div class="grid" style="margin-bottom: 20px;"><div class="row" id="presentation-home"></div></div>
+                            <!--<div class="grid" style="margin-bottom: 20px;"><div class="row" id="presentation-home"></div></div>-->
 
                             <div class="grid" style="margin-bottom: 30px;">
                                 <div class="row" style="text-align: center;">
@@ -82,11 +82,10 @@
                             </div>
                         </div>
 
-
                         <!--Loading Template-->
-                        <div class="message-dialog bg-color-green fg-color-white"  style="display: none;position: fixed;top: 50%;" id="loading-template">
-                            <img style="float: left;margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/preloader-w8-cycle-black.gif">
-                            <p style="float: left;margin-left: 20px;margin-top: 30px;" id="message">Content for message dialog</p>
+                        <div class="message-dialog bg-color-blueDark fg-color-white"  style="text-align: center;display: none;position: fixed;top: 50%;" id="loading-template">
+                            <img style="margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/ajax-loader.gif">
+                            <p style="margin-top: 10px;" id="message">Loading Data</p>
                         </div>
                         <div class="message-dialog bg-color-red fg-color-white" style="display: none;position: fixed;top: 50%;" id="error-template">
                             <p id="message-error">Content for message dialog</p>
@@ -96,8 +95,7 @@
                             <p id="message-info">Content for message dialog</p>
                             <button class="place-right" id="close-info-message">Tutup Pesan</button>
                         </div>
-                        <!--EOF Loading Template-->
-
+                        <!--EOF Loading Template-->                    
                     </div>
                 </div>
             </div>
@@ -122,7 +120,7 @@
                 
         $('#course-home').load("<?php echo site_url('course/home_course') ?>");
         $('#video-home').load("<?php echo site_url('content/home_video') ?>");
-        $('#presentation-home').load("<?php echo site_url('content/home_presentation') ?>");
+        //$('#presentation-home').load("<?php echo site_url('content/home_presentation') ?>");
 
         //Load page welcome
         $('a#btn-welcome').click(function(){

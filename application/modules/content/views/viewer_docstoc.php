@@ -53,7 +53,7 @@
                                                         echo scribd($trace[1]);
                                                         break;
                                                     case 'docstoc' :
-                                                        echo docstocLarge($trace[1]);
+                                                        echo docstoc600($trace[1]);
                                                         break;
                                                     case 'link' :
                                                         break;
@@ -83,7 +83,7 @@
                                                 echo scribd($trace[1]);
                                                 break;
                                             case 'docstoc' :
-                                                echo docstocLarge($trace[1]);
+                                                echo docstoc600($trace[1]);
                                                 break;
                                             case 'link' :
                                                 break;

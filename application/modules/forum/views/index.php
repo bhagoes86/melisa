@@ -1,8 +1,46 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
-    <?php $this->load->view('home/head'); ?>    
-    <link href="<?php echo base_url(); ?>asset/metro/css/feed.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="<?php echo base_url(); ?>asset/js/jquery.flexipage.min.js"></script>
+    <head>
+        <title><?php echo $themes->header . " " . $themes->caption ?></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1">
+        <meta name="description" content=" First Indonesian Massive Online Open Course. Be open minded and share.">
+        <meta name="author" content="Taufik Sulaeman, Ridwan Fajar, Imam">
+        <meta name="keywords" content="Film Ajar, Media Pembelajaran, Elearning, Video Ajar, MOOC, LMS">
+        <link href="<?php echo base_url(); ?>asset/metro/css/modern.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>asset/metro/css/modern-responsive.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>asset/metro/css/site.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url(); ?>asset/metro/js/google-code-prettify/prettify.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url(); ?>asset/metro/css/feed.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="<?php echo base_url() ?>asset/css/images/logo-vabel.png"/>
+        <!--js Plugin-->
+        <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/assets/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/assets/jquery.mousewheel.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/dropdown.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/accordion.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/buttonset.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/carousel.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/input-control.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/pagecontrol.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/rating.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/modern/slider.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/assets/google-analytics.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/google-code-prettify/prettify.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>asset/datatable/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>asset/js/jquery.paginatetable.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>asset/js/jquery.flexipage.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>asset/metro/js/sharrre/jquery.sharrre-1.3.4.min.js"></script>
+        <script type="text/javascript" src="http://connect.soundcloud.com/sdk.js"></script>
+        <script src="<?php echo base_url() ?>asset/flowplayer/flowplayer.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/flowplayer/skin/minimalist.css" />
+        <style type="text/css">
+            .flowplayer { background-color: #222; background-size: cover; }
+            .flowplayer .fp-controls { background-color: rgba(0, 0, 0, 0.4)}
+            .flowplayer .fp-timeline { background-color: rgba(0, 0, 0, 0.5)}
+            .flowplayer .fp-progress { background-color: rgba(219, 0, 0, 1)}
+            .flowplayer .fp-buffer { background-color: rgba(249, 249, 249, 1)}
+        </style>
+    </head>    
     <body class="modern-ui" onload="prettyPrint()">
         <!--Top-->
         <div class="page" id="topbar"></div>
@@ -31,26 +69,37 @@
                                 <?php } ?>
                                 <div class="page-sidebar bg-color-red" style="margin:0px; padding-bottom: 0px;width:140px;">
                                     <ul>
-                                        <li><a id="wall-broadcast"><i class="icon-broadcast"></i> Broadcast</a></li>
-                                        <li><a id="wall-activity"><i class="icon-clipboard-2"></i> Aktivitas</a></li>
+                                        <li><a id="wall-broadcast"><i class="icon-newspaper"></i> Broadcast</a></li>
+                                        <li><a id="wall-content-activity"><i class="icon-clock"></i> Aktivitas</a></li>                                        
                                     </ul>
                                     <ul>
-                                        <li><a id="wall-podcast"><i class="icon-film"></i> Podcast</a></li>
-                                        <li><a id="wall-document"><i class="icon-file-pdf"></i> Document</a></li>
+                                        <li><a id="wall-content-course"><i class="icon-list"></i> Kuliah</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a id="wall-content-podcast"><i class="icon-film"></i> Podcast</a></li>
+                                        <li><a id="wall-content-document"><i class="icon-file-pdf"></i> Document</a></li>
+                                        <li><a id="wall-content-presentation"><i class="icon-monitor"></i> Presentasi</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a id="btn-logout"><i class="icon-key"></i> Keluar</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <!--Konten-->
                             <div class="span7" id="content-right">
-                                <?php echo $this->load->view('forum/wall_form') ?>
+                                <?php echo modules::run('forum/wall_form', $user_id) ?>
+                                <ul class="listview list-long image" id="wall_container_first"></ul>
                                 <ul class="listview list-long image" id="wall_container"></ul>
+                                <div class="span7">
+
+                                </div>
                             </div>
                             <!-- Rightbar -->
                             <div class="span3 rightbar">
-                                <div id="fixed">
-                                    <?php echo modules::run('forum/widget_profile') ?>
-                                    <?php echo modules::run('forum/widget_trending_tag') ?>
-                                </div>
+                                <div id="fixed"><?php echo modules::run('forum/widget_profile') ?></div>
+                                <div id="fixed" class="category_time" style="display: none;"></div>
+                                <div id="fixed" class="category_faculty" style="display: none;"></div>
+                                <div id="fixed"><?php echo modules::run('forum/widget_trending_tag') ?></div>
                             </div>
                         </div>
 
@@ -68,11 +117,10 @@
                             </div>
                         </div>
 
-
                         <!--Loading Template-->
-                        <div class="message-dialog bg-color-green fg-color-white"  style="display: none;position: fixed;top: 50%;" id="loading-template">
-                            <img style="float: left;margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/preloader-w8-cycle-black.gif">
-                            <p style="float: left;margin-left: 20px;margin-top: 30px;" id="message">Content for message dialog</p>
+                        <div class="message-dialog bg-color-blueDark fg-color-white"  style="text-align: center;display: none;position: fixed;top: 50%;" id="loading-template">
+                            <img style="margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/ajax-loader.gif">
+                            <p style="margin-top: 10px;" id="message">Loading Data</p>
                         </div>
                         <div class="message-dialog bg-color-red fg-color-white" style="display: none;position: fixed;top: 50%;" id="error-template">
                             <p id="message-error">Content for message dialog</p>
@@ -83,7 +131,6 @@
                             <button class="place-right" id="close-info-message">Tutup Pesan</button>
                         </div>
                         <!--EOF Loading Template-->
-
                     </div>
                 </div>
             </div>
@@ -96,85 +143,120 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#topbar').load("<?php echo site_url('site/topbar') ?>");
+        $('#row-top-content').load("<?php echo site_url('home/top') ?>");
         $('#footbar').load("<?php echo site_url('site/footbar') ?>");
         
-        //first feed
-        $('#wall_container').load("<?php echo site_url('forum/wall_list_first') ?>");
-        
-        //feed nav
-        $('#wall-podcast').click(function(){
-            $('div.pager').remove();                
-            $('#message').html("Loading Data");
-            $('#loading-template').show();                
-            $('#wall_container').empty();                
-            $('#wall_container').load("<?php echo site_url('content/wall_podcast') ?>",function(){                
-                $('#loading-template').fadeOut("slow");
-            });
-        });
-        
-        $('#wall-document').click(function(){
-            $('div.pager').remove();                
-            $('#message').html("Loading Data");
-            $('#loading-template').show();                
-            $('#wall_container').empty();                
-            $('#wall_container').load("<?php echo site_url('content/wall_document') ?>",function(){                
-                $('#loading-template').fadeOut("slow");
-            });
+        $('#message').html("Loading Data");
+        $('#loading-template').show(); 
+        $('#wall_container').empty(); 
+        $('#wall_container').load("<?php echo site_url('forum/wall_broadcast_first') ?>",function(){            
+            $('#loading-template').fadeOut('slow');
+            $("html, body").animate({
+                scrollTop: 0
+            }, 1000);
         });
         
         $('#wall-broadcast').click(function(){
+            $('#after-post').hide();                
             $('div.pager').remove();                
             $('#message').html("Loading Data");
             $('#loading-template').show();                
             $('#wall_container').empty();                
-            $('#wall_container').load("<?php echo site_url('forum/wall_list_first') ?>",function(){                
+            $('#wall_container').load("<?php echo site_url('forum/wall_broadcast_first') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
+                $('.category_time').hide();
+                $('.category_faculty').hide();
             });
         });
         
-        $('#wall-activity').click(function(){
+        $('#wall-content-activity').click(function(){
+            $('#after-post').hide();
             $('div.pager').remove();                
             $('#message').html("Loading Data");
             $('#loading-template').show();                
             $('#wall_container').empty();                
-            $('#wall_container').load("<?php echo site_url('forum/wall_activity_first') ?>",function(){                
+            $('#wall_container').load("<?php echo site_url('forum/wall_content_activity') ?>",function(){                
+                $('#loading-template').fadeOut("slow");
+                $('.category_time').hide();
+                $('.category_faculty').hide();
+            });
+        });
+        
+        $('#wall-content-podcast').click(function(){
+            $('#after-post').hide();
+            $('div.pager').remove();
+            $('#message').html("Loading Data");
+            $('#loading-template').show();                
+            $('#wall_container').empty();                
+            $('.category_time').load("<?php echo site_url('forum/widget_podcast_meta_time') ?>",function(){$('.category_time').slideDown('slow');});
+            $('.category_faculty').load("<?php echo site_url('forum/widget_podcast_meta_faculty') ?>",function(){$('.category_faculty').slideDown('slow');});
+            $('#wall_container').load("<?php echo site_url('forum/wall_content_podcast') ?>",function(){                
                 $('#loading-template').fadeOut("slow");
             });
         });
-                
-        $('#row-top-content').load("<?php echo site_url('home/top') ?>");
         
-        $('.hide-link').live('click', function(){
-            $this = $(this);
-            $this.html('tutup detail.').removeClass('hide-link').addClass('show-link');
-            $this.siblings('.hide').removeClass('hide').addClass('show');
+        $('#wall-content-document').click(function(){
+            $('#after-post').hide();
+            $('div.pager').remove();                
+            $('#message').html("Loading Data");
+            $('#loading-template').show();                
+            $('#wall_container').empty();                
+            $('.category_time').load("<?php echo site_url('forum/widget_document_meta_time') ?>",function(){$('.category_time').slideDown('slow');});
+            $('.category_faculty').load("<?php echo site_url('forum/widget_document_meta_faculty') ?>",function(){$('.category_faculty').slideDown('slow');});
+            $('#wall_container').load("<?php echo site_url('forum/wall_content_document') ?>",function(){                
+                $('#loading-template').fadeOut("slow");
+            });
         });
-        $('.show-link').live('click', function(){
-            $this = $(this);
-            $this.html('selengkapnya..').removeClass('show-link').addClass('hide-link');
-            $this.siblings('.show').removeClass('show').addClass('hide');
+        
+        $('#wall-content-presentation').click(function(){
+            $('#after-post').hide();
+            $('div.pager').remove();                
+            $('#message').html("Loading Data");
+            $('#loading-template').show();                
+            $('#wall_container').empty();                
+            $('.category_time').load("<?php echo site_url('forum/widget_presentation_meta_time') ?>",function(){$('.category_time').slideDown('slow');});
+            $('.category_faculty').load("<?php echo site_url('forum/widget_presentation_meta_faculty') ?>",function(){$('.category_faculty').slideDown('slow');});
+            $('#wall_container').load("<?php echo site_url('forum/wall_content_presentation') ?>",function(){                
+                $('#loading-template').fadeOut("slow");
+            });
         });
-        $('#feedtext').live('click', function(){
-            $(this).parent().addClass('hide');
-            $('#feedpost').parent().removeClass('hide');
-            $('#feedpost').focus();
+        
+        $('#wall-content-course').click(function(){
+            $('#after-post').hide();
+            $('div.pager').remove();                
+            $('#message').html("Loading Data");
+            $('#loading-template').show();                
+            $('#wall_container').empty();                
+            $('.category_time').hide();
+            $('.category_faculty').hide();
+            $('#wall_container').load("<?php echo site_url('forum/wall_course_limit') ?>",function(){                
+                $('#loading-template').fadeOut("slow");
+            });
         });
-        $('#cancelpost').live('click', function(){
-            $('#feedtext').parent().removeClass('hide');
-            $('#feedpost').parent().addClass('hide');
-            $('#postimage, #posturl').addClass('hide').val('');
-        });
-        $('.btn-shortcut').live('click', function(){
-            $this = $(this);
-            if($this.attr('id') == 'image'){
-                $('#postimage').removeClass('hide').val('');
-                $('#posturl').addClass('hide').val('');
-            } else {
-                $('#postimage').addClass('hide').val('');
-                $('#posturl').removeClass('hide').val('').attr('placeholder', 'Tautan alamat ' + $this.attr('id'));
-            }
+        
+        $('#btn-logout').click(function(){        
+            $('#message').html("Keluar Dari Sistem");
+            $('#loading-template').show();
+            $.ajax({
+                type:'POST',
+                url:"<?php echo site_url('authz/logout') ?>",
+                data:$(this).serialize(),
+                success:function (data) {
+                    $('#row-top-content').load("<?php echo site_url('home/top') ?>");
+                    $('#row-main-content').load("<?php echo site_url('home/welcome') ?>");
+                    $('#row-main-other').show();
+                    $('#loading-template').fadeOut("slow");
+                },
+                error:function (data){
+                    $('#row-top-content').load("<?php echo site_url('home/top') ?>");
+                    $('#row-main-content').load("<?php echo site_url('home/welcome') ?>");
+                    $('#row-main-other').show();
+                    $('#loading-template').fadeOut("slow");
+                }
+            });
             return false;
         });
+                
         $('.comments li').live('mouseover', function(){
             $(this).children().children('.delete-comment').removeClass('hide');
         });
@@ -182,17 +264,14 @@
             $(this).children().children('.delete-comment').addClass('hide');
         });
 
-        //Load page welcome
         $('a#btn-welcome').click(function(){
             $('#message').html("Loading Data");
             $('#loading-template').show();
             $('#row-center-content').load("<?php echo site_url('home/welcome'); ?>",function(){
                 $('#loading-template').fadeOut("slow");
             });
-            return false;
         });
 
-        //Show Login Form
         $('#btn-login').click(function(){
             $('#message').html("Loading Data");
             $('#loading-template').show();            
@@ -225,22 +304,5 @@
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
         ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=240447809341438";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
- 
-    $(window).bind("load resize", function(){    
-        var container_width = $('#container').width();    
-        $('#container').html('<div class="fb-like-box" ' + 
-            'data-href="https://www.facebook.com/npaperbox"' +
-            ' data-width="' + container_width + '" data-height="300" data-show-faces="true" ' +
-            'data-stream="false" data-header="false"></div>');
-        FB.XFBML.parse( );    
-    }); 
+    })();    
 </script>

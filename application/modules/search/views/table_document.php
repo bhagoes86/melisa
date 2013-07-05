@@ -72,21 +72,21 @@
                 </td>
                 <td style="border: 1px solid white;vertical-align: top;background-color:rgba(0, 0, 0, 0.0666667);">
                     <?php if ($row->type == 0) { ?><!--Video-->
-                        <a style="cursor: pointer;" href="<?php echo site_url('content/video') ?>"><?php echo $row->title ?></a><br/>
+                        <a style="cursor: pointer;" href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>"><?php echo $row->title ?></a><br/>
                     <?php } elseif ($row->type == 1) { ?><!--Docstoc-->
-                        <a style="cursor: pointer;" href="<?php echo site_url('content/document') ?>"><?php echo $row->title ?></a><br/>
+                        <a style="cursor: pointer;" href="<?php echo site_url('content/document' . '/' . $row->id_content) ?>"><?php echo $row->title ?></a><br/>
                     <?php } elseif ($row->type == 2) { ?><!--Docstoc-->
-                        <a style="cursor: pointer;" href="<?php echo site_url('content/youtube') ?>"><?php echo $row->title ?></a><br/>
+                        <a style="cursor: pointer;" href="<?php echo site_url('content/youtube' . '/' . $row->id_content) ?>"><?php echo $row->title ?></a><br/>
                     <?php } elseif ($row->type == 3) { ?><!--Docstoc-->
-                        <a style="cursor: pointer;" href="<?php echo site_url('content/vimeo') ?>"><?php echo $row->title ?></a><br/>
+                        <a style="cursor: pointer;" href="<?php echo site_url('content/vimeo' . '/' . $row->id_content) ?>"><?php echo $row->title ?></a><br/>
                     <?php } elseif ($row->type == 4) { ?><!--Docstoc-->
-                        <a style="cursor: pointer;" href="<?php echo site_url('content/scribd') ?>"><?php echo $row->title ?></a><br/>
+                        <a style="cursor: pointer;" href="<?php echo site_url('content/scribd' . '/' . $row->id_content) ?>"><?php echo $row->title ?></a><br/>
                     <?php } elseif ($row->type == 5) { ?><!--Docstoc-->
-                        <a style="cursor: pointer;" href="<?php echo site_url('content/slideshare') ?>"><?php echo $row->title ?></a><br/>
+                        <a style="cursor: pointer;" href="<?php echo site_url('content/slideshare' . '/' . $row->id_content) ?>"><?php echo $row->title ?></a><br/>
                     <?php } elseif ($row->type == 6) { ?><!--Docstoc-->
-                        <a style="cursor: pointer;" href="<?php echo site_url('content/soundcloud') ?>"><?php echo $row->title ?></a><br/>
+                        <a style="cursor: pointer;" href="<?php echo site_url('content/soundcloud' . '/' . $row->id_content) ?>"><?php echo $row->title ?></a><br/>
                     <?php } elseif ($row->type == 7) { ?><!--Docstoc-->
-                        <a style="cursor: pointer;" href="<?php echo site_url('content/docstoc') ?>"><?php echo $row->title ?></a><br/>
+                        <a style="cursor: pointer;" href="<?php echo site_url('content/docstoc' . '/' . $row->id_content) ?>"><?php echo $row->title ?></a><br/>
                     <?php } ?>
                     <p style="color: rgb(94,94,94);font-size: 13px;">
                         <b><?php echo nicetime(dtm2timestamp($row->date)) ?></b>
