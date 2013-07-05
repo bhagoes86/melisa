@@ -34,13 +34,6 @@
         <script src="<?php echo base_url() ?>asset/flowplayer/flowplayer.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/flowplayer/skin/minimalist.css" />
         <style type="text/css">
-            /*
-            .flowplayer .fp-controls { background-color: rgba(0, 0, 0, 0.4)}
-            .flowplayer .fp-timeline { background-color: rgba(0, 0, 0, 0.5)}
-            .flowplayer .fp-progress { background-color: rgba(219, 0, 0, 1)}
-            .flowplayer .fp-buffer { background-color: rgba(249, 249, 249, 1)}
-            .flowplayer { width: 80%; background-color: #222; background-size: cover; max-width: 800px; }
-            */
             .flowplayer { background-color: #222; background-size: cover; }
             .flowplayer .fp-controls { background-color: rgba(0, 0, 0, 0.4)}
             .flowplayer .fp-timeline { background-color: rgba(0, 0, 0, 0.5)}
@@ -76,18 +69,16 @@
                                 <?php } ?>
                                 <div class="page-sidebar bg-color-red" style="margin:0px; padding-bottom: 0px;width:140px;">
                                     <ul>
-                                        <li><a id="wall-broadcast"><i class="icon-broadcast"></i> Broadcast</a></li>
+                                        <li><a id="wall-broadcast"><i class="icon-newspaper"></i> Broadcast</a></li>
                                         <li><a id="wall-content-activity"><i class="icon-clock"></i> Aktivitas</a></li>                                        
+                                    </ul>
+                                    <ul>
+                                        <li><a id="wall-content-course"><i class="icon-list"></i> Kuliah</a></li>
                                     </ul>
                                     <ul>
                                         <li><a id="wall-content-podcast"><i class="icon-film"></i> Podcast</a></li>
                                         <li><a id="wall-content-document"><i class="icon-file-pdf"></i> Document</a></li>
                                         <li><a id="wall-content-presentation"><i class="icon-monitor"></i> Presentasi</a></li>
-                                    </ul>
-                                    <ul>
-                                        <li><a id="wall-content-bookmark"><i class="icon-bookmark-4"></i> Lihat Nanti</a></li>
-                                        <li><a id="wall-content-log"><i class="icon-history"></i> Penelusuran</a></li>
-                                        <li><a id="wall-content-search"><i class="icon-search"></i> Pencarian</a></li>
                                     </ul>
                                     <ul>
                                         <li><a id="btn-logout"><i class="icon-key"></i> Keluar</a></li>
@@ -230,29 +221,16 @@
             });
         });
         
-        $('#wall-content-log').click(function(){
+        $('#wall-content-course').click(function(){
             $('#after-post').hide();
             $('div.pager').remove();                
             $('#message').html("Loading Data");
             $('#loading-template').show();                
             $('#wall_container').empty();                
-            $('#wall_container').load("<?php echo site_url('forum/wall_content_log') ?>",function(){                
-                $('#loading-template').fadeOut("slow");                
-                $('.category_time').empty();
-                $('.category_faculty').empty();
-            });
-        });
-        
-        $('#wall-content-bookmark').click(function(){
-            $('#after-post').hide();
-            $('div.pager').remove();                
-            $('#message').html("Loading Data");
-            $('#loading-template').show();                
-            $('#wall_container').empty();                
-            $('#wall_container').load("<?php echo site_url('forum/wall_content_bookmark') ?>",function(){                
-                $('#loading-template').fadeOut("slow");                
-                $('.category_time').empty();
-                $('.category_faculty').empty();
+            $('.category_time').hide();
+            $('.category_faculty').hide();
+            $('#wall_container').load("<?php echo site_url('forum/wall_course_limit') ?>",function(){                
+                $('#loading-template').fadeOut("slow");
             });
         });
         

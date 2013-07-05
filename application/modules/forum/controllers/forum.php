@@ -208,6 +208,19 @@ class Forum extends MX_Controller {
         }
     }
 
+    function wall_course_limit() {
+        $limit = 50;
+        $data['content'] = $this->model_forum->select_course_limit($limit)->result();
+        $this->load->view('forum/wall_course', $data);
+    }
+
+    function wall_course_subscribe() {
+        $user = $this->ion_auth->user()->row();
+        $user_id = $user->id;
+        $data['content'] = $this->model_forum->select_course_subscribe($user_id)->result();
+        $this->load->view('forum/wall_course_subscribe', $data);
+    }
+
     //action/
 
     function delete_wall($id_wall) {

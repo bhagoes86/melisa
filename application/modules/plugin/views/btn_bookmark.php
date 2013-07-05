@@ -1,5 +1,5 @@
 <?php if ($bookmark_status == '') { ?>
-    <button title="bookmark" id="bookmark<?php echo $content_id ?>" data-content="<?php echo $content_id ?>" data-type="<?php echo $type ?>"><i class="icon-bookmark"></i>&nbsp;</button>
+    <button title="Lihat Nanti" id="bookmark<?php echo $content_id ?>" data-content="<?php echo $content_id ?>" data-type="<?php echo $type ?>"><i class="icon-bookmark"></i>&nbsp;</button>
     <script type="text/javascript">
         $("button#bookmark<?php echo $content_id ?>").click(function(){
             var content_id = $(this).attr('data-content');

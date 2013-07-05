@@ -269,7 +269,7 @@ class Model_forum extends CI_Model {
         $this->db->order_by('content.id_content', 'DESC');
         return $this->db->get();
     }
-    
+
     function select_document_year($year) {
         $this->db->select('*');
         $this->db->from('content');
@@ -294,7 +294,7 @@ class Model_forum extends CI_Model {
         $this->db->order_by('content.id_content', 'DESC');
         return $this->db->get();
     }
-    
+
     function select_presentation_year($year) {
         $this->db->select('*');
         $this->db->from('content');
@@ -317,6 +317,25 @@ class Model_forum extends CI_Model {
         $this->db->where('YEAR(content.date)', $year);
         $this->db->where('MONTH(content.date)', $month);
         $this->db->order_by('content.id_content', 'DESC');
+        return $this->db->get();
+    }
+
+    function select_course_limit($limit) {
+        $this->db->select('*');
+        $this->db->from('course');
+        $this->db->join('users', 'users.id=course.user_id');
+        $this->db->where('show', 1);
+        $this->db->limit($limit);
+        return $this->db->get();
+    }
+
+    function select_course_subscribe($user_id) {
+        $this->db->select('*');
+        $this->db->from('course_subscribe');
+        $this->db->join('course', 'course.id_course=course_subscribe.course_id');
+        $this->db->join('users', 'users.id=course.user_id');
+        $this->db->where('course.show', 1);
+        $this->db->where('course_subscribe.user_id', $user_id);
         return $this->db->get();
     }
 

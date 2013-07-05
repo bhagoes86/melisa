@@ -24,6 +24,14 @@ class Model_plugin extends CI_Model {
         return $this->db->get();
     }
 
+    function select_subscribe_status($course_id, $user_id) {
+        $this->db->select('*');
+        $this->db->from('course_subscribe');
+        $this->db->where('user_id', $user_id);
+        $this->db->where('course_id', $course_id);
+        return $this->db->get();
+    }
+
     function select_tags_content($content_id, $limit) {
         $this->db->select('*');
         $this->db->from('tags');
@@ -51,6 +59,10 @@ class Model_plugin extends CI_Model {
 
     function insert_bookmark($data) {
         $this->db->insert('content_bookmark', $data);
+    }
+
+    function insert_subscribe($data) {
+        $this->db->insert('course_subscribe', $data);
     }
 
 }
