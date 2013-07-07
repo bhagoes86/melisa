@@ -194,10 +194,14 @@
                             <a class="button" target="_blank" href="<?php echo site_url('content/video' . '/' . $row->id_content) ?>">
                                 <i class="icon-screen"></i> Buka
                             </a>
+                            <?php echo modules::run('forum/btn_broadcast', $row->id_content, 0) ?>
+                            <?php echo modules::run('plugin/btn_bookmark', $row->id_content, 0) ?>
                         <?php } elseif ($row->type == 1) { ?>
                             <a class="button" target="_blank" href="<?php echo site_url('content/document' . '/' . $row->id_content) ?>">
                                 <i class="icon-screen"></i> Buka
                             </a>
+                            <?php echo modules::run('forum/btn_broadcast', $row->id_content, 1) ?>
+                            <?php echo modules::run('plugin/btn_bookmark', $row->id_content, 1) ?>
                         <?php } elseif ($row->type == 2) { ?>
                             <a class="button" target="_blank" href="<?php echo site_url('content/youtube' . '/' . $row->id_content) ?>">
                                 <i class="icon-screen"></i> Buka
@@ -208,22 +212,32 @@
                             <a class="button" target="_blank" href="<?php echo site_url('content/vimeo' . '/' . $row->id_content) ?>">
                                 <i class="icon-screen"></i> Buka
                             </a>
+                            <?php echo modules::run('forum/btn_broadcast', $row->id_content, 3) ?>
+                            <?php echo modules::run('plugin/btn_bookmark', $row->id_content, 3) ?>
                         <?php } elseif ($row->type == 4) { ?>
                             <a class="button" target="_blank" href="<?php echo site_url('content/scribd' . '/' . $row->id_content) ?>">
                                 <i class="icon-screen"></i> Buka
                             </a>
+                            <?php echo modules::run('forum/btn_broadcast', $row->id_content, 4) ?>
+                            <?php echo modules::run('plugin/btn_bookmark', $row->id_content, 4) ?>
                         <?php } elseif ($row->type == 5) { ?>
                             <a class="button" target="_blank" href="<?php echo site_url('content/slideshare' . '/' . $row->id_content) ?>">
                                 <i class="icon-screen"></i> Buka
                             </a>
+                            <?php echo modules::run('forum/btn_broadcast', $row->id_content, 5) ?>
+                            <?php echo modules::run('plugin/btn_bookmark', $row->id_content, 5) ?>
                         <?php } elseif ($row->type == 6) { ?>
                             <a class="button" target="_blank" href="<?php echo site_url('content/soundcloud' . '/' . $row->id_content) ?>">
                                 <i class="icon-screen"></i> Buka
                             </a>
+                            <?php echo modules::run('forum/btn_broadcast', $row->id_content, 6) ?>
+                            <?php echo modules::run('plugin/btn_bookmark', $row->id_content, 6) ?>
                         <?php } elseif ($row->type == 7) { ?>
                             <a class="button" target="_blank" href="<?php echo site_url('content/docstoc' . '/' . $row->id_content) ?>">
                                 <i class="icon-screen"></i> Buka
                             </a>
+                            <?php echo modules::run('forum/btn_broadcast', $row->id_content, 7) ?>
+                            <?php echo modules::run('plugin/btn_bookmark', $row->id_content, 7) ?>
                         <?php } ?>
                     </div>
                 </td>
