@@ -1,37 +1,46 @@
-<!--Sidebar Manager-->
-<div class="span3">
-    <div class="page-sidebar bg-color-red" style="margin-top: 0px;margin-left: 0px;padding-bottom: 0px;">
-        <ul>
-            <li><a id="btn-tentang-saya"><i class="icon-user"></i> Tentang Saya</a></li>
-        </ul>
-        <ul>
-            <li><a id="btn-my-video"><i class="icon-film"></i> Video</a></li>
-            <li><a id="btn-my-sound"><i class="icon-playlist"></i> Suara</a></li>
-            <li><a id="btn-my-document"><i class="icon-file"></i> Dokumen</a></li>
-        </ul>
-        <ul>
-            <li><a id="btn-my-course"><i class="icon-address-book"></i> Materi Ajar</a></li>
-            <li><a id="btn-quiz"><i class="icon-drawer-2"></i> Kelola Kuis</a></li>
-            <li><a id="btn-assignment"><i class="icon-box-remove"></i> Kelola Tugas</a></li>
-            
-        </ul>
-        <ul>
-            
-        </ul>
-        <?php
-        $group = $this->ion_auth->get_users_groups()->row();
-        $group_id = $group->id;
-        ?>
-        <?php if ($group_id == 1) { ?><!--admin-->
-            <ul class="bg-color-orangeDark">
-                <li><a id="btn-site-manager" class="fg-color-white"><i class="icon-newspaper"></i> Manajemen Situs</a></li>
-            </ul>
-        <?php } ?>
-    </div>
+<div class="row" id="row-main-content">
+    <a class="shortcut bg-color-red" id="btn-my-video">
+        <span class="icon fg-color-white"><i class="icon-film"></i></span>
+        <span class="label fg-color-white">Podcast</span>
+    </a>
+    <a class="shortcut bg-color-blueDark" id="btn-my-document">
+        <span class="icon  fg-color-white"><i class="icon-file-pdf"></i></span>
+        <span class="label  fg-color-white">Document</span>
+    </a>
+    <a class="shortcut bg-color-orange" id="btn-my-document">
+        <span class="icon fg-color-white"><i class="icon-monitor"></i></span>
+        <span class="label fg-color-white">Presentation</span>
+    </a>
+    <a class="shortcut bg-color-pinkDark" id="btn-my-course">
+        <span class="icon fg-color-white"><i class="icon-address-book"></i></span>
+        <span class="label fg-color-white">Kuliah</span>
+    </a>
+    <a class="shortcut bg-color-pink" id="btn-quiz">
+        <span class="icon fg-color-white"><i class="icon-drawer-2"></i></span>
+        <span class="label fg-color-white">Kuis</span>
+    </a>
+    <a class="shortcut bg-color-green" id="btn-assignment">
+        <span class="icon fg-color-white"><i class="icon-box-remove"></i></span>
+        <span class="label fg-color-white">Tugas</span>
+    </a>
+    <?php
+    $group = $this->ion_auth->get_users_groups()->row();
+    $group_id = $group->id;
+    ?>
+    <?php if ($group_id == 1) { ?><!--admin-->
+        <a class="shortcut bg-color-orangeDark fright" id="btn-site-manager">
+            <span class="icon fg-color-white"><i class="icon-cog"></i></span>
+            <span class="label fg-color-white">Admin</span>
+        </a>
+    <?php } ?>
+    <div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
 </div>
 <!--Konten-->
-<div class="span9" id="content-right">
-    <div class="span9">
+<div class="span12" id="content-right">
+    <div class="span4">
+        <img src="<?php echo base_url() ?>asset/css/images/pencilcase.png" style="width: 85%;"/>
+    </div>
+    <div class="span8">
         <h2 style="padding-top: 0px;margin-top: 0px;">Halo,
             <?php
             $user = $this->ion_auth->user()->row();
@@ -39,12 +48,9 @@
             ?>
         </h2>
         <p>
-            Selamat datang <br/>Halaman ini dapat digunakan untuk mengelola konten yang ditautkan. 
-            Masing-masing fitur dapat diakses melalui menu di sebelah kiri. <br/><br/>Selamat menggunakan ^-^
+            Selamat datang <br/>Halaman ini dapat digunakan untuk mengelola konten dan materi ajar. 
+            Semua fungsi dapat diakses melalui shortcut yang tersedia. <br/><br/>Selamat menggunakan ^-^
         </p>
-    </div>
-    <div class="span5">
-        <img src="<?php echo base_url() ?>asset/css/images/pencilcase.png" style="width: 100%;"/>
     </div>
 </div>
 <!--Script-->

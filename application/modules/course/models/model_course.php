@@ -115,6 +115,7 @@ class Model_course extends CI_Model {
         $this->db->from('course');
         $this->db->where('user_id', $user_id);
         $this->db->where('show !=', 2);
+        $this->db->order_by('id_course', 'DESC');
         return $this->db->get();
     }
 
@@ -126,6 +127,7 @@ class Model_course extends CI_Model {
         $this->db->select('*');
         $this->db->from('course');
         $this->db->where('show', 1);
+        $this->db->order_by('id_course', 'DESC');
         return $this->db->get();
     }
 

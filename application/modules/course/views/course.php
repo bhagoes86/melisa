@@ -30,62 +30,59 @@
                         <div class="row" id="row-top-content" style="margin-top: 20px;margin-bottom: 20px;"></div>
                         <div class="row" id="row-main-content">
 
-                            <div class="span12 hero-unit" style="padding: 0px;">
-                                <div class="span5" style="padding: 0px;margin: 0px;">
-                                    <img src="<?php echo base_url() . 'resource/' . $course->picture ?>" style="width: 100%;padding: 0px;margin: 5px 5px 0px 5px;"/>
+                            <div class="span12" style="padding: 0px;">
+                                <h3 style="margin-top: 0px;font-weight: normal;"><?php echo $course->course ?></h3>                                
+                                <div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
+                                <div class="span6" style="padding: 0px;margin: 0px;">
+                                    <img src="<?php echo base_url() . 'resource/' . $course->picture ?>" style="width: 95%;padding: 0px;margin: 5px 5px 0px 5px;"/>
                                 </div>
-                                <div class="span6" style="padding: 0px;margin: 0px 0px 0px 20px;">
-                                    <h3 style="margin-top: 0px;font-weight: bold;"><?php echo $course->course ?></h3>
-                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($course->description) ?></p>                                    
-                                    <div class="addthis_toolbox addthis_default_style addthis_32x32_style" style="margin-top: 8px;">
-                                        <a class="addthis_button_facebook"></a>
-                                        <a class="addthis_button_twitter"></a>
-                                        <a class="addthis_button_google_plusone_share"></a>
-                                        <a class="addthis_button_linkedin"></a>
-                                        <a class="addthis_button_google"></a>
+                                <div class="span6">
+                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">
+                                        <?php echo $course->intkuliah; ?>
+                                    </p>             
+                                    <div class="addthis_toolbox addthis_default_style">
+                                        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                        <a class="addthis_button_tweet"></a>
+                                        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                                        <a class="addthis_button_linkedin_counter"></a>
                                     </div>
-                                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>                                    
+                                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
                                 </div>  
                             </div>
 
                             <div class="span12">
-                                <div class="span3">
-                                    <h3 style="font-weight: bold;">Intisari Kuliah</h3>
-                                    <hr/>
+                                <div class="span4">
+                                    <h3 style="font-weight: normal;">Ringkasan Kuliah</h3>
+                                    <div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
                                     <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">
                                         <?php echo $course->intkuliah; ?>
                                     </p>                                    
                                 </div>
-                                <div class="span3">
-                                    <h3 style="font-weight: bold;">Pemahaman Dasar</h3>
-                                    <hr/>
+                                <div class="span4">
+                                    <h3 style="font-weight: normal;">Yang Harus Saya Ketahui?</h3>
+                                    <div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
                                     <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">
                                         <?php echo $course->pemdasar; ?>
                                     </p>                                    
                                 </div>
-                                <div class="span3">
-                                    <h3 style="font-weight: bold;">Akan Dipelajari</h3>
-                                    <hr/>
+                                <div class="span4">
+                                    <h3 style="font-weight: normal;">Yang Akan Saya Pelajari?</h3>
+                                    <div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
                                     <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">
                                         <?php echo $course->dipelajari; ?>
                                     </p>                                    
-                                </div>
-                                <div class="span3">
-                                    <h3 style="font-weight: bold;">Pengelola Kuliah</h3>
-                                    <hr/>
-                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;"></p>                                    
                                 </div>
                             </div>
 
                             <div class="span12">
                                 <div class="span8" id="learning-content" style="padding-top: 0px;">
-                                    <h3 style="padding-top: 0px;margin-top: 0px;font-weight: bold;">Materi</h3>
-                                    <hr/>
+                                    <h3 style="padding-top: 0px;margin-top: 0px;font-weight: normal;">Materi</h3>
+                                    <div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
                                     <iframe style="width: 100%;height: 400px;" src="http://www.youtube.com/embed/ZgqhsgNobiw" frameborder="0" allowfullscreen></iframe>
                                 </div>
                                 <div class="span4" style="padding-top: 0px;">
-                                    <h3 style="padding-top: 0px;margin-top: 0px;font-weight: bold;">Silabus</h3>
-                                    <hr/>
+                                    <h3 style="padding-top: 0px;margin-top: 0px;font-weight: normal;">Silabus</h3>
+                                    <div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
                                     <table class="bordered">                                    
                                         <tbody>      
                                             <?php foreach ($silabus as $row): ?>
@@ -102,28 +99,11 @@
                             </div>
 
                             <div class="span12">
-                                <div class="span6">
-                                    <div class="span6">
-                                        <h3 style="margin-top: 0px;font-weight: bold;">Evaluasi</h3>
-                                        <hr/>
-                                        <div id="list-quiz">
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="span6">
-                                        <h3 style="margin-top: 0px;font-weight: bold;">Tugas</h3>
-                                        <hr/>
-                                        <div id="list-assignment">
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="span6">
-                                    <h3 style="margin-top: 0px;font-weight: bold;">Diskusi</h3>  
-                                    <hr/>
+                                <div class="span8">
+                                    <h3 style="margin-top: 0px;font-weight: normal;">Diskusi</h3>  
+                                    <div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
                                     <div id="disqus_thread">
-                                        
+
                                     </div>
                                     <script type="text/javascript">
                                         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -138,20 +118,26 @@
                                     </script>
                                     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                                 </div>
-                                
-                                
-                            </div>     
-                            <div class="span12">
-                                
-                               
+                                <div class="span4">
+                                    <div class="span4">
+                                        <h3 style="margin-top: 0px;font-weight: normal;">Evaluasi</h3>
+                                        <div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
+                                        <div id="list-quiz"></div>
+                                    </div>
+                                    <div class="span4">
+                                        <h3 style="margin-top: 0px;font-weight: normal;">Tugas</h3>
+                                        <div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
+                                        <div id="list-assignment"></div>
+                                    </div>
+                                </div>                                
                             </div>
                         </div>
                         <div class="clearfix"></div>
                     </div>
                     <!--Loading Template-->
-                    <div class="message-dialog bg-color-green fg-color-white"  style="display: none;position: fixed;top: 50%;" id="loading-template">
-                        <img style="float: left;margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/preloader-w8-cycle-black.gif">
-                        <p style="float: left;margin-left: 20px;margin-top: 30px;" id="message">Content for message dialog</p>
+                    <div class="message-dialog bg-color-blueDark fg-color-white"  style="text-align: center;display: none;position: fixed;top: 50%;" id="loading-template">
+                        <img style="margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/ajax-loader.gif">
+                        <p style="margin-top: 10px;" id="message">Loading Data</p>
                     </div>
                     <div class="message-dialog bg-color-red fg-color-white" style="display: none;position: fixed;top: 50%;" id="error-template">
                         <p id="message-error">Content for message dialog</p>
@@ -161,6 +147,7 @@
                         <p id="message-info">Content for message dialog</p>
                         <button class="place-right" id="close-info-message">Tutup Pesan</button>
                     </div>
+                    <!--EOF Loading Template-->  
                 </div>
             </div>
             <div class="page" id="footbar"></div>

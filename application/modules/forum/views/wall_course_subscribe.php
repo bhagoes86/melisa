@@ -38,6 +38,7 @@
             <div class="text"><?php echo nl2br($row->description) ?></div>
             <div class="utils">                    
                 <div class="toolbar place-left">
+                    <?php echo modules::run('plugin/btn_course_access', $row->id_course) ?>
                     <?php echo modules::run('plugin/btn_subscribe', $row->id_course) ?>
                 </div>
                 <div class="toolbar place-right"></div>

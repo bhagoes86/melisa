@@ -326,6 +326,7 @@ class Model_forum extends CI_Model {
         $this->db->join('users', 'users.id=course.user_id');
         $this->db->where('show', 1);
         $this->db->limit($limit);
+        $this->db->order_by('course.id_course', 'DESC');
         return $this->db->get();
     }
 
@@ -336,6 +337,7 @@ class Model_forum extends CI_Model {
         $this->db->join('users', 'users.id=course.user_id');
         $this->db->where('course.show', 1);
         $this->db->where('course_subscribe.user_id', $user_id);
+        $this->db->order_by('course_subscribe.id_course_subscribe', 'DESC');
         return $this->db->get();
     }
 

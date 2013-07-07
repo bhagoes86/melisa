@@ -1,7 +1,7 @@
 <div class="span4">
     <form id="form-search">
         <div class="input-control text">
-            <input id="katakunci" type="text" placeholder="Kata Kunci"/>
+            <input id="katakunci" type="text" placeholder="Kata Kunci Pencarian"/>
             <button class="btn-search"></button>
         </div>
     </form>

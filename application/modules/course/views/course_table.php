@@ -1,3 +1,12 @@
+<h3 style="padding-top: 0px;margin-top: 0px;font-weight: normal;">Daftar Kuliah</h3>
+<div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
+<div class='pager toolbar' style="vertical-align: middle;">
+    <a style="cursor: pointer;text-decoration: none;" alt='First' class='firstPage button'><i class="icon-first"></i></a>
+    <a style="cursor: pointer;text-decoration: none;" alt='Previous' class='prevPage button'><i class="icon-arrow-left-2"></i></a>
+    <span class='currentPage'></span> Dari <span class='totalPages'></span>
+    <a style="cursor: pointer;text-decoration: none;" alt='Next' class='nextPage button'><i class="icon-arrow-right-2"></i></a>
+    <a style="cursor: pointer;text-decoration: none;" alt='Last' class='lastPage button'><i class="icon-last"></i></a>
+</div>
 <table id="course">
     <tbody>
         <?php foreach ($content as $row): ?>
@@ -18,27 +27,13 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+<div class='pager toolbar' style="vertical-align: middle;">
+    <a style="cursor: pointer;text-decoration: none;" alt='First' class='firstPage button'><i class="icon-first"></i></a>
+    <a style="cursor: pointer;text-decoration: none;" alt='Previous' class='prevPage button'><i class="icon-arrow-left-2"></i></a>
+    <span class='currentPage'></span> Dari <span class='totalPages'></span>
+    <a style="cursor: pointer;text-decoration: none;" alt='Next' class='nextPage button'><i class="icon-arrow-right-2"></i></a>
+    <a style="cursor: pointer;text-decoration: none;" alt='Last' class='lastPage button'><i class="icon-last"></i></a>
+</div>
 <script type="text/javascript">
-    $('table#course').each(function() {
-        var currentPage = 0;
-        var numPerPage = 15;
-        var $table = $(this);
-        $table.bind('repaginate', function() {
-            $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
-        });
-        $table.trigger('repaginate');
-        var numRows = $table.find('tbody tr').length;
-        var numPages = Math.ceil(numRows / numPerPage);
-        var $pager = $('<div class="toolbar"></div>');
-        for (var page = 0; page < numPages; page++) {
-            $('<a class="button page-number" style="cursor:pointer;margin-right:4px;"></a>').text(page + 1).bind('click', {
-                newPage: page
-            }, function(event) {
-                currentPage = event.data['newPage'];
-                $table.trigger('repaginate');
-                $(this).addClass('active').siblings().removeClass('active');
-            }).appendTo($pager).addClass('clickable');
-        }
-        $pager.insertBefore($table).find('span.page-number:first').addClass('active');
-    });
+    $('table#course').paginateTable({ rowsPerPage: 10 });
 </script>

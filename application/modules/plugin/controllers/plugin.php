@@ -19,6 +19,11 @@ class Plugin extends MX_Controller {
         $this->load->helper('text');
     }
 
+    function btn_course_access($id_course) {
+        $data['id_course'] = $id_course;
+        $this->load->view('plugin/btn_course_access', $data);
+    }
+
     function btn_bookmark($content_id, $type) {
         $user = $this->ion_auth->user()->row();
         $user_id = $user->id;
