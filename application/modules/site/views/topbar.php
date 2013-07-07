@@ -21,18 +21,20 @@
                 </ul>
                 -->
             </li>                    
+            <!--                
             <li data-role="dropdown">
                 <a href="javascript:void(0)"><?php echo $topbar->menu2; ?></a>
                 <ul class="dropdown-menu" id="menu_fakultas">
-                    <?php echo modules::run('course/menu_faculty') ?>
+                <?php echo modules::run('course/menu_faculty') ?>
                 </ul>
             </li>
             <li data-role="dropdown">
                 <a href="javascript:void(0)"><?php echo $topbar->menu3; ?></a>
                 <ul class="dropdown-menu" id="menu_bimbel">
-                    <?php echo modules::run('course/menu_bimbel') ?>
+                <?php echo modules::run('course/menu_bimbel') ?>
                 </ul>
             </li>   
+            -->
         </ul>
     </div>
 </div>
