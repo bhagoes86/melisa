@@ -202,6 +202,8 @@
                             <a class="button" target="_blank" href="<?php echo site_url('content/youtube' . '/' . $row->id_content) ?>">
                                 <i class="icon-screen"></i> Buka
                             </a>
+                            <?php echo modules::run('forum/btn_broadcast', $row->id_content, 2) ?>
+                            <?php echo modules::run('plugin/btn_bookmark', $row->id_content, 2) ?>
                         <?php } elseif ($row->type == 3) { ?>
                             <a class="button" target="_blank" href="<?php echo site_url('content/vimeo' . '/' . $row->id_content) ?>">
                                 <i class="icon-screen"></i> Buka
