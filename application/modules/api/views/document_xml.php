@@ -2,7 +2,7 @@
     <?php foreach ($content as $row): ?>
         <url>
             <loc><?php echo site_url('content/document' . '/' . $row->id_content); ?></loc>
-            <lastmod><?php echo $row->date ?></lastmod>
+            <lastmod><?php echo date('Y-m-d', strtotime($row->date)) ?></lastmod>
             <priority>1</priority>
         </url>           
     <?php endforeach; ?>
