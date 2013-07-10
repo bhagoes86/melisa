@@ -19,7 +19,20 @@ class API extends MX_Controller {
         $this->load->helper('text');
     }
 
-    function get_content_mp4() {
+    function document() {
+        $data['content'] = $this->model_api->select_all_document()->result();
+        $this->load->view('api/document_xml', $data);
+    }
+
+    function podcast() {
+        
+    }
+
+    function course() {
+        
+    }
+
+    function presentation() {
         
     }
 
