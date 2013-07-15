@@ -11,13 +11,13 @@
                         <a class="fg-color-white">
                             <?php if ($type == 1) { ?>
                                 <i class="icon-calendar"></i>
-                                Info Terbaru
+                                Recent News
                             <?php } elseif ($type == 2) { ?>
                                 <i class="icon-clipboard"></i>
-                                Beasiswa
+                                Scholarship
                             <?php } elseif ($type == 3) { ?>
                                 <i class="icon-equalizer"></i>
-                                Update Sistem
+                                System Update
                             <?php } ?>
 
                         </a>
@@ -25,7 +25,7 @@
                 </div>
                 <?php foreach ($content as $row): ?>
                     <div style="display: block;margin-top: 0px;padding-top: 0px;">
-                        <i class="icon-play-alt" style="width: 24px;position: absolute;"></i> 
+                        <i class="icon-arrow-right-3" style="width: 24px;position: absolute;"></i> 
                         <div style="margin-left: 25px;">
                             <a href="<?php echo site_url('news' . '/' . $row->id_news . '/' . $row->type); ?>" style="color: #004444;"><?php echo $row->title; ?></a>
                         </div>

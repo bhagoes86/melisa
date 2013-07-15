@@ -24,7 +24,8 @@ class Home extends MX_Controller {
     }
 
     function welcome() {
-        $this->load->view('home/welcome');
+        $data['themes'] = $this->model_home->select_themes()->row();
+        $this->load->view('home/welcome', $data);
     }
 
     function sidebar() {

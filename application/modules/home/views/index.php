@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
     <?php $this->load->view('home/head'); ?>
-
     <body class="modern-ui" onload="prettyPrint()">
         <!--Top-->
         <div class="page" id="topbar"></div>
@@ -16,44 +15,14 @@
                         <div class="row" id="row-main-content"></div>
                         <div class="row" id="row-main-other">
 
-                            <div class="grid" style="margin-bottom: 30px;margin-top: 30px;">
-                                <div class="row" style="text-align: center;">
-                                    <a class="button bg-color-grayDark fg-color-white" id="semua-kuliah">Daftar Seluruh Kuliah <i class="icon-list"></i></a>
-                                    <script type="text/javascript">
-                                        $('#semua-kuliah').click(function(){               
-                                            $('#row-main-other').hide();
-                                            $('#row-button-other').hide();
-                                            $('#message').html("Loading Data");
-                                            $('#loading-template').show();
-                                            $('#row-main-content').load("<?php echo site_url('course/all_course') ?>",function(){
-                                                $('#loading-template').fadeOut("slow");
-                                            });
-                                        });
-                                    </script>
-                                </div>
-                            </div>
-
+                            <h3 style="padding-top: 20px; margin-top: 0px;"><i class="icon-arrow-right-3"></i> Course</h3>
+                            <div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
                             <div class="grid" style="margin-bottom: 20px;"><div class="row" id="course-home"></div></div>
+                            
+                            <h3 style="padding-top: 0px; margin-top: 0px;"><i class="icon-arrow-right-3"></i> Podcast</h3>
+                            <div class="bg-color-blueDark" style="padding-bottom: 1px;margin-bottom: 10px;"></div>
                             <div class="grid" style="margin-bottom: 20px;"><div class="row" id="video-home"></div></div>
-                            <!--<div class="grid" style="margin-bottom: 20px;"><div class="row" id="presentation-home"></div></div>-->
-
-                            <div class="grid" style="margin-bottom: 30px;">
-                                <div class="row" style="text-align: center;">
-                                    <a class="button bg-color-grayDark fg-color-white" id="semua-kuliah">Daftar Seluruh Kuliah <i class="icon-list"></i></a>
-                                    <script type="text/javascript">
-                                        $('#semua-kuliah').click(function(){               
-                                            $('#row-main-other').hide();
-                                            $('#row-button-other').hide();
-                                            $('#message').html("Loading Data");
-                                            $('#loading-template').show();
-                                            $('#row-main-content').load("<?php echo site_url('course/all_course') ?>",function(){
-                                                $('#loading-template').fadeOut("slow");
-                                            });
-                                        });
-                                    </script>
-                                </div>
-                            </div>
-
+                            
                             <div class="grid">
                                 <div class="row">
                                     <div id="berita" class="span3"></div>
@@ -67,19 +36,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="grid">
-                                <div class="span12 bg-color-gray"></div>                                    
-                                <div class="row" style="color: #004444;text-decoration: none;font-family: 'sofiapro',Arial,sans-serif;font-size: 14px;margin-right: 15px;">                                    
-                                    <a id="sakola_news"  style="color: #004444;cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/4') ?>">Tentang</a>&nbsp;&nbsp;&nbsp;
-                                    <a id="karir_news" style="color: #004444;cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/5') ?>">Karir</a>&nbsp;&nbsp;&nbsp;
-                                    <a id="blog_news" style="color: #004444;cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/6') ?>">Blog</a>&nbsp;&nbsp;&nbsp;
-                                    <a id="pengembangan_news" style="color: #004444;cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/7') ?>">Pengembang</a>&nbsp;&nbsp;&nbsp;
-                                    <a id="kerjasama_news" style="color: #004444;cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/8') ?>">Kerjasama</a>&nbsp;&nbsp;&nbsp;
-                                    <a id="sponsor_news" style="color: #004444;cursor: pointer; text-decoration: none;" href="<?php echo site_url('news' . '/selected_type/9') ?>">Sponsor & Pendanaan</a>&nbsp;&nbsp;&nbsp;
-                                </div>
-
-                            </div>
                         </div>
 
                         <!--Loading Template-->
@@ -87,13 +43,13 @@
                             <img style="margin-top: 10px;" src="<?php echo base_url() ?>asset/metro/images/ajax-loader.gif">
                             <p style="margin-top: 10px;" id="message">Loading Data</p>
                         </div>
-                        <div class="message-dialog bg-color-red fg-color-white" style="display: none;position: fixed;top: 50%;" id="error-template">
+                        <div class="message-dialog bg-color-red fg-color-white" style="text-align: center;display: none;position: fixed;top: 50%;" id="error-template">
                             <p id="message-error">Content for message dialog</p>
-                            <button class="place-right" id="close-error-message">Tutup Pesan</button>
+                            <button class="place-right" id="close-error-message">Close Message</button>
                         </div>
-                        <div class="message-dialog bg-color-blue fg-color-white" style="display: none;position: fixed;top: 50%;" id="info-template">
+                        <div class="message-dialog bg-color-blue fg-color-white" style="text-align: center;display: none;position: fixed;top: 50%;" id="info-template">
                             <p id="message-info">Content for message dialog</p>
-                            <button class="place-right" id="close-info-message">Tutup Pesan</button>
+                            <button class="place-right" id="close-info-message">Close Message</button>
                         </div>
                         <!--EOF Loading Template-->                    
                     </div>
@@ -105,7 +61,6 @@
     </body>
 </html>
 <div id="fb-root"></div>
-
 <script type="text/javascript">
     $(document).ready(function(){
         $('#topbar').load("<?php echo site_url('site/topbar') ?>");
@@ -120,7 +75,6 @@
                 
         $('#course-home').load("<?php echo site_url('course/home_course') ?>");
         $('#video-home').load("<?php echo site_url('content/home_video') ?>");
-        //$('#presentation-home').load("<?php echo site_url('content/home_presentation') ?>");
 
         //Load page welcome
         $('a#btn-welcome').click(function(){

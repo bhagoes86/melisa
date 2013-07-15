@@ -20,10 +20,14 @@ class Forum extends MX_Controller {
     }
 
     function index($user_id) {
-        $data['user_id'] = $user_id;
-        $data['content'] = $this->model_forum->select_users($user_id)->row();
-        $data['themes'] = $this->model_forum->select_themes()->row();
-        $this->load->view('forum/index', $data);
+        if (!$this->ion_auth->logged_in()) {
+            redirect();
+        } else {
+            $data['user_id'] = $user_id;
+            $data['content'] = $this->model_forum->select_users($user_id)->row();
+            $data['themes'] = $this->model_forum->select_themes()->row();
+            $this->load->view('forum/index', $data);
+        }
     }
 
     /*

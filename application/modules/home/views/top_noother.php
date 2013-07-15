@@ -1,3 +1,4 @@
+<div class="span8"></div>
 <div class="span4">
     <form id="form-search">
         <div class="input-control text">
@@ -6,7 +7,6 @@
         </div>
     </form>
 </div>
-<div class="span8"></div>
 <script type="text/javascript">
     $('#form-search').submit(function(){
         var katakunci = $('#katakunci').val();
