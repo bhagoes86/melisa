@@ -30,18 +30,18 @@
                                 <div class="page-sidebar bg-color-red" style="margin:0px; padding-bottom: 0px;width:100%;">
                                     <ul>
                                         <li><a id="wall-broadcast"><i class="icon-newspaper"></i> Broadcast</a></li>
-                                        <li><a id="wall-content-activity"><i class="icon-clock"></i> Aktivitas</a></li>                                        
+                                        <li><a id="wall-content-activity"><i class="icon-clock"></i> Readcast</a></li>                                        
                                     </ul>
                                     <ul>
-                                        <li><a id="wall-content-course"><i class="icon-list"></i> Kuliah</a></li>
+                                        <li><a id="wall-content-course"><i class="icon-list"></i> Courses</a></li>
                                     </ul>
                                     <ul>
                                         <li><a id="wall-content-podcast"><i class="icon-film"></i> Podcast</a></li>
                                         <li><a id="wall-content-document"><i class="icon-file-pdf"></i> Document</a></li>
-                                        <li><a id="wall-content-presentation"><i class="icon-monitor"></i> Presentasi</a></li>
+                                        <li><a id="wall-content-presentation"><i class="icon-monitor"></i> Presentation</a></li>
                                     </ul>
                                     <ul>
-                                        <li><a id="btn-logout"><i class="icon-key"></i> Keluar</a></li>
+                                        <li><a id="btn-logout"><i class="icon-key"></i> Sign Out</a></li>
                                     </ul>
                                 </div>
                             </div>
