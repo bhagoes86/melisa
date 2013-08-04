@@ -1,4 +1,4 @@
-<button title="Hapus" id="remove-bookmark<?php echo $content_id ?>" data-id="<?php echo $content_id ?>" data-type="<?php echo $type ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+<button title="Remove" id="remove-bookmark<?php echo $content_id ?>" data-id="<?php echo $content_id ?>" data-type="<?php echo $type ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
 <script type="text/javascript">
     $("button#remove-bookmark<?php echo $content_id ?>").click(function(){
         var content_id = $(this).attr('data-id');

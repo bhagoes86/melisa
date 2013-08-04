@@ -13,16 +13,18 @@
     </a>
     <a class="shortcut bg-color-pinkDark" id="btn-my-course">
         <span class="icon fg-color-white"><i class="icon-address-book"></i></span>
-        <span class="label fg-color-white">Kuliah</span>
+        <span class="label fg-color-white">Course</span>
     </a>
     <a class="shortcut bg-color-pink" id="btn-quiz">
         <span class="icon fg-color-white"><i class="icon-drawer-2"></i></span>
-        <span class="label fg-color-white">Kuis</span>
+        <span class="label fg-color-white">Quiz</span>
     </a>
+    <!--
     <a class="shortcut bg-color-green" id="btn-assignment">
         <span class="icon fg-color-white"><i class="icon-box-remove"></i></span>
-        <span class="label fg-color-white">Tugas</span>
+        <span class="label fg-color-white">Assignment</span>
     </a>
+    -->
     <?php
     $group = $this->ion_auth->get_users_groups()->row();
     $group_id = $group->id;
@@ -48,7 +50,7 @@
             ?>
         </h2>
         <p>
-            Selamat datang <br/>Halaman ini dapat digunakan untuk mengelola konten dan materi ajar. 
+            Welcome <br/>Halaman ini dapat digunakan untuk mengelola konten dan materi ajar. 
             Semua fungsi dapat diakses melalui shortcut yang tersedia. <br/><br/>Selamat menggunakan ^-^
         </p>
     </div>
