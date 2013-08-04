@@ -1,5 +1,5 @@
 <fieldset class="feed" style="margin-top: 5px;">
-    <legend><i class="icon-user"></i>Personalisasi</legend>
+    <legend><i class="icon-user"></i>Profile</legend>
     <div class="progress-bar">
         <div class="bar-caption" style="width:70%"> 70%</div>
         <div class="bar bg-color-green" style="width:70%"></div>
@@ -16,9 +16,9 @@
         </li>
     </ul>
     <div class="toolbar">
-        <button id="btn-course-subscribe" title="Kuliah Langganan"><i class="icon-list"></i></button>
-        <button id="btn-content-bookmark" title="Lihat Nanti"><i class="icon-bookmark-4"></i></button>
-        <button id="btn-content-log" title="Penelusuran"><i class="icon-history"></i></button>        
+        <button id="btn-course-subscribe" title="Subscribe"><i class="icon-list"></i></button>
+        <button id="btn-content-bookmark" title="Watch Later"><i class="icon-bookmark-4"></i></button>
+        <button id="btn-content-log" title="History"><i class="icon-history"></i></button>        
     </div>
 </fieldset>
 <script type="text/javascript">

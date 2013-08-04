@@ -34,9 +34,13 @@
                 <div class="text"><?php echo nl2br($row->message) ?></div>
                 <div class="utils">                    
                     <div class="toolbar place-left"></div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
+                    <?php if ($user_id == $row->user_id) { ?>
+                        <div class="toolbar place-right">
+                            <button title="Remove Post" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        </div>
+                    <?php } else {
+                        
+                    } ?>
                     <div class="clearfix"></div>
                 </div>                       
             </div>
@@ -55,8 +59,8 @@
                         <img src="<?php echo base_url() . $profpic ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
                     <?php } else { ?>
                         <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                    <?php } ?>
-                <?php } ?>
+            <?php } ?>
+        <?php } ?>
             </span>
             <div class="data">
                 <div class="user-description">
@@ -76,14 +80,18 @@
                 <div class="text"><?php echo nl2br($row->message) ?></div>
                 <div class="utils">                    
                     <div class="toolbar place-left"></div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
+        <?php if ($user_id == $row->user_id) { ?>
+                        <div class="toolbar place-right">
+                            <button title="Remove Post" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        </div>
+        <?php } else {
+            
+        } ?>
                     <div class="clearfix"></div>
                 </div>                       
             </div>
         </li>
-    <?php } elseif ($row->forum_type == 2) { ?>
+            <?php } elseif ($row->forum_type == 2) { ?>
         <!--Youtube-->
         <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
             <span class="feed-avatar">
@@ -95,10 +103,10 @@
                     if (file_exists($profpic)) {
                         ?>
                         <img src="<?php echo base_url() . $profpic ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                    <?php } else { ?>
+            <?php } else { ?>
                         <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                    <?php } ?>
-                <?php } ?>
+            <?php } ?>
+        <?php } ?>
             </span>
             <div class="data">
                 <div class="user-description">
@@ -109,10 +117,10 @@
                 </div>
                 <div class="text" id="wall-content-viewer-<?php echo $row->id_wall ?>" data-id="<?php echo $row->id_wall ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="image link-image">
-                    <?php
-                    $media = analyze_media($row->url);
-                    $extract_id = explode('^^^', $media);
-                    ?>
+        <?php
+        $media = analyze_media($row->url);
+        $extract_id = explode('^^^', $media);
+        ?>
                     <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_wall ?>">
                         <img src="http://img.youtube.com/vi/<?php echo $extract_id[1]; ?>/1.jpg" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;">
                     </a>
@@ -125,14 +133,18 @@
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
+                    <?php if ($user_id == $row->user_id) { ?>
+                        <div class="toolbar place-right">
+                            <button title="Remove Post" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        </div>
+        <?php } else {
+            
+        } ?>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </li>
-    <?php } elseif ($row->forum_type == 3) { ?>
+            <?php } elseif ($row->forum_type == 3) { ?>
         <!--Vimeo-->
         <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
             <span class="feed-avatar">
@@ -144,10 +156,10 @@
                     if (file_exists($profpic)) {
                         ?>
                         <img src="<?php echo base_url() . $profpic ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                    <?php } else { ?>
+            <?php } else { ?>
                         <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                    <?php } ?>
-                <?php } ?>
+            <?php } ?>
+        <?php } ?>
             </span>
             <div class="data">
                 <div class="user-description">
@@ -158,7 +170,7 @@
                 </div>
                 <div class="text" id="wall-content-viewer-<?php echo $row->id_wall ?>" data-id="<?php echo $row->id_wall ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="image link-image">
-                    <?php $media = vimeo_cover($row->url); ?>
+        <?php $media = vimeo_cover($row->url); ?>
                     <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_wall ?>">
                         <img src="<?php echo ($media['thumbnail_medium']) ?>" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;">
                     </a>
@@ -171,14 +183,18 @@
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
+        <?php if ($user_id == $row->user_id) { ?>
+                        <div class="toolbar place-right">
+                            <button title="Remove Post" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        </div>
+        <?php } else {
+            
+        } ?>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </li>
-    <?php } elseif ($row->forum_type == 4) { ?>
+            <?php } elseif ($row->forum_type == 4) { ?>
         <!--scribd-->
         <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
             <span class="feed-avatar">
@@ -190,10 +206,10 @@
                     if (file_exists($profpic)) {
                         ?>
                         <img src="<?php echo base_url() . $profpic ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                    <?php } else { ?>
+            <?php } else { ?>
                         <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                    <?php } ?>
-                <?php } ?>
+            <?php } ?>
+        <?php } ?>
             </span>
             <div class="data">
                 <div class="user-description">
@@ -210,29 +226,33 @@
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
+        <?php if ($user_id == $row->user_id) { ?>
+                        <div class="toolbar place-right">
+                            <button title="Remove Post" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        </div>
+                <?php } else {
+                    
+                } ?>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </li>
-    <?php } elseif ($row->forum_type == 6) { ?>
+            <?php } elseif ($row->forum_type == 6) { ?>
         <!--SoundCloud-->
         <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
             <span class="feed-avatar">
                 <?php if ($row->profic == '') { ?>
                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                <?php } else { ?>
-                    <?php
-                    $profpic = 'resource/' . $row->profic;
-                    if (file_exists($profpic)) {
-                        ?>
+        <?php } else { ?>
+            <?php
+            $profpic = 'resource/' . $row->profic;
+            if (file_exists($profpic)) {
+                ?>
                         <img src="<?php echo base_url() . $profpic ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                    <?php } else { ?>
+            <?php } else { ?>
                         <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                    <?php } ?>
-                <?php } ?>
+            <?php } ?>
+        <?php } ?>
             </span>
             <div class="data">
                 <div class="user-description">
@@ -253,29 +273,33 @@
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
+        <?php if ($user_id == $row->user_id) { ?>
+                        <div class="toolbar place-right">
+                            <button title="Remove Post" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        </div>
+                <?php } else {
+                    
+                } ?>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </li>
-    <?php } elseif ($row->forum_type == 5) { ?>
+            <?php } elseif ($row->forum_type == 5) { ?>
         <!--slideshare-->
         <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
             <span class="feed-avatar">
-                <?php if ($row->profic == '') { ?>
+        <?php if ($row->profic == '') { ?>
                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                <?php } else { ?>
-                    <?php
-                    $profpic = 'resource/' . $row->profic;
-                    if (file_exists($profpic)) {
-                        ?>
+        <?php } else { ?>
+            <?php
+            $profpic = 'resource/' . $row->profic;
+            if (file_exists($profpic)) {
+                ?>
                         <img src="<?php echo base_url() . $profpic ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                    <?php } else { ?>
+            <?php } else { ?>
                         <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
+                        <?php } ?>
                     <?php } ?>
-                <?php } ?>
             </span>
             <div class="data">
                 <div class="user-description">
@@ -286,14 +310,14 @@
                 </div>
                 <div class="text" id="wall-content-viewer-<?php echo $row->id_wall ?>" data-id="<?php echo $row->id_wall ?>" style="height: 380px;display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="image link-image">
-                    <?php
-                    $media = analyze_media($row->url);
-                    $extract_id = explode('^^^', $media);
-                    $url = $extract_id[1];
-                    $thumb = explode("/", slideshare_cover($url)->thumbnail);
-                    $thumbnail = slideshare_cover($url)->thumbnail;
-                    $slidesharetitle = slideshare_cover($url)->title;
-                    ?>
+        <?php
+        $media = analyze_media($row->url);
+        $extract_id = explode('^^^', $media);
+        $url = $extract_id[1];
+        $thumb = explode("/", slideshare_cover($url)->thumbnail);
+        $thumbnail = slideshare_cover($url)->thumbnail;
+        $slidesharetitle = slideshare_cover($url)->title;
+        ?>
                     <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_wall ?>">
                         <img src="<?php echo "http:" . $thumbnail ?>" style="width: 180px;height: 123px;vertical-align: middle;border-right: 1px solid #bbb;">
                     </a>
@@ -308,29 +332,33 @@
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
+                <?php if ($user_id == $row->user_id) { ?>
+                        <div class="toolbar place-right">
+                            <button title="Remove Post" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        </div>
+                <?php } else {
+                    
+                } ?>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </li>
-    <?php } elseif ($row->forum_type == 7) { ?>
+            <?php } elseif ($row->forum_type == 7) { ?>
         <!--docstoc-->
         <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
             <span class="feed-avatar">
-                <?php if ($row->profic == '') { ?>
+        <?php if ($row->profic == '') { ?>
                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                <?php } else { ?>
-                    <?php
-                    $profpic = 'resource/' . $row->profic;
-                    if (file_exists($profpic)) {
-                        ?>
+        <?php } else { ?>
+            <?php
+            $profpic = 'resource/' . $row->profic;
+            if (file_exists($profpic)) {
+                ?>
                         <img src="<?php echo base_url() . $profpic ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                    <?php } else { ?>
+                        <?php } else { ?>
                         <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
+                        <?php } ?>
                     <?php } ?>
-                <?php } ?>
             </span>
             <div class="data">
                 <div class="user-description">
@@ -341,10 +369,10 @@
                 </div>
                 <div class="text" id="wall-content-viewer-<?php echo $row->id_wall ?>" data-id="<?php echo $row->id_wall ?>" style="display: none;padding: 0px;vertical-align: middle;margin: 0px;background: rgba(0,0,0,0.10);"></div>            
                 <div class="image link-image">
-                    <?php
-                    $media = analyze_media($row->url);
-                    $extract_id = explode('^^^', $media);
-                    ?>
+        <?php
+        $media = analyze_media($row->url);
+        $extract_id = explode('^^^', $media);
+        ?>
                     <a href="javascript:void(0)" id="pic-content-activate" data-id="<?php echo $row->id_wall ?>">
                         <img src="http://img.docstoccdn.com/thumb/100/<?php echo $extract_id[1] ?>.png" style="width: 120px;height: 135px;vertical-align: middle;border-right: 1px solid #bbb;">
                     </a>
@@ -359,9 +387,13 @@
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
+                <?php if ($user_id == $row->user_id) { ?>
+                        <div class="toolbar place-right">
+                            <button title="Remove Post" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        </div>
+                <?php } else {
+                    
+                } ?>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -370,18 +402,18 @@
         <!--picture-->
         <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
             <span class="feed-avatar">
-                <?php if ($row->profic == '') { ?>
+        <?php if ($row->profic == '') { ?>
                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                <?php } else { ?>
-                    <?php
-                    $profpic = 'resource/' . $row->profic;
-                    if (file_exists($profpic)) {
-                        ?>
+        <?php } else { ?>
+            <?php
+            $profpic = 'resource/' . $row->profic;
+            if (file_exists($profpic)) {
+                ?>
                         <img src="<?php echo base_url() . $profpic ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                    <?php } else { ?>
+            <?php } else { ?>
                         <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
+                        <?php } ?>
                     <?php } ?>
-                <?php } ?>
             </span>
             <div class="data">
                 <div class="user-description">
@@ -397,9 +429,13 @@
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
+                <?php if ($user_id == $row->user_id) { ?>
+                        <div class="toolbar place-right">
+                            <button title="Remove Post" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        </div>
+                <?php } else {
+                    
+                } ?>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -408,18 +444,18 @@
         <!--plain-->
         <li class="feed-link" id="wall<?php echo $row->id_wall ?>">
             <span class="feed-avatar">
-                <?php if ($row->profic == '') { ?>
+        <?php if ($row->profic == '') { ?>
                     <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                <?php } else { ?>
-                    <?php
-                    $profpic = 'resource/' . $row->profic;
-                    if (file_exists($profpic)) {
-                        ?>
+        <?php } else { ?>
+            <?php
+            $profpic = 'resource/' . $row->profic;
+            if (file_exists($profpic)) {
+                ?>
                         <img src="<?php echo base_url() . $profpic ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
-                    <?php } else { ?>
+                        <?php } else { ?>
                         <img src="<?php echo base_url() . 'asset/css/images/photo-default.png' ?>" class="userphoto" style="padding-right: 0px;width: 100%;height: 59px;"/>
+            <?php } ?>
                     <?php } ?>
-                <?php } ?>
             </span>
             <div class="data">
                 <div class="user-description">
@@ -434,9 +470,13 @@
                 <div class="utils">
                     <div class="toolbar place-left">
                     </div>
-                    <div class="toolbar place-right">
-                        <button title="Hapus" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
-                    </div>
+        <?php if ($user_id == $row->user_id) { ?>
+                        <div class="toolbar place-right">
+                            <button title="Remove Post" id="remove-status" data-id="<?php echo $row->id_wall ?>" style="text-align: center;"><i class="icon-cancel"></i>&nbsp;</button>
+                        </div>
+        <?php } else {
+            
+        } ?>
                     <div class="clearfix"></div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <fieldset class="feed" style="margin-top: 5px;">
-    <legend><i class="icon-filter"></i>Trend Topik</legend>
+    <legend><i class="icon-filter"></i>Trending Topic</legend>
     <ul style="list-style:none;color:#aaa">
         <?php foreach ($trending as $row): ?>
             <li> <a id="wall-trending" style="text-decoration: none;cursor: pointer;" data-tag="<?php echo $row->tag ?>"><i class="icon-tag"></i> <?php echo $row->tag ?></a></li>
