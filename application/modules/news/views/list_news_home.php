@@ -11,13 +11,13 @@
                         <a class="fg-color-white">
                             <?php if ($type == 1) { ?>
                                 <i class="icon-calendar"></i>
-                                Recent News
+                                Headline News
                             <?php } elseif ($type == 2) { ?>
                                 <i class="icon-clipboard"></i>
                                 Scholarship
                             <?php } elseif ($type == 3) { ?>
                                 <i class="icon-equalizer"></i>
-                                System Update
+                                Feature Update
                             <?php } ?>
 
                         </a>

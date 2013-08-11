@@ -22,7 +22,7 @@
             </ul>
             <ul>
                 <li><a id="btn-news"><i class="icon-screen"></i> Headline News</a></li>
-                <li><a id="btn-beasiswa"><i class="icon-book"></i> Schoolarship</a></li>
+                <li><a id="btn-beasiswa"><i class="icon-book"></i> Scholarship</a></li>
                 <li><a id="btn-fitur"><i class="icon-gift"></i> Update Feature</a></li>
                 <li><a id="btn-kami"><i class="icon-home"></i> Vabel</a></li>
                 <li><a id="btn-karir"><i class="icon-user-3"></i> Career</a></li>
