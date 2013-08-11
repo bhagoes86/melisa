@@ -8,28 +8,28 @@
         ?>
         <?php if ($group_id == 1) { ?><!--admin-->
             <ul>
-                <li><a id="btn-style"><i class="icon-newspaper"></i> Konfigurasi Tampilan</a></li>
+                <li><a id="btn-style"><i class="icon-newspaper"></i> Site Theme</a></li>
             </ul>
             <ul>
-                <li><a id="btn-content-pending"><i class="icon-loop"></i> Konten Ditunda</a></li>
-                <li><a id="btn-course-pending"><i class="icon-printer"></i> Materi Ditunda</a></li>
-                <li><a id="btn-all-topic"><i class="icon-drawer-2"></i> Daftar Topik</a></li>
-                <li><a id="btn-all-faculty"><i class="icon-briefcase-2"></i> Daftar Fakultas</a></li>
-                <li><a id="btn-all-category"><i class="icon-grid"></i> Daftar Kategori</a></li>
-                <li><a id="btn-all-course"><i class="icon-clipboard-2"></i> Daftar Kuliah</a></li>
-                <li><a id="btn-all-user"><i class="icon-user-3"></i> Daftar Pengguna</a></li>
-                <li><a id="btn-content-reported"><i class="icon-blocked"></i> Konten Dilaporkan</a></li>
+                <li><a id="btn-content-pending"><i class="icon-loop"></i> Unconfirm Content</a></li>
+                <li><a id="btn-course-pending"><i class="icon-printer"></i> Unconfirm Course</a></li>
+                <li><a id="btn-all-topic"><i class="icon-drawer-2"></i> Topic List</a></li>
+                <li><a id="btn-all-faculty"><i class="icon-briefcase-2"></i> Institution / Faculty</a></li>
+                <li><a id="btn-all-category"><i class="icon-grid"></i> Category List</a></li>
+                <li><a id="btn-all-course"><i class="icon-clipboard-2"></i> Course List</a></li>
+                <li><a id="btn-all-user"><i class="icon-user-3"></i> Users</a></li>
+                <li><a id="btn-content-reported"><i class="icon-blocked"></i> Reported Content</a></li>
             </ul>
             <ul>
-                <li><a id="btn-news"><i class="icon-screen"></i> Berita Terkini</a></li>
-                <li><a id="btn-beasiswa"><i class="icon-book"></i> Info Beasiswa</a></li>
-                <li><a id="btn-fitur"><i class="icon-gift"></i> Fitur Terbaru</a></li>
+                <li><a id="btn-news"><i class="icon-screen"></i> Headline News</a></li>
+                <li><a id="btn-beasiswa"><i class="icon-book"></i> Schoolarship</a></li>
+                <li><a id="btn-fitur"><i class="icon-gift"></i> Update Feature</a></li>
                 <li><a id="btn-kami"><i class="icon-home"></i> Vabel</a></li>
-                <li><a id="btn-karir"><i class="icon-user-3"></i> Karir</a></li>
-                <li><a id="btn-blog"><i class="icon-file"></i> Blog</a></li>
-                <li><a id="btn-pengembangan"><i class="icon-accessibility"></i> Pengembangan</a></li>
-                <li><a id="btn-kerjasama"><i class="icon-lab"></i> Kerjasama</a></li>
-                <li><a id="btn-sponsor"><i class="icon-broadcast"></i> Sponsor & Pendanaan</a></li>
+                <li><a id="btn-karir"><i class="icon-user-3"></i> Career</a></li>
+                <li><a id="btn-blog"><i class="icon-file"></i> Blogs</a></li>
+                <li><a id="btn-pengembangan"><i class="icon-accessibility"></i> Developer</a></li>
+                <li><a id="btn-kerjasama"><i class="icon-lab"></i> Cooperation</a></li>
+                <li><a id="btn-sponsor"><i class="icon-broadcast"></i> Sponsorship & Donation</a></li>
             </ul>
         <?php } ?>
     </div>
@@ -40,10 +40,10 @@
         <img src="<?php echo base_url() ?>asset/css/images/website-administrator.jpg"/>
     </div>
     <div class="span5">
-        <h2 style="margin-top: 0px;">Administrasi Situs</h2>
+        <h2 style="margin-top: 0px;">Site Administration</h2>
         <p>
-            Anda memasuki wilayah administrasi utama website sakola.net. Harap berhati-hati dalam memanfaatkan fitur yang tersedia.
-            <br/><br/> Selamat Menggunakan ^-^
+            Warning restricted area for administrator only. Becarefull when using feature in this page.
+            <br/><br/> ^-^
         </p>
     </div>
 </div>
