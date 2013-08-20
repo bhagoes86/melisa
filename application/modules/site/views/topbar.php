@@ -18,16 +18,6 @@
                     <small><?php echo $topbar->menu2; ?></small>
                 </span>
             </a>
-            <a href="<?php echo site_url('news' . '/selected_type/4') ?>" id="btn-all-content">
-                <span class="element brand">
-                    <small>News Update</small>
-                </span>
-            </a>
-            <a href="javascript:void(0)" id="btn-all-content">
-                <span class="element brand">
-                    <small>About Us</small>
-                </span>
-            </a>
         </ul>
     </div>
 </div>
