@@ -22,4 +22,11 @@ class Model_mobile extends CI_Model {
         return $this->db->get();
     }
 
+    function select_user_info($id) {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('id', $id);
+        return $this->db->get();
+    }
+
 }

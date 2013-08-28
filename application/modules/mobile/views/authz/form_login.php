@@ -16,23 +16,31 @@
             <!--Header-->
             <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
                 <a href="<?php echo site_url('mobile/') ?>" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
-                <h1>Course</h1>
+                <h1>Login</h1>
             </div>
             <!--Content-->
-            <div data-role="content">   
-                <ul data-nativedroid-plugin='cards'>
-                    <?php foreach ($course as $row): ?>
-                        <li data-cards-type='traffic' data-cards-traffic-route='{"from":"42.350742,-71.083217","to":"42.353709,-71.053613","type" : "coords"}'>
-                            <h1><strong><?php echo $row->course ?></strong></h1>
-                            <!--<h2></h2>-->
-                            <div><img src="<?php echo base_url() . 'resource/' . $row->picture ?>" style="width: 100%;"/></div>
-                            <!--<a href='#'><i class='icon-screenshot'></i> Navigate</a>-->
-                            <p><?php echo $row->description ?></p>
+            <div data-role="content">
+                <form action="<?php echo site_url('mobile/login') ?>" method="POST" data-ajax="false">
+                    <ul data-role="listview" data-inset="true">
+                        <li data-role="devider"></li>
+                        <li data-role="fieldcontain">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username" value="" data-clear-btn="true" placeholder="">
                         </li>
-                    <?php endforeach; ?>
-                </ul>
+                        <li data-role="fieldcontain">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" value="" data-clear-btn="true" placeholder="">
+                        </li>
+                        <li>
+                            <fieldset class="ui-grid-a">
+                                <div class="ui-block-a"><button type="submit" data-theme="b">Batal</button></div>
+                                <div class="ui-block-b"><button type="submit" data-theme="b">Login</button></div>
+                            </fieldset>
+                        </li>
+                    </ul>
+                </form>
             </div>
-        </div>
+        </div>        
         <script src="<?php echo base_url() ?>mobileasset/js/nativedroid.script.js"></script>
     </body>
 </html>
