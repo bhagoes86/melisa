@@ -2,8 +2,8 @@
 
 /*
  * Modul Mobile
- * Maintainer : Sofia Umaroh
- * Email : sofia.umaroh@gmail.com 
+ * Maintainer : Taufik Sulaeaman P
+ * Email : taufiksu@gmail.com 
  */
 
 if (!defined('BASEPATH'))
@@ -13,60 +13,50 @@ class Mobile extends MX_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->load->library('ion_auth');
+        $this->load->library('form_validation');
+        $this->load->library('session');
+        $this->load->helper('text');
+        $this->load->helper(array('url', 'form'));
         $this->load->model('model_mobile', '', true);
     }
 
     function index() {
-        $data['page'] = 'none';
-        $this->load->view('mobile/index', $data);
+        if (!$this->ion_auth->logged_in()) {
+            $this->load->view('mobile/welcome');
+        } else {
+            echo'in';
+        }
     }
 
-    function topic() {
-        $data['page'] = 'topic';
-        $data['content'] = $this->model_mobile->select_all_topic()->result();
-        $this->load->view('mobile/list_topic', $data);
+    /*
+     * Auth
+     */
+
+    function login() {
+        
     }
 
-    function faculty() {
-        $data['page'] = 'faculty';
-        $data['faculty'] = $this->model_mobile->select_all_faculty()->result();
-        $this->load->view('mobile/list_faculty', $data);
+    function logout() {
+        $this->ion_auth->logout();
+        redirect('mobile');
     }
 
-    function video() {
-        $data['page'] = 'video';
-        $data['video'] = $this->model_mobile->select_all_video()->result();
-        $this->load->view('mobile/list_video', $data);
-    }
+    /*
+     * Content
+     */
 
-    function content($id_course) {
-        $data['page'] = 'none';
-        $data['video'] = $this->model_mobile->select_all_content($id_course)->result();
-        $this->load->view('mobile/list_video', $data);
-    }
+    /*
+     * Course
+     */
 
-    function course($id) {
-        $data['page'] = 'topic'; 
-        $data['content'] = $this->model_mobile->select_all_course($id)->result();
-        $this->load->view('mobile/all_course', $data);
-    }
- 
-    function courses($id) {
-        $data['page'] = 'faculty'; 
-        $data['content'] = $this->model_mobile->select_all_course_faculty($id)->result();
-        $this->load->view('mobile/all_course', $data);
-    }
-
-     function youtube($id_content) {
-        $data['page'] = 'none'; 
-        $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
-        $this->load->view('mobile/video_youtube', $data);
-    }
-
-    function video_view($id_content) {
-        $data['page'] = 'none';
-        $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
-        $this->load->view('mobile/video_viewer', $data);
+    function list_course_new() {
+        if (!$this->ion_auth->logged_in()) {
+            $data['course'] = $this->model_mobile->select_course_public()->result();
+            $this->load->view('mobile/course/list_public', $data);
+        } else {
+            echo'in';
+        }
     }
 
 }
