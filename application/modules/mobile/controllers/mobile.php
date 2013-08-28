@@ -80,7 +80,7 @@ class Mobile extends MX_Controller {
     function get_name() {
         $users = $this->ion_auth->user()->row();
         $name = $this->model_mobile->select_user_info($users->id)->row();
-        echo '<i class="icon-user"></i>' . ' ' . $name->first_name . ' ' . $name->last_name;
+        echo $name->first_name . ' ' . $name->last_name;
     }
 
     /*
@@ -88,7 +88,11 @@ class Mobile extends MX_Controller {
      */
 
     function list_feed_new() {
-        $this->load->view('feed/list_feed');
+        if (!$this->ion_auth->logged_in()) {
+            $this->load->view('mobile/welcome');
+        } else {
+            $this->load->view('mobile/feed/list_feed');
+        }
     }
 
     /*
