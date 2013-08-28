@@ -14,22 +14,35 @@
     <body>
         <div data-role="page" id="page" data-theme="d">
             <!--Header-->
-            <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <div data-role="header" data-tap-toggle="false" data-theme='b'>
                 <a href="#left-panel" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
-                <h1>Feed</h1>
-                <a href="#left-panel" data-ajax="false"><i class='icon-plus-sign' style="margin-right: 10px;"></i></a>
+                <h1 style="position: absolute;">Feed</h1>
+                <a href="javascript:void(0)" id="form-submit-activator"><i class='icon-plus-sign' style="margin-right: 10px;"></i></a>
             </div>
             <!--Panel-->
             <?php echo $this->load->view('panel_left'); ?>
             <!--Content-->
             <div data-role="content">
+                <form id="feed-submit">
+                    <ul data-role="listview" data-inset="true" style="display: none;" id="form-submit">
+                        <li>
+                            <fieldset class="ui-grid-solo" data-theme="b" style="padding: 0px 7px 0px 7px;">
+                                <textarea style="width: 100;border-color: #ccc;" rows="5" name="message" id="message" placeholder=" Wanna share something ?"></textarea>
+                            </fieldset>
+                            <fieldset class="ui-grid-a">
+                                <div class="ui-block-a"><button type="reset" data-theme="a" style="background:rgb(0,0,0);">Cancel</button></div>
+                                <div class="ui-block-b"><button type="submit" data-theme="a" style="background:rgb(0,0,0);">Submit</button></div>
+                            </fieldset>
+                        </li>
+                    </ul>
+                </form>
                 <ul data-nativedroid-plugin='cards'>
                     <?php foreach ($feed as $rowfeed): ?>
-                        <li data-cards-type='text' >
-                            <h2><?php echo $rowfeed->first_name .' '.$rowfeed->last_name ?></h2>
-                            <!--<div><img src="<?php // echo base_url() . 'resource/' . $row->picture        ?>" style="width: 100%;"/></div>-->
+                        <li data-cards-type='text'>
+                            <h2><?php echo $rowfeed->first_name . ' ' . $rowfeed->last_name ?> - <?php echo nicetime(strtotime($rowfeed->date)) ?></h2>
+                            <!--<div><img src="<?php // echo base_url() . 'resource/' . $row->picture                                                       ?>" style="width: 100%;"/></div>-->
                                     <!--<a href='#'><i class='icon-screenshot'></i> Navigate</a>-->
-                            <p><?php echo $rowfeed->message ?></p>
+                            <p style="align: justify;"><div style="max-width: 100%;text-align: justify;"><?php echo $rowfeed->message ?></div></p>
                         </li>
                     <?php endforeach; ?>
                 </ul>
@@ -37,6 +50,9 @@
         </div>
         <script src="<?php echo base_url() ?>mobileasset/js/nativedroid.script.js"></script>
         <script type="text/javascript">
+            $('#form-submit-activator').click(function() {
+                $('#form-submit').toggle();
+            });
             $(document).on("pageinit", "#page", function() {
                 //name
                 $('#user_name').load("<?php echo site_url('mobile/get_name') ?>");
@@ -50,6 +66,28 @@
                         }
                     }
                 });
+            });
+            $('#feed-submit').submit(function() {
+                var message = $('#message').val();
+                if (message == '') {
+                    alert('kosong');
+                    return false;
+                } else {
+                    $.ajax({
+                        type: 'POST',
+                        url: "<?php echo site_url('mobile/submit_feed') ?>",
+                        data: $(this).serialize(),
+                        success: function(data, status)
+                        {
+                            alert('sukes');
+                        },
+                        error: function(data, status, e)
+                        {
+                            alert('gagal');
+                        }
+                    });
+                    return false;
+                }
             });
         </script>
     </body>

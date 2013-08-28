@@ -103,9 +103,43 @@ class Mobile extends MX_Controller {
         $this->load->view('mobile/feed/lis_feed_by_id', $data);
     }
 
+    function submit_feed() {
+        $user = $this->ion_auth->user()->row();
+        //pengirim
+        $data['user_id'] = $user->id;
+        //feed yg dikirim
+        $data['user_idto'] = $user->id;
+        //?
+        $data['forum_id'] = 0;
+        //pesan keseluruhan
+        $data['message'] = $this->input->post('message', true);
+        //url ekstrak dari pesan
+        $data['url'] = detector_url($this->input->post('message', true));
+        //url media analisis
+        $data['forum_type'] = url_media_analizer($data['url']);
+        //insert into db
+        $this->model_mobile->insert_feed($data);
+    }
+
     /*
      * Content
      */
+
+    function list_podcast_new() {
+        
+    }
+
+    function list_sound_new() {
+        
+    }
+
+    function list_document_new() {
+        
+    }
+
+    function list_presentation_new() {
+        
+    }
 
     /*
      * Course

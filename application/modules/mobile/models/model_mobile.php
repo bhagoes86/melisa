@@ -48,4 +48,9 @@ class Model_mobile extends CI_Model {
         return $this->db->get();
     }
 
+    function insert_feed($data) {
+        $this->db->insert('wall',$data);
+        return $this->db->insert_id();
+    }
+
 }

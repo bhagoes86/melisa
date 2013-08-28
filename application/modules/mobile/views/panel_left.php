@@ -7,7 +7,7 @@
         <li data-role="list-divider">Updates</li>
         <li data-icon="comments-alt"><a href="#" data-ajax="false">News Feed</a></li>
         <li data-icon="eye-open"><a href="#" data-ajax="false">Readcast</a></li>
-        <li data-role="list-divider">Libraries</li>
+        <li data-role="list-divider">Library</li>
         <li data-icon="play-sign"><a href="#" data-ajax="false">Podcast</a></li>
         <li data-icon="headphones"><a href="#" data-ajax="false">Sound</a></li>
         <li data-icon="file-text-alt"><a href="#" data-ajax="false">Document</a></li>
