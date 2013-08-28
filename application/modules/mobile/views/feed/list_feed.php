@@ -24,15 +24,14 @@
             <!--Content-->
             <div data-role="content">
                 <ul data-nativedroid-plugin='cards'>
-                    <?php // foreach ($course as $row): ?>
-                    <!--<li data-cards-type='traffic' data-cards-traffic-route='{"from":"42.350742,-71.083217","to":"42.353709,-71.053613","type" : "coords"}'>-->
-                        <!--<h1><strong><?php // echo $row->course     ?></strong></h1>-->
-                    <!--<h2></h2>-->
-                    <!--<div><img src="<?php // echo base_url() . 'resource/' . $row->picture     ?>" style="width: 100%;"/></div>-->
-                    <!--<a href='#'><i class='icon-screenshot'></i> Navigate</a>-->
-                    <!--<p><?php // echo $row->description     ?></p>-->
-                    <!--</li>-->
-                    <?php // endforeach; ?>
+                    <?php foreach ($feed as $rowfeed): ?>
+                        <li data-cards-type='text' >
+                            <h2><?php echo $rowfeed->first_name .' '.$rowfeed->last_name ?></h2>
+                            <!--<div><img src="<?php // echo base_url() . 'resource/' . $row->picture        ?>" style="width: 100%;"/></div>-->
+                                    <!--<a href='#'><i class='icon-screenshot'></i> Navigate</a>-->
+                            <p><?php echo $rowfeed->message ?></p>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
         </div>

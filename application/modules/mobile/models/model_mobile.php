@@ -29,4 +29,23 @@ class Model_mobile extends CI_Model {
         return $this->db->get();
     }
 
+    function select_feed_new() {
+        $this->db->select('*');
+        $this->db->from('wall');
+        $this->db->join('users', 'users.id=wall.user_id');
+        $this->db->order_by('id_wall', 'DESC');
+        $this->db->limit(50);
+        return $this->db->get();
+    }
+
+    function select_feed_by_id($id) {
+        $this->db->select('*');
+        $this->db->from('wall');
+        $this->db->join('users', 'users.id=wall.user_id');
+        $this->db->where('users.id', $id);
+        $this->db->order_by('id_wall', 'DESC');
+        $this->db->limit(50);
+        return $this->db->get();
+    }
+
 }

@@ -91,8 +91,16 @@ class Mobile extends MX_Controller {
         if (!$this->ion_auth->logged_in()) {
             $this->load->view('mobile/welcome');
         } else {
-            $this->load->view('mobile/feed/list_feed');
+            $data['feed'] = $this->model_mobile->select_feed_new()->result();
+            $this->load->view('mobile/feed/list_feed', $data);
         }
+    }
+
+    function list_feed_by_id($id_wall) {
+        $user = $this->ion_auth->user()->row();
+        $user_id = $user->id;
+        $data['feed'] = $this->model_mobile->select_feed_by_id($user_id)->row();
+        $this->load->view('mobile/feed/lis_feed_by_id', $data);
     }
 
     /*
