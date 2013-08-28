@@ -19,8 +19,13 @@ class Home extends MX_Controller {
     }
 
     function index() {
-        $data['themes'] = $this->model_home->select_themes()->row();
-        $this->load->view('home/index', $data);
+        $this->load->library('user_agent');
+        if ($this->agent->is_mobile()) {
+            redirect('mobile');
+        } else {
+            $data['themes'] = $this->model_home->select_themes()->row();
+            $this->load->view('home/index', $data);
+        }
     }
 
     function welcome() {
