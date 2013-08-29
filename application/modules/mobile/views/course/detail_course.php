@@ -40,7 +40,7 @@
             <!--Left Panel-->
             <?php echo $this->load->view('panel_left'); ?>
             <!--Right Panel-->
-            <?php echo $detail['id_course'] = $course->id_course; ?>
+            <?php $detail['id_course'] = $course->id_course; ?>
             <?php echo $this->load->view('mobile/course/panel_detail_course', $detail); ?>
             <!--Content-->
             <div data-role="content">
