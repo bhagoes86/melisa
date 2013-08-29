@@ -29,6 +29,10 @@ class Model_mobile extends CI_Model {
         return $this->db->get();
     }
 
+    /*
+     * Feed
+     */
+
     function select_feed_new() {
         $this->db->select('*');
         $this->db->from('wall');
@@ -67,6 +71,28 @@ class Model_mobile extends CI_Model {
     function insert_feed($data) {
         $this->db->insert('wall', $data);
         return $this->db->insert_id();
+    }
+
+    /*
+     * Course
+     */
+
+    function get_course($offset = 0) {
+        $this->db->select('*');
+        $this->db->join('users', 'users.id=course.user_id');
+        $this->db->where('show', '1');
+        $this->db->order_by('id_course', 'DESC');
+        $query = $this->db->get('course', 10, $offset);
+        return $query->result();
+    }
+
+    function num_course() {
+        $this->db->select('*');
+        $this->db->join('users', 'users.id=course.user_id');
+        $this->db->where('show', '1');
+        $this->db->order_by('id_course', 'DESC');
+        $query = $this->db->count_all_results('course');
+        return $query;
     }
 
 }

@@ -183,14 +183,20 @@ class Mobile extends MX_Controller {
      * Course
      */
 
-    // course all all
+    // course all all    
     function list_course_new() {
         if (!$this->ion_auth->logged_in()) {
-            $data['course'] = $this->model_mobile->select_course_public()->result();
-            $this->load->view('mobile/course/list_public', $data);
+            $this->load->view('mobile/welcome');
         } else {
-            echo'in';
+            $data['num_course'] = $this->model_mobile->num_course();
+            $data['course'] = $this->model_mobile->get_course();
+            $this->load->view('mobile/course/list_course', $data);
         }
+    }
+
+    function get_course($offset) {
+        $data['course'] = $this->model_mobile->get_course($offset);
+        $this->load->view('mobile/course/list_layout', $data);
     }
 
 }

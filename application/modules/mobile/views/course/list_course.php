@@ -12,14 +12,14 @@
         <script src="<?php echo base_url() ?>mobileasset/js/jquery.mobile-1.3.2.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-                var num_feed = <?php echo $num_feed ?>;
-                var loaded_feed = 0;
+                var num_course = <?php echo $num_course ?>;
+                var loaded_course = 0;
                 $("button#more_button").tap(function() {
-                    loaded_feed += 10;
-                    $.get("<?php echo site_url('mobile/get_feed') ?>/" + loaded_feed, function(data) {
+                    loaded_course += 10;
+                    $.get("<?php echo site_url('mobile/get_course') ?>/" + loaded_course, function(data) {
                         $("#main_content").append(data);
                     });
-                    if (loaded_feed >= num_feed - 10)
+                    if (loaded_course >= num_course - 10)
                     {
                         $("button#more_button").hide();
                         $("#more_container").hide();
@@ -34,7 +34,7 @@
             <!--Header-->
             <div data-role="header" data-tap-toggle="false" data-theme='b'>
                 <a href="#left-panel" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
-                <h1 style="position: absolute;">Feed</h1>
+                <h1 style="position: absolute;">Course</h1>
                 <a href="javascript:void(0)" id="form-submit-activator"><i class='icon-plus-sign' style="margin-right: 10px;"></i></a>
             </div>
             <!--Panel-->
@@ -55,11 +55,11 @@
                     </ul>
                 </form>
                 <ul data-nativedroid-plugin='cards' id="main_content">
-                    <?php foreach ($feed as $rowfeed): ?>
+                    <?php foreach ($course as $rowcourse): ?>
                         <li data-cards-type='text'>
-                            <h2><?php echo $rowfeed->first_name . ' ' . $rowfeed->last_name ?> - <?php echo nicetime(strtotime($rowfeed->date)) ?></h2>
-                            <!--<div><img src="<?php // echo base_url() . 'resource/' . $row->picture                                                                        ?>" style="width: 100%;"/></div>-->
-                            <p style="align: justify;"><div style="max-width: 100%;text-align: justify;"><?php echo $rowfeed->message ?></div></p>
+                            <h2><?php echo $rowcourse->first_name ?> - <?php echo nicetime(strtotime($rowcourse->date)) ?></h2>
+                            <div><img src="<?php echo base_url() . 'resource/' . $rowcourse->picture ?>" style="width: 100%;"/></div>
+                            <p style="align: justify;"><div style="max-width: 100%;text-align: justify;"><?php echo $rowcourse->course ?></div></p>
                         </li>
                     <?php endforeach; ?>
                 </ul>

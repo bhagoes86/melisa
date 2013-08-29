@@ -14,9 +14,9 @@
     <body>
         <div data-role="page" data-theme='b'>
             <!--Header-->
-            <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <div data-role="header" data-tap-toggle="false" data-theme='b'>    
                 <a href="<?php echo site_url('mobile/') ?>" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
-                <h1>Login</h1>
+                <h1 style="position: absolute;">Login</h1>
             </div>
             <!--Content-->
             <div data-role="content">
