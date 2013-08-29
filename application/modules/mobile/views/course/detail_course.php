@@ -34,47 +34,33 @@
             <!--Header-->
             <div data-role="header" data-tap-toggle="false" data-theme='b'>
                 <a href="#left-panel" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
-                <h1 style="position: absolute;">Course</h1>
+                <h1 style="position: absolute;">Course Detail</h1>
                 <a href="javascript:void(0)" id="form-submit-activator"><i class='icon-plus-sign' style="margin-right: 10px;"></i></a>
             </div>
             <!--Panel-->
             <?php echo $this->load->view('panel_left'); ?>
             <!--Content-->
             <div data-role="content">
-                <form id="feed-submit">
-                    <ul data-role="listview" data-inset="true" style="display: none;" id="form-submit">
-                        <li>
-                            <fieldset class="ui-grid-solo" data-theme="b" style="padding: 0px 7px 0px 7px;">
-                                <textarea style="width: 100;border-color: #ccc;" rows="5" name="message" id="message" placeholder=" Wanna share something ?"></textarea>
-                            </fieldset>
-                            <fieldset class="ui-grid-a">
-                                <div class="ui-block-a"><button type="reset" data-theme="a" style="background:rgb(0,0,0);">Cancel</button></div>
-                                <div class="ui-block-b"><button type="submit" data-theme="a" style="background:rgb(0,0,0);">Submit</button></div>
-                            </fieldset>
-                        </li>
-                    </ul>
-                </form>
+                <img src="<?php echo base_url() . 'resource' . '/' . $course->picture ?>" style="width: 97%;margin: 5px 5px 0px 6px;"/>
+                <h2 style="margin: 0px 5px 5px 5px;"><?php echo $course->course; ?></h2>
+                <fieldset class="ui-grid-solo">
+                    <div class="ui-block-a"><button type="reset" data-theme="a" style="background:rgb(0,0,0);"><i class="icon-check"></i> Subscribe</button></div>
+                </fieldset>
                 <ul data-nativedroid-plugin='cards' id="main_content">
-                    <?php foreach ($course as $rowcourse): ?>
-                        <li data-cards-type='text'>
-                            <h2 style="margin-bottom: 3px;"><?php echo $rowcourse->first_name ?> - <?php echo nicetime(strtotime($rowcourse->date)) ?></h2>
-                            <a href="<?php echo site_url('mobile/detail_course' . '/' . $rowcourse->id_course) ?>" data-ajax="false">
-                                <img src="<?php echo base_url() . 'resource/' . $rowcourse->picture ?>" style="width: 100%;"/>
-                            </a>
-                            <p style="align: justify;"><div style="max-width: 100%;text-align: justify;"><?php echo $rowcourse->course ?></div></p>
-                        </li>
-                    <?php endforeach; ?>
+                    <li data-cards-type='text'>
+                        <p style="align: justify;"><div style="max-width: 100%;text-align: justify;"><?php echo $course->description ?></div></p>
+                    </li>
+                    <li data-cards-type='text'>
+                        <p style="align: justify;"><div style="max-width: 100%;text-align: justify;"><?php echo $course->pemdasar ?></div></p>
+                    </li>
+                    <li data-cards-type='text'>
+                        <p style="align: justify;"><div style="max-width: 100%;text-align: justify;"><?php echo $course->dipelajari ?></div></p>
+                    </li>
                 </ul>
             </div>
-            <fieldset class="ui-grid-solo" style="padding: 0px 7px 0px 7px;" id="more_container">
-                <button id="more_button" data-theme="a" style="background:rgb(0,0,0);border: 2px solid rgb(153,204,0);">Load More</button>
-            </fieldset>
         </div>
         <script src="<?php echo base_url() ?>mobileasset/js/nativedroid.script.js"></script>
         <script type="text/javascript">
-            $('#form-submit-activator').click(function() {
-                $('#form-submit').toggle();
-            });
             $(document).on("pageinit", "#page", function() {
                 //name
                 $('#user_name').load("<?php echo site_url('mobile/get_name') ?>");

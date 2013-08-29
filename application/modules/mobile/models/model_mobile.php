@@ -94,5 +94,12 @@ class Model_mobile extends CI_Model {
         $query = $this->db->count_all_results('course');
         return $query;
     }
+    
+    function select_detail_course($id_course) {
+        $this->db->select('*');
+        $this->db->from('course');
+        $this->db->where('id_course',$id_course);
+        return $this->db->get();
+    }
 
 }

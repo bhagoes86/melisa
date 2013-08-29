@@ -139,51 +139,11 @@ class Mobile extends MX_Controller {
      * Content
      */
 
-    function list_podcast_new() {
-        
-    }
-
-    function list_sound_new() {
-        
-    }
-
-    function list_document_new() {
-        
-    }
-
-    function list_presentation_new() {
-        
-    }
-
-    // my podcast
-    function list_podcast_me_new() {
-        $user = $this->ion_auth->user()->row();
-        $data['user_id'] = $user->id;
-    }
-
-    // my sound
-    function list_sound_me_new() {
-        $user = $this->ion_auth->user()->row();
-        $data['user_id'] = $user->id;
-    }
-
-    // my document
-    function list_document_me_new() {
-        $user = $this->ion_auth->user()->row();
-        $data['user_id'] = $user->id;
-    }
-
-    // my presentation
-    function list_presentation_me_new() {
-        $user = $this->ion_auth->user()->row();
-        $data['user_id'] = $user->id;
-    }
-
     /*
      * Course
      */
 
-    // course all all    
+    // course all new    
     function list_course_new() {
         if (!$this->ion_auth->logged_in()) {
             $this->load->view('mobile/welcome');
@@ -197,6 +157,11 @@ class Mobile extends MX_Controller {
     function get_course($offset) {
         $data['course'] = $this->model_mobile->get_course($offset);
         $this->load->view('mobile/course/list_layout', $data);
+    }
+
+    function detail_course($id_course) {
+        $data['course'] = $this->model_mobile->select_detail_course($id_course)->row();
+        $this->load->view('mobile/course/detail_course', $data);
     }
 
 }
