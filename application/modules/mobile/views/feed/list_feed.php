@@ -14,7 +14,7 @@
             $(document).ready(function() {
                 var num_feed = <?php echo $num_feed ?>;
                 var loaded_feed = 0;
-                $("#more_button").tap(function() {
+                $("button#more_button").tap(function() {
                     loaded_feed += 10;
                     $.get("<?php echo site_url() ?>mobile/get_feed/" + loaded_feed, function(data) {
                         $("#main_content").append(data);
