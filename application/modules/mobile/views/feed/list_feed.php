@@ -16,16 +16,14 @@
                 var loaded_feed = 0;
                 $("button#more_button").tap(function() {
                     loaded_feed += 10;
-                    $.get("<?php echo site_url() ?>mobile/get_feed/" + loaded_feed, function(data) {
+                    $.get("<?php echo site_url('mobile/get_feed') ?>/" + loaded_feed, function(data) {
                         $("#main_content").append(data);
-
                     });
-
                     if (loaded_feed >= num_feed - 10)
                     {
                         $("#more_button").hide();
                     }
-                })
+                });
                 return false;
             });
         </script>
@@ -59,7 +57,7 @@
                     <?php foreach ($feed as $rowfeed): ?>
                         <li data-cards-type='text'>
                             <h2><?php echo $rowfeed->first_name . ' ' . $rowfeed->last_name ?> - <?php echo nicetime(strtotime($rowfeed->date)) ?></h2>
-                            <!--<div><img src="<?php // echo base_url() . 'resource/' . $row->picture                                                                      ?>" style="width: 100%;"/></div>-->
+                            <!--<div><img src="<?php // echo base_url() . 'resource/' . $row->picture                                                                        ?>" style="width: 100%;"/></div>-->
                             <a href='#'><i class='icon-screenshot'></i> Navigate</a>
                             <p style="align: justify;"><div style="max-width: 100%;text-align: justify;"><?php echo $rowfeed->message ?></div></p>
                         </li>
