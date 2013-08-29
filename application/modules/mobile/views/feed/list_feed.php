@@ -21,7 +21,8 @@
                     });
                     if (loaded_feed >= num_feed - 10)
                     {
-                        $("#more_button").hide();
+                        $("button#more_button").hide();
+                        $("#more_container").hide();
                     }
                 });
                 return false;
@@ -64,7 +65,7 @@
                     <?php endforeach; ?>
                 </ul>
             </div>
-            <fieldset class="ui-grid-solo" style="padding: 0px 7px 0px 7px;">
+            <fieldset class="ui-grid-solo" style="padding: 0px 7px 0px 7px;" id="more_container">
                 <button id="more_button" data-theme="a" style="background:rgb(0,0,0);border: 2px solid rgb(153,204,0);">Load More</button>
             </fieldset>
         </div>
