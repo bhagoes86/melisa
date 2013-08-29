@@ -159,6 +159,11 @@ class Mobile extends MX_Controller {
         $this->load->view('mobile/course/list_layout', $data);
     }
 
+    function course_info($id_course) {
+        $data['course'] = $this->model_mobile->select_detail_course($id_course)->row();
+        $this->load->view('mobile/course/course_info', $data);
+    }
+
     function detail_course($id_course) {
         $data['course'] = $this->model_mobile->select_detail_course($id_course)->row();
         $this->load->view('mobile/course/detail_course', $data);
