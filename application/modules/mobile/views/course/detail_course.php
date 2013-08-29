@@ -35,26 +35,31 @@
             <div data-role="header" data-tap-toggle="false" data-theme='b'>
                 <a href="#left-panel" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
                 <h1 style="position: absolute;">Course Detail</h1>
-                <a href="javascript:void(0)" id="form-submit-activator"><i class='icon-plus-sign' style="margin-right: 10px;"></i></a>
+                <a href="#right-panel"><i class='icon-ellipsis-horizontal' style="margin-right: 10px;"></i></a>
             </div>
-            <!--Panel-->
+            <!--Left Panel-->
             <?php echo $this->load->view('panel_left'); ?>
+            <!--Right Panel-->
+            <?php echo $detail['id_course'] = $course->id_course; ?>
+            <?php echo $this->load->view('mobile/course/panel_detail_course', $detail); ?>
             <!--Content-->
             <div data-role="content">
-                <img src="<?php echo base_url() . 'resource' . '/' . $course->picture ?>" style="width: 97%;margin: 5px 5px 0px 6px;"/>
-                <h2 style="margin: 0px 5px 5px 5px;"><?php echo $course->course; ?></h2>
-                <fieldset class="ui-grid-solo">
-                    <div class="ui-block-a"><button type="reset" data-theme="a" style="background:rgb(0,0,0);"><i class="icon-check"></i> Subscribe</button></div>
-                </fieldset>
                 <ul data-nativedroid-plugin='cards' id="main_content">
+                    <fieldset class="ui-grid-solo" style="padding: 6px 7px 6px 6px;">
+                        <div class="ui-block-a"><button type="reset" data-theme="a" style="background:rgb(0,0,0);"><i class="icon-check"></i> Subscribe</button></div>
+                    </fieldset>
                     <li data-cards-type='text'>
-                        <p style="align: justify;"><div style="max-width: 100%;text-align: justify;"><?php echo $course->description ?></div></p>
+                        <img src="<?php echo base_url() . 'resource' . '/' . $course->picture ?>" style="width: 100%;"/>
+                        <h1><?php echo $course->course; ?></h1>
                     </li>
                     <li data-cards-type='text'>
-                        <p style="align: justify;"><div style="max-width: 100%;text-align: justify;"><?php echo $course->pemdasar ?></div></p>
+                        <p style="align: justify;"><div style="max-width: 100%;"><?php echo nl2br($course->description) ?></div></p>
                     </li>
                     <li data-cards-type='text'>
-                        <p style="align: justify;"><div style="max-width: 100%;text-align: justify;"><?php echo $course->dipelajari ?></div></p>
+                        <p style="align: justify;"><div style="max-width: 100%;"><?php echo nl2br($course->pemdasar) ?></div></p>
+                    </li>
+                    <li data-cards-type='text'>
+                        <p style="align: justify;"><div style="max-width: 100%;"><?php echo nl2br($course->dipelajari) ?></div></p>
                     </li>
                 </ul>
             </div>
