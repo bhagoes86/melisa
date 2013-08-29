@@ -792,12 +792,12 @@ progress  {
 	top: 0px;
 	left: -100%;
 	position: relative;
-	-webkit-animation: slideFromLeft 1.5s 1;
+/*	-webkit-animation: slideFromLeft 1.5s 1;
 	-webkit-animation-fill-mode: forwards;
 	-moz-animation: slideFromLeft 1.5s 1;
 	-moz-animation-fill-mode: forwards;
 	animation: slideFromLeft 1.5s 1;
-	animation-fill-mode: forwards;
+	animation-fill-mode: forwards;*/
 }
 
 .nativeDroidCards > li:nth-child(even) {
