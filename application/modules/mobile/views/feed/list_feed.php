@@ -10,6 +10,25 @@
         <link rel="stylesheet" href="<?php echo base_url() ?>mobileasset/css/jquerymobile.nativedroid.color.green.css" id='jQMnDColor' />
         <script src="<?php echo base_url() ?>mobileasset/js/jquery-1.10.2.min.js"></script>
         <script src="<?php echo base_url() ?>mobileasset/js/jquery.mobile-1.3.2.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var num_feed = <?php echo $num_feed ?>;
+                var loaded_feed = 0;
+                $("#more_button").click(function() {
+                    loaded_feed += 10;
+                    $.get("<?php echo site_url() ?>mobile/get_feed/" + loaded_feed, function(data) {
+                        $("#main_content").append(data);
+
+                    });
+
+                    if (loaded_feed >= num_feed - 10)
+                    {
+                        $("#more_button").hide();
+                    }
+                })
+                return false;
+            });
+        </script>
     </head>
     <body>
         <div data-role="page" id="page" data-theme="d">
@@ -36,17 +55,20 @@
                         </li>
                     </ul>
                 </form>
-                <ul data-nativedroid-plugin='cards'>
+                <ul data-nativedroid-plugin='cards' id="main_content">
                     <?php foreach ($feed as $rowfeed): ?>
                         <li data-cards-type='text'>
                             <h2><?php echo $rowfeed->first_name . ' ' . $rowfeed->last_name ?> - <?php echo nicetime(strtotime($rowfeed->date)) ?></h2>
-                            <!--<div><img src="<?php // echo base_url() . 'resource/' . $row->picture                                                       ?>" style="width: 100%;"/></div>-->
-                                    <!--<a href='#'><i class='icon-screenshot'></i> Navigate</a>-->
+                            <!--<div><img src="<?php // echo base_url() . 'resource/' . $row->picture                                                                      ?>" style="width: 100%;"/></div>-->
+                            <a href='#'><i class='icon-screenshot'></i> Navigate</a>
                             <p style="align: justify;"><div style="max-width: 100%;text-align: justify;"><?php echo $rowfeed->message ?></div></p>
                         </li>
                     <?php endforeach; ?>
                 </ul>
             </div>
+            <fieldset class="ui-grid-solo" style="padding: 0px 7px 0px 7px;">
+                <button id="more_button" data-theme="a" style="background:rgb(0,0,0);border: 2px solid rgb(153,204,0);">Load More</button>
+            </fieldset>
         </div>
         <script src="<?php echo base_url() ?>mobileasset/js/nativedroid.script.js"></script>
         <script type="text/javascript">

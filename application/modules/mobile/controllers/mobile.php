@@ -33,10 +33,12 @@ class Mobile extends MX_Controller {
      * Auth
      */
 
+    // auth form login
     function form_login() {
         $this->load->view('mobile/authz/form_login');
     }
 
+    // auth login proses
     function login() {
         /*
          * validasi username wajib diisi dan bersih dari cross site scripting
@@ -72,11 +74,13 @@ class Mobile extends MX_Controller {
         }
     }
 
+    //auth logout
     function logout() {
         $this->ion_auth->logout();
         redirect('mobile');
     }
 
+    //auth get name
     function get_name() {
         $users = $this->ion_auth->user()->row();
         $name = $this->model_mobile->select_user_info($users->id)->row();
@@ -87,15 +91,24 @@ class Mobile extends MX_Controller {
      * News Feed
      */
 
+    // feed all new
     function list_feed_new() {
         if (!$this->ion_auth->logged_in()) {
             $this->load->view('mobile/welcome');
         } else {
-            $data['feed'] = $this->model_mobile->select_feed_new()->result();
+            $data['num_feed'] = $this->model_mobile->num_feed();
+            $data['feed'] = $this->model_mobile->get_feed();
+            //$data['feed'] = $this->model_mobile->select_feed_new()->result();
             $this->load->view('mobile/feed/list_feed', $data);
         }
     }
 
+    function get_feed($offset) {
+        $data['feed'] = $this->model_mobile->get_feed($offset);
+        $this->load->view('mobile/feed/list_layout', $data);
+    }
+
+    // feed by user
     function list_feed_by_id($id_wall) {
         $user = $this->ion_auth->user()->row();
         $user_id = $user->id;
@@ -103,6 +116,7 @@ class Mobile extends MX_Controller {
         $this->load->view('mobile/feed/lis_feed_by_id', $data);
     }
 
+    // feed message submit proses
     function submit_feed() {
         $user = $this->ion_auth->user()->row();
         //pengirim
@@ -141,10 +155,35 @@ class Mobile extends MX_Controller {
         
     }
 
+    // my podcast
+    function list_podcast_me_new() {
+        $user = $this->ion_auth->user()->row();
+        $data['user_id'] = $user->id;
+    }
+
+    // my sound
+    function list_sound_me_new() {
+        $user = $this->ion_auth->user()->row();
+        $data['user_id'] = $user->id;
+    }
+
+    // my document
+    function list_document_me_new() {
+        $user = $this->ion_auth->user()->row();
+        $data['user_id'] = $user->id;
+    }
+
+    // my presentation
+    function list_presentation_me_new() {
+        $user = $this->ion_auth->user()->row();
+        $data['user_id'] = $user->id;
+    }
+
     /*
      * Course
      */
 
+    // course all all
     function list_course_new() {
         if (!$this->ion_auth->logged_in()) {
             $data['course'] = $this->model_mobile->select_course_public()->result();
