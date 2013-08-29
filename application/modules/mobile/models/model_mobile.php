@@ -101,5 +101,13 @@ class Model_mobile extends CI_Model {
         $this->db->where('id_course',$id_course);
         return $this->db->get();
     }
+    
+    function select_course_syllabus_parent($id_course) {
+        $this->db->select('*');
+        $this->db->from('course_silabus');
+        $this->db->where('course_id', $id_course);
+        $this->db->where('parent_id', 0);
+        return $this->db->get();
+    }
 
 }

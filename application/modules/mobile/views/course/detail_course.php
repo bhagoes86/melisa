@@ -80,28 +80,6 @@
                     }
                 });
             });
-            $('#feed-submit').submit(function() {
-                var message = $('#message').val();
-                if (message == '') {
-                    alert('kosong');
-                    return false;
-                } else {
-                    $.ajax({
-                        type: 'POST',
-                        url: "<?php echo site_url('mobile/submit_feed') ?>",
-                        data: $(this).serialize(),
-                        success: function(data, status)
-                        {
-                            alert('sukes');
-                        },
-                        error: function(data, status, e)
-                        {
-                            alert('gagal');
-                        }
-                    });
-                    return false;
-                }
-            });
         </script>
     </body>
 </html>

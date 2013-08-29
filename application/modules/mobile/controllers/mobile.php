@@ -164,4 +164,9 @@ class Mobile extends MX_Controller {
         $this->load->view('mobile/course/detail_course', $data);
     }
 
+    function list_course_syllabus($id_course) {
+        $data['syllabus'] = $this->model_mobile->select_course_syllabus_parent($id_course)->result();
+        $this->load->view('mobile/course/list_course_syllabus', $data);
+    }
+
 }
