@@ -18,14 +18,16 @@
         <?php } elseif ($rowcontent->type == 6) { ?><!--SoundCloud-->
         <?php } elseif ($rowcontent->type == 7) { ?><!--Docstoc-->
         <?php } ?>
-        <div id="content_player" style="display: none;"></div>
+        <div id="content-viewer" style="display: none;"></div>
         <p><?php echo $rowcontent->title ?></p>
     </li>
 <?php endforeach; ?>
 <script type="text/javascript">
     $('a#youtube-player-activator').tap(function() {
         var id_content = $(this).attr('data-id');
-        alert(id_content);
+        $(this).hide();
+        $('#content-viewer').siblings(this).load("<?php echo site_url('mobile/plain_viewer_youtube') ?>/" + id_content);
+        $('#content-viewer').siblings(this).show();
         return false;
     });
 </script>
