@@ -1,6 +1,6 @@
-<?php foreach ($content as $rowcontentcontent): ?>
+<?php foreach ($content as $rowcontent): ?>
     <li data-cards-type='text'>
-        <h2><?php echo $rowcontentcontent->title ?></h2>
+        <h2><?php echo $rowcontent->title ?></h2>
         <?php if ($rowcontent->type == 0) { ?><!--Video-->
         <?php } elseif ($rowcontent->type == 1) { ?><!--Document-->
         <?php } elseif ($rowcontent->type == 2) { ?><!--Youtube-->
