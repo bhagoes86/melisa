@@ -58,6 +58,10 @@
                     <?php foreach ($podcast as $rowpodcast): ?>
                         <li data-cards-type='text'>
                             <?php if ($rowpodcast->type == 0) { ?><!--Video-->
+                                <h2><i class="icon-film"></i> Video Content</h2>
+                                <a id="viewer-activator<?php echo $rowpodcast->id_content ?>" data-id="<?php echo $rowpodcast->id_content ?>">
+                                    <img id="cover_<?php echo $rowpodcast->id_content ?>" src="<?php echo base_url() . 'resource' . '/' . $rowpodcast->cover . '.png' ?>" style="width: 100%;">
+                                </a>
                             <?php } elseif ($rowpodcast->type == 2) { ?><!--Youtube-->
                                 <h2><i class="icon-youtube-play"></i> Youtube Content</h2>
                                 <?php
@@ -77,7 +81,9 @@
                                     });
                                 </script>
                             <?php } elseif ($rowpodcast->type == 3) { ?><!--Vimeo-->
+                                <h2><i class="icon-vimeo"></i> Vimeo Content</h2>
                             <?php } elseif ($rowpodcast->type == 6) { ?><!--SoundCloud-->
+                                <h2><i class="icon-soundcloud"></i> Soundcloud Content</h2>
                             <?php } ?>
                             <div id="content-viewer" style="display: none;"></div>
                             <p><?php echo $rowpodcast->title ?></p>
