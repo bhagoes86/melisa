@@ -19,7 +19,7 @@
         <?php } elseif ($rowcontent->type == 7) { ?><!--Docstoc-->
         <?php } ?>
         <div id="content_player" style="display: none;"></div>
-        <h1><?php echo $rowcontent->title ?></h1>
+        <p><?php echo $rowcontent->title ?></p>
     </li>
 <?php endforeach; ?>
 <script type="text/javascript">
