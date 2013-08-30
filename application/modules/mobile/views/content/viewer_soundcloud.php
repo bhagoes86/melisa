@@ -23,10 +23,13 @@
             <!--Panel-->
             <?php echo $this->load->view('panel_left'); ?>
             <!--Content-->
-            <div id="putTheWidgetHere-<?php echo $content->file ?>" style="height: 168px;"></div>
-            <script type="text/JavaScript">
-                SC.oEmbed("<?php echo $content->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere-<?php echo $content->file ?>"));
-            </script>
+            <!--Content-->
+            <div data-role="content">
+                <div id="putTheWidgetHere-<?php echo $content->file ?>" style="height: 168px;"></div>
+                <script type="text/JavaScript">
+                    SC.oEmbed("<?php echo $content->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere-<?php echo $content->file ?>"));
+                </script>
+            </div>
         </div>
         <script src="<?php echo base_url() ?>mobileasset/js/nativedroid.script.js"></script>
         <script type="text/javascript">
