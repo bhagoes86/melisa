@@ -141,8 +141,8 @@ class Mobile extends MX_Controller {
      */
 
     function plain_viewer_youtube($id_content) {
-        $data = $this->model_mobile->select_content_by_id($id_content)->row();
-        echo $data;
+        $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
+        $this->load->view('mobile/content/plain_viewer_youtube', $data);
     }
 
     /*
