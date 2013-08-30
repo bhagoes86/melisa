@@ -139,6 +139,23 @@ class Mobile extends MX_Controller {
     /*
      * Content
      */
+    
+    // podcast all new    
+    function list_podcast_new() {
+        if (!$this->ion_auth->logged_in()) {
+            $this->load->view('mobile/welcome');
+        } else {
+            $data['site'] = $this->model_mobile->select_themes()->row();
+            $data['num_podcast'] = $this->model_mobile->num_podcast();
+            $data['podcast'] = $this->model_mobile->get_podcast();
+            $this->load->view('mobile/content/list_podcast', $data);
+        }
+    }
+
+    function get_podcast($offset) {
+        $data['podcast'] = $this->model_mobile->get_podcast($offset);
+        $this->load->view('mobile/content/list_podcast_layout', $data);
+    }
 
     function plain_viewer_youtube($id_content) {
         $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();

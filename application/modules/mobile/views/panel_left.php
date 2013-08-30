@@ -6,7 +6,7 @@
         <li data-icon="comments-alt"><a href="<?php echo site_url('mobile/list_feed_new') ?>" data-ajax="false">News Feed</a></li>
         <li data-icon="eye-open"><a href="#" data-ajax="false">Readcast</a></li>
         <li data-role="list-divider">Library</li>
-        <li data-icon="play-sign"><a href="#" data-ajax="false">Podcast</a></li>
+        <li data-icon="play-sign"><a href="<?php echo site_url('mobile/list_podcast_new') ?>" data-ajax="false">Podcast</a></li>
         <li data-icon="headphones"><a href="#" data-ajax="false">Sound</a></li>
         <li data-icon="file-text-alt"><a href="#" data-ajax="false">Document</a></li>
         <li data-icon="indent-right"><a href="#" data-ajax="false">Presentation</a></li>

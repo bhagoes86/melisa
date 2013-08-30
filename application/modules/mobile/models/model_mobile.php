@@ -139,4 +139,24 @@ class Model_mobile extends CI_Model {
         return $this->db->get();
     }
 
+    function get_podcast($offset = 0) {
+        $this->db->select('*');
+        $names = array('0', '2', '3');
+        $this->db->where_in('type', $names);
+        $this->db->where('show', 1);
+        $this->db->order_by('id_content', 'DESC');
+        $query = $this->db->get('content', 10, $offset);
+        return $query->result();
+    }
+
+    function num_podcast() {
+        $this->db->select('*');
+        $names = array('0', '2', '3');
+        $this->db->where_in('type', $names);
+        $this->db->where('show', 1);
+        $this->db->order_by('id_content', 'DESC');
+        $query = $this->db->count_all_results('content');
+        return $query;
+    }
+
 }
