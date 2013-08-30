@@ -9,9 +9,17 @@
             //ekstrak the youtube id
             $extract_id = explode('^^^', $media);
             ?>
-            <a id="youtube-player-activator" data-id="<?php echo $rowcontent->id_content ?>">
+            <a id="viewer-activator<?php echo $rowcontent->id_content ?>" data-id="<?php echo $rowcontent->id_content ?>">
                 <img id="cover_<?php echo $rowcontent->id_content ?>" src="http://img.youtube.com/vi/<?php echo $extract_id[1]; ?>/1.jpg" style="width: 100%;">
             </a>
+            <script type="text/javascript">
+                $('a#viewer-activator<?php echo $rowcontent->id_content ?>').tap(function() {
+                    $('a#viewer-activator<?php echo $rowcontent->id_content ?>').hide();
+                    $('a#viewer-activator<?php echo $rowcontent->id_content ?>').load("<?php echo site_url('mobile/plain_viewer_youtube' . '/' . $rowcontent->id_content) ?>");
+                    $('a#viewer-activator<?php echo $rowcontent->id_content ?>').show();
+                    return false;
+                });
+            </script>
         <?php } elseif ($rowcontent->type == 3) { ?><!--Vimeo-->
         <?php } elseif ($rowcontent->type == 4) { ?><!--Scribd-->
         <?php } elseif ($rowcontent->type == 5) { ?><!--Slideshare-->
@@ -22,12 +30,3 @@
         <p><?php echo $rowcontent->title ?></p>
     </li>
 <?php endforeach; ?>
-<script type="text/javascript">
-    $('a#youtube-player-activator').tap(function() {
-        var id_content = $(this).attr('data-id');
-        $(this).hide();
-        $('#content-viewer').siblings(this).load("<?php echo site_url('mobile/plain_viewer_youtube') ?>/" + id_content);
-        $('#content-viewer').siblings(this).show();
-        return false;
-    });
-</script>
