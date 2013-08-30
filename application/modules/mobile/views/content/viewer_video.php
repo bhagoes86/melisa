@@ -28,8 +28,8 @@
                         $("#viwer_video").flowplayer();
                     });
                 </script>
-                <div id="vidplayer" alt="<?php echo $content->id_content ?>" data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="height: 394px;background-color: #000;width: 100%;padding: 0px;vertical-align: middle;" data-ratio="0.5625">
-                    <video alt="<?php echo $content->id_wall ?>">
+                <div id="vidplayer" alt="<?php echo $content->id_content ?>" data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="height:50%;background-color: #000;width: 100%;padding: 0px;" data-ratio="0.5625">
+                    <video alt="<?php echo $content->id_content ?>">
                         <?php if ($content->ext == '.mp4') { ?> 
                             <source type="video/mp4" src="<?php echo base_url() . 'resource/' . $content->id_content . '.mp4'; ?>"/>
                         <?php } elseif ($content->ext == '.MP4') { ?>
