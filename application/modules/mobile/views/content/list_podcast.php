@@ -73,7 +73,7 @@
                                     <img id="cover_<?php echo $rowpodcast->id_content ?>" src="http://img.youtube.com/vi/<?php echo $extract_id[1]; ?>/1.jpg" style="width: 100%;">
                                 </a>
                             <?php } elseif ($rowpodcast->type == 3) { ?><!--Vimeo-->
-                                <h2><i class="icon-vimeo"></i> Vimeo Content</h2>
+                                <h2><i class="icon-play-sign"></i> Vimeo Content</h2>
                                 <a href="<?php echo site_url('mobile/viewer_vimeo' . '/' . $rowpodcast->id_content) ?>" data-ajax="false">
                                     <?php $media = cover_vimeo($rowpodcast->file); ?>
                                     <img src="<?php echo ($media['thumbnail_medium']) ?>" style="width: 100%;">
