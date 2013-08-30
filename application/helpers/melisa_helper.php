@@ -37,7 +37,7 @@ function eksternal_viewer_youtube($id) {
 }
 
 function eksternal_viewer_vimeo($id) {
-    return '<iframe width="100%" height="50%" style="padding: 0px;" src="http://player.vimeo.com/video/' . $id . '"></iframe>';
+    return '<iframe width="100%" height="50%" style="padding: 0px;border: 0px;" src="http://player.vimeo.com/video/' . $id . '"></iframe>';
 }
 
 //cover
