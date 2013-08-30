@@ -159,6 +159,7 @@ class Mobile extends MX_Controller {
 
     function viewer_video($id_content) {
         $data['site'] = $this->model_mobile->select_themes()->row();
+        $data['id_content'] = $id_content;        
         $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
         $this->load->view('mobile/content/viewer_video', $data);
     }
