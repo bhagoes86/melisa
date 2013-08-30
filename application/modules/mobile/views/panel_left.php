@@ -2,7 +2,6 @@
     <ul data-role="listview">
         <li data-role="list-divider">Welcome</li>
         <li data-icon="male"><a href="#" id="user_name"></a></li>
-        <li data-icon="bookmark"><a href="#">View Later</a></li>
         <li data-role="list-divider">Updates</li>
         <li data-icon="comments-alt"><a href="<?php echo site_url('mobile/list_feed_new') ?>" data-ajax="false">News Feed</a></li>
         <li data-icon="eye-open"><a href="#" data-ajax="false">Readcast</a></li>
@@ -14,10 +13,9 @@
         <li data-role="list-divider">Course</li>
         <li data-icon="book"><a href="<?php echo site_url('mobile/list_course_new') ?>" data-ajax="false">Course</a></li>
         <li data-icon="check"><a href="#" data-ajax="false">Subscribe</a></li>
-        <li data-role="list-divider">Setting</li>
-        <li data-icon="picture"><a href="#">Change Avatar</a></li>
-        <li data-icon="user"><a href="#">Update Profil</a></li>
-        <li data-icon="key"><a href="#">Change Password</a></li>
+        <li data-role="list-divider">Other</li>
+        <li data-icon="facebook"><a href="#">Fan Page</a></li>
+        <li data-icon="info"><a href="#">About Us</a></li>
         <li data-icon="signout"><a href="<?php echo site_url('mobile/logout') ?>" data-ajax="false">Log Out</a></li>
     </ul>
 </div>

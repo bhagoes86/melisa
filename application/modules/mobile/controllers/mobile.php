@@ -96,6 +96,7 @@ class Mobile extends MX_Controller {
         if (!$this->ion_auth->logged_in()) {
             $this->load->view('mobile/welcome');
         } else {
+            $data['site'] = $this->model_mobile->select_themes()->row();
             $data['num_feed'] = $this->model_mobile->num_feed();
             $data['feed'] = $this->model_mobile->get_feed();
             //$data['feed'] = $this->model_mobile->select_feed_new()->result();
@@ -148,6 +149,7 @@ class Mobile extends MX_Controller {
         if (!$this->ion_auth->logged_in()) {
             $this->load->view('mobile/welcome');
         } else {
+            $data['site'] = $this->model_mobile->select_themes()->row();
             $data['num_course'] = $this->model_mobile->num_course();
             $data['course'] = $this->model_mobile->get_course();
             $this->load->view('mobile/course/list_course', $data);
@@ -165,6 +167,7 @@ class Mobile extends MX_Controller {
     }
 
     function detail_course($id_course) {
+        $data['site'] = $this->model_mobile->select_themes()->row();
         $data['course'] = $this->model_mobile->select_detail_course($id_course)->row();
         $this->load->view('mobile/course/detail_course', $data);
     }

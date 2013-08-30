@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>nativeDroid - Theme for jQuery Mobile</title>
+        <title><?php echo $site->header . ' ' . $site->caption ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="stylesheet" href="<?php echo base_url() ?>mobileasset/css/font-awesome.min.css" />
         <link rel="stylesheet" href="<?php echo base_url() ?>mobileasset/css/jquerymobile.css" />

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>nativeDroid - Theme for jQuery Mobile</title>
+        <title><?php echo $site->header . ' ' . $site->caption ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="stylesheet" href="<?php echo base_url() ?>mobileasset/css/font-awesome.min.css" />
         <link rel="stylesheet" href="<?php echo base_url() ?>mobileasset/css/jquerymobile.css" />
@@ -45,20 +45,20 @@
             <!--Content-->
             <div data-role="content">
                 <ul data-nativedroid-plugin='cards' id="main_content">
-                    <fieldset class="ui-grid-solo" style="padding: 6px 7px 6px 6px;">
-                        <div class="ui-block-a"><button type="reset" data-theme="a" style="background:rgb(0,0,0);"><i class="icon-check"></i> Subscribe</button></div>
-                    </fieldset>
                     <li data-cards-type='text'>
                         <img src="<?php echo base_url() . 'resource' . '/' . $course->picture ?>" style="width: 100%;"/>
                         <h1><?php echo $course->course; ?></h1>
                     </li>
                     <li data-cards-type='text'>
+                        <h1>Class Summary</h1>
                         <p style="align: justify;"><div style="max-width: 100%;"><?php echo nl2br($course->description) ?></div></p>
                     </li>
                     <li data-cards-type='text'>
+                        <h1>What Should I Know?</h1>
                         <p style="align: justify;"><div style="max-width: 100%;"><?php echo nl2br($course->pemdasar) ?></div></p>
                     </li>
                     <li data-cards-type='text'>
+                        <h1>What Will I Learn?</h1>
                         <p style="align: justify;"><div style="max-width: 100%;"><?php echo nl2br($course->dipelajari) ?></div></p>
                     </li>
                 </ul>

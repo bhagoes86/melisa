@@ -1,0 +1,1 @@
+<?php echo $topbar->header.' '.$topbar->caption; ?>
