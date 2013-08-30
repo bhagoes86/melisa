@@ -59,7 +59,7 @@
                         <li data-cards-type='text'>
                             <?php if ($rowpodcast->type == 0) { ?><!--Video-->
                                 <h2><i class="icon-film"></i> Video Content</h2>
-                                <a id="viewer-activator<?php echo $rowpodcast->id_content ?>" data-id="<?php echo $rowpodcast->id_content ?>">
+                                <a href="<?php echo site_url('mobile/viewer_video' . '/' . $rowpodcast->id_content) ?>" data-ajax="false">
                                     <img id="cover_<?php echo $rowpodcast->id_content ?>" src="<?php echo base_url() . 'resource' . '/' . $rowpodcast->cover . '.jpg' ?>" style="width: 100%;">
                                 </a>
                             <?php } elseif ($rowpodcast->type == 2) { ?><!--Youtube-->

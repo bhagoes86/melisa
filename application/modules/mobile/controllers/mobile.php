@@ -157,6 +157,12 @@ class Mobile extends MX_Controller {
         $this->load->view('mobile/content/list_podcast_layout', $data);
     }
 
+    function viewer_video($id_content) {
+        $data['site'] = $this->model_mobile->select_themes()->row();
+        $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
+        $this->load->view('mobile/content/viewer_video', $data);
+    }
+    
     function viewer_youtube($id_content) {
         $data['site'] = $this->model_mobile->select_themes()->row();
         $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
