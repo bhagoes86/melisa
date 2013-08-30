@@ -8,7 +8,9 @@
             //ekstrak the youtube id
             $extract_id = explode('^^^', $media);
             ?>
-            <img id="cover_<?php echo $rowcontent->id_content?>" src="http://img.youtube.com/vi/<?php echo $extract_id[1]; ?>/1.jpg" style="width: 100%;">
+            <a id="youtube-player-activator" data-id="<?php echo $rowcontent->id_content ?>">
+                <img id="cover_<?php echo $rowcontent->id_content ?>" src="http://img.youtube.com/vi/<?php echo $extract_id[1]; ?>/1.jpg" style="width: 100%;">
+            </a>
         <?php } elseif ($rowcontent->type == 3) { ?><!--Vimeo-->
         <?php } elseif ($rowcontent->type == 4) { ?><!--Scribd-->
         <?php } elseif ($rowcontent->type == 5) { ?><!--Slideshare-->
@@ -19,3 +21,10 @@
         <h1><?php echo $rowcontent->title ?></h1>
     </li>
 <?php endforeach; ?>
+<script type="text/javascript">
+    $('a#youtube-player-activator').tap(function() {
+        var id_content = $(this).attr('data-id');
+        alert('content ', id_content);
+        return false;
+    });
+</script>
