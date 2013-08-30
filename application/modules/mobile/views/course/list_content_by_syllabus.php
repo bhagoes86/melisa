@@ -25,7 +25,7 @@
 <script type="text/javascript">
     $('a#youtube-player-activator').tap(function() {
         var id_content = $(this).attr('data-id');
-        alert('content ', id_content);
+        alert(id_content);
         return false;
     });
 </script>
