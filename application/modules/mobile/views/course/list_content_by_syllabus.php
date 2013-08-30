@@ -26,7 +26,6 @@
         <?php } elseif ($rowcontent->type == 6) { ?><!--SoundCloud-->
         <?php } elseif ($rowcontent->type == 7) { ?><!--Docstoc-->
         <?php } ?>
-        <div id="content-viewer" style="display: none;"></div>
         <p><?php echo $rowcontent->title ?></p>
     </li>
 <?php endforeach; ?>
