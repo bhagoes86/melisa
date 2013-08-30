@@ -74,6 +74,9 @@
                                 </a>
                             <?php } elseif ($rowpodcast->type == 3) { ?><!--Vimeo-->
                                 <h2><i class="icon-vimeo"></i> Vimeo Content</h2>
+                                <a href="<?php echo site_url('mobile/viewer_vimeo' . '/' . $rowpodcast->id_content) ?>" style="text-align: center;" data-ajax="false">
+                                    <?php $media = cover_vimeo($rowpodcast->file); ?>
+                                </a>
                             <?php } elseif ($rowpodcast->type == 6) { ?><!--SoundCloud-->
                                 <h2><i class="icon-volume-up"></i> Soundcloud Content</h2>
                                 <a href="<?php echo site_url('mobile/viewer_soundcloud' . '/' . $rowpodcast->id_content) ?>" style="text-align: center;" data-ajax="false">
