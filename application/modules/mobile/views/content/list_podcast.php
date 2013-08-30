@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="<?php echo base_url() ?>mobileasset/css/jquerymobile.nativedroid.color.green.css" id='jQMnDColor' />
         <script src="<?php echo base_url() ?>mobileasset/js/jquery-1.10.2.min.js"></script>
         <script src="<?php echo base_url() ?>mobileasset/js/jquery.mobile-1.3.2.min.js"></script>
+        <script type="text/javascript" src="http://connect.soundcloud.com/sdk.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 var num_podcast = <?php echo $num_podcast ?>;
@@ -84,6 +85,10 @@
                                 <h2><i class="icon-vimeo"></i> Vimeo Content</h2>
                             <?php } elseif ($rowpodcast->type == 6) { ?><!--SoundCloud-->
                                 <h2><i class="icon-soundcloud"></i> Soundcloud Content</h2>
+                                <div id="putTheWidgetHere-<?php echo $row->file ?>" style="height: 168px;"></div>
+                                <script type="text/JavaScript">
+                                    SC.oEmbed("<?php echo $row->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere-<?php echo $row->file ?>"));
+                                </script>
                             <?php } ?>
                             <p><?php echo $rowpodcast->title ?></p>
                         </li>
@@ -109,6 +114,10 @@
                         }
                     }
                 });
+            });
+            //plugin soundcloud
+            SC.initialize({
+                client_id: "938418853596f90572983f377348dc57"
             });
         </script>
     </body>
