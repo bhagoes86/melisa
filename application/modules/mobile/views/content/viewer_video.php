@@ -38,7 +38,7 @@
                     });
                 </script>
                 <div id="viewer_video" alt="<?php echo $content->id_content ?>" data-swf="<?php echo base_url() ?>mobileasset/flowplayer-5.4.3/flowplayer.swf" class="flowplayer play-button" style="height:50%;width: 100%;padding: 0px;boder: 0px;" data-ratio="0.5625">
-                    <video alt="<?php echo $content->id_content ?>">
+                    <video alt="<?php echo $content->id_content ?>" style="height:50%;width: 100%;padding: 0px;boder: 0px;">
                         <?php if ($content->ext == '.mp4') { ?> 
                             <source type="video/mp4" src="<?php echo base_url() . 'resource/' . $content->id_content . '.mp4'; ?>"/>
                         <?php } elseif ($content->ext == '.MP4') { ?>
