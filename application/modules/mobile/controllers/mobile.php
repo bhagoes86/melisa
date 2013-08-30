@@ -159,11 +159,11 @@ class Mobile extends MX_Controller {
 
     function viewer_video($id_content) {
         $data['site'] = $this->model_mobile->select_themes()->row();
-        $data['id_content'] = $id_content;        
+        $data['id_content'] = $id_content;
         $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
         $this->load->view('mobile/content/viewer_video', $data);
     }
-    
+
     function viewer_youtube($id_content) {
         $data['site'] = $this->model_mobile->select_themes()->row();
         $data['id_content'] = $id_content;
@@ -177,12 +177,20 @@ class Mobile extends MX_Controller {
         $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
         $this->load->view('mobile/content/viewer_soundcloud', $data);
     }
-    
+
     function viewer_vimeo($id_content) {
         $data['site'] = $this->model_mobile->select_themes()->row();
         $data['id_content'] = $id_content;
         $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
         $this->load->view('mobile/content/viewer_vimeo', $data);
+    }
+
+    function download_video($id_content) {
+        $this->load->helper('download');
+        $content = $this->model_mobile->select_content_by_id($id_content)->row();
+        $data = file_get_contents(base_url() . 'resource' . '/' . $content->file);
+        $name = $content->title . $content->ext;
+        force_download($name, $data);
     }
 
     /*
