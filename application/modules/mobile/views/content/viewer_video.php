@@ -31,7 +31,7 @@
             <!--Panel Left-->
             <?php echo $this->load->view('panel_left'); ?>
             <!--Panel Right-->
-            <?php echo $this->load->view('panel_right'); ?>
+            <?php echo $this->load->view('panel_detail_video'); ?>
             <!--Content-->
             <div data-role="content">
                 <script type="text/javascript">
