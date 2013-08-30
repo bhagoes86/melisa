@@ -3,7 +3,7 @@
         <?php if ($rowcontent->type == 0) { ?><!--Video-->
         <?php } elseif ($rowcontent->type == 1) { ?><!--Document-->
         <?php } elseif ($rowcontent->type == 2) { ?><!--Youtube-->
-            <h1><i class="icon-youtube-play"></i>Youtube Content</h1>
+            <h2><i class="icon-youtube-play"></i> Youtube Content</h2>
             <?php
             $media = analyze_media($rowcontent->file);
             //ekstrak the youtube id
