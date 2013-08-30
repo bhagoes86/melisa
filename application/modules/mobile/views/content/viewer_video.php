@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="<?php echo base_url() ?>mobileasset/css/jquerymobile.nativedroid.color.green.css" id='jQMnDColor' />
         <script src="<?php echo base_url() ?>mobileasset/js/jquery-1.10.2.min.js"></script>
         <script src="<?php echo base_url() ?>mobileasset/js/jquery.mobile-1.3.2.min.js"></script>
+        <script src="<?php echo base_url() ?>mobileasset/flowplayer-5.4.3/flowplayer.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/flowplayer/skin/minimalist.css" />
         <style type="text/css">
             .flowplayer { background-color: #222; background-size: cover; }
@@ -36,7 +37,7 @@
                         $("#viwer_video").flowplayer();
                     });
                 </script>
-                <div id="vidplayer" alt="<?php echo $content->id_content ?>" data-swf="<?php echo base_url() ?>asset/flowplayer/flowplayer.swf" class="flowplayer play-button" style="height:50%;width: 100%;padding: 0px;" data-ratio="0.5625">
+                <div id="vidplayer" alt="<?php echo $content->id_content ?>" data-swf="<?php echo base_url() ?>mobileasset/flowplayer-5.4.3/flowplayer.swf" class="flowplayer play-button" style="height:50%;width: 100%;padding: 0px;" data-ratio="0.5625">
                     <video alt="<?php echo $content->id_content ?>">
                         <?php if ($content->ext == '.mp4') { ?> 
                             <source type="video/mp4" src="<?php echo base_url() . 'resource/' . $content->id_content . '.mp4'; ?>"/>
