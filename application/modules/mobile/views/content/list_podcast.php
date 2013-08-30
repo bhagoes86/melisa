@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="<?php echo base_url() ?>mobileasset/css/jquerymobile.nativedroid.color.green.css" id='jQMnDColor' />
         <script src="<?php echo base_url() ?>mobileasset/js/jquery-1.10.2.min.js"></script>
         <script src="<?php echo base_url() ?>mobileasset/js/jquery.mobile-1.3.2.min.js"></script>
-        <script type="text/javascript" src="http://connect.soundcloud.com/sdk.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 var num_podcast = <?php echo $num_podcast ?>;
@@ -70,25 +69,16 @@
                                 //ekstrak the youtube id
                                 $extract_id = explode('^^^', $media);
                                 ?>
-                                <a id="viewer-activator<?php echo $rowpodcast->id_content ?>" data-id="<?php echo $rowpodcast->id_content ?>">
+                                <a href="<?php echo site_url('mobile/viewer_youtube' . '/' . $rowpodcast->id_content) ?>" data-ajax="false">
                                     <img id="cover_<?php echo $rowpodcast->id_content ?>" src="http://img.youtube.com/vi/<?php echo $extract_id[1]; ?>/1.jpg" style="width: 100%;">
                                 </a>
-                                <script type="text/javascript">
-                                    $('a#viewer-activator<?php echo $rowpodcast->id_content ?>').tap(function() {
-                                        $('a#viewer-activator<?php echo $rowpodcast->id_content ?>').hide();
-                                        $('a#viewer-activator<?php echo $rowpodcast->id_content ?>').load("<?php echo site_url('mobile/plain_viewer_youtube' . '/' . $rowpodcast->id_content) ?>");
-                                        $('a#viewer-activator<?php echo $rowpodcast->id_content ?>').show();
-                                        return false;
-                                    });
-                                </script>
                             <?php } elseif ($rowpodcast->type == 3) { ?><!--Vimeo-->
                                 <h2><i class="icon-vimeo"></i> Vimeo Content</h2>
                             <?php } elseif ($rowpodcast->type == 6) { ?><!--SoundCloud-->
                                 <h2><i class="icon-volume-up"></i> Soundcloud Content</h2>
-                                <div id="putTheWidgetHere-<?php echo $rowpodcast->file ?>" style="height: 168px;"></div>
-                                <script type="text/JavaScript">
-                                    SC.oEmbed("<?php echo $rowpodcast->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere-<?php echo $rowpodcast->file ?>"));
-                                </script>
+                                <a href="<?php echo site_url('mobile/viewer_soundcloud' . '/' . $rowpodcast->id_content) ?>" style="text-align: center;">
+                                    <i class="icon-volume-up"></i>
+                                </a>
                             <?php } ?>
                             <p><?php echo $rowpodcast->title ?></p>
                         </li>
@@ -114,10 +104,6 @@
                         }
                     }
                 });
-            });
-            //plugin soundcloud
-            SC.initialize({
-                client_id: "938418853596f90572983f377348dc57"
             });
         </script>
     </body>

@@ -156,10 +156,15 @@ class Mobile extends MX_Controller {
         $data['podcast'] = $this->model_mobile->get_podcast($offset);
         $this->load->view('mobile/content/list_podcast_layout', $data);
     }
-
-    function plain_viewer_youtube($id_content) {
+    
+    function viewer_youtube($id_content) {
         $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
-        $this->load->view('mobile/content/plain_viewer_youtube', $data);
+        $this->load->view('mobile/content/viewer_youtube', $data);        
+    }
+    
+    function viewer_soundcloud($id_content) {
+        $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
+        $this->load->view('mobile/content/viewer_soundcloud', $data);        
     }
 
     /*
