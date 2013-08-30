@@ -26,7 +26,7 @@
         <?php } elseif ($rowpodcast->type == 3) { ?><!--Vimeo-->
             <h2><i class="icon-vimeo"></i> Vimeo Content</h2>
         <?php } elseif ($rowpodcast->type == 6) { ?><!--SoundCloud-->
-            <h2><i class="icon-soundcloud"></i> Soundcloud Content</h2>
+            <h2><i class="icon-volume-up"></i> Soundcloud Content</h2>
             <div id="putTheWidgetHere-<?php echo $rowpodcast->file ?>" style="height: 168px;"></div>
             <script type="text/JavaScript">
                 SC.oEmbed("<?php echo $rowpodcast->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere-<?php echo $rowpodcast->file ?>"));
