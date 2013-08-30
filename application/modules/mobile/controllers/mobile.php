@@ -165,18 +165,21 @@ class Mobile extends MX_Controller {
     
     function viewer_youtube($id_content) {
         $data['site'] = $this->model_mobile->select_themes()->row();
+        $data['id_content'] = $id_content;
         $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
         $this->load->view('mobile/content/viewer_youtube', $data);
     }
 
     function viewer_soundcloud($id_content) {
         $data['site'] = $this->model_mobile->select_themes()->row();
+        $data['id_content'] = $id_content;
         $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
         $this->load->view('mobile/content/viewer_soundcloud', $data);
     }
     
     function viewer_vimeo($id_content) {
         $data['site'] = $this->model_mobile->select_themes()->row();
+        $data['id_content'] = $id_content;
         $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
         $this->load->view('mobile/content/viewer_vimeo', $data);
     }
