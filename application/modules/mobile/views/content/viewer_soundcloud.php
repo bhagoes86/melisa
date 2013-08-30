@@ -10,25 +10,7 @@
         <link rel="stylesheet" href="<?php echo base_url() ?>mobileasset/css/jquerymobile.nativedroid.color.green.css" id='jQMnDColor' />
         <script src="<?php echo base_url() ?>mobileasset/js/jquery-1.10.2.min.js"></script>
         <script src="<?php echo base_url() ?>mobileasset/js/jquery.mobile-1.3.2.min.js"></script>
-        <script type="text/javascript" src="http://connect.soundcloud.com/sdk.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                var num_podcast = <?php echo $num_podcast ?>;
-                var loaded_podcast = 0;
-                $("button#more_button").tap(function() {
-                    loaded_podcast += 10;
-                    $.get("<?php echo site_url('mobile/get_podcast') ?>/" + loaded_podcast, function(data) {
-                        $("#main_content").append(data);
-                    });
-                    if (loaded_podcast >= num_podcast - 10)
-                    {
-                        $("button#more_button").hide();
-                        $("#more_container").hide();
-                    }
-                });
-                return false;
-            });
-        </script>
+        <script type="text/javascript" src="http://connect.soundcloud.com/sdk.js"></script>        
     </head>
     <body>
         <div data-role="page" id="page" data-theme="d">
@@ -41,9 +23,9 @@
             <!--Panel-->
             <?php echo $this->load->view('panel_left'); ?>
             <!--Content-->
-            <div id="putTheWidgetHere-<?php echo $rowpodcast->file ?>" style="height: 168px;"></div>
+            <div id="putTheWidgetHere-<?php echo $content->file ?>" style="height: 168px;"></div>
             <script type="text/JavaScript">
-                SC.oEmbed("<?php echo $rowpodcast->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere-<?php echo $rowpodcast->file ?>"));
+                SC.oEmbed("<?php echo $content->file ?>", {color: "ff0066"},  document.getElementById("putTheWidgetHere-<?php echo $content->file ?>"));
             </script>
         </div>
         <script src="<?php echo base_url() ?>mobileasset/js/nativedroid.script.js"></script>
