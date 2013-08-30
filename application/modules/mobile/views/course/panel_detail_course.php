@@ -21,7 +21,7 @@
     $('a#syllabus-detail-course').tap(function() {
         var id_course = $(this).attr('data-id');
         $('#main_content').empty();
-        $('#main_content').load("<?php echo site_url('mobile/list_course_syllabus') ?>/" + id_course, function() {
+        $('#main_content').load("<?php echo site_url('mobile/list_syllabus_by_course') ?>/" + id_course, function() {
             $("#right-panel").panel("close");
         });
         return false;

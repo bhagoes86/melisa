@@ -172,9 +172,19 @@ class Mobile extends MX_Controller {
         $this->load->view('mobile/course/detail_course', $data);
     }
 
-    function list_course_syllabus($id_course) {
+    function list_syllabus_by_course($id_course) {
         $data['syllabus'] = $this->model_mobile->select_course_syllabus_parent($id_course)->result();
-        $this->load->view('mobile/course/list_course_syllabus', $data);
+        $this->load->view('mobile/course/list_syllabus_by_course', $data);
+    }
+
+    function content_counter_by_syllabus($id_syllabus) {
+        $content = $this->model_mobile->sellect_content_by_syllabus($id_syllabus)->result();
+        echo count($content);
+    }
+
+    function list_content_by_syllabus($id_syllabus) {
+        $data['content'] = $this->model_mobile->sellect_content_by_syllabus($id_syllabus)->result();
+        $this->load->view('mobile/course/list_content_by_syllabus', $data);
     }
 
 }

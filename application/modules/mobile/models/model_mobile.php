@@ -110,6 +110,14 @@ class Model_mobile extends CI_Model {
         return $this->db->get();
     }
 
+    function sellect_content_by_syllabus($id_syllabus) {
+        $this->db->select('*');
+        $this->db->from('content_silabus');
+        $this->db->join('content', 'content.id_content = content_silabus.content_id');
+        $this->db->where('content_silabus.silabus_id', $id_syllabus);
+        return $this->db->get();
+    }
+
     /*
      * Authz
      */
