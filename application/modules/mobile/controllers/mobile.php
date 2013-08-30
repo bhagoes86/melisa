@@ -168,6 +168,12 @@ class Mobile extends MX_Controller {
         $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
         $this->load->view('mobile/content/viewer_soundcloud', $data);
     }
+    
+    function viewer_vimeo($id_content) {
+        $data['site'] = $this->model_mobile->select_themes()->row();
+        $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
+        $this->load->view('mobile/content/viewer_vimeo', $data);
+    }
 
     /*
      * Course

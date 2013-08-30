@@ -10,24 +10,6 @@
         <link rel="stylesheet" href="<?php echo base_url() ?>mobileasset/css/jquerymobile.nativedroid.color.green.css" id='jQMnDColor' />
         <script src="<?php echo base_url() ?>mobileasset/js/jquery-1.10.2.min.js"></script>
         <script src="<?php echo base_url() ?>mobileasset/js/jquery.mobile-1.3.2.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                var num_podcast = <?php echo $num_podcast ?>;
-                var loaded_podcast = 0;
-                $("button#more_button").tap(function() {
-                    loaded_podcast += 10;
-                    $.get("<?php echo site_url('mobile/get_podcast') ?>/" + loaded_podcast, function(data) {
-                        $("#main_content").append(data);
-                    });
-                    if (loaded_podcast >= num_podcast - 10)
-                    {
-                        $("button#more_button").hide();
-                        $("#more_container").hide();
-                    }
-                });
-                return false;
-            });
-        </script>
     </head>
     <body>
         <div data-role="page" id="page" data-theme="d">
@@ -44,7 +26,7 @@
                 <?php
                 $media = analyze_media($content->file);
                 $trace = explode('^^^', $media);
-                echo eksternal_viewer_youtube($trace[1]);
+                echo eksternal_viewer_vimeo($trace[1]);
                 ?>
             </div>
         </div>

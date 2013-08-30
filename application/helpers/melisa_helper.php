@@ -36,6 +36,10 @@ function eksternal_viewer_youtube($id) {
     return '<object width="100%" height="50%" style="margin:0px;padding: 0px;vertical-align: middle"><param name="movie" value="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed wmode="transparent" src="http://www.youtube.com/v/' . $id . '&hl=en_US&feature=player_embedded&version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="100%" height="50%" style="margin:0px;padding: 0px;vertical-align: middle"></embed></object>';
 }
 
+function eksternal_viewer_vimeo($id) {
+    return '<iframe width="100%" height="50%" style="padding: 0px;" src="http://player.vimeo.com/video/' . $id . '"></iframe>';
+}
+
 //cover
 function cover_vimeo($link) {
 
