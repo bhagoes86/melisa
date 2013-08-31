@@ -190,7 +190,7 @@ class Mobile extends MX_Controller {
     }
 
     function download_video($id_content) {
-        $this->load->helper('download');
+        //$this->load->helper('download');
         $content = $this->model_mobile->select_content_by_id($id_content)->row();
         $path = base_url() . 'resource' . '/' . $content->file;
         echo $path;
@@ -213,6 +213,8 @@ class Mobile extends MX_Controller {
             header('Content-Transfer-Encoding: binary');
             header('Content-Length: ' . filesize($path)); // provide file size
             header('Connection: close');
+            ob_clean();
+            flush();
             readfile($path); // push it out
             exit();
         }
