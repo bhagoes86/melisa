@@ -189,28 +189,14 @@ class Mobile extends MX_Controller {
         $this->load->view('mobile/content/viewer_vimeo', $data);
     }
 
-    function downloadFile($file) {
-        $file_name = $file;
-        $mime = 'application/force-download';
-        header('Pragma: public');
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-        header('Cache-Control: private', false);
-        header('Content-Type: ' . $mime);
-        header('Content-Disposition: attachment; filename="' . basename($file_name) . '"');
-        header('Content-Transfer-Encoding: binary');
-        header('Connection: close');
-        readfile($file_name);
-        exit();
-    }
-
     function download_video($id_content) {
-//        $this->load->helper('download');
+        $this->load->helper('download');
         $content = $this->model_mobile->select_content_by_id($id_content)->row();
-//        $data = file_get_contents('./resource' . '/' . $content->file);
-//        $name = "$content->title" . "$content->ext";
-//        force_download($name, $data);
-        downloadFile(base_url() . 'resource' . '/' . $content->file);
+        $data = file_get_contents('./resource' . '/' . $content->file);
+        $name = "$content->title" . "$content->ext";
+        //force_download($name, $data);
+        print_r($name).'</br>';
+        print_r($data);
     }
 
     /*
