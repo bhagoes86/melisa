@@ -194,7 +194,7 @@ class Mobile extends MX_Controller {
         $content = $this->model_mobile->select_content_by_id($id_content)->row();
         $name = "$content->title";
         $path = base_url() . 'resource' . '/' . $content->file;
-        $data = file_get_contents("$path");
+        $data = file_get_contents($path);
         force_download($name, $data);
 //        print_r($name) . '</br>';
 //        print_r($path);
