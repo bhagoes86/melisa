@@ -73,6 +73,10 @@ class Mobile extends MX_Controller {
             redirect('mobile/form_login', $main);
         }
     }
+    
+    function fan_page() {
+        $this->load->view('mobile/authz/fan_page');
+    }
 
     //auth logout
     function logout() {
@@ -211,7 +215,7 @@ class Mobile extends MX_Controller {
 
     function get_course($offset) {
         $data['course'] = $this->model_mobile->get_course($offset);
-        $this->load->view('mobile/course/list_layout', $data);
+        $this->load->view('mobile/course/list_course_layout', $data);
     }
 
     function course_info($id_course) {
