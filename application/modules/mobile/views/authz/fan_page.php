@@ -24,7 +24,7 @@
             <div data-role="content">
                 <ul data-nativedroid-plugin='cards' id="main_content">
                     <li data-cards-type='text'>
-                        <div class="span6 fb-like-box" data-width="100%" data-href="http://www.facebook.com/npaperbox" data-height="300" data-show-faces="true" data-stream="false" data-header="false"></div>
+                        <div class="span6 fb-like-box" data-width="95%" data-href="http://www.facebook.com/npaperbox" data-height="300" data-show-faces="true" data-stream="false" data-header="false"></div>
                     </li>
                 </ul>
             </div>
