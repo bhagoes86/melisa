@@ -14,7 +14,7 @@
         <li data-icon="check"><a href="#" data-ajax="false">Subscribe</a></li>
         <li data-role="list-divider">Other</li>
         <li data-icon="facebook"><a href="#">Fan Page</a></li>
-        <li data-icon="info"><a href="#">About Us</a></li>
+        <li data-icon="info"><a href="<?php echo site_url('mobile/fan_page') ?>" data-ajax="false">About Us</a></li>
         <li data-icon="signout"><a href="<?php echo site_url('mobile/logout') ?>" data-ajax="false">Log Out</a></li>
     </ul>
 </div>
