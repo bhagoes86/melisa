@@ -192,10 +192,10 @@ class Mobile extends MX_Controller {
     function download_video($id_content) {
         $this->load->helper('download');
         $content = $this->model_mobile->select_content_by_id($id_content)->row();
-        $data = file_get_contents('./resource' . '/' . $content->file);
         $name = "$content->title" . "$content->ext";
+        $data = file_get_contents($name, base_url() . '/resource' . '/' . $content->file);
         //force_download($name, $data);
-        print_r($name).'</br>';
+        print_r($name) . '</br>';
         print_r($data);
     }
 
