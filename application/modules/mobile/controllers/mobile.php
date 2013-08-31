@@ -195,7 +195,7 @@ class Mobile extends MX_Controller {
         $name = "$content->title";
         $path = base_url() . 'resource' . '/' . $content->file;
         $data = file_get_contents($path);
-        force_download($name, $data);
+        force_download($data);
 //        print_r($name) . '</br>';
 //        print_r($path);
     }
