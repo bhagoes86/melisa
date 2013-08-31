@@ -193,6 +193,7 @@ class Mobile extends MX_Controller {
         $this->load->helper('download');
         $content = $this->model_mobile->select_content_by_id($id_content)->row();
         $path = base_url() . 'resource' . '/' . $content->file;
+        echo $path;
         if (is_file($path)) {
             // required for IE
             if (ini_get('zlib.output_compression')) {
