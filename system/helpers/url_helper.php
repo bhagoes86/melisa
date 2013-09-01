@@ -312,17 +312,20 @@ if (!function_exists('safe_mailto')) {
         $x = array_reverse($x);
         ob_start();
         ?><script type="text/javascript">
-                    //<![CDATA[
-                    var l=new Array();
+            //<![CDATA[
+            var l = new Array();
         <?php
         $i = 0;
         foreach ($x as $val) {
-            ?>l[<?php echo $i++; ?>]='<?php echo $val; ?>';<?php } ?>
+            ?>l[<?php echo $i++; ?>] = '<?php echo $val; ?>';<?php } ?>
 
-            for (var i = l.length-1; i >= 0; i=i-1){
-                if (l[i].substring(0, 1) == '|') document.write("&#"+unescape(l[i].substring(1))+";");
-                else document.write(unescape(l[i]));}
-            //]]>
+                for (var i = l.length - 1; i >= 0; i = i - 1) {
+                    if (l[i].substring(0, 1) == '|')
+                        document.write("&#" + unescape(l[i].substring(1)) + ";");
+                    else
+                        document.write(unescape(l[i]));
+                }
+                //]]>
         </script><?php
         $buffer = ob_get_contents();
         ob_end_clean();
@@ -361,7 +364,7 @@ if (!function_exists('auto_link')) {
                         $matches['6'][$i] = substr($matches['6'][$i], 0, -1);
                     }
 
-                    $str = str_replace($matches['0'][$i], $matches['1'][$i] . '<a href="http' .
+                    $str = str_replace($matches['0'][$i], $matches['1'][$i] . '<a target="_blank" href="http' .
                             $matches['4'][$i] . '://' .
                             $matches['5'][$i] .
                             $matches['6'][$i] . '"' . $pop . '>http' .
