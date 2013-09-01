@@ -186,6 +186,7 @@ class Model_mobile extends CI_Model {
         $this->db->where('show', 1);
         $this->db->order_by('id_content', 'DESC');
         $query = $this->db->count_all_results('content');
+        return $query;
     }
 
     function get_presentation($offset = 0) {
@@ -193,16 +194,17 @@ class Model_mobile extends CI_Model {
         $this->db->where('type', 5);
         $this->db->where('show', 1);
         $this->db->order_by('id_content', 'DESC');
-        $query = $this->db->get('content', 1, $offset);
+        $query = $this->db->get('content', 10, $offset);
         return $query->result();
     }
 
     function num_presentation() {
-        $this->db->select('*');
         $this->db->where('type', 5);
+        $this->db->select('*');
         $this->db->where('show', 1);
         $this->db->order_by('id_content', 'DESC');
         $query = $this->db->count_all_results('content');
+        return $query;
     }
 
     function select_trending_content() {
