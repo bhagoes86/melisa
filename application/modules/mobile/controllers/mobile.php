@@ -116,7 +116,7 @@ class Mobile extends MX_Controller {
 
     function get_feed($offset) {
         $data['feed'] = $this->model_mobile->get_feed($offset);
-        $this->load->view('mobile/feed/list_layout', $data);
+        $this->load->view('mobile/feed/list_feed_layout', $data);
     }
 
     // feed message submit proses
