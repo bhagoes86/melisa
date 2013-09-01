@@ -19,7 +19,7 @@
                 <h1 style="position: absolute;">Like Us</h1>
                 <a href="javascript:void(0)" data-ajax="false" style="margin-right: 10px;"><i class='icon-thumbs-up'></i></a>
             </div>
-            <!--Panel-->
+            <!--Panel Left-->
             <?php echo $this->load->view('panel_left'); ?>
             <!--Content-->
             <div data-role="content" style="text-align: center;" >

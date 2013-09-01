@@ -158,5 +158,9 @@ class Model_mobile extends CI_Model {
         $query = $this->db->count_all_results('content');
         return $query;
     }
+    
+    function select_trending_content() {
+        return $this->db->query('SELECT count(tag) as jml, user_id, tag, tag_type from tags group by tag order by jml DESC limit 10');
+    }
 
 }

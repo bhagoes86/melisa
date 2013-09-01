@@ -29,6 +29,11 @@ class Mobile extends MX_Controller {
         }
     }
 
+    function panel_right() {
+        $data['trending'] = $this->model_mobile->select_trending_content()->result();
+        $this->load->view('mobile/panel_right', $data);
+    }
+
     /*
      * Auth
      */
@@ -203,6 +208,11 @@ class Mobile extends MX_Controller {
             'speed' => 2000,
         );
         $this->filedownload->send_download($config);
+    }
+
+    function panel_trending_content() {
+        $data['trending'] = $this->model_mobile->select_trending_content()->result();
+        $this->load->view('mobile/content/panel_trending_content', $data);
     }
 
     /*

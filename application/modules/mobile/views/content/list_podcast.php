@@ -35,10 +35,12 @@
             <div data-role="header" data-tap-toggle="false" data-theme='b'>
                 <a href="#left-panel" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
                 <h1 style="position: absolute;">Podcast</h1>
-                <a href="javascript:void(0)" id="form-submit-activator"><i class='icon-plus-sign' style="margin-right: 10px;"></i></a>
+                <a href="#right-panel" data-ajax="false"><i class='icon-ellipsis-horizontal' style="margin-right: 10px;"></i></a>
             </div>
-            <!--Panel-->
+            <!--Panel Left-->
             <?php echo $this->load->view('panel_left'); ?>
+            <!--Panel Right-->
+            <?php echo modules::run('mobile/panel_right'); ?>
             <!--Content-->
             <div data-role="content">
                 <form id="feed-submit">

@@ -35,12 +35,15 @@
             <div data-role="header" data-tap-toggle="false" data-theme='b'>
                 <a href="#left-panel" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
                 <h1 style="position: absolute;">Feed</h1>
-                <a href="javascript:void(0)" id="form-submit-activator"><i class='icon-plus-sign' style="margin-right: 10px;"></i></a>
+                <a href="#right-panel" data-ajax="false"><i class='icon-ellipsis-horizontal' style="margin-right: 10px;"></i></a>
             </div>
-            <!--Panel-->
+            <!--Panel Left-->
             <?php echo $this->load->view('panel_left'); ?>
+            <!--Panel Right-->
+            <?php echo modules::run('mobile/panel_right'); ?>
             <!--Content-->
             <div data-role="content">
+                <!--
                 <form id="feed-submit">
                     <ul data-role="listview" data-inset="true" style="display: none;" id="form-submit">
                         <li>
@@ -54,6 +57,7 @@
                         </li>
                     </ul>
                 </form>
+                -->
                 <ul data-nativedroid-plugin='cards' id="main_content">
                     <?php foreach ($feed as $rowfeed): ?>
                         <li data-cards-type='text'>
@@ -69,9 +73,6 @@
         </div>
         <script src="<?php echo base_url() ?>mobileasset/js/nativedroid.script.js"></script>
         <script type="text/javascript">
-            $('#form-submit-activator').click(function() {
-                $('#form-submit').toggle();
-            });
             $(document).on("pageinit", "#page", function() {
                 //name
                 $('#user_name').load("<?php echo site_url('mobile/get_name') ?>");

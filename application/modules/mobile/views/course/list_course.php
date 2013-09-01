@@ -35,10 +35,12 @@
             <div data-role="header" data-tap-toggle="false" data-theme='b'>
                 <a href="#left-panel" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
                 <h1 style="position: absolute;">Course</h1>
-                <a href="javascript:void(0)" id="form-submit-activator"><i class='icon-plus-sign' style="margin-right: 10px;"></i></a>
+                <a href="#right-panel" data-ajax="false"><i class='icon-ellipsis-horizontal' style="margin-right: 10px;"></i></a>
             </div>
-            <!--Panel-->
+            <!--Panel Left-->
             <?php echo $this->load->view('panel_left'); ?>
+            <!--Panel Right-->
+            <?php echo modules::run('mobile/panel_right'); ?>
             <!--Content-->
             <div data-role="content">
                 <form id="feed-submit">
@@ -72,9 +74,6 @@
         </div>
         <script src="<?php echo base_url() ?>mobileasset/js/nativedroid.script.js"></script>
         <script type="text/javascript">
-            $('#form-submit-activator').click(function() {
-                $('#form-submit').toggle();
-            });
             $(document).on("pageinit", "#page", function() {
                 //name
                 $('#user_name').load("<?php echo site_url('mobile/get_name') ?>");
@@ -88,28 +87,6 @@
                         }
                     }
                 });
-            });
-            $('#feed-submit').submit(function() {
-                var message = $('#message').val();
-                if (message == '') {
-                    alert('kosong');
-                    return false;
-                } else {
-                    $.ajax({
-                        type: 'POST',
-                        url: "<?php echo site_url('mobile/submit_feed') ?>",
-                        data: $(this).serialize(),
-                        success: function(data, status)
-                        {
-                            alert('sukes');
-                        },
-                        error: function(data, status, e)
-                        {
-                            alert('gagal');
-                        }
-                    });
-                    return false;
-                }
             });
         </script>
     </body>
