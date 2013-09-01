@@ -13,7 +13,7 @@
         <li data-icon="book"><a href="<?php echo site_url('mobile/list_course_new') ?>" data-ajax="false">Course</a></li>
         <li data-icon="check"><a href="#" data-ajax="false">Subscribe</a></li>
         <li data-role="list-divider">Other</li>
-        <li data-icon="facebook"><a href="<?php echo site_url('mobile/fan_page') ?>">Fan Page</a></li>
+        <li data-icon="facebook"><a href="<?php echo site_url('mobile/fan_page') ?>" data-ajax="false">Fan Page</a></li>
         <li data-icon="info"><a href="#" data-ajax="false">About Us</a></li>
         <li data-icon="signout"><a href="<?php echo site_url('mobile/logout') ?>" data-ajax="false">Log Out</a></li>
     </ul>
