@@ -7,8 +7,8 @@
         <li data-icon="eye-open"><a href="#" data-ajax="false">Readcast</a></li>
         <li data-role="list-divider">Library</li>
         <li data-icon="play-sign"><a href="<?php echo site_url('mobile/list_podcast_new') ?>" data-ajax="false">Podcast</a></li>
-        <li data-icon="file-text-alt"><a href="#" data-ajax="false">Document</a></li>
-        <li data-icon="indent-right"><a href="#" data-ajax="false">Presentation</a></li>
+        <li data-icon="file-text-alt"><a href="<?php echo site_url('mobile/list_document_new') ?>" data-ajax="false">Document</a></li>
+        <li data-icon="indent-right"><a href="<?php echo site_url('mobile/list_presentation_new') ?>" data-ajax="false">Presentation</a></li>
         <li data-role="list-divider">Course</li>
         <li data-icon="book"><a href="<?php echo site_url('mobile/list_course_new') ?>" data-ajax="false">Course</a></li>
         <li data-icon="check"><a href="#" data-ajax="false">Subscribe</a></li>

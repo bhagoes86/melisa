@@ -169,6 +169,42 @@ class Model_mobile extends CI_Model {
         return $query;
     }
 
+    function get_document($offset = 0) {
+        $this->db->select('*');
+        $names = array('4', '7');
+        $this->db->where_in('type', $names);
+        $this->db->where('show', 1);
+        $this->db->order_by('id_content', 'DESC');
+        $query = $this->db->get('content', 10, $offset);
+        return $query->result();
+    }
+
+    function num_document() {
+        $this->db->select('*');
+        $names = array('4', '7');
+        $this->db->where_in('type', $names);
+        $this->db->where('show', 1);
+        $this->db->order_by('id_content', 'DESC');
+        $query = $this->db->count_all_results('content');
+    }
+
+    function get_presentation($offset = 0) {
+        $this->db->select('*');
+        $this->db->where('type', 5);
+        $this->db->where('show', 1);
+        $this->db->order_by('id_content', 'DESC');
+        $query = $this->db->get('content', 1, $offset);
+        return $query->result();
+    }
+
+    function num_presentation() {
+        $this->db->select('*');
+        $this->db->where('type', 5);
+        $this->db->where('show', 1);
+        $this->db->order_by('id_content', 'DESC');
+        $query = $this->db->count_all_results('content');
+    }
+
     function select_trending_content() {
         return $this->db->query('SELECT count(tag) as jml, user_id, tag, tag_type from tags group by tag order by jml DESC limit 10');
     }

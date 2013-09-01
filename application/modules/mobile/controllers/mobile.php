@@ -140,7 +140,7 @@ class Mobile extends MX_Controller {
     // feed all new
     function list_feed_new() {
         if (!$this->ion_auth->logged_in()) {
-            $this->load->view('mobile/welcome');
+            redirect('');
         } else {
             $data['site'] = $this->model_mobile->select_themes()->row();
             $data['num_feed'] = $this->model_mobile->num_feed();
@@ -181,7 +181,7 @@ class Mobile extends MX_Controller {
     // podcast all new    
     function list_podcast_new() {
         if (!$this->ion_auth->logged_in()) {
-            $this->load->view('mobile/welcome');
+            redirect('');
         } else {
             $data['site'] = $this->model_mobile->select_themes()->row();
             $data['num_podcast'] = $this->model_mobile->num_podcast();
@@ -193,6 +193,38 @@ class Mobile extends MX_Controller {
     function get_podcast($offset) {
         $data['podcast'] = $this->model_mobile->get_podcast($offset);
         $this->load->view('mobile/content/list_podcast_layout', $data);
+    }
+
+    function list_document_new() {
+        if (!$this->ion_auth->logged_in()) {
+            redirect('');
+        } else {
+            $data['site'] = $this->model_mobile->select_themes()->row();
+            $data['num_document'] = $this->model_mobile->num_document();
+            $data['document'] = $this->model_mobile->get_document();
+            $this->load->view('mobile/content/list_document', $data);
+        }
+    }
+
+    function get_document($offset) {
+        $data['document'] = $this->model_mobile->get_document($offset);
+        $this->load->view('mobile/content/list_document_layout', $data);
+    }
+
+    function list_presentation_new() {
+        if (!$this->ion_auth->logged_in()) {
+            redirect('');
+        } else {
+            $data['site'] = $this->model_mobile->select_themes()->row();
+            $data['num_presentation'] = $this->model_mobile->num_presentation();
+            $data['presentation'] = $this->model_mobile->get_presentation();
+            $this->load->view('mobile/content/list_presentation', $data);
+        }
+    }
+
+    function get_presentation($offset) {
+        $data['presentation'] = $this->model_mobile->get_presentation($offset);
+        $this->load->view('mobile/content/list_presentation_layout', $data);
     }
 
     function viewer_video($id_content) {
@@ -250,7 +282,7 @@ class Mobile extends MX_Controller {
     // course all new    
     function list_course_new() {
         if (!$this->ion_auth->logged_in()) {
-            $this->load->view('mobile/welcome');
+            redirect('');
         } else {
             $data['site'] = $this->model_mobile->select_themes()->row();
             $data['num_course'] = $this->model_mobile->num_course();
