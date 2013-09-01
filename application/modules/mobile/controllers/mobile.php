@@ -23,7 +23,9 @@ class Mobile extends MX_Controller {
 
     function index() {
         if (!$this->ion_auth->logged_in()) {
-            $this->load->view('mobile/welcome');
+            //$this->load->view('mobile/welcome');
+            $data['site'] = $this->model_mobile->select_themes()->row();
+            $this->load->view('mobile/authz/welcome',$data);
         } else {
             redirect('mobile/list_feed_new');
         }
@@ -67,7 +69,7 @@ class Mobile extends MX_Controller {
                  * set pesan error login pada session flashdata 
                  */
                 $main['message'] = 'Kombinasi username dan password salah';
-                redirect('mobile/form_login', $main);
+                redirect('mobile', $main);
             }
         } else {
             /*
@@ -75,7 +77,7 @@ class Mobile extends MX_Controller {
              * set pesan untuk kesalahan input atau untuk pesan error sebelumnya
              */
             $main['message'] = (validation_errors()) ? $this->session->set_flashdata('message', '<div class="error">' . validation_errors() . '</div>') : '';
-            redirect('mobile/form_login', $main);
+            redirect('mobile', $main);
         }
     }
 
