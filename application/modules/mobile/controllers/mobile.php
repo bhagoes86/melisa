@@ -75,7 +75,8 @@ class Mobile extends MX_Controller {
     }
 
     function fan_page() {
-        $this->load->view('mobile/authz/fan_page');
+        $data['site'] = $this->model_mobile->select_themes()->row();
+        $this->load->view('mobile/authz/fan_page', $data);
     }
 
     //auth logout
