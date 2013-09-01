@@ -119,14 +119,6 @@ class Mobile extends MX_Controller {
         $this->load->view('mobile/feed/list_layout', $data);
     }
 
-    // feed by user
-    function list_feed_by_id($id_wall) {
-        $user = $this->ion_auth->user()->row();
-        $user_id = $user->id;
-        $data['feed'] = $this->model_mobile->select_feed_by_id($user_id)->row();
-        $this->load->view('mobile/feed/lis_feed_by_id', $data);
-    }
-
     // feed message submit proses
     function submit_feed() {
         $user = $this->ion_auth->user()->row();
@@ -134,7 +126,7 @@ class Mobile extends MX_Controller {
         $data['user_id'] = $user->id;
         //feed yg dikirim
         $data['user_idto'] = $user->id;
-        //?
+        //forum id
         $data['forum_id'] = 0;
         //pesan keseluruhan
         $data['message'] = $this->input->post('message', true);

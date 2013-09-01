@@ -42,22 +42,28 @@
             <!--Panel Right-->
             <?php echo modules::run('mobile/panel_right'); ?>
             <!--Content-->
-            <div data-role="content">
-                <!--
-                <form id="feed-submit">
-                    <ul data-role="listview" data-inset="true" style="display: none;" id="form-submit">
+            <div data-role="content">               
+                <form id="form-container" style="display: none;">
+                    <ul data-role="listview" data-inset="true" id="form-feed-insert" style="display: none;">
                         <li>
                             <fieldset class="ui-grid-solo" data-theme="b" style="padding: 0px 7px 0px 7px;">
                                 <textarea style="width: 100;border-color: #ccc;" rows="5" name="message" id="message" placeholder=" Wanna share something ?"></textarea>
                             </fieldset>
                             <fieldset class="ui-grid-a">
-                                <div class="ui-block-a"><button type="reset" data-theme="a" style="background:rgb(0,0,0);">Cancel</button></div>
+                                <div class="ui-block-a"><button id="cancel-feed" data-theme="a" style="background:rgb(0,0,0);" data-ajax="false">Cancel</button></div>
                                 <div class="ui-block-b"><button type="submit" data-theme="a" style="background:rgb(0,0,0);">Submit</button></div>
                             </fieldset>
                         </li>
                     </ul>
-                </form>
-                -->
+                    <script type="text/javascript">
+                        $('#cancel-feed').tap(function() {
+                            $('#message').val('');
+                            $('#form-feed-insert').hide();
+                            $('#form-container').hide();
+                            return false;
+                        })
+                    </script>
+                </form>                
                 <ul data-nativedroid-plugin='cards' id="main_content">
                     <?php foreach ($feed as $rowfeed): ?>
                         <li data-cards-type='text'>
@@ -74,7 +80,7 @@
         <script src="<?php echo base_url() ?>mobileasset/js/nativedroid.script.js"></script>
         <script type="text/javascript">
             $(document).on("pageinit", "#page", function() {
-                //name
+                //name in panel
                 $('#user_name').load("<?php echo site_url('mobile/get_name') ?>");
                 //swipe left and rights
                 $(document).on("swipeleft swiperight", "#page", function(e) {
@@ -87,6 +93,7 @@
                     }
                 });
             });
+            //submit feed
             $('#feed-submit').submit(function() {
                 var message = $('#message').val();
                 if (message == '') {

@@ -58,14 +58,24 @@ class Model_mobile extends CI_Model {
         return $query;
     }
 
-    function select_feed_by_id($id) {
+    function get_feed_by_id($offset = 0, $id) {
         $this->db->select('*');
-        $this->db->from('wall');
         $this->db->join('users', 'users.id=wall.user_id');
-        $this->db->where('users.id', $id);
+        $this->db->where('wall.user_id', $id);
+        $this->db->or_where('wall.user_idto', $id);
         $this->db->order_by('id_wall', 'DESC');
-        $this->db->limit(50);
-        return $this->db->get();
+        $query = $this->db->get('wall', 10, $offset);
+        return $query->result();
+    }
+
+    function num_feed_by_id($param) {
+        $this->db->select('*');
+        $this->db->join('users', 'users.id=wall.user_id');
+        $this->db->where('wall.user_id', $id);
+        $this->db->or_where('wall.user_idto', $id);
+        $this->db->order_by('id_wall', 'DESC');
+        $query = $this->db->count_all_results('wall');
+        return $query;
     }
 
     function insert_feed($data) {
@@ -158,7 +168,7 @@ class Model_mobile extends CI_Model {
         $query = $this->db->count_all_results('content');
         return $query;
     }
-    
+
     function select_trending_content() {
         return $this->db->query('SELECT count(tag) as jml, user_id, tag, tag_type from tags group by tag order by jml DESC limit 10');
     }
