@@ -1,6 +1,6 @@
 <?php foreach ($presentation as $rowpresentation): ?>
     <li data-cards-type='text'>
-        <h2><i class="indent-right"></i> Slideshare Content</h2>
+        <h2><i class="icon-indent-right"></i> Slideshare Content</h2>
         <?php
         $media = analyze_media($rowpresentation->file);
         $extract_id = explode('^^^', $media);
