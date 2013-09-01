@@ -68,7 +68,7 @@
                     <?php foreach ($feed as $rowfeed): ?>
                         <li data-cards-type='text'>
                             <h2><?php echo $rowfeed->first_name . ' ' . $rowfeed->last_name ?> - <?php echo nicetime(strtotime($rowfeed->date)) ?></h2>
-                            <p><div><?php echo word_wrap(word_limiter(strip_tags(nl2br(auto_link($rowfeed->message))),10)) ?></div></p>
+                            <p><div><?php echo word_wrap(nl2br(auto_link($rowfeed->message))) ?></div></p>
                         </li>
                     <?php endforeach; ?>
                 </ul>
