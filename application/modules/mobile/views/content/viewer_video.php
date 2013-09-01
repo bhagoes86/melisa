@@ -24,7 +24,7 @@
             <!--Panel Right-->
             <?php echo $this->load->view('mobile/content/panel_detail_video'); ?>
             <!--Content-->
-            <div data-role="content">
+            <div data-role="content" id="main_content">
                 <video poster="<?php echo base_url() . 'resource' . '/' . $content->cover . '.jpg' ?>" style="height:50%;width: 100%;padding: 0px;border: 0px;">
                     <?php if ($content->ext == '.mp4') { ?> 
                         <source type="video/mp4" src="<?php echo base_url() . 'resource/' . $content->id_content . '.mp4'; ?>"/>
