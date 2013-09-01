@@ -17,7 +17,7 @@
             <div data-role="header" data-tap-toggle="false" data-theme='b'>
                 <a href="#left-panel" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
                 <h1 style="position: absolute;">Like Us</h1>
-                <a href="javascript:void(0)" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
+                <a href="javascript:void(0)" data-ajax="false"><i class='icon-thumbs-up'></i></a>
             </div>
             <!--Panel-->
             <?php echo $this->load->view('panel_left'); ?>
