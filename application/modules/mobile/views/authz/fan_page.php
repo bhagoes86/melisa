@@ -22,7 +22,7 @@
             <?php echo $this->load->view('panel_left'); ?>
             <!--Content-->
             <div data-role="content" style="text-align: center;" >
-                <div class="span6 fb-like-box" data-width="100%" data-href="http://www.facebook.com/npaperbox" data-height="300" data-show-faces="true" data-stream="false" data-header="false"></div>
+                <div style="margin-top: 5px;" class="span6 fb-like-box" data-width="100%" data-href="http://www.facebook.com/npaperbox" data-height="300" data-show-faces="true" data-stream="false" data-header="false"></div>
             </div>
         </div>
         <script src="<?php echo base_url() ?>mobileasset/js/nativedroid.script.js"></script>
