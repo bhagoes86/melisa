@@ -60,16 +60,24 @@
                         </form>                
                     </li>
                     <li data-cards-type='text'>
-                        <form id="form-container" action="<?php echo site_url('mobile/login') ?>" method="POST" data-ajax="false">
+                        <form id="signup" method="POST" accept-charset="utf-8" data-aja="false">
                             <h2 style="padding: 0px 7px 0px 7px;">Register New Account</h2>
                             <fieldset class="ui-grid-solo" data-theme="b" style="padding: 0px 1px 0px 0px;">
-                                <input name="username" type="text" id="username" value="" style="width:99%;border:1px solid rgb(184, 184, 184);padding-left: 5px;" placeholder="Username"/>
+                                <input name="fullname" type="text" id="regfullname" value="" style="width:99%;border:1px solid rgb(184, 184, 184);padding-left: 5px;" placeholder="Username"/>
                             </fieldset>
                             <fieldset class="ui-grid-solo" data-theme="b" style="padding: 0px 1px 0px 0px;">
-                                <input name="email" type="email" id="password" value="" style="width:99%;border:1px solid rgb(184, 184, 184);padding-left: 5px;" placeholder="Email"/>
+                                <input name="emails" type="email" id="regemails" value="" style="width:99%;border:1px solid rgb(184, 184, 184);padding-left: 5px;" placeholder="Email"/>
                             </fieldset>
                             <fieldset class="ui-grid-solo" data-theme="b" style="padding: 0px 1px 0px 0px;">
-                                <input name="password" type="password" id="password" value="" style="width:99%;border:1px solid rgb(184, 184, 184);padding-left: 5px;" placeholder="Password"/>
+                                <input name="passwords" type="password" id="regpasswords" value="" style="width:99%;border:1px solid rgb(184, 184, 184);padding-left: 5px;" placeholder="Password"/>
+                            </fieldset>
+                            <fieldset class="ui-grid-solo" data-theme="b" style="padding: 0px 1px 0px 0px;">
+                                <div style="border: 1px solid #ccc;margin: 0px 0px 0px 5px;width: 98%;height: 50px;">
+                                    <select name="gender" style="padding-top: 0px;">
+                                        <option value="1">Men</option>
+                                        <option value="2">Women</option>
+                                    </select>
+                                </div>
                             </fieldset>
                             <fieldset class="ui-grid-a">
                                 <div class="ui-block-a"><button type="reset" data-theme="b" style="background:rgb(0,0,0);">Clear</button></div>
@@ -92,6 +100,37 @@
                         }
                     }
                 });
+            });
+            $('form#signup').submit(function() {
+                var fullname = $('#regfullname').val();
+                var emails = $('#regemails').val();
+                var passwords = $('#regpasswords').val();
+                var status = 0;
+                if (fullname == "" || emails == "" || passwords == "") {
+                    //tampil message harus diisi semua fieldnya
+                    alert('All Field Needed')
+                    return false;
+
+                }
+
+                if (passwords.length < 8) {
+                    //tampil message password dan retype mesti sama
+                    alert('Password 8 Character Minimum')
+                    return false;
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: "<?php echo site_url('authz/registrasi'); ?>",
+                    data: $(this).serialize(),
+                    success: function(data) {
+                        alert(data);
+                    },
+                    error: function(data) {
+                        alert(data)
+                    }
+                });
+                return false;
             });
         </script>
     </body>

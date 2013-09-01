@@ -25,7 +25,7 @@ class Mobile extends MX_Controller {
         if (!$this->ion_auth->logged_in()) {
             //$this->load->view('mobile/welcome');
             $data['site'] = $this->model_mobile->select_themes()->row();
-            $this->load->view('mobile/authz/welcome',$data);
+            $this->load->view('mobile/authz/welcome', $data);
         } else {
             redirect('mobile/list_feed_new');
         }
@@ -97,6 +97,40 @@ class Mobile extends MX_Controller {
         $users = $this->ion_auth->user()->row();
         $name = $this->model_mobile->select_user_info($users->id)->row();
         echo $name->first_name . ' ' . $name->last_name;
+    }
+
+    function registrasi() {
+        //$data['profil'] = $this->input->post('profil', true);
+        //$data['fullname']=$this->input->post('fullname',true);
+        //$data['gender']=$this->input->post('gender',true);
+        //print_r($data['gender']);
+        $this->form_validation->set_rules('emails', 'Email Address', 'required|valid_email');
+        $this->form_validation->set_rules('fullname', 'Sure Name', 'required|xss_clean');
+        $this->form_validation->set_rules('passwords', 'Password', 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']');
+        //$this->form_validation->set_rules('password_confirm', 'Confirm Password', 'required');
+        /* apabila validasi benar */
+        if ($this->form_validation->run() == true) {
+            /*
+             * Field utama untuk autentikasi adalah username, email dan password, disimpan di table users
+             * selain ketiga itu dikelompokkan ke additional data dan disimpan di table meta
+             * post nilai untuk username, email dan password
+             */
+
+            //print_r($user);
+            $name = $this->input->post('fullname', true);
+            $email = $this->input->post('emails', true);
+            $password = $this->input->post('passwords', true);
+            $gender = $this->input->post('gender', true);
+            /* ini data tambahan untuk profil user */
+        }
+        if ($this->form_validation->run() == true && $this->ion_auth->register($name, $password, $email, $gender)) {
+            /* apabila proses registrasi berhasil */
+            echo"Selamat :-D Anda sudah terdaftar";
+        } else {
+            /* apabila proses registrasi gagal */
+            $message = (validation_errors()) ? validation_errors() : $this->ion_auth->errors();
+            echo $this->ion_auth->errors();
+        }
     }
 
     /*
