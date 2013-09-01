@@ -171,7 +171,7 @@ class Model_mobile extends CI_Model {
 
     function get_document($offset = 0) {
         $this->db->select('*');
-        $names = array('4', '7');
+        $names = array('1','4', '7');
         $this->db->where_in('type', $names);
         $this->db->where('show', 1);
         $this->db->order_by('id_content', 'DESC');
@@ -181,7 +181,7 @@ class Model_mobile extends CI_Model {
 
     function num_document() {
         $this->db->select('*');
-        $names = array('4', '7');
+        $names = array('1','4', '7');
         $this->db->where_in('type', $names);
         $this->db->where('show', 1);
         $this->db->order_by('id_content', 'DESC');
