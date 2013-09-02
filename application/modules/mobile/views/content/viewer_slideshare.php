@@ -57,27 +57,25 @@
             <?php echo $this->load->view('mobile/content/panel_detail_youtube'); ?>
             <!--Content-->
             <div data-role="content">
-                <div id="player">
-                        You need Flash player 8+ and JavaScript enabled to view this video.
-                </div>
+                <iframe src="http://www.slideshare.net/slideshow/embed_code/<?php echo $slideshare->slideshow_id ?>" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px;width: 100%;height: 300px;" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe> 
             </div>
         </div>
         <script src="<?php echo base_url() ?>mobileasset/js/nativedroid.script.js"></script>
         <script type="text/javascript">
-            $(document).on("pageinit", "#page", function() {
-                //name
-                $('#user_name').load("<?php echo site_url('mobile/get_name') ?>");
-                //swipe left and rights
-                $(document).on("swipeleft swiperight", "#page", function(e) {
-                    if ($.mobile.activePage.jqmData("panel") !== "open") {
-                        if (e.type === "swipeleft") {
-                            $("#right-panel").panel("open");
-                        } else if (e.type === "swiperight") {
-                            $("#left-panel").panel("open");
-                        }
+        $(document).on("pageinit", "#page", function() {
+            //name
+            $('#user_name').load("<?php echo site_url('mobile/get_name') ?>");
+            //swipe left and rights
+            $(document).on("swipeleft swiperight", "#page", function(e) {
+                if ($.mobile.activePage.jqmData("panel") !== "open") {
+                    if (e.type === "swipeleft") {
+                        $("#right-panel").panel("open");
+                    } else if (e.type === "swiperight") {
+                        $("#left-panel").panel("open");
                     }
-                });
+                }
             });
+        });
         </script>
     </body>
 </html>

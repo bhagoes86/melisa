@@ -292,6 +292,8 @@ class Mobile extends MX_Controller {
         $output = curl_exec($ch);
         curl_close($ch);
         $slideshare = json_decode($output);
+        $data['slideshare'] = json_decode($output);
+        //print_r($slideshare);
         $data['presentation'] = explode("/", "$slideshare->slide_image_baseurl");
         $this->load->view('mobile/content/viewer_slideshare', $data);
     }
