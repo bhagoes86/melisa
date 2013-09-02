@@ -67,7 +67,7 @@
                             $thumb = explode("/", slideshare_cover($url)->thumbnail);
                             $thumbnail = slideshare_cover($url)->thumbnail;
                             ?>
-                            <a href="javascript:void(0)">
+                            <a href="<?php echo site_url('mobile/viewer_slideshare' . '/' . $rowpresentation->id_content) ?>" data-ajax="false">
                                 <img src="<?php echo "http:" . $thumbnail ?>" style="width: 100%;border-right: 1px solid white;">
                             </a>
                             <p><?php echo $rowpresentation->title ?></p>

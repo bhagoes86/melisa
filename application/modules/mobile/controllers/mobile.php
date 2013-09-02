@@ -255,6 +255,47 @@ class Mobile extends MX_Controller {
         $this->load->view('mobile/content/viewer_vimeo', $data);
     }
 
+    function viewer_document($id_content) {
+        $data['site'] = $this->model_mobile->select_themes()->row();
+        $data['id_content'] = $id_content;
+        $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
+        $this->load->view('mobile/content/viewer_document', $data);
+    }
+
+    function viewer_scribd($id_content) {
+        $data['site'] = $this->model_mobile->select_themes()->row();
+        $data['id_content'] = $id_content;
+        $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
+        $this->load->view('mobile/content/viewer_scribd', $data);
+    }
+
+    function viewer_docstoc($id_content) {
+        $data['site'] = $this->model_mobile->select_themes()->row();
+        $data['id_content'] = $id_content;
+        $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
+        $this->load->view('mobile/content/viewer_docstoc', $data);
+    }
+
+    function viewer_slideshare($id_content) {
+        $data['site'] = $this->model_mobile->select_themes()->row();
+        $data['id_content'] = $id_content;
+        $data['content'] = $this->model_mobile->select_content_by_id($id_content)->row();
+        //processing slideshare
+        $url = $data['content']->file;
+        if (!function_exists('curl_init'))
+            die('CURL is not installed!');
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://www.slideshare.net/api/oembed/2?url=$url&format=json&maxwidth=550");
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        $slideshare = json_decode($output);
+        $data['presentation'] = explode("/", "$slideshare->slide_image_baseurl");
+        $this->load->view('mobile/content/viewer_slideshare', $data);
+    }
+
     function download_video($id_content) {
         $this->load->library('filedownload'); // panggil librari
         $content = $this->model_mobile->select_content_by_id($id_content)->row();
