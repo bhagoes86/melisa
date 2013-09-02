@@ -57,7 +57,7 @@
             <?php echo $this->load->view('mobile/content/panel_detail_youtube'); ?>
             <!--Content-->
             <div data-role="content">
-                <iframe src="http://www.slideshare.net/slideshow/embed_code/<?php echo $slideshare->slideshow_id ?>" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px;width: 100%;height: 300px;" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe> 
+                <iframe src="http://www.slideshare.net/slideshow/embed_code/<?php echo $slideshare->slideshow_id ?>" height="70%" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px;width: 100%;overflow: hidden;" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe> 
             </div>
         </div>
         <script src="<?php echo base_url() ?>mobileasset/js/nativedroid.script.js"></script>
