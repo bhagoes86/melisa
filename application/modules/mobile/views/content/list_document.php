@@ -34,7 +34,7 @@
             <!--Header-->
             <div data-role="header" data-tap-toggle="false" data-theme='b'>
                 <a href="#left-panel" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
-                <h1 style="position: absolute;">Documentt</h1>
+                <h1 style="position: absolute;">Document</h1>
                 <a href="#right-panel" data-ajax="false"><i class='icon-ellipsis-horizontal' style="margin-right: 10px;"></i></a>
             </div>
             <!--Panel Left-->
