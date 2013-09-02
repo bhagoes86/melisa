@@ -30,7 +30,7 @@
         </script>
     </head>
     <body>
-        <div data-role="page" id="page" data-theme="d" style="background-image: url('./mobileasset/images/background.png')" >
+        <div data-role="page" id="page" data-theme="d" style="background-image: url('<?php echo base_url() ?>mobileasset/images/background.png')" >
             <!--Header-->
             <div data-role="header" data-tap-toggle="false" data-theme='b'>
                 <a href="#left-panel" data-ajax="false"><i class='icon-home'></i></a>
