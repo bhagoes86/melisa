@@ -110,7 +110,7 @@
                 
         $('#course-home').load("<?php echo site_url('course/home_course') ?>");
         $('#video-home').load("<?php echo site_url('content/home_video') ?>");
-        $('#presentation-home').load("<?php echo site_url('course/home_presentation') ?>");
+        $('#presentation-home').load("<?php echo site_url('content/home_presentation') ?>");
 
         //Load page welcome
         $('a#btn-welcome').click(function(){
