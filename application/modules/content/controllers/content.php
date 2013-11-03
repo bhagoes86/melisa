@@ -713,12 +713,12 @@ class Content extends MX_Controller {
     }
 
     function home_video() {
-        $data['content'] = $this->model_content->select_content(0, 3);
+        $data['content'] = $this->model_content->select_content(0, 3)->result();
         $this->load->view('content/home_video', $data);
     }
 
     function home_presentation() {
-        $data['content'] = $this->model_content->select_content(5, 3);
+        $data['content'] = $this->model_content->select_content(5, 3)->result();
         $this->load->view('content/home_presentation', $data);
     }
 
