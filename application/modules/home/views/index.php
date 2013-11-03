@@ -91,58 +91,27 @@
             </div>
         </div>
         <!--Footer-->
-        <div class="page">
-            <div class="nav-bar">
-                <div class="nav-bar-inner padding10" style="background: rgb(0,64,128);">
-                    <span class="element">
-                        <a class="fg-color-white" href="<?php echo site_url(); ?>">&copy; <?php echo date('Y'); ?> Sakola.net</a>, Styled with <a class="fg-color-white" href="http://metroui.org.ua">Metro UI CSS</a>
-                    </span>
-                </div>
-            </div>
-        </div>
+        <div class="page" id="footbar"></div>
     </body>
 </html>
 <div id="fb-root"></div>
 
 <script type="text/javascript">
-   
-                            
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=240447809341438";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
- 
- 
-    $(window).bind("load resize", function(){    
-        var container_width = $('#container').width();    
-        $('#container').html('<div class="fb-like-box" ' + 
-            'data-href="https://www.facebook.com/npaperbox"' +
-            ' data-width="' + container_width + '" data-height="300" data-show-faces="true" ' +
-            'data-stream="false" data-header="false"></div>');
-        FB.XFBML.parse( );    
-    }); 
-    
     $(document).ready(function(){
         $('#topbar').load("<?php echo site_url('site/topbar') ?>");
-        //Home Screen
+        $('#footbar').load("<?php echo site_url('site/footbar') ?>");
+        
         $('#row-top-content').load("<?php echo site_url('home/top') ?>");
         $('#row-main-content').load("<?php echo site_url('home/welcome') ?>");
         
         $('#berita').load("<?php echo site_url('news/home_berita') ?>");
         $('#beasiswa').load("<?php echo site_url('news/home_beasiswa') ?>");
         $('#fitur').load("<?php echo site_url('news/home_fitur') ?>");
-        
-        
-        $('#video').load("<?php echo site_url('content/random_video_limit/3') ?>");
+                
+        //$('#video').load("<?php echo site_url('content/random_video_limit/3') ?>");
         
         $('#course-home').load("<?php echo site_url('course/home_course') ?>");
-        
-        //Load faculty list
-        //$('#menu_bimbel').load("<?php echo site_url('course/menu_bimbel') ?>");
-        
+
         //Load page welcome
         $('a#btn-welcome').click(function(){
             $('#message').html("Loading Data");
@@ -163,13 +132,13 @@
             return false;
         });
         
-        //Hide Error Messaga
+        //Hide Error Message
         $('#close-error-message').click(function(){
             $('#error-template').fadeOut("slow");
             return false;
         });
         
-        //Hide Info Messaga
+        //Hide Info Message
         $('#close-info-message').click(function(){
             $('#info-template').fadeOut("slow");
             return false;
@@ -187,4 +156,21 @@
         ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
+    
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=240447809341438";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+ 
+    $(window).bind("load resize", function(){    
+        var container_width = $('#container').width();    
+        $('#container').html('<div class="fb-like-box" ' + 
+            'data-href="https://www.facebook.com/npaperbox"' +
+            ' data-width="' + container_width + '" data-height="300" data-show-faces="true" ' +
+            'data-stream="false" data-header="false"></div>');
+        FB.XFBML.parse( );    
+    }); 
 </script>
