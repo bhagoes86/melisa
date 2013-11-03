@@ -9,5 +9,5 @@
     <link href="<?php echo base_url(); ?>asset/metro/css/site.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url(); ?>asset/metro/js/google-code-prettify/prettify.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="<?php echo base_url() ?>asset/css/images/logo-vabel.png"/>
-    <title>SAKOLA Generasi Pembebas</title>
+    <title><?php echo $themes->header ?> <?php echo $themes->caption ?></title>
 </head>
