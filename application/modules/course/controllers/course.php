@@ -192,7 +192,7 @@ class Course extends MX_Controller {
     }
 
     function home_course() {
-        $data['content'] = $this->model_course->select_course_limit(9)->result();
+        $data['content'] = $this->model_course->select_course_limit(3)->result();
         $this->load->view('course_home', $data);
     }
 

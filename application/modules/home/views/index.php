@@ -22,9 +22,9 @@
                                 </div>
                             </div>
 
-                            <div class="grid" style="margin-bottom: 20px;">
-                                <div class="row" id="course-home"></div>
-                            </div>
+                            <div class="grid" style="margin-bottom: 20px;"><div class="row" id="course-home"></div></div>
+                            <div class="grid" style="margin-bottom: 20px;"><div class="row" id="video-home"></div></div>
+                            <div class="grid" style="margin-bottom: 20px;"><div class="row" id="presentation-home"></div></div>
 
                             <div class="grid" style="margin-bottom: 30px;">
                                 <div class="row" style="text-align: center;">
@@ -108,9 +108,9 @@
         $('#beasiswa').load("<?php echo site_url('news/home_beasiswa') ?>");
         $('#fitur').load("<?php echo site_url('news/home_fitur') ?>");
                 
-        //$('#video').load("<?php echo site_url('content/random_video_limit/3') ?>");
-        
         $('#course-home').load("<?php echo site_url('course/home_course') ?>");
+        $('#video-home').load("<?php echo site_url('content/home_video') ?>");
+        $('#presentation-home').load("<?php echo site_url('course/home_presentation') ?>");
 
         //Load page welcome
         $('a#btn-welcome').click(function(){

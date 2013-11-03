@@ -70,6 +70,14 @@ class Model_content extends CI_Model {
         return $this->db->get();
     }
 
+    function select_content($type, $limit) {
+        $this->db->select('*');
+        $this->db->from('content');
+        $this->db->where('type', $type);
+        $this->db->limit($limit);
+        return $this->db->get();
+    }
+
     function insert_content_bookmark($data) {
         $this->db->insert('content_bookmark', $data);
     }
@@ -357,14 +365,14 @@ class Model_content extends CI_Model {
         return $this->db->get();
     }
 
-    function get_silabus_content($id_content,$id_course) {
+    function get_silabus_content($id_content, $id_course) {
         //jimho
         //using query binding
         $sql = " select s.deskripsi,s.id_silabus,cs.id_content_silabus
         from content_silabus cs,course_silabus s
         where cs.silabus_id=s.id_silabus AND cs.content_id = ? AND s.course_id = ?";
 
-        return $this->db->query($sql, array($id_content,$id_course));
+        return $this->db->query($sql, array($id_content, $id_course));
     }
 
     function select_silabus_content($id_content, $id_silabus) {
@@ -382,8 +390,8 @@ class Model_content extends CI_Model {
         $this->db->set('silabus_id', $id_silabus);
         $this->db->insert('content_silabus');
     }
-    
-    function delete_content_silabus($id_content_silabus){
+
+    function delete_content_silabus($id_content_silabus) {
         //jimho
         //for delete db content silabus
         $this->db->where('id_content_silabus', $id_content_silabus);
