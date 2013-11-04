@@ -16,9 +16,7 @@
     <?php $this->load->view('home/js'); ?>
     <body class="modern-ui" onload="prettyPrint()">
         <!--Top-->
-        <div class="page">
-            <?php $this->load->view('search/search_navbar'); ?>
-        </div>
+        <div class="page" id="topbar"></div>
         <!--Center-->
         <div class="page" id="page-index">
             <!--Content-->
@@ -70,19 +68,13 @@
             </div>
         </div>
         <!--Footer-->
-        <div class="page">
-            <div class="nav-bar">
-                <div class="nav-bar-inner padding10" style="background: rgb(0,64,128);">
-                    <span class="element">
-                        <a class="fg-color-white" href="<?php echo site_url(); ?>">&copy; <?php echo date('Y'); ?> Sakola.net</a>, Styled with <a class="fg-color-white" href="http://metroui.org.ua">Metro UI CSS</a>
-                    </span>
-                </div>
-            </div>
-        </div>
+        <div class="page" id="footbar"></div>
     </body>
 </html>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function(){    
+        $('#topbar').load("<?php echo site_url('site/topbar_nomenu') ?>");
+        $('#footbar').load("<?php echo site_url('site/footbar') ?>");
         //Home Screen
         $('#row-top-content').load("<?php echo site_url('home/top_noother') ?>");
         
