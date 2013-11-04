@@ -15,8 +15,10 @@
     </head>
     <?php $this->load->view('home/js'); ?>
     <script type="text/javascript">
-        $('#topbar').load("<?php echo site_url('site/topbar_nomenu') ?>");
-        $('#footbar').load("<?php echo site_url('site/footbar') ?>");
+        $(document).ready(function(){
+            $('#topbar').load("<?php echo site_url('site/topbar_nomenu') ?>");
+            $('#footbar').load("<?php echo site_url('site/footbar') ?>");
+        });
     </script>    
     <script type="text/javascript" src="<?php echo base_url() ?>asset/slideshare/swfobject.js"></script>    
     <script type="text/javascript">    
