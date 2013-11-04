@@ -14,11 +14,12 @@
         <title><?php echo $content->title; ?></title>
     </head>
     <?php $this->load->view('home/js'); ?>
-    <script type="text/javascript" src="<?php echo base_url() ?>asset/slideshare/swfobject.js"></script>    
-    <script type="text/javascript">    
+    <script type="text/javascript">
         $('#topbar').load("<?php echo site_url('site/topbar_nomenu') ?>");
         $('#footbar').load("<?php echo site_url('site/footbar') ?>");
-        
+    </script>    
+    <script type="text/javascript" src="<?php echo base_url() ?>asset/slideshare/swfobject.js"></script>    
+    <script type="text/javascript">    
         var flashMovie;
 
         //Load the flash player. Properties for the player can be changed here.
