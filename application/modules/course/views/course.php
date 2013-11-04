@@ -22,22 +22,16 @@
                 <div class="page-region-content">
                     <div class="grid">
                         <div class="row" style="margin-top: 10px;">
-                            <!--Course Info-->
                             <div class="span5">
+                                <!--Course Info-->
                                 <img src="<?php echo base_url() . 'resource/' . $course->picture ?>" style="width: 100%;"/>
                                 <a style="text-align: justify;color: #095b97;font-size: 18px;"><?php echo $course->course ?></a><br/>
                                 <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($course->description) ?></p>
-
                                 <!--Quiz List-->
-                                <div class="bg-color-green" style="margin-top: 10px;margin-bottom: 10px;text-align: center;">
-                                    <a class="fg-color-white">&nbsp;EVALUASI</a>
-                                </div>
+                                <h3 style="margin-top: 0px;">Evaluasi</h3>
                                 <div id="list-quiz"></div>
-
-                                <div class="bg-color-pink" style="margin-bottom: 10px;text-align: center;">
-                                    <a class="fg-color-white">&nbsp;PENGAJAR</a>
-                                </div>
-
+                                <!--Pemateri-->
+                                <h3 style="margin-top: 0px;">Pengajar</h3>
                                 <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;">
                                     <?php echo nl2br($pendidikan->information); ?><br/>
                                     <?php echo nl2br($profil->information); ?>
@@ -50,16 +44,16 @@
                                         <li><a href="#pengalaman">Pengalaman</a></li>
                                     </ul>
                                     <div class="frames">
-                                        <div class="frame " id="pengajaran">
+                                        <div class="frame active" id="pengajaran">
                                             <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($pengajaran->information); ?></p>
                                         </div>
-                                        <div class="frame " id="riset">
+                                        <div class="frame" id="riset">
                                             <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($riset->information); ?></p>
                                         </div>
-                                        <div class="frame " id="publikasi">
+                                        <div class="frame" id="publikasi">
                                             <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($publikasi->information); ?></p>
                                         </div>
-                                        <div class="frame " id="pengalaman">
+                                        <div class="frame" id="pengalaman">
                                             <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($pengalaman->information); ?></p>
                                         </div>
                                     </div>
@@ -89,7 +83,7 @@
                                         <li><a href="#dokumen">Dokumen</a></li>
                                     </ul>
                                     <div class="frames">
-                                        <div class="frame " id="video">
+                                        <div class="frame active" id="video">
                                             <table class="striped" id="my-table">
                                                 <tbody>
                                                     <?php foreach ($video as $row): ?>
@@ -132,11 +126,6 @@
                                             </table>
                                         </div>
                                         <div class="frame " id="dokumen">
-                                            <form class="span7" style="float: right;margin-right: 0px;padding-right: 0px;margin-bottom: 0px;">
-                                                <div class="input-control text">
-                                                    <input type="text" id="kwd_search_document" placeholder="Cari Materi Dokumen">
-                                                </div>
-                                            </form>
                                             <table class="striped table-document" id="my-table">
                                                 <tbody>
                                                     <?php foreach ($document as $row): ?>
@@ -261,7 +250,7 @@
         return false;
     });
     // Write on keyup event of keyword input element
-    $("#kwd_search").keyup(function(){
+    $("#kwd_search_video").keyup(function(){
         // When value of the input is not blank
         if( $(this).val() != "")
         {
