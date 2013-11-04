@@ -161,10 +161,15 @@ class Site extends MX_Controller {
         $data['topbar'] = $this->model_site->select_themes()->row();
         $this->load->view('site/topbar', $data);
     }
-    
+
     function footbar() {
         $data['footbar'] = $this->model_site->select_themes()->row();
-        $this->load->view('site/footbar', $data);        
+        $this->load->view('site/footbar', $data);
+    }
+
+    function topbar_nomenu() {
+        $data['topbar'] = $this->model_site->select_themes()->row();
+        $this->load->view('site/topbar_nomenu', $data);
     }
 
 }
