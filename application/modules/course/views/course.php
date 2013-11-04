@@ -28,10 +28,10 @@
                                 <a style="text-align: justify;color: #095b97;font-size: 18px;"><?php echo $course->course ?></a><br/>
                                 <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($course->description) ?></p>
                                 <!--Quiz List-->
-                                <h3 style="margin-top: 0px;">Evaluasi</h3>
+                                <h3 style="margin-top: 0px;font-weight: bold;">Evaluasi</h3>
                                 <div id="list-quiz"></div>
                                 <!--Pemateri-->
-                                <h3 style="margin-top: 0px;">Pengajar</h3>
+                                <h3 style="margin-top: 0px;font-weight: bold;">Pengajar</h3>
                                 <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;">
                                     <?php echo nl2br($pendidikan->information); ?><br/>
                                     <?php echo nl2br($profil->information); ?>
@@ -62,7 +62,7 @@
 
                             <div class="span7">
                                 <!--Silabus-->
-                                <h3 style="margin-top: 0px;">Silabus</h3>
+                                <h3 style="margin-top: 0px;font-weight: bold;">Silabus</h3>
                                 <table class="striped bordered">                                    
                                     <tbody>      
                                         <?php foreach ($silabus as $row): ?>
@@ -76,7 +76,7 @@
                                     </tbody>
                                 </table>
                                 <!--Materi-->
-                                <h3 style="margin-top: 0px;">Bahan Ajar</h3>                                
+                                <h3 style="margin-top: 0px;font-weight: bold;">Bahan Ajar</h3>                                
                                 <div class="page-control" data-role="page-control">
                                     <ul>
                                         <li class="active"><a href="#video">Video</a></li>
