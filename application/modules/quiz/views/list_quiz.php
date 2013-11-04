@@ -2,7 +2,7 @@
 <a class="button bg-color-yellow" id="quiz-add-form"><i class="icon-plus"></i>Tambah Kuis</a>
 <a class="button bg-color-blue fg-color-white" id="quiz-manage-resource"><i class="icon-wrench"></i>Pengaturan Konten</a>
 <a class="button bg-color-orange fg-color-white" id="quiz-my-quiz-result"><i class="icon-stats"></i>Nilai Saya</a>
-<a class="button bg-color-purple fg-color-white" id="quiz-file-sample" href="<?php echo site_url().'asset/help/contoh-file-kuis.xls'?>"><i class="icon-download"></i>Contoh File Kuis</a>
+<a class="button bg-color-purple fg-color-white" id="quiz-file-sample" href="<?php echo base_url().'asset/help/contoh-file-kuis.xls'?>"><i class="icon-download"></i>Contoh File Kuis</a>
 <a class="button bg-color-red fg-color-white" id="quiz-help" ><i class="icon-help"></i>Bantuan</a>
 
 <hr />

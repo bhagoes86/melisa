@@ -1241,23 +1241,25 @@ class Quiz extends MX_Controller {
             $temp_group = $this->model_quiz->select_group_by_id($id_group)->row();
             $data['check_course_quiz_group_avail'] = count($temp_group);
 
-            if ($data['check_course_quiz_group_avail'] != 0) {
-                // mengambil data kuis berdasarkan group
-                $temp = $this->model_quiz->select_quiz_by_id($temp_group->quiz_id)->row();
-                $data['id_group'] = $id_group;
-                $data['id_quiz'] = $temp_group->quiz_id;
-                $data['title'] = $temp->title;
-                $data['description'] = $temp->description;
-                $data['length_time'] = $temp->length_time;
-                $data['password'] = $temp_group->password;
-                $data['start_time'] = $temp->start_time;
-                $data['end_time'] = $temp->end_time;
-                $data['course_id'] = $id_course;
+                if ($data['check_course_quiz_group_avail'] != 0) {
+                    // mengambil data kuis berdasarkan group
+                    $temp = $this->model_quiz->select_quiz_by_id($temp_group->quiz_id)->row();
+                    $data['id_group'] = $id_group;
+                    $data['id_quiz'] = $temp_group->quiz_id;
+                    $data['title'] = $temp->title;
+                    $data['description'] = $temp->description;
+                    $data['length_time'] = $temp->length_time;
+                    $data['password'] = $temp_group->password;
+                    $data['start_time'] = $temp->start_time;
+                    $data['end_time'] = $temp->end_time;
+                    $data['course_id'] = $id_course;
+                    $data['group_status'] = $temp_group->status;
 
-                $temp2 = $this->model_quiz->check_quiz_result_by_cqg_user($user->id, $id_course, $temp_group->quiz_id, $id_group)->row();
-                $data['has_participated'] = count($temp2);
-            }
-            $this->load->view('quiz/view_test', $data);
+                    $temp2 = $this->model_quiz->check_quiz_result_by_cqg_user($user->id, $id_course, $temp_group->quiz_id, $id_group)->row();
+                    $data['has_participated'] = count($temp2);
+                }
+                $this->load->view('quiz/view_test', $data);
+            
         }
     }
 
