@@ -25,21 +25,35 @@
                             <div class="span5">
                                 <!--Course Info-->
                                 <img src="<?php echo base_url() . 'resource/' . $course->picture ?>" style="width: 100%;"/>
-                                <a style="text-align: justify;color: #095b97;font-size: 18px;"><?php echo $course->course ?></a><br/>
-                                <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($course->description) ?></p>
+                                <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style addthis_32x32_style" style="margin-top: 8px;">
+                                    <a class="addthis_button_facebook"></a>
+                                    <a class="addthis_button_twitter"></a>
+                                    <a class="addthis_button_google_plusone_share"></a>
+                                    <a class="addthis_button_linkedin"></a>
+                                    <a class="addthis_button_google"></a>
+                                    <a class="addthis_button_springpad"></a>
+                                    <a class="addthis_button_yahoomail"></a>
+                                    <a class="addthis_button_scoopit"></a>
+                                </div>
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
                                 <!--Quiz List-->
-                                <h3 style="margin-top: 0px;font-weight: bold;">Evaluasi</h3>
-                                <div id="list-quiz"></div>
+                                <div class="hero-unit" style="margin-top: 12px;padding: 10px 10px 0px 10px;">
+                                    <h3 style="margin-top: 0px;font-weight: bold;">Evaluasi</h3>
+                                    <div id="list-quiz"></div>
+                                </div>
                                 <!--Pemateri-->
-                                <h3 style="margin-top: 0px;font-weight: bold;">Pengajar</h3>
-                                <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;">
-                                    <?php echo nl2br($pendidikan->information); ?><br/>
-                                    <?php echo nl2br($profil->information); ?>
-                                </p>
+                                <div class="hero-unit" style="margin-top: 12px;padding: 10px 10px 0px 10px;">
+                                    <h3 style="margin-top: 0px;font-weight: bold;">Pengajar</h3>
+                                    <p style="margin-top: 0px; padding-top: 0px;color: rgb(94,94,94);font-size: 14px;">
+                                        <?php echo nl2br($pendidikan->information); ?><br/>
+                                        <?php echo nl2br($profil->information); ?>
+                                    </p>
+                                </div>
                                 <div class="page-control" data-role="page-control">
                                     <ul>
-                                        <li class="active"><a href="#pengajaran">Mengajar</a></li>
-                                        <li><a href="#riset">Riset</a></li>
+                                        <li class="active"><a href="#pengajaran">Kuliah</a></li>
+                                        <li><a href="#riset">Penelitian</a></li>
                                         <li><a href="#publikasi">Publikasi</a></li>
                                         <li><a href="#pengalaman">Pengalaman</a></li>
                                     </ul>
@@ -61,8 +75,13 @@
                             </div>
 
                             <div class="span7">
+                                <div class="hero-unit" style="margin-top: 0px;padding: 10px 10px 0px 10px;">
+                                    <h3 style="margin-top: 0px;font-weight: bold;"><?php echo $course->course ?></h3>
+                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;">Bersama</p>
+                                    <p style="text-align: justify;color: rgb(94,94,94);font-size: 14px;"><?php echo nl2br($course->description) ?></p>
+                                </div>
                                 <!--Silabus-->
-                                <h3 style="margin-top: 0px;font-weight: bold;">Silabus</h3>
+                                <h3 style="padding-top: 0px;margin-top: 0px;font-weight: bold;">Silabus</h3>
                                 <table class="striped bordered">                                    
                                     <tbody>      
                                         <?php foreach ($silabus as $row): ?>

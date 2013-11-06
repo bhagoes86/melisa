@@ -94,6 +94,17 @@
                                         ?>
                                     </div>
                                 <?php } ?>
+                                <div style="margin-top: 15px;padding:10px 10px 0px 10px;" class="hero-unit">
+                                    <!-- AddThis Button BEGIN -->
+                                    <div class="addthis_toolbox addthis_default_style">
+                                        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                        <a class="addthis_button_tweet"></a>
+                                        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                                        <a class="addthis_button_linkedin_counter"></a>
+                                    </div>
+                                </div>
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
+                                <!-- AddThis Button END -->
                                 <div id="action">
                                     <?php if (!$this->ion_auth->logged_in()) { ?>
                                     <?php } else { ?>
